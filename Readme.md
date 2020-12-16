@@ -1,0 +1,1 @@
+# VK API Schema Typescript
