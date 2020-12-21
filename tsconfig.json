@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["es6", "dom"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "module": "es6"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

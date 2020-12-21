@@ -1,0 +1,22 @@
+{
+  "name": "@vkontakte/api-schema-typescript",
+  "version": "0.0.0",
+  "description": "TypeScript typings for VK API",
+  "license": "MIT",
+  "author": "VK Team <https://vk.com/team>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VKCOM/api-schema-typescript.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "devDependencies": {
+    "@vkontakte/api-schema": "https://github.com/VKCOM/vk-api-schema.git#v5.126.11",
+    "@vkontakte/api-schema-typescript-generator": "0.4.0",
+    "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "generate": "vk-api-schema-typescript-generator --schemaDir ./node_modules/@vkontakte/api-schema/ --outDir ./src --methods '*' && tsc -p ."
+  }
+}
