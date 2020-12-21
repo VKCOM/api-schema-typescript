@@ -1,0 +1,21 @@
+/**
+ * This is auto-generated file, don't modify this file manually
+ */
+
+import { NewsfeedItemDigestButton } from './NewsfeedItemDigestButton';
+
+// newsfeed_item_digest_footer style enum
+export enum NewsfeedItemDigestFooterStyleEnum {
+  TEXT = 'text',
+  BUTTON = 'button',
+}
+
+// newsfeed_item_digest_footer
+export interface NewsfeedItemDigestFooter {
+  style: NewsfeedItemDigestFooterStyleEnum;
+  /**
+   * text for invite to enable smart feed
+   */
+  text: string;
+  button?: NewsfeedItemDigestButton;
+}
