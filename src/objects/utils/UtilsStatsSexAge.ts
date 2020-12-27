@@ -9,11 +9,11 @@ export interface UtilsStatsSexAge {
    */
   age_range?: string;
   /**
-   *  Views by female users
+   * Views by female users
    */
   female?: number;
   /**
-   *  Views by male users
+   * Views by male users
    */
   male?: number;
 }

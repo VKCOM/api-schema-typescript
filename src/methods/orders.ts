@@ -74,7 +74,7 @@ export type OrdersGetResponse = OrdersOrder[];
 
 export interface OrdersGetAmountParams {
   user_id: number;
-  votes: string[];
+  votes: string;
 }
 
 // orders.getAmount_response
@@ -94,7 +94,7 @@ export interface OrdersGetByIdParams {
   /**
    * order IDs (when information about several orders is requested).
    */
-  order_ids?: number[];
+  order_ids?: string;
   /**
    * if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
    */

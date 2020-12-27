@@ -2,14 +2,10 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { AddressesFields } from '../objects/addresses/AddressesFields';
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { GroupsAddress } from '../objects/groups/GroupsAddress';
 import { GroupsBannedItem } from '../objects/groups/GroupsBannedItem';
 import { GroupsCallbackServer } from '../objects/groups/GroupsCallbackServer';
 import { GroupsCallbackSettings } from '../objects/groups/GroupsCallbackSettings';
-import { GroupsFields } from '../objects/groups/GroupsFields';
-import { GroupsFilter } from '../objects/groups/GroupsFilter';
 import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupAccess } from '../objects/groups/GroupsGroupAccess';
 import { GroupsGroupAgeLimits } from '../objects/groups/GroupsGroupAgeLimits';
@@ -37,7 +33,6 @@ import { GroupsSettingsTwitter } from '../objects/groups/GroupsSettingsTwitter';
 import { GroupsSubjectItem } from '../objects/groups/GroupsSubjectItem';
 import { GroupsTokenPermissionSetting } from '../objects/groups/GroupsTokenPermissionSetting';
 import { GroupsUserXtrRole } from '../objects/groups/GroupsUserXtrRole';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { UsersUserMin } from '../objects/users/UsersUserMin';
 
@@ -363,11 +358,11 @@ export interface GroupsEditParams {
   /**
    * Market delivery countries.
    */
-  market_country?: number[];
+  market_country?: string;
   /**
    * Market delivery cities (if only one country is specified).
    */
-  market_city?: number[];
+  market_city?: string;
   /**
    * Market currency settings. Possbile values: , *'643' – Russian rubles,, *'980' – Ukrainian hryvnia,, *'398' – Kazakh tenge,, *'978' – Euro,, *'840' – US dollars
    */
@@ -391,7 +386,7 @@ export interface GroupsEditParams {
   /**
    * Keywords for stopwords filter.
    */
-  obscene_words?: string[];
+  obscene_words?: string;
   main_section?: number;
   secondary_section?: number;
   /**
@@ -538,12 +533,16 @@ export interface GroupsGetParams {
   extended?: 0 | 1;
   /**
    * Types of communities to return: 'admin' — to return communities administered by the user , 'editor' — to return communities where the user is an administrator or editor, 'moder' — to return communities where the user is an administrator, editor, or moderator, 'groups' — to return only groups, 'publics' — to return only public pages, 'events' — to return only events
+   *
+   * objects.json#/definitions/groups_filter
    */
-  filter?: GroupsFilter[];
+  filter?: string;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/groups_fields
    */
-  fields?: GroupsFields[];
+  fields?: string;
   /**
    * Offset needed to return a specific subset of communities.
    */
@@ -583,7 +582,7 @@ export interface GroupsGetAddressesParams {
    * ID or screen name of the community.
    */
   group_id: number;
-  address_ids?: number[];
+  address_ids?: string;
   /**
    * Latitude of  the user geo position.
    */
@@ -602,8 +601,10 @@ export interface GroupsGetAddressesParams {
   count?: number;
   /**
    * Address fields
+   *
+   * objects.json#/definitions/addresses_fields
    */
-  fields?: AddressesFields[];
+  fields?: string;
 }
 
 // groups.getAddresses_response
@@ -634,7 +635,10 @@ export interface GroupsGetBannedParams {
    * Number of users to return.
    */
   count?: number;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
   owner_id?: number;
 }
 
@@ -657,15 +661,17 @@ export interface GroupsGetByIdParams {
   /**
    * IDs or screen names of communities.
    */
-  group_ids?: string[];
+  group_ids?: string;
   /**
    * ID or screen name of the community.
    */
   group_id?: string;
   /**
    * Group fields to return.
+   *
+   * objects.json#/definitions/groups_fields
    */
-  fields?: GroupsFields[];
+  fields?: string;
 }
 
 // groups.getById_response
@@ -698,7 +704,7 @@ export interface GroupsGetCallbackConfirmationCodeResponse {
 
 export interface GroupsGetCallbackServersParams {
   group_id: number;
-  server_ids?: number[];
+  server_ids?: string;
 }
 
 // groups.getCallbackServers_response
@@ -809,8 +815,10 @@ export interface GroupsGetInvitedUsersParams {
   count?: number;
   /**
    * List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname. Possible values: *'nom' — nominative (default),, *'gen' — genitive,, *'dat' — dative,, *'acc' — accusative, , *'ins' — instrumental,, *'abl' — prepositional.
    */
@@ -924,8 +932,10 @@ export interface GroupsGetMembersParams {
   count?: number;
   /**
    * List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
    */
@@ -980,8 +990,10 @@ export interface GroupsGetRequestsParams {
   count?: number;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
 }
 
 // groups.getRequests_response
@@ -1204,7 +1216,7 @@ export interface GroupsIsMemberParams {
   /**
    * User IDs.
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * '1' — to return an extended response with additional fields. By default: '0'.
    */

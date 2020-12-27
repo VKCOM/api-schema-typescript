@@ -9,7 +9,6 @@ import { MarketMarketItem } from '../objects/market/MarketMarketItem';
 import { MarketMarketItemFull } from '../objects/market/MarketMarketItemFull';
 import { MarketOrder } from '../objects/market/MarketOrder';
 import { MarketOrderItem } from '../objects/market/MarketOrderItem';
-import { UsersFields } from '../objects/users/UsersFields';
 import { WallWallComment } from '../objects/wall/WallWallComment';
 
 /**
@@ -51,7 +50,7 @@ export interface MarketAddParams {
   /**
    * IDs of additional photos.
    */
-  photo_ids?: number[];
+  photo_ids?: string;
   /**
    * Url for button in market item.
    */
@@ -121,7 +120,7 @@ export interface MarketAddToAlbumParams {
   /**
    * Collections IDs to add item to.
    */
-  album_ids: number[];
+  album_ids: string;
 }
 
 // market.addToAlbum_response
@@ -149,7 +148,7 @@ export interface MarketCreateCommentParams {
   /**
    * Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * '1' - comment will be published on behalf of a community, '0' - on behalf of a user (by default).
    */
@@ -273,7 +272,7 @@ export interface MarketEditParams {
   /**
    * IDs of additional photos.
    */
-  photo_ids?: number[];
+  photo_ids?: string;
   /**
    * Url for button in market item.
    */
@@ -337,7 +336,7 @@ export interface MarketEditCommentParams {
   /**
    * Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // market.editComment_response
@@ -417,7 +416,7 @@ export interface MarketGetAlbumByIdParams {
   /**
    * collections identifiers to obtain data from
    */
-  album_ids: number[];
+  album_ids: string;
 }
 
 // market.getAlbumById_response
@@ -469,7 +468,7 @@ export interface MarketGetByIdParams {
   /**
    * Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
    */
-  item_ids: string[];
+  item_ids: string;
   /**
    * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
    */
@@ -554,8 +553,10 @@ export interface MarketGetCommentsParams {
   extended?: 0 | 1;
   /**
    * List of additional profile fields to return. See the [vk.com/dev/fields|details]
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
 }
 
 // market.getComments_response
@@ -673,7 +674,7 @@ export interface MarketRemoveFromAlbumParams {
   /**
    * Collections IDs to remove item from.
    */
-  album_ids: number[];
+  album_ids: string;
 }
 
 // market.removeFromAlbum_response

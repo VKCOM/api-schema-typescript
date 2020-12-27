@@ -25,8 +25,6 @@ import { AdsTargSuggestionsRegions } from '../objects/ads/AdsTargSuggestionsRegi
 import { AdsTargSuggestionsSchools } from '../objects/ads/AdsTargSuggestionsSchools';
 import { AdsUpdateOfficeUsersResult } from '../objects/ads/AdsUpdateOfficeUsersResult';
 import { AdsUsers } from '../objects/ads/AdsUsers';
-import { AdsUserSpecification } from '../objects/ads/AdsUserSpecification';
-import { AdsUserSpecificationCutted } from '../objects/ads/AdsUserSpecificationCutted';
 
 /**
  * ads.addOfficeUsers
@@ -41,8 +39,10 @@ export interface AdsAddOfficeUsersParams {
   account_id: number;
   /**
    * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+   *
+   * objects.json#/definitions/ads_user_specification_cutted
    */
-  data: AdsUserSpecificationCutted[];
+  data: string;
 }
 
 // ads.addOfficeUsers_response
@@ -433,7 +433,7 @@ export interface AdsGetCampaignsParams {
    * Filter of advertising campaigns to show. Serialized JSON array with campaign IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be shown. If the parameter is null, all campaigns will be shown.
    */
   campaign_ids?: string;
-  fields?: string[];
+  fields?: string;
 }
 
 // ads.getCampaigns_response
@@ -667,7 +667,7 @@ export interface AdsGetStatisticsParams {
   /**
    * Additional fields to add to statistics
    */
-  stats_fields?: string[];
+  stats_fields?: string;
 }
 
 // ads.getStatistics_response
@@ -953,8 +953,10 @@ export interface AdsUpdateOfficeUsersParams {
   account_id: number;
   /**
    * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+   *
+   * objects.json#/definitions/ads_user_specification
    */
-  data: AdsUserSpecification[];
+  data: string;
 }
 
 // ads.updateOfficeUsers_response

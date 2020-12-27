@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { UsersFields } from '../objects/users/UsersFields';
 import { WidgetsWidgetComment } from '../objects/widgets/WidgetsWidgetComment';
 import { WidgetsWidgetPage } from '../objects/widgets/WidgetsWidgetPage';
 
@@ -17,7 +16,10 @@ export interface WidgetsGetCommentsParams {
   url?: string;
   page_id?: string;
   order?: string;
-  fields?: UsersFields[];
+  /**
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
   offset?: number;
   count?: number;
 }

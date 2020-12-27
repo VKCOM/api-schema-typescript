@@ -12,7 +12,7 @@ import { StorageValue } from '../objects/storage/StorageValue';
 
 export interface StorageGetParams {
   key?: string;
-  keys?: string[];
+  keys?: string;
   user_id?: number;
 }
 

@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { FaveBookmark } from '../objects/fave/FaveBookmark';
 import { FavePage } from '../objects/fave/FavePage';
 import { FaveTag } from '../objects/fave/FaveTag';
@@ -165,7 +164,10 @@ export interface FaveGetPagesParams {
   offset?: number;
   count?: number;
   type?: 'groups' | 'hints' | 'users';
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
   tag_id?: number;
 }
 
@@ -292,7 +294,7 @@ export type FaveRemoveVideoResponse = 1;
  */
 
 export interface FaveReorderTagsParams {
-  ids: number[];
+  ids: string;
 }
 
 // fave.reorderTags_response
@@ -305,7 +307,7 @@ export type FaveReorderTagsResponse = 1;
 export interface FaveSetPageTagsParams {
   user_id?: number;
   group_id?: number;
-  tag_ids?: number[];
+  tag_ids?: string;
 }
 
 // fave.setPageTags_response
@@ -319,7 +321,7 @@ export interface FaveSetTagsParams {
   item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video';
   item_owner_id?: number;
   item_id?: number;
-  tag_ids?: number[];
+  tag_ids?: string;
   link_id?: string;
   link_url?: string;
 }

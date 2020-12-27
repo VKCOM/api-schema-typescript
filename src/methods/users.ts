@@ -3,7 +3,6 @@
  */
 
 import { GroupsGroupsArray } from '../objects/groups/GroupsGroupsArray';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersSubscriptionsItem } from '../objects/users/UsersSubscriptionsItem';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { UsersUsersArray } from '../objects/users/UsersUsersArray';
@@ -19,11 +18,13 @@ export interface UsersGetParams {
   /**
    * User IDs or screen names ('screen_name'). By default, current user ID.
    */
-  user_ids?: string[];
+  user_ids?: string;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', 'can_invite_to_chats'
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
@@ -54,8 +55,10 @@ export interface UsersGetFollowersParams {
   count?: number;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
@@ -103,7 +106,10 @@ export interface UsersGetSubscriptionsParams {
    * Number of users and communities to return.
    */
   count?: number;
-  fields?: UsersFields[];
+  /**
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
 }
 
 // users.getSubscriptions_response
@@ -170,8 +176,10 @@ export interface UsersSearchParams {
   count?: number;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * City ID.
    */
@@ -273,7 +281,7 @@ export interface UsersSearchParams {
    * ID of a community to search in communities.
    */
   group_id?: number;
-  from_list?: string[];
+  from_list?: string;
 }
 
 // users.search_response

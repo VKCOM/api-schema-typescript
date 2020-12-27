@@ -25,7 +25,7 @@ export interface NotesNoteComment {
    */
   oid: number;
   /**
-   * ID of replied comment 
+   * ID of replied comment
    */
   reply_to?: number;
   /**

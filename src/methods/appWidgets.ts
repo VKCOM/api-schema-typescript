@@ -93,7 +93,7 @@ export interface AppWidgetsGetImagesByIdParams {
   /**
    * List of images IDs
    */
-  images: string[];
+  images: string;
 }
 
 // appWidgets.getImagesById_response

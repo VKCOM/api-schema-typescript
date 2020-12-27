@@ -2,14 +2,10 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
-import { NewsfeedCommentsFilters } from '../objects/newsfeed/NewsfeedCommentsFilters';
-import { NewsfeedFilters } from '../objects/newsfeed/NewsfeedFilters';
 import { NewsfeedList } from '../objects/newsfeed/NewsfeedList';
 import { NewsfeedListFull } from '../objects/newsfeed/NewsfeedListFull';
 import { NewsfeedNewsfeedItem } from '../objects/newsfeed/NewsfeedNewsfeedItem';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersSubscriptionsItem } from '../objects/users/UsersSubscriptionsItem';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallpostFull } from '../objects/wall/WallWallpostFull';
@@ -22,8 +18,8 @@ import { WallWallpostToId } from '../objects/wall/WallWallpostToId';
  */
 
 export interface NewsfeedAddBanParams {
-  user_ids?: number[];
-  group_ids?: number[];
+  user_ids?: string;
+  group_ids?: string;
 }
 
 // newsfeed.addBan_response
@@ -36,8 +32,8 @@ export type NewsfeedAddBanResponse = 1;
  */
 
 export interface NewsfeedDeleteBanParams {
-  user_ids?: number[];
-  group_ids?: number[];
+  user_ids?: string;
+  group_ids?: string;
 }
 
 // newsfeed.deleteBan_response
@@ -63,8 +59,10 @@ export type NewsfeedDeleteListResponse = 1;
 export interface NewsfeedGetParams {
   /**
    * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
+   *
+   * objects.json#/definitions/newsfeed_filters
    */
-  filters?: NewsfeedFilters[];
+  filters?: string;
   /**
    * '1' — to return news items from banned sources
    */
@@ -95,8 +93,10 @@ export interface NewsfeedGetParams {
   count?: number;
   /**
    * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
   section?: string;
 }
 
@@ -124,8 +124,10 @@ export interface NewsfeedGetBannedParams {
   extended?: 0 | 1;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
@@ -157,8 +159,10 @@ export interface NewsfeedGetCommentsParams {
   count?: number;
   /**
    * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+   *
+   * objects.json#/definitions/newsfeed_comments_filters
    */
-  filters?: NewsfeedCommentsFilters[];
+  filters?: string;
   /**
    * Object ID, comments on repost of which shall be returned, e.g. 'wall1_45486'. (If the parameter is set, the 'filters' parameter is optional.),
    */
@@ -178,8 +182,10 @@ export interface NewsfeedGetCommentsParams {
   start_from?: string;
   /**
    * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // newsfeed.getComments_response
@@ -203,7 +209,7 @@ export interface NewsfeedGetListsParams {
   /**
    * numeric list identifiers.
    */
-  list_ids?: number[];
+  list_ids?: string;
   /**
    * Return additional list info
    */
@@ -295,8 +301,10 @@ export interface NewsfeedGetRecommendedParams {
   count?: number;
   /**
    * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // newsfeed.getRecommended_response
@@ -331,8 +339,10 @@ export interface NewsfeedGetSuggestedSourcesParams {
   shuffle?: 0 | 1;
   /**
    * list of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // newsfeed.getSuggestedSources_response
@@ -386,7 +396,7 @@ export interface NewsfeedSaveListParams {
   /**
    * users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
    */
-  source_ids?: number[];
+  source_ids?: string;
   /**
    * reposts display on and off ('1' is for off).
    */
@@ -434,8 +444,10 @@ export interface NewsfeedSearchParams {
   start_from?: string;
   /**
    * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // newsfeed.search_response

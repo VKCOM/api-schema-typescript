@@ -107,7 +107,7 @@ export interface PrettyCardsGetResponse {
 
 export interface PrettyCardsGetByIdParams {
   owner_id: number;
-  card_ids: number[];
+  card_ids: string;
 }
 
 // prettyCards.getById_response
