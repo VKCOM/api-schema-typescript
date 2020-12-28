@@ -10,7 +10,6 @@ import { FriendsRequests } from '../objects/friends/FriendsRequests';
 import { FriendsRequestsXtrMessage } from '../objects/friends/FriendsRequestsXtrMessage';
 import { FriendsUserXtrLists } from '../objects/friends/FriendsUserXtrLists';
 import { FriendsUserXtrPhone } from '../objects/friends/FriendsUserXtrPhone';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 
 /**
@@ -55,7 +54,7 @@ export interface FriendsAddListParams {
   /**
    * IDs of users to be added to the friend list.
    */
-  user_ids?: number[];
+  user_ids?: string;
 }
 
 // friends.addList_response
@@ -76,7 +75,7 @@ export interface FriendsAreFriendsParams {
   /**
    * IDs of the users whose friendship status to check.
    */
-  user_ids: number[];
+  user_ids: string;
   /**
    * '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
    */
@@ -188,7 +187,7 @@ export interface FriendsEditParams {
   /**
    * IDs of the friend lists to which to add the user.
    */
-  list_ids?: number[];
+  list_ids?: string;
 }
 
 // friends.edit_response
@@ -212,15 +211,15 @@ export interface FriendsEditListParams {
   /**
    * IDs of users in the friend list.
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * (Applies if 'user_ids' parameter is not set.), User IDs to add to the friend list.
    */
-  add_user_ids?: number[];
+  add_user_ids?: string;
   /**
    * (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
    */
-  delete_user_ids?: number[];
+  delete_user_ids?: string;
 }
 
 // friends.editList_response
@@ -255,8 +254,10 @@ export interface FriendsGetParams {
   offset?: number;
   /**
    * Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
@@ -303,11 +304,13 @@ export interface FriendsGetByPhonesParams {
   /**
    * List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
    */
-  phones?: string[];
+  phones?: string;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
 }
 
 // friends.getByPhones_response
@@ -357,7 +360,7 @@ export interface FriendsGetMutualParams {
   /**
    * IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
    */
-  target_uids?: number[];
+  target_uids?: string;
   /**
    * Sort order: 'random' — random order
    */
@@ -473,7 +476,10 @@ export interface FriendsGetRequestsParams {
    */
   suggested?: 0 | 1;
   ref?: string;
-  fields?: UsersFields[];
+  /**
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
 }
 
 // friends.getRequests_response
@@ -517,7 +523,7 @@ export interface FriendsGetSuggestionsParams {
   /**
    * Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
    */
-  filter?: string[];
+  filter?: string;
   /**
    * Number of suggestions to return.
    */
@@ -528,8 +534,10 @@ export interface FriendsGetSuggestionsParams {
   offset?: number;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
@@ -562,8 +570,10 @@ export interface FriendsSearchParams {
   q?: string;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */

@@ -6,7 +6,6 @@ import { BaseUploadServer } from '../objects/base/BaseUploadServer';
 import { PollsBackground } from '../objects/polls/PollsBackground';
 import { PollsPoll } from '../objects/polls/PollsPoll';
 import { PollsVoters } from '../objects/polls/PollsVoters';
-import { UsersFields } from '../objects/users/UsersFields';
 
 /**
  * polls.addVote
@@ -23,7 +22,7 @@ export interface PollsAddVoteParams {
    * Poll ID.
    */
   poll_id: number;
-  answer_ids: number[];
+  answer_ids: string;
   is_board?: 0 | 1;
 }
 
@@ -157,7 +156,7 @@ export interface PollsGetByIdParams {
   poll_id: number;
   extended?: 0 | 1;
   friends_count?: number;
-  fields?: string[];
+  fields?: string;
   name_case?: 'abl' | 'acc' | 'dat' | 'gen' | 'ins' | 'nom';
 }
 
@@ -193,7 +192,7 @@ export interface PollsGetVotersParams {
   /**
    * Answer IDs.
    */
-  answer_ids: number[];
+  answer_ids: string;
   is_board?: 0 | 1;
   /**
    * '1' — to return only current user's friends, '0' — to return all users (default),
@@ -209,8 +208,10 @@ export interface PollsGetVotersParams {
   count?: number;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */

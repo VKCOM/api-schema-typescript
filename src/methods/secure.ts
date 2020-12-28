@@ -112,7 +112,7 @@ export type SecureGetTransactionsHistoryResponse = SecureTransaction[];
  */
 
 export interface SecureGetUserLevelParams {
-  user_ids: number[];
+  user_ids: string;
 }
 
 // secure.getUserLevel_response
@@ -125,7 +125,7 @@ export type SecureGetUserLevelResponse = SecureLevel[];
  */
 
 export interface SecureGiveEventStickerParams {
-  user_ids: number[];
+  user_ids: string;
   achievement_id: number;
 }
 
@@ -139,7 +139,7 @@ export type SecureGiveEventStickerResponse = {}[];
  */
 
 export interface SecureSendNotificationParams {
-  user_ids?: number[];
+  user_ids?: string;
   user_id?: number;
   /**
    * notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
@@ -177,7 +177,7 @@ export type SecureSendSMSNotificationResponse = 1;
  */
 
 export interface SecureSetCounterParams {
-  counters?: string[];
+  counters?: string;
   user_id?: number;
   /**
    * counter value.

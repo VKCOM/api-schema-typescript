@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { DonutDonatorSubscriptionInfo } from '../objects/donut/DonutDonatorSubscriptionInfo';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { GroupsUserXtrRole } from '../objects/groups/GroupsUserXtrRole';
@@ -16,7 +15,7 @@ export interface DonutGetFriendsParams {
   owner_id: number;
   offset?: number;
   count?: number;
-  fields?: string[];
+  fields?: string;
 }
 
 // donut.getFriends_response
@@ -46,7 +45,10 @@ export type DonutGetSubscriptionResponse = DonutDonatorSubscriptionInfo;
  */
 
 export interface DonutGetSubscriptionsParams {
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
   offset?: number;
   count?: number;
 }

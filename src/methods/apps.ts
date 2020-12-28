@@ -5,7 +5,6 @@
 import { AppsApp } from '../objects/apps/AppsApp';
 import { AppsLeaderboard } from '../objects/apps/AppsLeaderboard';
 import { AppsScope } from '../objects/apps/AppsScope';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { UsersUserMin } from '../objects/users/UsersUserMin';
 
@@ -34,7 +33,7 @@ export interface AppsGetParams {
   /**
    * List of application ID
    */
-  app_ids?: string[];
+  app_ids?: string;
   /**
    * platform. Possible values: *'ios' — iOS,, *'android' — Android,, *'winphone' — Windows Phone,, *'web' — приложения на vk.com. By default: 'web'.
    */
@@ -43,8 +42,10 @@ export interface AppsGetParams {
   return_friends?: 0 | 1;
   /**
    * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', (only if return_friends - 1)
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
    */
@@ -88,7 +89,10 @@ export interface AppsGetCatalogParams {
    */
   extended?: 0 | 1;
   return_friends?: 0 | 1;
-  fields?: UsersFields[];
+  /**
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
   name_case?: string;
   /**
    * Search query string.
@@ -130,8 +134,10 @@ export interface AppsGetFriendsListParams {
   type?: 'invite' | 'request';
   /**
    * Additional profile fields, see [vk.com/dev/fields|description].
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
 }
 
 // apps.getFriendsList_response

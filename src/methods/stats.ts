@@ -24,8 +24,8 @@ export interface StatsGetParams {
   timestamp_to?: number;
   interval?: 'all' | 'day' | 'month' | 'week' | 'year';
   intervals_count?: number;
-  filters?: string[];
-  stats_groups?: string[];
+  filters?: string;
+  stats_groups?: string;
   extended?: 0 | 1;
 }
 
@@ -46,7 +46,7 @@ export interface StatsGetPostReachParams {
   /**
    * wall posts id
    */
-  post_ids: number[];
+  post_ids: string;
 }
 
 // stats.getPostReach_response

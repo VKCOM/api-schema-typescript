@@ -14,7 +14,6 @@ import { PhotosPhotoTag } from '../objects/photos/PhotosPhotoTag';
 import { PhotosPhotoUpload } from '../objects/photos/PhotosPhotoUpload';
 import { PhotosPhotoXtrRealOffset } from '../objects/photos/PhotosPhotoXtrRealOffset';
 import { PhotosPhotoXtrTagInfo } from '../objects/photos/PhotosPhotoXtrTagInfo';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallComment } from '../objects/wall/WallWallComment';
 
@@ -85,8 +84,8 @@ export interface PhotosCreateAlbumParams {
    * Album description.
    */
   description?: string;
-  privacy_view?: string[];
-  privacy_comment?: string[];
+  privacy_view?: string;
+  privacy_comment?: string;
   upload_by_admins_only?: 0 | 1;
   comments_disabled?: 0 | 1;
 }
@@ -116,7 +115,7 @@ export interface PhotosCreateCommentParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * '1' — to post a comment from the community
    */
@@ -242,8 +241,8 @@ export interface PhotosEditAlbumParams {
    * ID of the user or community that owns the album.
    */
   owner_id?: number;
-  privacy_view?: string[];
-  privacy_comment?: string[];
+  privacy_view?: string;
+  privacy_comment?: string;
   upload_by_admins_only?: 0 | 1;
   comments_disabled?: 0 | 1;
 }
@@ -273,7 +272,7 @@ export interface PhotosEditCommentParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // photos.editComment_response
@@ -297,7 +296,7 @@ export interface PhotosGetParams {
   /**
    * Photo IDs.
    */
-  photo_ids?: string[];
+  photo_ids?: string;
   /**
    * Sort order: '1' — reverse chronological, '0' — chronological
    */
@@ -354,7 +353,7 @@ export interface PhotosGetAlbumsParams {
   /**
    * Album IDs.
    */
-  album_ids?: number[];
+  album_ids?: string;
   /**
    * Offset needed to return a specific subset of albums.
    */
@@ -521,7 +520,7 @@ export interface PhotosGetByIdParams {
   /**
    * IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
    */
-  photos: string[];
+  photos: string;
   /**
    * '1' — to return additional fields, '0' — (default)
    */
@@ -594,7 +593,10 @@ export interface PhotosGetCommentsParams {
   sort?: 'asc' | 'desc';
   access_key?: string;
   extended?: 0 | 1;
-  fields?: UsersFields[];
+  /**
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
 }
 
 // photos.getComments_response

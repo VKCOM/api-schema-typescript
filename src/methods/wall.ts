@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { UsersUser } from '../objects/users/UsersUser';
@@ -63,7 +62,7 @@ export interface WallCreateCommentParams {
   /**
    * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * Sticker ID.
    */
@@ -142,7 +141,7 @@ export interface WallEditParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
    */
-  attachments?: string[];
+  attachments?: string;
   services?: string;
   signed?: 0 | 1;
   publish_date?: number;
@@ -188,7 +187,7 @@ export interface WallEditAdsStealthParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
    */
@@ -248,7 +247,7 @@ export interface WallEditCommentParams {
   /**
    * List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // wall.editComment_response
@@ -285,7 +284,10 @@ export interface WallGetParams {
    * '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
    */
   extended?: 0 | 1;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // wall.get_response
@@ -318,7 +320,7 @@ export interface WallGetByIdParams {
   /**
    * User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
    */
-  posts: string[];
+  posts: string;
   /**
    * '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
    */
@@ -327,7 +329,10 @@ export interface WallGetByIdParams {
    * Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
    */
   copy_history_depth?: number;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // wall.getById_response
@@ -356,7 +361,10 @@ export interface WallGetCommentParams {
    */
   comment_id: number;
   extended?: 0 | 1;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // wall.getComment_response
@@ -408,7 +416,10 @@ export interface WallGetCommentsParams {
    */
   preview_length?: number;
   extended?: 0 | 1;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
   /**
    * Comment ID.
    */
@@ -554,7 +565,7 @@ export interface WallPostParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * List of services or websites the update will be exported to, if the user has so requested. Sample values: 'twitter', 'facebook'.
    */
@@ -617,7 +628,7 @@ export interface WallPostAdsStealthParams {
   /**
    * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
    */
@@ -835,7 +846,10 @@ export interface WallSearchParams {
    * show extended post info.
    */
   extended?: 0 | 1;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // wall.search_response

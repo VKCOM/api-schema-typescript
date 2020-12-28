@@ -25,7 +25,7 @@ export interface NotificationsGetParams {
   /**
    * Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
    */
-  filters?: string[];
+  filters?: string;
   /**
    * Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
    */
@@ -72,7 +72,7 @@ export type NotificationsMarkAsViewedResponse = 0 | 1;
  */
 
 export interface NotificationsSendMessageParams {
-  user_ids: number[];
+  user_ids: string;
   message: string;
   fragment?: string;
   group_id?: number;

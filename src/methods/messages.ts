@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { MessagesChat } from '../objects/messages/MessagesChat';
@@ -18,7 +17,6 @@ import { MessagesLongpollParams } from '../objects/messages/MessagesLongpollPara
 import { MessagesMessage } from '../objects/messages/MessagesMessage';
 import { MessagesMessagesArray } from '../objects/messages/MessagesMessagesArray';
 import { MessagesPinnedMessage } from '../objects/messages/MessagesPinnedMessage';
-import { UsersFields } from '../objects/users/UsersFields';
 import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 
@@ -70,7 +68,7 @@ export interface MessagesCreateChatParams {
   /**
    * IDs of the users to be added to the chat.
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * Chat title.
    */
@@ -91,7 +89,7 @@ export interface MessagesDeleteParams {
   /**
    * Message IDs.
    */
-  message_ids?: number[];
+  message_ids?: string;
   /**
    * '1' — to mark message as spam.
    */
@@ -262,15 +260,17 @@ export interface MessagesGetByConversationMessageIdParams {
   /**
    * Conversation message IDs.
    */
-  conversation_message_ids: number[];
+  conversation_message_ids: string;
   /**
    * Information whether the response should be extended
    */
   extended?: 0 | 1;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -296,7 +296,7 @@ export interface MessagesGetByIdParams {
   /**
    * Message IDs.
    */
-  message_ids: number[];
+  message_ids: string;
   /**
    * Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
    */
@@ -307,8 +307,10 @@ export interface MessagesGetByIdParams {
   extended?: 0 | 1;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -347,8 +349,10 @@ export interface MessagesGetChatPreviewParams {
   link?: string;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
 }
 
 // messages.getChatPreview_response
@@ -370,8 +374,10 @@ export interface MessagesGetConversationMembersParams {
   peer_id: number;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -419,8 +425,10 @@ export interface MessagesGetConversationsParams {
   start_message_id?: number;
   /**
    * Profile and communities fields to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -452,15 +460,17 @@ export interface MessagesGetConversationsByIdParams {
   /**
    * Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
    */
-  peer_ids: number[];
+  peer_ids: string;
   /**
    * Return extended properties
    */
   extended?: 0 | 1;
   /**
    * Profile and communities fields to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -520,8 +530,10 @@ export interface MessagesGetHistoryParams {
   extended?: 0 | 1;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -577,9 +589,11 @@ export interface MessagesGetHistoryAttachmentsParams {
    */
   photo_sizes?: 0 | 1;
   /**
-   * Additional profile [vk.com/dev/fields|fields] to return. 
+   * Additional profile [vk.com/dev/fields|fields] to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -616,8 +630,10 @@ export interface MessagesGetImportantMessagesParams {
   preview_length?: number;
   /**
    * Actors fields to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
   /**
    * Return extended properties
    */
@@ -654,8 +670,8 @@ export interface MessagesGetIntentUsersParams {
   offset?: number;
   count?: number;
   extended?: 0 | 1;
-  name_case?: string[];
-  fields?: string[];
+  name_case?: string;
+  fields?: string;
 }
 
 // messages.getIntentUsers_response
@@ -730,8 +746,10 @@ export interface MessagesGetLongPollHistoryParams {
   onlines?: 0 | 1;
   /**
    * Additional profile [vk.com/dev/fields|fields] to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Maximum number of events to return.
    */
@@ -869,7 +887,7 @@ export interface MessagesMarkAsImportantParams {
   /**
    * IDs of messages to mark as important.
    */
-  message_ids?: number[];
+  message_ids?: string;
   /**
    * '1' — to add a star (mark as important), '0' — to remove the star
    */
@@ -913,7 +931,7 @@ export interface MessagesMarkAsReadParams {
   /**
    * IDs of messages to mark as read.
    */
-  message_ids?: number[];
+  message_ids?: string;
   /**
    * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
    */
@@ -1029,7 +1047,7 @@ export interface MessagesSearchParams {
    */
   count?: number;
   extended?: 0 | 1;
-  fields?: string[];
+  fields?: string;
   /**
    * Group ID (for group messages with group access token)
    */
@@ -1078,8 +1096,10 @@ export interface MessagesSearchConversationsParams {
   extended?: 0 | 1;
   /**
    * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
    */
-  fields?: UsersFields[];
+  fields?: string;
   /**
    * Group ID (for group messages with user access token)
    */
@@ -1119,7 +1139,7 @@ export interface MessagesSendParams {
   /**
    * IDs of message recipients. (See peer_id)
    */
-  peer_ids?: number[];
+  peer_ids?: string;
   /**
    * User's short address (for example, 'illarionov').
    */
@@ -1131,7 +1151,7 @@ export interface MessagesSendParams {
   /**
    * IDs of message recipients (if new conversation shall be started).
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * (Required if 'attachments' is not set.) Text of the message.
    */
@@ -1152,7 +1172,7 @@ export interface MessagesSendParams {
   /**
    * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
    */
-  forward_messages?: number[];
+  forward_messages?: string;
   /**
    * JSON describing the forwarded message or reply
    */

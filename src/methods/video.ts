@@ -52,7 +52,7 @@ export interface VideoAddAlbumParams {
   /**
    * new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
    */
-  privacy?: string[];
+  privacy?: string;
 }
 
 // video.addAlbum_response
@@ -70,7 +70,7 @@ export interface VideoAddAlbumResponse {
 export interface VideoAddToAlbumParams {
   target_id?: number;
   album_id?: number;
-  album_ids?: number[];
+  album_ids?: string;
   owner_id: number;
   video_id: number;
 }
@@ -100,7 +100,7 @@ export interface VideoCreateCommentParams {
   /**
    * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * '1' — to post the comment from a community name (only if 'owner_id'<0)
    */
@@ -200,11 +200,11 @@ export interface VideoEditParams {
   /**
    * Privacy settings in a [vk.com/dev/privacy_setting|special format]. Privacy setting is available for videos uploaded to own profile by user.
    */
-  privacy_view?: string[];
+  privacy_view?: string;
   /**
    * Privacy settings for comments in a [vk.com/dev/privacy_setting|special format].
    */
-  privacy_comment?: string[];
+  privacy_comment?: string;
   /**
    * Disable comments for the group video.
    */
@@ -240,7 +240,7 @@ export interface VideoEditAlbumParams {
   /**
    * new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
    */
-  privacy?: string[];
+  privacy?: string;
 }
 
 // video.editAlbum_response
@@ -268,7 +268,7 @@ export interface VideoEditCommentParams {
   /**
    * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // video.editComment_response
@@ -288,7 +288,7 @@ export interface VideoGetParams {
   /**
    * Video IDs, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", Use a negative value to designate a community ID. Example: "-4363_136089719,13245770_137352259"
    */
-  videos?: string[];
+  videos?: string;
   /**
    * ID of the album containing the video(s).
    */
@@ -447,7 +447,7 @@ export interface VideoGetCommentsParams {
    */
   sort?: 'asc' | 'desc';
   extended?: 0 | 1;
-  fields?: string[];
+  fields?: string;
 }
 
 // video.getComments_response
@@ -477,7 +477,7 @@ export interface VideoGetCommentsExtendedResponse {
 export interface VideoRemoveFromAlbumParams {
   target_id?: number;
   album_id?: number;
-  album_ids?: number[];
+  album_ids?: string;
   owner_id: number;
   video_id: number;
 }
@@ -688,8 +688,8 @@ export interface VideoSaveParams {
    * ID of the album to which the saved video will be added.
    */
   album_id?: number;
-  privacy_view?: string[];
-  privacy_comment?: string[];
+  privacy_view?: string;
+  privacy_comment?: string;
   no_comments?: 0 | 1;
   /**
    * '1' — to repeat the playback of the video, '0' — to play the video once,
@@ -727,7 +727,7 @@ export interface VideoSearchParams {
   /**
    * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
    */
-  filters?: string[];
+  filters?: string;
   search_own?: 0 | 1;
   /**
    * Offset needed to return a specific subset of videos.

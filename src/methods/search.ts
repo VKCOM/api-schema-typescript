@@ -23,8 +23,8 @@ export interface SearchGetHintsParams {
    * Maximum number of results to return.
    */
   limit?: number;
-  filters?: string[];
-  fields?: string[];
+  filters?: string;
+  fields?: string;
   search_global?: 0 | 1;
 }
 

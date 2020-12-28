@@ -93,7 +93,7 @@ export interface DatabaseGetCitiesByIdParams {
   /**
    * City IDs.
    */
-  city_ids?: number[];
+  city_ids?: string;
 }
 
 // database.getCitiesById_response
@@ -143,7 +143,7 @@ export interface DatabaseGetCountriesByIdParams {
   /**
    * Country IDs.
    */
-  country_ids?: number[];
+  country_ids?: string;
 }
 
 // database.getCountriesById_response
@@ -208,7 +208,7 @@ export interface DatabaseGetMetroStationsResponse {
  */
 
 export interface DatabaseGetMetroStationsByIdParams {
-  station_ids?: number[];
+  station_ids?: string;
 }
 
 // database.getMetroStationsById_response

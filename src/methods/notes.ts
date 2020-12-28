@@ -20,8 +20,8 @@ export interface NotesAddParams {
    * Note text.
    */
   text: string;
-  privacy_view?: string[];
-  privacy_comment?: string[];
+  privacy_view?: string;
+  privacy_comment?: string;
 }
 
 // notes.add_response
@@ -111,8 +111,8 @@ export interface NotesEditParams {
    * Note text.
    */
   text: string;
-  privacy_view?: string[];
-  privacy_comment?: string[];
+  privacy_view?: string;
+  privacy_comment?: string;
 }
 
 // notes.edit_response
@@ -152,7 +152,7 @@ export interface NotesGetParams {
   /**
    * Note IDs.
    */
-  note_ids?: number[];
+  note_ids?: string;
   /**
    * Note owner ID.
    */

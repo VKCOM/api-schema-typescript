@@ -16,7 +16,7 @@ export interface StoreAddStickersToFavoriteParams {
   /**
    * Sticker IDs to be added
    */
-  sticker_ids: number[];
+  sticker_ids: string;
 }
 
 // store.addStickersToFavorite_response
@@ -39,8 +39,8 @@ export interface StoreGetProductsParams {
   type?: string;
   merchant?: string;
   section?: string;
-  product_ids?: number[];
-  filters?: string[];
+  product_ids?: string;
+  filters?: string;
   extended?: 0 | 1;
 }
 
@@ -52,8 +52,8 @@ export type StoreGetProductsResponse = StoreProduct[];
  */
 
 export interface StoreGetStickersKeywordsParams {
-  stickers_ids?: number[];
-  products_ids?: number[];
+  stickers_ids?: string;
+  products_ids?: string;
   aliases?: 0 | 1;
   all_products?: 0 | 1;
   need_stickers?: 0 | 1;
@@ -83,7 +83,7 @@ export interface StoreRemoveStickersFromFavoriteParams {
   /**
    * Sticker IDs to be removed
    */
-  sticker_ids: number[];
+  sticker_ids: string;
 }
 
 // store.removeStickersFromFavorite_response

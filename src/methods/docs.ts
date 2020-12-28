@@ -75,7 +75,7 @@ export interface DocsEditParams {
   /**
    * Document tags.
    */
-  tags?: string[];
+  tags?: string;
 }
 
 // docs.edit_response
@@ -123,7 +123,7 @@ export interface DocsGetByIdParams {
   /**
    * Document IDs. Example: , "66748_91488,66748_91455",
    */
-  docs: string[];
+  docs: string;
   return_tags?: 0 | 1;
 }
 

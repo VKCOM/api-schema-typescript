@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseUserGroupFields } from '../objects/base/BaseUserGroupFields';
 import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { StoriesFeedItem } from '../objects/stories/StoriesFeedItem';
@@ -22,7 +21,7 @@ export interface StoriesBanOwnerParams {
   /**
    * List of sources IDs
    */
-  owners_ids: number[];
+  owners_ids: string;
 }
 
 // stories.banOwner_response
@@ -43,7 +42,7 @@ export interface StoriesDeleteParams {
    * Story ID.
    */
   story_id?: number;
-  stories?: string[];
+  stories?: string;
 }
 
 // stories.delete_response
@@ -64,7 +63,10 @@ export interface StoriesGetParams {
    * '1' — to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
-  fields?: BaseUserGroupFields[];
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // stories.get_response
@@ -89,8 +91,10 @@ export interface StoriesGetBannedParams {
   extended?: 0 | 1;
   /**
    * Additional fields to return
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // stories.getBanned_response
@@ -123,15 +127,17 @@ export interface StoriesGetByIdParams {
   /**
    * Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
    */
-  stories: string[];
+  stories: string;
   /**
    * '1' — to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
   /**
    * Additional fields to return
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // stories.getById_response
@@ -168,7 +174,7 @@ export interface StoriesGetPhotoUploadServerParams {
   /**
    * List of users IDs who can see the story.
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * ID of the story to reply with the current.
    */
@@ -225,8 +231,10 @@ export interface StoriesGetRepliesParams {
   extended?: 0 | 1;
   /**
    * Additional fields to return
+   *
+   * objects.json#/definitions/base_user_group_fields
    */
-  fields?: BaseUserGroupFields[];
+  fields?: string;
 }
 
 // stories.getReplies_response
@@ -246,7 +254,7 @@ export interface StoriesGetRepliesResponse {
 
 export interface StoriesGetStatsParams {
   /**
-   * Story owner ID. 
+   * Story owner ID.
    */
   owner_id: number;
   /**
@@ -272,7 +280,7 @@ export interface StoriesGetVideoUploadServerParams {
   /**
    * List of users IDs who can see the story.
    */
-  user_ids?: number[];
+  user_ids?: string;
   /**
    * ID of the story to reply with the current.
    */
@@ -395,7 +403,7 @@ export type StoriesHideReplyResponse = 1;
  */
 
 export interface StoriesSaveParams {
-  upload_results: string[];
+  upload_results: string;
 }
 
 // stories.save_response
@@ -417,7 +425,7 @@ export interface StoriesSearchParams {
   mentioned_id?: number;
   count?: number;
   extended?: 0 | 1;
-  fields?: string[];
+  fields?: string;
 }
 
 // stories.search_response
@@ -454,7 +462,7 @@ export interface StoriesUnbanOwnerParams {
   /**
    * List of hidden sources to show stories from.
    */
-  owners_ids: number[];
+  owners_ids: string;
 }
 
 // stories.unbanOwner_response

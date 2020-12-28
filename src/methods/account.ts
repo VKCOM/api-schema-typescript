@@ -136,7 +136,7 @@ export interface AccountGetCountersParams {
   /**
    * Counters to be returned.
    */
-  filter?: string[];
+  filter?: string;
 }
 
 // account.getCounters_response
@@ -152,7 +152,7 @@ export interface AccountGetInfoParams {
   /**
    * Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
    */
-  fields?: string[];
+  fields?: string;
 }
 
 // account.getInfo_response
@@ -385,7 +385,7 @@ export interface AccountSetPushSettingsParams {
   /**
    * New value for the key in a [vk.com/dev/push_settings|special format].
    */
-  value?: string[];
+  value?: string;
 }
 
 // account.setPushSettings_response

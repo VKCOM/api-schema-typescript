@@ -29,7 +29,7 @@ export interface AdsStatsFormat {
    */
   overall?: number;
   /**
-   * Reach 
+   * Reach
    */
   reach?: number;
   /**

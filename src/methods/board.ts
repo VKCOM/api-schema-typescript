@@ -36,7 +36,7 @@ export interface BoardAddTopicParams {
   /**
    * List of media objects attached to the topic, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one reference, an error will be thrown.",
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // board.addTopic_response
@@ -84,7 +84,7 @@ export interface BoardCreateCommentParams {
   /**
    * (Required if 'text' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID.
    */
-  attachments?: string[];
+  attachments?: string;
   /**
    * '1' — to post the comment as by the community, '0' — to post the comment as by the user (default)
    */
@@ -172,7 +172,7 @@ export interface BoardEditCommentParams {
   /**
    * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
    */
-  attachments?: string[];
+  attachments?: string;
 }
 
 // board.editComment_response
@@ -296,7 +296,7 @@ export interface BoardGetTopicsParams {
   /**
    * IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
    */
-  topic_ids?: number[];
+  topic_ids?: string;
   /**
    * Sort order: '1' — by date updated in reverse chronological order. '2' — by date created in reverse chronological order. '-1' — by date updated in chronological order. '-2' — by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
    */
