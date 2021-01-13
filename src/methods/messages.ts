@@ -493,7 +493,8 @@ export interface MessagesGetConversationsByIdExtendedResponse {
    */
   count: number;
   items: MessagesConversation[];
-  profiles?: UsersUser[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -1111,8 +1112,17 @@ export interface MessagesSearchConversationsResponse {
   /**
    * Total results number
    */
-  count?: number;
-  items?: MessagesConversation[];
+  count: number;
+  items: MessagesConversation[];
+}
+
+// messages.searchConversations_extendedResponse
+export interface MessagesSearchConversationsExtendedResponse {
+  /**
+   * Total results number
+   */
+  count: number;
+  items: MessagesConversation[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
 }

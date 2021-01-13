@@ -431,7 +431,7 @@ export interface MarketGetAlbumByIdResponse {
 /**
  * market.getAlbums
  *
- * Returns community's collections list.
+ * Returns community's market collections list.
  */
 
 export interface MarketGetAlbumsParams {

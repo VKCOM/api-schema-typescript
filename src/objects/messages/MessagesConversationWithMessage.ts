@@ -7,6 +7,6 @@ import { MessagesMessage } from './MessagesMessage';
 
 // messages_conversation_with_message
 export interface MessagesConversationWithMessage {
-  conversation?: MessagesConversation;
+  conversation: MessagesConversation;
   last_message?: MessagesMessage;
 }

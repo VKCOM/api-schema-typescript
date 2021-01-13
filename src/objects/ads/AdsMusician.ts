@@ -12,4 +12,8 @@ export interface AdsMusician {
    * Music artist name
    */
   name: string;
+  /**
+   * Music artist photo
+   */
+  avatar?: string;
 }

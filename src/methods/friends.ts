@@ -577,7 +577,7 @@ export interface FriendsSearchParams {
   /**
    * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: 'Nom' | 'Gen' | 'Dat' | 'Acc' | 'Ins' | 'Abl';
   /**
    * Offset needed to return a specific subset of friends.
    */

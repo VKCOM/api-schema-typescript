@@ -574,6 +574,22 @@ export interface AdsGetMusiciansResponse {
 }
 
 /**
+ * ads.getMusiciansByIds
+ */
+
+export interface AdsGetMusiciansByIdsParams {
+  ids: string;
+}
+
+// ads.getMusiciansByIds_response
+export interface AdsGetMusiciansByIdsResponse {
+  /**
+   * Musicians
+   */
+  items: AdsMusician[];
+}
+
+/**
  * ads.getOfficeUsers
  *
  * Returns a list of managers and supervisors of advertising account.

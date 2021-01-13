@@ -90,6 +90,8 @@ export {
   AdsGetFloodStatsResponse,
   AdsGetLookalikeRequestsParams,
   AdsGetLookalikeRequestsResponse,
+  AdsGetMusiciansByIdsParams,
+  AdsGetMusiciansByIdsResponse,
   AdsGetMusiciansParams,
   AdsGetMusiciansResponse,
   AdsGetOfficeUsersParams,
@@ -154,6 +156,8 @@ export {
   AppsGetLeaderboardExtendedResponse,
   AppsGetLeaderboardParams,
   AppsGetLeaderboardResponse,
+  AppsGetMiniAppPoliciesParams,
+  AppsGetMiniAppPoliciesResponse,
   AppsGetParams,
   AppsGetResponse,
   AppsGetScopesParams,
@@ -295,6 +299,8 @@ export {
 export {
   FaveAddArticleParams,
   FaveAddArticleResponse,
+  FaveAddClassifiedParams,
+  FaveAddClassifiedResponse,
   FaveAddLinkParams,
   FaveAddLinkResponse,
   FaveAddPageParams,
@@ -320,6 +326,8 @@ export {
   FaveMarkSeenResponse,
   FaveRemoveArticleParams,
   FaveRemoveArticleResponse,
+  FaveRemoveClassifiedParams,
+  FaveRemoveClassifiedResponse,
   FaveRemoveLinkParams,
   FaveRemoveLinkResponse,
   FaveRemovePageParams,
@@ -656,6 +664,7 @@ export {
   MessagesRemoveChatUserResponse,
   MessagesRestoreParams,
   MessagesRestoreResponse,
+  MessagesSearchConversationsExtendedResponse,
   MessagesSearchConversationsParams,
   MessagesSearchConversationsResponse,
   MessagesSearchExtendedResponse,
@@ -879,6 +888,11 @@ export {
   PhotosSearchParams,
   PhotosSearchResponse,
 } from './methods/photos';
+
+export {
+  PodcastsSearchPodcastParams,
+  PodcastsSearchPodcastResponse,
+} from './methods/podcasts';
 
 export {
   PollsAddVoteParams,
@@ -2423,8 +2437,26 @@ export {
 } from './objects/notes/NotesNoteComment';
 
 export {
+  NotificationsFeedback,
+} from './objects/notifications/NotificationsFeedback';
+
+export {
+  NotificationsNotification,
+} from './objects/notifications/NotificationsNotification';
+
+export {
   NotificationsNotificationItem,
 } from './objects/notifications/NotificationsNotificationItem';
+
+export {
+  NotificationsNotificationParent,
+  VideoVideoLiveStatusEnum,
+  VideoVideoTypeEnum,
+} from './objects/notifications/NotificationsNotificationParent';
+
+export {
+  NotificationsReply,
+} from './objects/notifications/NotificationsReply';
 
 export {
   NotificationsSendMessageError,
@@ -2527,6 +2559,14 @@ export {
 export {
   PhotosPhotoXtrTagInfo,
 } from './objects/photos/PhotosPhotoXtrTagInfo';
+
+export {
+  PodcastCover,
+} from './objects/podcast/PodcastCover';
+
+export {
+  PodcastExternalData,
+} from './objects/podcast/PodcastExternalData';
 
 export {
   PollsAnswer,
@@ -2863,8 +2903,6 @@ export {
 
 export {
   VideoVideo,
-  VideoVideoLiveStatusEnum,
-  VideoVideoTypeEnum,
 } from './objects/video/VideoVideo';
 
 export {

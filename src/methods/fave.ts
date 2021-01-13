@@ -20,6 +20,26 @@ export interface FaveAddArticleParams {
 export type FaveAddArticleResponse = 1;
 
 /**
+ * fave.addClassified
+ *
+ * Adds a link to user faves.
+ */
+
+export interface FaveAddClassifiedParams {
+  /**
+   * Classifieds item source
+   */
+  item_source: 'youla';
+  /**
+   * Classifieds item id
+   */
+  item_id: string;
+}
+
+// fave.addClassified_response
+export type FaveAddClassifiedResponse = 1;
+
+/**
  * fave.addLink
  *
  * Adds a link to user faves.
@@ -209,6 +229,26 @@ export interface FaveRemoveArticleParams {
 
 // fave.removeArticle_response
 export type FaveRemoveArticleResponse = 0 | 1;
+
+/**
+ * fave.removeClassified
+ *
+ * Removes link from the user's faves.
+ */
+
+export interface FaveRemoveClassifiedParams {
+  /**
+   * Classifieds item source
+   */
+  item_source: 'youla';
+  /**
+   * Classifieds item id
+   */
+  item_id: string;
+}
+
+// fave.removeClassified_response
+export type FaveRemoveClassifiedResponse = 1;
 
 /**
  * fave.removeLink

@@ -1077,7 +1077,7 @@ export interface GroupsGetSettingsResponse {
    */
   obscene_filter: 0 | 1;
   /**
-   * Information whether the stopwords filter is enabled
+   * Information whether the stop words filter is enabled
    */
   obscene_stopwords: 0 | 1;
   /**
@@ -1109,7 +1109,7 @@ export interface GroupsGetSettingsResponse {
    */
   start_date?: number;
   /**
-   * Finish date in Unixtime format
+   * Finish date in Unix-time format
    */
   finish_date?: number;
   /**

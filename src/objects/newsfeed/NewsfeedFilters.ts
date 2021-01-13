@@ -9,12 +9,9 @@ export enum NewsfeedFilters {
   PHOTO_TAG = 'photo_tag',
   WALL_PHOTO = 'wall_photo',
   FRIEND = 'friend',
-  RECOMMENDED_GROUPS = 'recommended_groups',
   NOTE = 'note',
   AUDIO = 'audio',
   VIDEO = 'video',
   AUDIO_PLAYLIST = 'audio_playlist',
-  GAMES_CAROUSEL = 'games_carousel',
   CLIP = 'clip',
-  RECOMMENDED_GAME = 'recommended_game',
 }
