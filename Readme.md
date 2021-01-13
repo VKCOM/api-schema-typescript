@@ -5,7 +5,7 @@ The generation is performed with [VKCOM/api-schema-typescript-generator](https:/
 
 ## Current API version – **5.126**
 
-The package versions will follow API versions. It means that for **5.126** API version the package version will be **5.126.\***.
+The package versions will follow API versions. It means that for **5.126** API version the package version will be **\*.5126.\***.
 
 ## Install
 
