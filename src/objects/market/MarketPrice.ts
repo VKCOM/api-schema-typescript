@@ -9,14 +9,14 @@ export interface MarketPrice {
   /**
    * Amount
    */
-  amount?: string;
-  currency?: MarketCurrency;
+  amount: string;
+  currency: MarketCurrency;
   discount_rate?: number;
   old_amount?: string;
   /**
    * Text
    */
-  text?: string;
+  text: string;
   /**
    * Textual representation of old price
    */

@@ -44,7 +44,7 @@ export interface MarketMarketItemFull {
   /**
    * URL of the preview image
    */
-  thumb_photo: string;
+  thumb_photo?: string;
   /**
    * Item title
    */

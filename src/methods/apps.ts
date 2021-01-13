@@ -190,6 +190,31 @@ export interface AppsGetLeaderboardExtendedResponse {
 }
 
 /**
+ * apps.getMiniAppPolicies
+ *
+ * Returns policies and terms given to a mini app.
+ */
+
+export interface AppsGetMiniAppPoliciesParams {
+  /**
+   * Mini App ID
+   */
+  app_id: number;
+}
+
+// apps.getMiniAppPolicies_response
+export interface AppsGetMiniAppPoliciesResponse {
+  /**
+   * URL of the app's privacy policy
+   */
+  privacy_policy?: string;
+  /**
+   * URL of the app's terms
+   */
+  terms?: string;
+}
+
+/**
  * apps.getScopes
  *
  * Returns scopes for auth

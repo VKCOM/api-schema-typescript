@@ -5,6 +5,10 @@
 // audio_audio
 export interface AudioAudio {
   /**
+   * Access key for the audio
+   */
+  access_key?: string;
+  /**
    * Artist name
    */
   artist: string;
@@ -12,6 +16,10 @@ export interface AudioAudio {
    * Audio ID
    */
   id: number;
+  /**
+   * Audio owner's ID
+   */
+  owner_id: number;
   /**
    * Title
    */
