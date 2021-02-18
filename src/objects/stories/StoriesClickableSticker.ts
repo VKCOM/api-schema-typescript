@@ -9,43 +9,43 @@ import { MarketMarketItem } from '../market/MarketMarketItem';
 import { PollsPoll } from '../polls/PollsPoll';
 import { StoriesClickableArea } from './StoriesClickableArea';
 
-// stories_clickable_sticker style enum
-export enum StoriesClickableStickerStyleEnum {
-  TRANSPARENT = 'transparent',
-  BLUE_GRADIENT = 'blue_gradient',
-  RED_GRADIENT = 'red_gradient',
-  UNDERLINE = 'underline',
-  BLUE = 'blue',
-  GREEN = 'green',
-  WHITE = 'white',
-  QUESTION_REPLY = 'question_reply',
-  LIGHT = 'light',
-  IMPRESSIVE = 'impressive',
-}
+// stories_clickable_sticker style enumNames
+export const StoriesClickableStickerStyleEnumNames = {
+  TRANSPARENT: 'transparent',
+  BLUE_GRADIENT: 'blue_gradient',
+  RED_GRADIENT: 'red_gradient',
+  UNDERLINE: 'underline',
+  BLUE: 'blue',
+  GREEN: 'green',
+  WHITE: 'white',
+  QUESTION_REPLY: 'question_reply',
+  LIGHT: 'light',
+  IMPRESSIVE: 'impressive',
+} as const;
 
-// stories_clickable_sticker type enum
-export enum StoriesClickableStickerTypeEnum {
-  HASHTAG = 'hashtag',
-  MENTION = 'mention',
-  LINK = 'link',
-  QUESTION = 'question',
-  PLACE = 'place',
-  MARKET_ITEM = 'market_item',
-  MUSIC = 'music',
-  STORY_REPLY = 'story_reply',
-  OWNER = 'owner',
-  POST = 'post',
-  POLL = 'poll',
-  STICKER = 'sticker',
-  APP = 'app',
-  SITUATIONAL_THEME = 'situational_theme',
-}
+// stories_clickable_sticker type enumNames
+export const StoriesClickableStickerTypeEnumNames = {
+  HASHTAG: 'hashtag',
+  MENTION: 'mention',
+  LINK: 'link',
+  QUESTION: 'question',
+  PLACE: 'place',
+  MARKET_ITEM: 'market_item',
+  MUSIC: 'music',
+  STORY_REPLY: 'story_reply',
+  OWNER: 'owner',
+  POST: 'post',
+  POLL: 'poll',
+  STICKER: 'sticker',
+  APP: 'app',
+  SITUATIONAL_THEME: 'situational_theme',
+} as const;
 
-// stories_clickable_sticker subtype enum
-export enum StoriesClickableStickerSubtypeEnum {
-  MARKET_ITEM = 'market_item',
-  ALIEXPRESS_PRODUCT = 'aliexpress_product',
-}
+// stories_clickable_sticker subtype enumNames
+export const StoriesClickableStickerSubtypeEnumNames = {
+  MARKET_ITEM: 'market_item',
+  ALIEXPRESS_PRODUCT: 'aliexpress_product',
+} as const;
 
 // stories_clickable_sticker
 export interface StoriesClickableSticker {
@@ -66,9 +66,31 @@ export interface StoriesClickableSticker {
   market_item?: MarketMarketItem;
   audio?: AudioAudio;
   audio_start_time?: number;
-  style?: StoriesClickableStickerStyleEnum;
-  type: StoriesClickableStickerTypeEnum;
-  subtype?: StoriesClickableStickerSubtypeEnum;
+  style?: 'transparent' |
+  'blue_gradient' |
+  'red_gradient' |
+  'underline' |
+  'blue' |
+  'green' |
+  'white' |
+  'question_reply' |
+  'light' |
+  'impressive';
+  type: 'hashtag' |
+  'mention' |
+  'link' |
+  'question' |
+  'place' |
+  'market_item' |
+  'music' |
+  'story_reply' |
+  'owner' |
+  'post' |
+  'poll' |
+  'sticker' |
+  'app' |
+  'situational_theme';
+  subtype?: 'market_item' | 'aliexpress_product';
   post_owner_id?: number;
   post_id?: number;
   poll?: PollsPoll;

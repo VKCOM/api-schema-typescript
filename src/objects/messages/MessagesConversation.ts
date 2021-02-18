@@ -11,10 +11,10 @@ import { MessagesMessageRequestData } from './MessagesMessageRequestData';
 import { MessagesOutReadBy } from './MessagesOutReadBy';
 import { MessagesPushSettings } from './MessagesPushSettings';
 
-// messages_conversation special_service_type enum
-export enum MessagesConversationSpecialServiceTypeEnum {
-  BUSINESS_NOTIFY = 'business_notify',
-}
+// messages_conversation special_service_type enumNames
+export const MessagesConversationSpecialServiceTypeEnumNames = {
+  BUSINESS_NOTIFY: 'business_notify',
+} as const;
 
 // messages_conversation
 export interface MessagesConversation {
@@ -43,7 +43,7 @@ export interface MessagesConversation {
   out_read_by?: MessagesOutReadBy;
   important?: boolean;
   unanswered?: boolean;
-  special_service_type?: MessagesConversationSpecialServiceTypeEnum;
+  special_service_type?: 'business_notify';
   message_request_data?: MessagesMessageRequestData;
   /**
    * Ids of messages with mentions

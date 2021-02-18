@@ -22,13 +22,13 @@ import { GroupsLiveCovers } from './GroupsLiveCovers';
 import { GroupsMarketInfo } from './GroupsMarketInfo';
 import { GroupsOnlineStatus } from './GroupsOnlineStatus';
 
-// groups_group_full wall enum
-export enum GroupsGroupFullWallEnum {
-  DISABLED = 0,
-  OPEN = 1,
-  LIMITED = 2,
-  RESTRICTED = 3,
-}
+// groups_group_full wall enumNames
+export const GroupsGroupFullWallEnumNames = {
+  DISABLED: 0,
+  OPEN: 1,
+  LIMITED: 2,
+  RESTRICTED: 3,
+} as const;
 
 // groups_group_full
 export interface GroupsGroupFull {
@@ -194,8 +194,13 @@ export interface GroupsGroupFull {
   contacts?: GroupsContactsItem[];
   /**
    * Information about wall status in community
+   *
+   * `0` — disabled
+   * `1` — open
+   * `2` — limited
+   * `3` — restricted
    */
-  wall?: GroupsGroupFullWallEnum;
+  wall?: 0 | 1 | 2 | 3;
   /**
    * Community's website
    */

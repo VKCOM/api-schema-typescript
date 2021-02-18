@@ -6,10 +6,10 @@ import { BaseImage } from '../base/BaseImage';
 import { BaseStickersList } from '../base/BaseStickersList';
 import { StoreProductIcon } from './StoreProductIcon';
 
-// store_product type enum
-export enum StoreProductTypeEnum {
-  STICKERS = 'stickers',
-}
+// store_product type enumNames
+export const StoreProductTypeEnumNames = {
+  STICKERS: 'stickers',
+} as const;
 
 // store_product
 export interface StoreProduct {
@@ -20,7 +20,7 @@ export interface StoreProduct {
   /**
    * Product type
    */
-  type: StoreProductTypeEnum;
+  type: 'stickers';
   /**
    * Information whether the product is purchased (1 - yes, 0 - no)
    */

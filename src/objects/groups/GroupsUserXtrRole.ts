@@ -28,11 +28,11 @@ import { UsersUserType } from '../users/UsersUserType';
 import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { GroupsRoleOptions } from './GroupsRoleOptions';
 
-// users_user_full wall_default enum
-export enum UsersUserFullWallDefaultEnum {
-  OWNER = 'owner',
-  ALL = 'all',
-}
+// users_user_full wall_default enumNames
+export const UsersUserFullWallDefaultEnumNames = {
+  OWNER: 'owner',
+  ALL: 'all',
+} as const;
 
 // groups_user_xtr_role
 export interface GroupsUserXtrRole {
@@ -246,7 +246,7 @@ export interface GroupsUserXtrRole {
   photo_max_size?: PhotosPhoto;
   language?: string;
   stories_archive_count?: number;
-  wall_default?: UsersUserFullWallDefaultEnum;
+  wall_default?: 'owner' | 'all';
   /**
    * Information whether current user can call
    */

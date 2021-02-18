@@ -2,12 +2,12 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-// account_offer link_type enum
-export enum AccountOfferLinkTypeEnum {
-  PROFILE = 'profile',
-  GROUP = 'group',
-  APP = 'app',
-}
+// account_offer link_type enumNames
+export const AccountOfferLinkTypeEnumNames = {
+  PROFILE: 'profile',
+  GROUP: 'group',
+  APP: 'app',
+} as const;
 
 // account_offer
 export interface AccountOffer {
@@ -58,5 +58,5 @@ export interface AccountOffer {
   /**
    * Link type
    */
-  link_type?: AccountOfferLinkTypeEnum;
+  link_type?: 'profile' | 'group' | 'app';
 }

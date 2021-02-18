@@ -4,11 +4,11 @@
 
 import { NewsfeedItemDigestButton } from './NewsfeedItemDigestButton';
 
-// newsfeed_item_digest_header style enum
-export enum NewsfeedItemDigestHeaderStyleEnum {
-  SINGLELINE = 'singleline',
-  MULTILINE = 'multiline',
-}
+// newsfeed_item_digest_header style enumNames
+export const NewsfeedItemDigestHeaderStyleEnumNames = {
+  SINGLELINE: 'singleline',
+  MULTILINE: 'multiline',
+} as const;
 
 // newsfeed_item_digest_header
 export interface NewsfeedItemDigestHeader {
@@ -20,6 +20,6 @@ export interface NewsfeedItemDigestHeader {
    * Subtitle of the header, when title have two strings
    */
   subtitle?: string;
-  style: NewsfeedItemDigestHeaderStyleEnum;
+  style: 'singleline' | 'multiline';
   button?: NewsfeedItemDigestButton;
 }

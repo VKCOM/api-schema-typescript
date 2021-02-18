@@ -105,45 +105,53 @@ export interface FriendsDeleteParams {
   user_id?: number;
 }
 
-// friends.delete_response friend_deleted enum
-export enum FriendsDeleteResponseFriendDeletedEnum {
-  OK = 1,
-}
+// friends.delete_response friend_deleted enumNames
+export const FriendsDeleteResponseFriendDeletedEnumNames = {
+  OK: 1,
+} as const;
 
-// friends.delete_response out_request_deleted enum
-export enum FriendsDeleteResponseOutRequestDeletedEnum {
-  OK = 1,
-}
+// friends.delete_response out_request_deleted enumNames
+export const FriendsDeleteResponseOutRequestDeletedEnumNames = {
+  OK: 1,
+} as const;
 
-// friends.delete_response in_request_deleted enum
-export enum FriendsDeleteResponseInRequestDeletedEnum {
-  OK = 1,
-}
+// friends.delete_response in_request_deleted enumNames
+export const FriendsDeleteResponseInRequestDeletedEnumNames = {
+  OK: 1,
+} as const;
 
-// friends.delete_response suggestion_deleted enum
-export enum FriendsDeleteResponseSuggestionDeletedEnum {
-  OK = 1,
-}
+// friends.delete_response suggestion_deleted enumNames
+export const FriendsDeleteResponseSuggestionDeletedEnumNames = {
+  OK: 1,
+} as const;
 
 // friends.delete_response
 export interface FriendsDeleteResponse {
   success: number;
   /**
    * Returns 1 if friend has been deleted
+   *
+   * `1` — ok
    */
-  friend_deleted?: FriendsDeleteResponseFriendDeletedEnum;
+  friend_deleted?: 1;
   /**
    * Returns 1 if out request has been canceled
+   *
+   * `1` — ok
    */
-  out_request_deleted?: FriendsDeleteResponseOutRequestDeletedEnum;
+  out_request_deleted?: 1;
   /**
    * Returns 1 if incoming request has been declined
+   *
+   * `1` — ok
    */
-  in_request_deleted?: FriendsDeleteResponseInRequestDeletedEnum;
+  in_request_deleted?: 1;
   /**
    * Returns 1 if suggestion has been declined
+   *
+   * `1` — ok
    */
-  suggestion_deleted?: FriendsDeleteResponseSuggestionDeletedEnum;
+  suggestion_deleted?: 1;
 }
 
 /**

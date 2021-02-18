@@ -6,23 +6,29 @@ import { AppsAppMin } from '../apps/AppsAppMin';
 import { StoriesPromoBlock } from './StoriesPromoBlock';
 import { StoriesStory } from './StoriesStory';
 
-// stories_feed_item type enum
-export enum StoriesFeedItemTypeEnum {
-  PROMO_STORIES = 'promo_stories',
-  STORIES = 'stories',
-  LIVE_ACTIVE = 'live_active',
-  LIVE_FINISHED = 'live_finished',
-  COMMUNITY_GROUPED_STORIES = 'community_grouped_stories',
-  APP_GROUPED_STORIES = 'app_grouped_stories',
-  BIRTHDAY = 'birthday',
-}
+// stories_feed_item type enumNames
+export const StoriesFeedItemTypeEnumNames = {
+  PROMO_STORIES: 'promo_stories',
+  STORIES: 'stories',
+  LIVE_ACTIVE: 'live_active',
+  LIVE_FINISHED: 'live_finished',
+  COMMUNITY_GROUPED_STORIES: 'community_grouped_stories',
+  APP_GROUPED_STORIES: 'app_grouped_stories',
+  BIRTHDAY: 'birthday',
+} as const;
 
 // stories_feed_item
 export interface StoriesFeedItem {
   /**
    * Type of Feed Item
    */
-  type: StoriesFeedItemTypeEnum;
+  type: 'promo_stories' |
+  'stories' |
+  'live_active' |
+  'live_finished' |
+  'community_grouped_stories' |
+  'app_grouped_stories' |
+  'birthday';
   id?: string;
   /**
    * Author stories

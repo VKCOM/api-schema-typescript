@@ -2,14 +2,14 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-// users_online_info status enum
-export enum UsersOnlineInfoStatusEnum {
-  RECENTLY = 'recently',
-  LAST_WEEK = 'last_week',
-  LAST_MONTH = 'last_month',
-  LONG_AGO = 'long_ago',
-  NOT_SHOW = 'not_show',
-}
+// users_online_info status enumNames
+export const UsersOnlineInfoStatusEnumNames = {
+  RECENTLY: 'recently',
+  LAST_WEEK: 'last_week',
+  LAST_MONTH: 'last_month',
+  LONG_AGO: 'long_ago',
+  NOT_SHOW: 'not_show',
+} as const;
 
 // users_online_info
 export interface UsersOnlineInfo {
@@ -36,5 +36,5 @@ export interface UsersOnlineInfo {
   /**
    * In case user online is not visible, it indicates approximate timeframe of user online
    */
-  status?: UsersOnlineInfoStatusEnum;
+  status?: 'recently' | 'last_week' | 'last_month' | 'long_ago' | 'not_show';
 }

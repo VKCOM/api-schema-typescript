@@ -4,15 +4,15 @@
 
 import { NewsfeedItemDigestButton } from './NewsfeedItemDigestButton';
 
-// newsfeed_item_digest_footer style enum
-export enum NewsfeedItemDigestFooterStyleEnum {
-  TEXT = 'text',
-  BUTTON = 'button',
-}
+// newsfeed_item_digest_footer style enumNames
+export const NewsfeedItemDigestFooterStyleEnumNames = {
+  TEXT: 'text',
+  BUTTON: 'button',
+} as const;
 
 // newsfeed_item_digest_footer
 export interface NewsfeedItemDigestFooter {
-  style: NewsfeedItemDigestFooterStyleEnum;
+  style: 'text' | 'button';
   /**
    * text for invite to enable smart feed
    */

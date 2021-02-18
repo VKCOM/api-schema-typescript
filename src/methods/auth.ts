@@ -19,17 +19,19 @@ export interface AuthRestoreParams {
   last_name: string;
 }
 
-// auth.restore_response success enum
-export enum AuthRestoreResponseSuccessEnum {
-  OK = 1,
-}
+// auth.restore_response success enumNames
+export const AuthRestoreResponseSuccessEnumNames = {
+  OK: 1,
+} as const;
 
 // auth.restore_response
 export interface AuthRestoreResponse {
   /**
    * 1 if success
+   *
+   * `1` — ok
    */
-  success?: AuthRestoreResponseSuccessEnum;
+  success?: 1;
   /**
    * Parameter needed to grant access by code
    */
