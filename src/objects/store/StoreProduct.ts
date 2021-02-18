@@ -22,6 +22,10 @@ export interface StoreProduct {
    */
   type: 'stickers';
   /**
+   * Information whether sticker product wasn't used after being purchased
+   */
+  is_new?: boolean;
+  /**
    * Information whether the product is purchased (1 - yes, 0 - no)
    */
   purchased?: 0 | 1;
@@ -42,6 +46,10 @@ export interface StoreProduct {
    */
   title?: string;
   stickers?: BaseStickersList;
+  /**
+   * Array of style sticker ids (for sticker pack styles)
+   */
+  style_sticker_ids?: number[];
   /**
    * Array of icon images or icon set object of the product (for stickers product type)
    */

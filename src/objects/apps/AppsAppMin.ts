@@ -51,4 +51,8 @@ export interface AppsAppMin {
    * URL of the app icon with 75 px in width
    */
   icon_75?: string;
+  /**
+   * If app need policy and terms confirmation
+   */
+  need_policy_confirmation?: boolean;
 }

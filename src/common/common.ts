@@ -2,7 +2,7 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-export const API_VERSION = '5.126'
+export const API_VERSION = '5.130'
 
 export type ValueOf<T> = T[keyof T];
 

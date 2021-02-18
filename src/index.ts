@@ -1676,6 +1676,10 @@ export {
 } from './objects/calls/CallsEndState';
 
 export {
+  CallsParticipants,
+} from './objects/calls/CallsParticipants';
+
+export {
   CommentThread,
 } from './objects/comment/CommentThread';
 
@@ -2054,6 +2058,10 @@ export {
 export {
   GroupsRoleOptions,
 } from './objects/groups/GroupsRoleOptions';
+
+export {
+  GroupsSectionsListItem,
+} from './objects/groups/GroupsSectionsListItem';
 
 export {
   GroupsSettingsTwitter,

@@ -16,4 +16,12 @@ export interface MessagesPushSettings {
    * Information whether the sound is on
    */
   no_sound: boolean;
+  /**
+   * Information whether the mentions are disabled
+   */
+  disabled_mentions?: boolean;
+  /**
+   * Information whether the mass mentions (like '@all', '@online') are disabled
+   */
+  disabled_mass_mentions?: boolean;
 }

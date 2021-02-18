@@ -20,4 +20,5 @@ export enum WallWallpostAttachmentType {
   MARKET_MARKET_ALBUM = 'market_market_album',
   MARKET = 'market',
   EVENT = 'event',
+  DONUT_LINK = 'donut_link',
 }

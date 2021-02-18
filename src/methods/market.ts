@@ -353,6 +353,13 @@ export interface MarketEditOrderParams {
   order_id: number;
   merchant_comment?: string;
   status?: number;
+  track_number?: string;
+  payment_status?: 'not_paid' | 'paid' | 'returned';
+  delivery_price?: number;
+  width?: number;
+  length?: number;
+  height?: number;
+  weight?: number;
 }
 
 // market.editOrder_response
