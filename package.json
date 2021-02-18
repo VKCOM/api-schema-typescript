@@ -1,6 +1,6 @@
 {
   "name": "@vkontakte/api-schema-typescript",
-  "version": "0.5126.1",
+  "version": "0.5130.0",
   "description": "TypeScript typings for VK API",
   "license": "MIT",
   "author": "VK Team <https://vk.com/team>",
