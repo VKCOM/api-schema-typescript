@@ -6,7 +6,7 @@ import { BaseLinkButtonActionType } from './BaseLinkButtonActionType';
 
 // base_link_button_action
 export interface BaseLinkButtonAction {
-  type?: BaseLinkButtonActionType;
+  type: BaseLinkButtonActionType;
   /**
    * Action URL
    */

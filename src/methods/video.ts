@@ -313,7 +313,7 @@ export interface VideoGetResponse {
    * Total number
    */
   count: number;
-  items: VideoVideo[];
+  items: VideoVideoFull[];
 }
 
 // video.get_extendedResponse
@@ -323,8 +323,8 @@ export interface VideoGetExtendedResponse {
    */
   count: number;
   items: VideoVideoFull[];
-  profiles: UsersUserMin[];
-  groups: GroupsGroupFull[];
+  profiles?: UsersUserMin[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -757,7 +757,7 @@ export interface VideoSearchExtendedResponse {
    * Total number
    */
   count: number;
-  items: VideoVideo[];
+  items: VideoVideoFull[];
   profiles: UsersUserMin[];
   groups: GroupsGroupFull[];
 }

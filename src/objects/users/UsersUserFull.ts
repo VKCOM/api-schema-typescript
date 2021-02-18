@@ -27,11 +27,11 @@ import { UsersUserMin } from './UsersUserMin';
 import { UsersUserRelation } from './UsersUserRelation';
 import { UsersUserType } from './UsersUserType';
 
-// users_user_full wall_default enum
-export enum UsersUserFullWallDefaultEnum {
-  OWNER = 'owner',
-  ALL = 'all',
-}
+// users_user_full wall_default enumNames
+export const UsersUserFullWallDefaultEnumNames = {
+  OWNER: 'owner',
+  ALL: 'all',
+} as const;
 
 // users_user_full
 export interface UsersUserFull {
@@ -245,7 +245,7 @@ export interface UsersUserFull {
   photo_max_size?: PhotosPhoto;
   language?: string;
   stories_archive_count?: number;
-  wall_default?: UsersUserFullWallDefaultEnum;
+  wall_default?: 'owner' | 'all';
   /**
    * Information whether current user can call
    */

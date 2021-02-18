@@ -10,6 +10,14 @@ export interface MessagesAudioMessage {
   access_key?: string;
   transcript_error?: number;
   /**
+   * Should client enable transcription rate
+   */
+  transcript_rate_enabled?: boolean;
+  /**
+   * Date when the transcription of audio message has been updated in Unixtime
+   */
+  transcript_update_time?: number;
+  /**
    * Audio message duration in seconds
    */
   duration: number;

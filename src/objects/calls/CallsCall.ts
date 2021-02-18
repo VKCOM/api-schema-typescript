@@ -3,6 +3,7 @@
  */
 
 import { CallsEndState } from './CallsEndState';
+import { CallsParticipants } from './CallsParticipants';
 
 // calls_call
 export interface CallsCall {
@@ -27,4 +28,5 @@ export interface CallsCall {
    * Was this call initiated as video call
    */
   video?: boolean;
+  participants?: CallsParticipants;
 }

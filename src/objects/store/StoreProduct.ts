@@ -6,10 +6,10 @@ import { BaseImage } from '../base/BaseImage';
 import { BaseStickersList } from '../base/BaseStickersList';
 import { StoreProductIcon } from './StoreProductIcon';
 
-// store_product type enum
-export enum StoreProductTypeEnum {
-  STICKERS = 'stickers',
-}
+// store_product type enumNames
+export const StoreProductTypeEnumNames = {
+  STICKERS: 'stickers',
+} as const;
 
 // store_product
 export interface StoreProduct {
@@ -20,7 +20,11 @@ export interface StoreProduct {
   /**
    * Product type
    */
-  type: StoreProductTypeEnum;
+  type: 'stickers';
+  /**
+   * Information whether sticker product wasn't used after being purchased
+   */
+  is_new?: boolean;
   /**
    * Information whether the product is purchased (1 - yes, 0 - no)
    */
@@ -42,6 +46,10 @@ export interface StoreProduct {
    */
   title?: string;
   stickers?: BaseStickersList;
+  /**
+   * Array of style sticker ids (for sticker pack styles)
+   */
+  style_sticker_ids?: number[];
   /**
    * Array of icon images or icon set object of the product (for stickers product type)
    */

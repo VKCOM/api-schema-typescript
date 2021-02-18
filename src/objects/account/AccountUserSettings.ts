@@ -88,6 +88,10 @@ export interface AccountUserSettings {
   interests?: AccountUserSettingsInterests;
   languages?: string[];
   /**
+   * Used as patronymic in education profiles
+   */
+  nick_name?: string;
+  /**
    * URL of square photo of the user with 200 pixels in width
    */
   photo_200?: string;
@@ -95,4 +99,12 @@ export interface AccountUserSettings {
    * flag about service account
    */
   is_service_account?: boolean;
+  /**
+   * primary account information
+   */
+  primary_profile?: AccountUserSettings;
+  /**
+   * requests to open signup page for education profile
+   */
+  edu_signup_required?: boolean;
 }

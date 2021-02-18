@@ -18,21 +18,21 @@ import { WallPostType } from '../wall/WallPostType';
 import { WallWallpost } from '../wall/WallWallpost';
 import { WallWallpostAttachment } from '../wall/WallWallpostAttachment';
 
-// video_video type enum
-export enum VideoVideoTypeEnum {
-  VIDEO = 'video',
-  MUSIC_VIDEO = 'music_video',
-  MOVIE = 'movie',
-}
+// video_video type enumNames
+export const VideoVideoTypeEnumNames = {
+  VIDEO: 'video',
+  MUSIC_VIDEO: 'music_video',
+  MOVIE: 'movie',
+} as const;
 
-// video_video live_status enum
-export enum VideoVideoLiveStatusEnum {
-  WAITING = 'waiting',
-  STARTED = 'started',
-  FINISHED = 'finished',
-  FAILED = 'failed',
-  UPCOMING = 'upcoming',
-}
+// video_video live_status enumNames
+export const VideoVideoLiveStatusEnumNames = {
+  WAITING: 'waiting',
+  STARTED: 'started',
+  FINISHED: 'finished',
+  FAILED: 'failed',
+  UPCOMING: 'upcoming',
+} as const;
 
 // notifications_notification_parent
 export interface NotificationsNotificationParent {
@@ -231,7 +231,7 @@ export interface NotificationsNotificationParent {
    * Information whether the video is repeated
    */
   repeat?: 1;
-  type?: VideoVideoTypeEnum;
+  type?: 'video' | 'music_video' | 'movie';
   /**
    * Number of views
    */
@@ -255,7 +255,7 @@ export interface NotificationsNotificationParent {
   /**
    * Live stream status
    */
-  live_status?: VideoVideoLiveStatusEnum;
+  live_status?: 'waiting' | 'started' | 'finished' | 'failed' | 'upcoming';
   /**
    * 1 if the video is a live stream
    */

@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@vkontakte/api-schema-typescript-generator@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.5.0.tgz#27920964f59e8418ff2556da563a91ed7978b004"
-  integrity sha512-fsoMJZB2eQ+yfXvTO1oPmC3kw74IL6IWAzbrj6ALsA8cnG3rInOEv7g4SKd8tWr9guaaeGCJ9uTyoCTngZBfOA==
+"@vkontakte/api-schema-typescript-generator@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.6.0.tgz#28b6b04c71c89d3fe6220ef82793c4ba37113420"
+  integrity sha512-s7pHKLNsvXy34Px9EFL5RbnsyaY34nAqnc1jeg4PGNX54e3PonhJbqgWVMrmIxiv5xSC7hn4IMIRg2zSJrFvgQ==
   dependencies:
     arg "^4.1.3"
     chalk "4.1.0"
 
-"@vkontakte/api-schema@https://github.com/VKCOM/vk-api-schema.git#v5.126.13":
-  version "5.126.13"
-  resolved "https://github.com/VKCOM/vk-api-schema.git#01e568be81b4f6a85724cc238626cb00674736a3"
+"@vkontakte/api-schema@https://github.com/VKCOM/vk-api-schema.git#v5.130.0":
+  version "5.130.0"
+  resolved "https://github.com/VKCOM/vk-api-schema.git#5256c046442a311d646f2dfe741f8180722e1517"
 
 ansi-styles@^4.1.0:
   version "4.3.0"

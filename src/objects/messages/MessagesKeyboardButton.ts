@@ -4,13 +4,13 @@
 
 import { MessagesKeyboardButtonAction } from './MessagesKeyboardButtonAction';
 
-// messages_keyboard_button color enum
-export enum MessagesKeyboardButtonColorEnum {
-  DEFAULT = 'default',
-  POSITIVE = 'positive',
-  NEGATIVE = 'negative',
-  PRIMARY = 'primary',
-}
+// messages_keyboard_button color enumNames
+export const MessagesKeyboardButtonColorEnumNames = {
+  DEFAULT: 'default',
+  POSITIVE: 'positive',
+  NEGATIVE: 'negative',
+  PRIMARY: 'primary',
+} as const;
 
 // messages_keyboard_button
 export interface MessagesKeyboardButton {
@@ -18,5 +18,5 @@ export interface MessagesKeyboardButton {
   /**
    * Button color
    */
-  color?: MessagesKeyboardButtonColorEnum;
+  color?: 'default' | 'positive' | 'negative' | 'primary';
 }

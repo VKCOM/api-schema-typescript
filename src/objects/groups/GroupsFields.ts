@@ -24,6 +24,7 @@ export enum GroupsFields {
   CAN_UPLOAD_STORY = 'can_upload_story',
   CAN_UPLOAD_DOC = 'can_upload_doc',
   CAN_UPLOAD_VIDEO = 'can_upload_video',
+  CAN_UPLOAD_CLIP = 'can_upload_clip',
   CAN_SEE_ALL_POSTS = 'can_see_all_posts',
   CAN_CREATE_TOPIC = 'can_create_topic',
   ACTIVITY = 'activity',
@@ -64,4 +65,5 @@ export enum GroupsFields {
   VIDEO_LIVE_COUNT = 'video_live_count',
   CLIPS_COUNT = 'clips_count',
   IS_BUSINESS = 'is_business',
+  TEXTLIVES_COUNT = 'textlives_count',
 }

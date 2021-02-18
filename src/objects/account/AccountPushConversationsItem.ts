@@ -16,4 +16,12 @@ export interface AccountPushConversationsItem {
    * Information whether the sound are enabled
    */
   sound: 0 | 1;
+  /**
+   * Information whether the mentions are disabled
+   */
+  disabled_mentions?: 0 | 1;
+  /**
+   * Information whether the mass mentions (like '@all', '@online') are disabled. Can be affected by 'disabled_mentions'
+   */
+  disabled_mass_mentions?: 0 | 1;
 }

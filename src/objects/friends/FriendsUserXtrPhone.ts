@@ -27,11 +27,11 @@ import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { FriendsFriendStatusStatus } from './FriendsFriendStatusStatus';
 import { FriendsRequestsMutual } from './FriendsRequestsMutual';
 
-// users_user_full wall_default enum
-export enum UsersUserFullWallDefaultEnum {
-  OWNER = 'owner',
-  ALL = 'all',
-}
+// users_user_full wall_default enumNames
+export const UsersUserFullWallDefaultEnumNames = {
+  OWNER: 'owner',
+  ALL: 'all',
+} as const;
 
 // friends_user_xtr_phone
 export interface FriendsUserXtrPhone {
@@ -245,7 +245,7 @@ export interface FriendsUserXtrPhone {
   photo_max_size?: PhotosPhoto;
   language?: string;
   stories_archive_count?: number;
-  wall_default?: UsersUserFullWallDefaultEnum;
+  wall_default?: 'owner' | 'all';
   /**
    * Information whether current user can call
    */

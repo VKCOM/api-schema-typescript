@@ -29,6 +29,7 @@ import { GroupsLongPollSettings } from '../objects/groups/GroupsLongPollSettings
 import { GroupsMemberRole } from '../objects/groups/GroupsMemberRole';
 import { GroupsMemberStatus } from '../objects/groups/GroupsMemberStatus';
 import { GroupsMemberStatusFull } from '../objects/groups/GroupsMemberStatusFull';
+import { GroupsSectionsListItem } from '../objects/groups/GroupsSectionsListItem';
 import { GroupsSettingsTwitter } from '../objects/groups/GroupsSettingsTwitter';
 import { GroupsSubjectItem } from '../objects/groups/GroupsSubjectItem';
 import { GroupsTokenPermissionSetting } from '../objects/groups/GroupsTokenPermissionSetting';
@@ -1055,7 +1056,7 @@ export interface GroupsGetSettingsResponse {
   city_id: number;
   contacts?: 0 | 1;
   links?: 0 | 1;
-  sections_list?: any[];
+  sections_list?: GroupsSectionsListItem[];
   main_section?: GroupsGroupFullMainSection;
   secondary_section?: number;
   age_limits?: GroupsGroupAgeLimits;

@@ -4,11 +4,11 @@
 
 import { WallWallpostDonutPlaceholder } from './WallWallpostDonutPlaceholder';
 
-// wall_wallpost_donut edit_mode enum
-export enum WallWallpostDonutEditModeEnum {
-  ALL = 'all',
-  DURATION = 'duration',
-}
+// wall_wallpost_donut edit_mode enumNames
+export const WallWallpostDonutEditModeEnumNames = {
+  ALL: 'all',
+  DURATION: 'duration',
+} as const;
 
 // wall_wallpost_donut
 export interface WallWallpostDonut {
@@ -31,5 +31,5 @@ export interface WallWallpostDonut {
   /**
    * Says what user can edit in post about donut properties
    */
-  edit_mode?: WallWallpostDonutEditModeEnum;
+  edit_mode?: 'all' | 'duration';
 }

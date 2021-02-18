@@ -4,20 +4,20 @@
 
 import { AdsLookalikeRequestSaveAudienceLevel } from './AdsLookalikeRequestSaveAudienceLevel';
 
-// ads_lookalike_request status enum
-export enum AdsLookalikeRequestStatusEnum {
-  SEARCH_IN_PROGRESS = 'search_in_progress',
-  SEARCH_FAILED = 'search_failed',
-  SEARCH_DONE = 'search_done',
-  SAVE_IN_PROGRESS = 'save_in_progress',
-  SAVE_FAILED = 'save_failed',
-  SAVE_DONE = 'save_done',
-}
+// ads_lookalike_request status enumNames
+export const AdsLookalikeRequestStatusEnumNames = {
+  SEARCH_IN_PROGRESS: 'search_in_progress',
+  SEARCH_FAILED: 'search_failed',
+  SEARCH_DONE: 'search_done',
+  SAVE_IN_PROGRESS: 'save_in_progress',
+  SAVE_FAILED: 'save_failed',
+  SAVE_DONE: 'save_done',
+} as const;
 
-// ads_lookalike_request source_type enum
-export enum AdsLookalikeRequestSourceTypeEnum {
-  RETARGETING_GROUP = 'retargeting_group',
-}
+// ads_lookalike_request source_type enumNames
+export const AdsLookalikeRequestSourceTypeEnumNames = {
+  RETARGETING_GROUP: 'retargeting_group',
+} as const;
 
 // ads_lookalike_request
 export interface AdsLookalikeRequest {
@@ -40,11 +40,11 @@ export interface AdsLookalikeRequest {
   /**
    * Lookalike request status
    */
-  status: AdsLookalikeRequestStatusEnum;
+  status: 'search_in_progress' | 'search_failed' | 'search_done' | 'save_in_progress' | 'save_failed' | 'save_done';
   /**
    * Lookalike request source type
    */
-  source_type: AdsLookalikeRequestSourceTypeEnum;
+  source_type: 'retargeting_group';
   /**
    * Retargeting group id, which was used as lookalike seed
    */

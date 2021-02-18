@@ -5,11 +5,11 @@
 import { BaseGradientPoint } from '../base/BaseGradientPoint';
 import { BaseImage } from '../base/BaseImage';
 
-// polls_background type enum
-export enum PollsBackgroundTypeEnum {
-  GRADIENT = 'gradient',
-  TILE = 'tile',
-}
+// polls_background type enumNames
+export const PollsBackgroundTypeEnumNames = {
+  GRADIENT: 'gradient',
+  TILE: 'tile',
+} as const;
 
 // polls_background
 export interface PollsBackground {
@@ -35,7 +35,7 @@ export interface PollsBackground {
    * Gradient points
    */
   points?: BaseGradientPoint[];
-  type?: PollsBackgroundTypeEnum;
+  type?: 'gradient' | 'tile';
   /**
    * Original with of pattern tile
    */
