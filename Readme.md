@@ -3,9 +3,9 @@
 This repository contains prebuilt TypeScript typings for [VK API Schema](https://github.com/VKCOM/vk-api-schema).
 The generation is performed with [VKCOM/api-schema-typescript-generator](https://github.com/VKCOM/api-schema-typescript-generator).
 
-## Current API version – **5.126**
+## Current API version – **5.131**
 
-The package versions will follow API versions. It means that for **5.126** API version the package version will be **\*.5126.\***.
+The package versions will follow API versions. It means that for **5.131** API version the package version will be **\*.5131.\***.
 
 ## Install
 
