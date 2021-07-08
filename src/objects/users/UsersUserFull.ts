@@ -27,12 +27,6 @@ import { UsersUserMin } from './UsersUserMin';
 import { UsersUserRelation } from './UsersUserRelation';
 import { UsersUserType } from './UsersUserType';
 
-// users_user_full wall_default enumNames
-export const UsersUserFullWallDefaultEnumNames = {
-  OWNER: 'owner',
-  ALL: 'all',
-} as const;
-
 // users_user_full
 export interface UsersUserFull {
   /**

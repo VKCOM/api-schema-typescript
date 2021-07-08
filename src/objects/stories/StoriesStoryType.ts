@@ -3,10 +3,7 @@
  */
 
 // stories_story_type
-export enum StoriesStoryType {
-  PHOTO = 'photo',
-  VIDEO = 'video',
-  LIVE_ACTIVE = 'live_active',
-  LIVE_FINISHED = 'live_finished',
-  BIRTHDAY_INVITE = 'birthday_invite',
-}
+/**
+ * Story type.
+ */
+export type StoriesStoryType = 'photo' | 'video' | 'live_active' | 'live_finished' | 'birthday_invite';

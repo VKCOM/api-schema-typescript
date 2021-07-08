@@ -3,7 +3,7 @@
  */
 
 // ads_access_role_public
-export enum AdsAccessRolePublic {
-  MANAGER = 'manager',
-  REPORTS = 'reports',
-}
+/**
+ * Current user's role
+ */
+export type AdsAccessRolePublic = 'manager' | 'reports';

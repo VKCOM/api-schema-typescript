@@ -3,30 +3,7 @@
  */
 
 // photos_photo_sizes_type
-export enum PhotosPhotoSizesType {
-  S = 's',
-  M = 'm',
-  X = 'x',
-  O = 'o',
-  P = 'p',
-  Q = 'q',
-  R = 'r',
-  K = 'k',
-  L = 'l',
-  Y = 'y',
-  Z = 'z',
-  C = 'c',
-  W = 'w',
-  A = 'a',
-  B = 'b',
-  E = 'e',
-  I = 'i',
-  D = 'd',
-  J = 'j',
-  TEMP = 'temp',
-  H = 'h',
-  G = 'g',
-  N = 'n',
-  F = 'f',
-  MAX = 'max',
-}
+/**
+ * Size type
+ */
+export type PhotosPhotoSizesType = 's' | 'm' | 'x' | 'o' | 'p' | 'q' | 'r' | 'k' | 'l' | 'y' | 'z' | 'c' | 'w' | 'a' | 'b' | 'e' | 'i' | 'd' | 'j' | 'temp' | 'h' | 'g' | 'n' | 'f' | 'max';

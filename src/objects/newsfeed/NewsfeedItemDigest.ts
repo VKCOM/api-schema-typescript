@@ -7,13 +7,6 @@ import { NewsfeedItemDigestHeader } from './NewsfeedItemDigestHeader';
 import { NewsfeedItemDigestItem } from './NewsfeedItemDigestItem';
 import { NewsfeedNewsfeedItemType } from './NewsfeedNewsfeedItemType';
 
-// newsfeed_item_digest template enumNames
-export const NewsfeedItemDigestTemplateEnumNames = {
-  LIST: 'list',
-  GRID: 'grid',
-  SINGLE: 'single',
-} as const;
-
 // newsfeed_item_digest
 export interface NewsfeedItemDigest {
   type: NewsfeedNewsfeedItemType;

@@ -3,8 +3,7 @@
  */
 
 // account_push_params_settings
-export enum AccountPushParamsSettings {
-  ON = 'on',
-  OFF = 'off',
-  FR_OF_FR = 'fr_of_fr',
-}
+/**
+ * Settings parameters
+ */
+export type AccountPushParamsSettings = 'on' | 'off' | 'fr_of_fr';

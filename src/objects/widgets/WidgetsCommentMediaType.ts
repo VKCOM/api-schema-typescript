@@ -3,8 +3,7 @@
  */
 
 // widgets_comment_media_type
-export enum WidgetsCommentMediaType {
-  AUDIO = 'audio',
-  PHOTO = 'photo',
-  VIDEO = 'video',
-}
+/**
+ * Media type
+ */
+export type WidgetsCommentMediaType = 'audio' | 'photo' | 'video';

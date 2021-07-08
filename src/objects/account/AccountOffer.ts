@@ -2,13 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-// account_offer link_type enumNames
-export const AccountOfferLinkTypeEnumNames = {
-  PROFILE: 'profile',
-  GROUP: 'group',
-  APP: 'app',
-} as const;
-
 // account_offer
 export interface AccountOffer {
   /**

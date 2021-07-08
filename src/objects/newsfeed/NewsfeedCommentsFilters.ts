@@ -3,10 +3,4 @@
  */
 
 // newsfeed_comments_filters
-export enum NewsfeedCommentsFilters {
-  POST = 'post',
-  PHOTO = 'photo',
-  VIDEO = 'video',
-  TOPIC = 'topic',
-  NOTE = 'note',
-}
+export type NewsfeedCommentsFilters = 'post' | 'photo' | 'video' | 'topic' | 'note';

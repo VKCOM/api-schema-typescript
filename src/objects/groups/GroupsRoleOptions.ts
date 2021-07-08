@@ -3,9 +3,7 @@
  */
 
 // groups_role_options
-export enum GroupsRoleOptions {
-  MODERATOR = 'moderator',
-  EDITOR = 'editor',
-  ADMINISTRATOR = 'administrator',
-  CREATOR = 'creator',
-}
+/**
+ * User's credentials as community admin
+ */
+export type GroupsRoleOptions = 'moderator' | 'editor' | 'administrator' | 'creator';

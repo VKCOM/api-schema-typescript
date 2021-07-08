@@ -3,11 +3,7 @@
  */
 
 // utils_domain_resolved_type
-export enum UtilsDomainResolvedType {
-  USER = 'user',
-  GROUP = 'group',
-  APPLICATION = 'application',
-  PAGE = 'page',
-  VK_APP = 'vk_app',
-  COMMUNITY_APPLICATION = 'community_application',
-}
+/**
+ * Object type
+ */
+export type UtilsDomainResolvedType = 'user' | 'group' | 'application' | 'page' | 'vk_app' | 'community_application';

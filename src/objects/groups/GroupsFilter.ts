@@ -3,13 +3,4 @@
  */
 
 // groups_filter
-export enum GroupsFilter {
-  ADMIN = 'admin',
-  EDITOR = 'editor',
-  MODER = 'moder',
-  ADVERTISER = 'advertiser',
-  GROUPS = 'groups',
-  PUBLICS = 'publics',
-  EVENTS = 'events',
-  HAS_ADDRESSES = 'has_addresses',
-}
+export type GroupsFilter = 'admin' | 'editor' | 'moder' | 'advertiser' | 'groups' | 'publics' | 'events' | 'has_addresses';

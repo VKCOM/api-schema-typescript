@@ -3,7 +3,10 @@
  */
 
 // base_link_button_style
-export enum BaseLinkButtonStyle {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-}
+/**
+ * Button style
+ *
+ * `primary` — primary
+ * `secondary` — secondary
+ */
+export type BaseLinkButtonStyle = 'primary' | 'secondary';

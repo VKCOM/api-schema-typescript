@@ -3,10 +3,7 @@
  */
 
 // wall_post_type
-export enum WallPostType {
-  POST = 'post',
-  COPY = 'copy',
-  REPLY = 'reply',
-  POSTPONE = 'postpone',
-  SUGGEST = 'suggest',
-}
+/**
+ * Post type
+ */
+export type WallPostType = 'post' | 'copy' | 'reply' | 'postpone' | 'suggest';

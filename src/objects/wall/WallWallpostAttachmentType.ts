@@ -3,25 +3,7 @@
  */
 
 // wall_wallpost_attachment_type
-export enum WallWallpostAttachmentType {
-  PHOTO = 'photo',
-  POSTED_PHOTO = 'posted_photo',
-  AUDIO = 'audio',
-  VIDEO = 'video',
-  DOC = 'doc',
-  LINK = 'link',
-  GRAFFITI = 'graffiti',
-  NOTE = 'note',
-  APP = 'app',
-  POLL = 'poll',
-  PAGE = 'page',
-  ALBUM = 'album',
-  PHOTOS_LIST = 'photos_list',
-  MARKET_MARKET_ALBUM = 'market_market_album',
-  MARKET = 'market',
-  EVENT = 'event',
-  DONUT_LINK = 'donut_link',
-  ARTICLE = 'article',
-  TEXTLIVE = 'textlive',
-  TEXTPOST = 'textpost',
-}
+/**
+ * Attachment type
+ */
+export type WallWallpostAttachmentType = 'photo' | 'posted_photo' | 'audio' | 'video' | 'doc' | 'link' | 'graffiti' | 'note' | 'app' | 'poll' | 'page' | 'album' | 'photos_list' | 'market_market_album' | 'market' | 'event' | 'donut_link' | 'article' | 'textlive' | 'textpost';

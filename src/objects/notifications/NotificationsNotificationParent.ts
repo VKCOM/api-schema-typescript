@@ -17,22 +17,6 @@ import { WallPostType } from '../wall/WallPostType';
 import { WallWallpost } from '../wall/WallWallpost';
 import { WallWallpostAttachment } from '../wall/WallWallpostAttachment';
 
-// video_video type enumNames
-export const VideoVideoTypeEnumNames = {
-  VIDEO: 'video',
-  MUSIC_VIDEO: 'music_video',
-  MOVIE: 'movie',
-} as const;
-
-// video_video live_status enumNames
-export const VideoVideoLiveStatusEnumNames = {
-  WAITING: 'waiting',
-  STARTED: 'started',
-  FINISHED: 'finished',
-  FAILED: 'failed',
-  UPCOMING: 'upcoming',
-} as const;
-
 // notifications_notification_parent
 export interface NotificationsNotificationParent {
   attachments?: WallWallpostAttachment[];

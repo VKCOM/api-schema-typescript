@@ -3,7 +3,7 @@
  */
 
 // ads_account_type
-export enum AdsAccountType {
-  GENERAL = 'general',
-  AGENCY = 'agency',
-}
+/**
+ * Account type
+ */
+export type AdsAccountType = 'general' | 'agency';

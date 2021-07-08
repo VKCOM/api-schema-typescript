@@ -3,15 +3,7 @@
  */
 
 // messages_template_action_type_names
-export enum MessagesTemplateActionTypeNames {
-  TEXT = 'text',
-  START = 'start',
-  LOCATION = 'location',
-  VKPAY = 'vkpay',
-  OPEN_APP = 'open_app',
-  OPEN_PHOTO = 'open_photo',
-  OPEN_LINK = 'open_link',
-  CALLBACK = 'callback',
-  INTENT_SUBSCRIBE = 'intent_subscribe',
-  INTENT_UNSUBSCRIBE = 'intent_unsubscribe',
-}
+/**
+ * Template action type names
+ */
+export type MessagesTemplateActionTypeNames = 'text' | 'start' | 'location' | 'vkpay' | 'open_app' | 'open_photo' | 'open_link' | 'callback' | 'intent_subscribe' | 'intent_unsubscribe';

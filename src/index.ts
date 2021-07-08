@@ -352,6 +352,7 @@ export {
   FriendsAddListResponse,
   FriendsAddParams,
   FriendsAddResponse,
+  FriendsAddResponseEnumNames,
   FriendsAreFriendsExtendedResponse,
   FriendsAreFriendsParams,
   FriendsAreFriendsResponse,
@@ -1207,7 +1208,6 @@ export {
 
 export {
   AccountOffer,
-  AccountOfferLinkTypeEnumNames,
 } from './objects/account/AccountOffer';
 
 export {
@@ -1280,10 +1280,12 @@ export {
 
 export {
   AdsAdApproved,
+  AdsAdApprovedEnumNames,
 } from './objects/ads/AdsAdApproved';
 
 export {
   AdsAdCostType,
+  AdsAdCostTypeEnumNames,
 } from './objects/ads/AdsAdCostType';
 
 export {
@@ -1292,6 +1294,7 @@ export {
 
 export {
   AdsAdStatus,
+  AdsAdStatusEnumNames,
 } from './objects/ads/AdsAdStatus';
 
 export {
@@ -1300,6 +1303,7 @@ export {
 
 export {
   AdsCampaignStatus,
+  AdsCampaignStatusEnumNames,
 } from './objects/ads/AdsCampaignStatus';
 
 export {
@@ -1316,6 +1320,7 @@ export {
 
 export {
   AdsCriteriaSex,
+  AdsCriteriaSexEnumNames,
 } from './objects/ads/AdsCriteriaSex';
 
 export {
@@ -1336,8 +1341,6 @@ export {
 
 export {
   AdsLookalikeRequest,
-  AdsLookalikeRequestSourceTypeEnumNames,
-  AdsLookalikeRequestStatusEnumNames,
 } from './objects/ads/AdsLookalikeRequest';
 
 export {
@@ -1474,6 +1477,7 @@ export {
 
 export {
   AppsAppLeaderboardType,
+  AppsAppLeaderboardTypeEnumNames,
 } from './objects/apps/AppsAppLeaderboardType';
 
 export {
@@ -1494,7 +1498,6 @@ export {
 
 export {
   AppsScope,
-  AppsScopeNameEnumNames,
 } from './objects/apps/AppsScope';
 
 export {
@@ -1623,6 +1626,7 @@ export {
 
 export {
   BaseSex,
+  BaseSexEnumNames,
 } from './objects/base/BaseSex';
 
 export {
@@ -1631,7 +1635,6 @@ export {
 
 export {
   BaseStickerAnimation,
-  BaseStickerAnimationTypeEnumNames,
 } from './objects/base/BaseStickerAnimation';
 
 export {
@@ -1660,6 +1663,7 @@ export {
 
 export {
   BoardDefaultOrder,
+  BoardDefaultOrderEnumNames,
 } from './objects/board/BoardDefaultOrder';
 
 export {
@@ -1752,7 +1756,6 @@ export {
 
 export {
   DonutDonatorSubscriptionInfo,
-  DonutDonatorSubscriptionInfoStatusEnumNames,
 } from './objects/donut/DonutDonatorSubscriptionInfo';
 
 export {
@@ -1793,6 +1796,7 @@ export {
 
 export {
   FriendsFriendStatusStatus,
+  FriendsFriendStatusStatusEnumNames,
 } from './objects/friends/FriendsFriendStatusStatus';
 
 export {
@@ -1813,7 +1817,6 @@ export {
 
 export {
   FriendsUserXtrLists,
-  UsersUserFullWallDefaultEnumNames,
 } from './objects/friends/FriendsUserXtrLists';
 
 export {
@@ -1826,6 +1829,7 @@ export {
 
 export {
   GiftsGiftPrivacy,
+  GiftsGiftPrivacyEnumNames,
 } from './objects/gifts/GiftsGiftPrivacy';
 
 export {
@@ -1858,6 +1862,7 @@ export {
 
 export {
   GroupsBanInfoReason,
+  GroupsBanInfoReasonEnumNames,
 } from './objects/groups/GroupsBanInfoReason';
 
 export {
@@ -1866,7 +1871,6 @@ export {
 
 export {
   GroupsCallbackServer,
-  GroupsCallbackServerStatusEnumNames,
 } from './objects/groups/GroupsCallbackServer';
 
 export {
@@ -1899,14 +1903,17 @@ export {
 
 export {
   GroupsGroupAccess,
+  GroupsGroupAccessEnumNames,
 } from './objects/groups/GroupsGroupAccess';
 
 export {
   GroupsGroupAdminLevel,
+  GroupsGroupAdminLevelEnumNames,
 } from './objects/groups/GroupsGroupAdminLevel';
 
 export {
   GroupsGroupAgeLimits,
+  GroupsGroupAgeLimitsEnumNames,
 } from './objects/groups/GroupsGroupAgeLimits';
 
 export {
@@ -1915,6 +1922,7 @@ export {
 
 export {
   GroupsGroupAudio,
+  GroupsGroupAudioEnumNames,
 } from './objects/groups/GroupsGroupAudio';
 
 export {
@@ -1935,6 +1943,7 @@ export {
 
 export {
   GroupsGroupDocs,
+  GroupsGroupDocsEnumNames,
 } from './objects/groups/GroupsGroupDocs';
 
 export {
@@ -1944,18 +1953,22 @@ export {
 
 export {
   GroupsGroupFullAgeLimits,
+  GroupsGroupFullAgeLimitsEnumNames,
 } from './objects/groups/GroupsGroupFullAgeLimits';
 
 export {
   GroupsGroupFullMainSection,
+  GroupsGroupFullMainSectionEnumNames,
 } from './objects/groups/GroupsGroupFullMainSection';
 
 export {
   GroupsGroupFullMemberStatus,
+  GroupsGroupFullMemberStatusEnumNames,
 } from './objects/groups/GroupsGroupFullMemberStatus';
 
 export {
   GroupsGroupIsClosed,
+  GroupsGroupIsClosedEnumNames,
 } from './objects/groups/GroupsGroupIsClosed';
 
 export {
@@ -1964,6 +1977,7 @@ export {
 
 export {
   GroupsGroupPhotos,
+  GroupsGroupPhotosEnumNames,
 } from './objects/groups/GroupsGroupPhotos';
 
 export {
@@ -1976,6 +1990,7 @@ export {
 
 export {
   GroupsGroupSuggestedPrivacy,
+  GroupsGroupSuggestedPrivacyEnumNames,
 } from './objects/groups/GroupsGroupSuggestedPrivacy';
 
 export {
@@ -1984,6 +1999,7 @@ export {
 
 export {
   GroupsGroupTopics,
+  GroupsGroupTopicsEnumNames,
 } from './objects/groups/GroupsGroupTopics';
 
 export {
@@ -1992,14 +2008,17 @@ export {
 
 export {
   GroupsGroupVideo,
+  GroupsGroupVideoEnumNames,
 } from './objects/groups/GroupsGroupVideo';
 
 export {
   GroupsGroupWall,
+  GroupsGroupWallEnumNames,
 } from './objects/groups/GroupsGroupWall';
 
 export {
   GroupsGroupWiki,
+  GroupsGroupWikiEnumNames,
 } from './objects/groups/GroupsGroupWiki';
 
 export {
@@ -2072,7 +2091,6 @@ export {
 
 export {
   GroupsSettingsTwitter,
-  GroupsSettingsTwitterStatusEnumNames,
 } from './objects/groups/GroupsSettingsTwitter';
 
 export {
@@ -2113,6 +2131,7 @@ export {
 
 export {
   MarketMarketItemAvailability,
+  MarketMarketItemAvailabilityEnumNames,
 } from './objects/market/MarketMarketItemAvailability';
 
 export {
@@ -2137,6 +2156,7 @@ export {
 
 export {
   MarketServicesViewType,
+  MarketServicesViewTypeEnumNames,
 } from './objects/market/MarketServicesViewType';
 
 export {
@@ -2169,13 +2189,6 @@ export {
 
 export {
   MessagesChatSettingsPermissions,
-  MessagesChatSettingsPermissionsCallEnumNames,
-  MessagesChatSettingsPermissionsChangeAdminsEnumNames,
-  MessagesChatSettingsPermissionsChangeInfoEnumNames,
-  MessagesChatSettingsPermissionsChangePinEnumNames,
-  MessagesChatSettingsPermissionsInviteEnumNames,
-  MessagesChatSettingsPermissionsSeeInviteLinkEnumNames,
-  MessagesChatSettingsPermissionsUseMassMentionsEnumNames,
 } from './objects/messages/MessagesChatSettingsPermissions';
 
 export {
@@ -2188,7 +2201,6 @@ export {
 
 export {
   MessagesConversation,
-  MessagesConversationSpecialServiceTypeEnumNames,
 } from './objects/messages/MessagesConversation';
 
 export {
@@ -2241,7 +2253,6 @@ export {
 
 export {
   MessagesKeyboardButton,
-  MessagesKeyboardButtonColorEnumNames,
 } from './objects/messages/MessagesKeyboardButton';
 
 export {
@@ -2330,22 +2341,18 @@ export {
 
 export {
   NewsfeedItemDigest,
-  NewsfeedItemDigestTemplateEnumNames,
 } from './objects/newsfeed/NewsfeedItemDigest';
 
 export {
   NewsfeedItemDigestButton,
-  NewsfeedItemDigestButtonStyleEnumNames,
 } from './objects/newsfeed/NewsfeedItemDigestButton';
 
 export {
   NewsfeedItemDigestFooter,
-  NewsfeedItemDigestFooterStyleEnumNames,
 } from './objects/newsfeed/NewsfeedItemDigestFooter';
 
 export {
   NewsfeedItemDigestHeader,
-  NewsfeedItemDigestHeaderStyleEnumNames,
 } from './objects/newsfeed/NewsfeedItemDigestHeader';
 
 export {
@@ -2462,8 +2469,6 @@ export {
 
 export {
   NotificationsNotificationParent,
-  VideoVideoLiveStatusEnumNames,
-  VideoVideoTypeEnumNames,
 } from './objects/notifications/NotificationsNotificationParent';
 
 export {
@@ -2502,6 +2507,7 @@ export {
 
 export {
   PagesPrivacySettings,
+  PagesPrivacySettingsEnumNames,
 } from './objects/pages/PagesPrivacySettings';
 
 export {
@@ -2586,7 +2592,6 @@ export {
 
 export {
   PollsBackground,
-  PollsBackgroundTypeEnumNames,
 } from './objects/polls/PollsBackground';
 
 export {
@@ -2679,7 +2684,6 @@ export {
 
 export {
   StoreProduct,
-  StoreProductTypeEnumNames,
 } from './objects/store/StoreProduct';
 
 export {
@@ -2704,9 +2708,6 @@ export {
 
 export {
   StoriesClickableSticker,
-  StoriesClickableStickerStyleEnumNames,
-  StoriesClickableStickerSubtypeEnumNames,
-  StoriesClickableStickerTypeEnumNames,
 } from './objects/stories/StoriesClickableSticker';
 
 export {
@@ -2715,7 +2716,6 @@ export {
 
 export {
   StoriesFeedItem,
-  StoriesFeedItemTypeEnumNames,
 } from './objects/stories/StoriesFeedItem';
 
 export {
@@ -2780,7 +2780,6 @@ export {
 
 export {
   UsersOnlineInfo,
-  UsersOnlineInfoStatusEnumNames,
 } from './objects/users/UsersOnlineInfo';
 
 export {
@@ -2789,7 +2788,6 @@ export {
 
 export {
   UsersRelative,
-  UsersRelativeTypeEnumNames,
 } from './objects/users/UsersRelative';
 
 export {
@@ -2826,6 +2824,7 @@ export {
 
 export {
   UsersUserRelation,
+  UsersUserRelationEnumNames,
 } from './objects/users/UsersUserRelation';
 
 export {
@@ -3010,7 +3009,6 @@ export {
 
 export {
   WallWallpostDonut,
-  WallWallpostDonutEditModeEnumNames,
 } from './objects/wall/WallWallpostDonut';
 
 export {

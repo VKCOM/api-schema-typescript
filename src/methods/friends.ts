@@ -33,12 +33,20 @@ export interface FriendsAddParams {
   follow?: 0 | 1;
 }
 
+// friends.add_response enumNames
+export const FriendsAddResponseEnumNames = {
+  SEND: 1,
+  APPROVED: 2,
+  RESEND: 4,
+} as const;
+
 // friends.add_response
-export enum FriendsAddResponse {
-  SEND = 1,
-  APPROVED = 2,
-  RESEND = 4,
-}
+/**
+ * `1` — SEND
+ * `2` — APPROVED
+ * `4` — RESEND
+ */
+export type FriendsAddResponse = 1 | 2 | 4;
 
 /**
  * friends.addList

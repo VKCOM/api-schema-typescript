@@ -3,8 +3,7 @@
  */
 
 // calls_end_state
-export enum CallsEndState {
-  CANCELED_BY_INITIATOR = 'canceled_by_initiator',
-  CANCELED_BY_RECEIVER = 'canceled_by_receiver',
-  REACHED = 'reached',
-}
+/**
+ * State in which call ended up
+ */
+export type CallsEndState = 'canceled_by_initiator' | 'canceled_by_receiver' | 'reached';

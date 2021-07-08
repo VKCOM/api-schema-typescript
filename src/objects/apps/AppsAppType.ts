@@ -3,13 +3,7 @@
  */
 
 // apps_app_type
-export enum AppsAppType {
-  APP = 'app',
-  GAME = 'game',
-  SITE = 'site',
-  STANDALONE = 'standalone',
-  VK_APP = 'vk_app',
-  COMMUNITY_APP = 'community_app',
-  HTML5_GAME = 'html5_game',
-  MINI_APP = 'mini_app',
-}
+/**
+ * Application type
+ */
+export type AppsAppType = 'app' | 'game' | 'site' | 'standalone' | 'vk_app' | 'community_app' | 'html5_game' | 'mini_app';

@@ -3,7 +3,4 @@
  */
 
 // newsfeed_item_wallpost_feedback_type
-export enum NewsfeedItemWallpostFeedbackType {
-  BUTTONS = 'buttons',
-  STARS = 'stars',
-}
+export type NewsfeedItemWallpostFeedbackType = 'buttons' | 'stars';

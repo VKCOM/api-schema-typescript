@@ -28,12 +28,6 @@ import { UsersUserType } from '../users/UsersUserType';
 import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { GroupsRoleOptions } from './GroupsRoleOptions';
 
-// users_user_full wall_default enumNames
-export const UsersUserFullWallDefaultEnumNames = {
-  OWNER: 'owner',
-  ALL: 'all',
-} as const;
-
 // groups_user_xtr_role
 export interface GroupsUserXtrRole {
   /**

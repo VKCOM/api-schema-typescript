@@ -3,9 +3,7 @@
  */
 
 // ads_targ_suggestions_schools_type
-export enum AdsTargSuggestionsSchoolsType {
-  SCHOOL = 'school',
-  UNIVERSITY = 'university',
-  FACULTY = 'faculty',
-  CHAIR = 'chair',
-}
+/**
+ * School type
+ */
+export type AdsTargSuggestionsSchoolsType = 'school' | 'university' | 'faculty' | 'chair';

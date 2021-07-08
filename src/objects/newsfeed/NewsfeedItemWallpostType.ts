@@ -3,8 +3,7 @@
  */
 
 // newsfeed_item_wallpost_type
-export enum NewsfeedItemWallpostType {
-  POST = 'post',
-  COPY = 'copy',
-  REPLY = 'reply',
-}
+/**
+ * Post type
+ */
+export type NewsfeedItemWallpostType = 'post' | 'copy' | 'reply';

@@ -4,12 +4,6 @@
 
 import { WallWallpostDonutPlaceholder } from './WallWallpostDonutPlaceholder';
 
-// wall_wallpost_donut edit_mode enumNames
-export const WallWallpostDonutEditModeEnumNames = {
-  ALL: 'all',
-  DURATION: 'duration',
-} as const;
-
 // wall_wallpost_donut
 export interface WallWallpostDonut {
   /**

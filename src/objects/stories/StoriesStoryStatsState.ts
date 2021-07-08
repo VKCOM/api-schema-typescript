@@ -3,8 +3,7 @@
  */
 
 // stories_story_stats_state
-export enum StoriesStoryStatsState {
-  ON = 'on',
-  OFF = 'off',
-  HIDDEN = 'hidden',
-}
+/**
+ * Statistic state
+ */
+export type StoriesStoryStatsState = 'on' | 'off' | 'hidden';

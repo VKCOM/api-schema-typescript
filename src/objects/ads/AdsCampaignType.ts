@@ -3,11 +3,7 @@
  */
 
 // ads_campaign_type
-export enum AdsCampaignType {
-  NORMAL = 'normal',
-  VK_APPS_MANAGED = 'vk_apps_managed',
-  MOBILE_APPS = 'mobile_apps',
-  PROMOTED_POSTS = 'promoted_posts',
-  ADAPTIVE_ADS = 'adaptive_ads',
-  STORIES = 'stories',
-}
+/**
+ * Campaign type
+ */
+export type AdsCampaignType = 'normal' | 'vk_apps_managed' | 'mobile_apps' | 'promoted_posts' | 'adaptive_ads' | 'stories';

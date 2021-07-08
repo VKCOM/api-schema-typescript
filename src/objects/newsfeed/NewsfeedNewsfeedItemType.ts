@@ -3,15 +3,7 @@
  */
 
 // newsfeed_newsfeed_item_type
-export enum NewsfeedNewsfeedItemType {
-  POST = 'post',
-  PHOTO = 'photo',
-  PHOTO_TAG = 'photo_tag',
-  WALL_PHOTO = 'wall_photo',
-  FRIEND = 'friend',
-  AUDIO = 'audio',
-  VIDEO = 'video',
-  TOPIC = 'topic',
-  DIGEST = 'digest',
-  STORIES = 'stories',
-}
+/**
+ * Item type
+ */
+export type NewsfeedNewsfeedItemType = 'post' | 'photo' | 'photo_tag' | 'wall_photo' | 'friend' | 'audio' | 'video' | 'topic' | 'digest' | 'stories';

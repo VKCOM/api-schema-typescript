@@ -3,6 +3,9 @@
  */
 
 // base_link_button_action_type
-export enum BaseLinkButtonActionType {
-  OPEN_URL = 'open_url',
-}
+/**
+ * Action type
+ *
+ * `open_url` — open_url
+ */
+export type BaseLinkButtonActionType = 'open_url';

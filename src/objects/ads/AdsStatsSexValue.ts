@@ -3,7 +3,10 @@
  */
 
 // ads_stats_sex_value
-export enum AdsStatsSexValue {
-  FEMALE = 'f',
-  MALE = 'm',
-}
+/**
+ * Sex
+ *
+ * `f` — female
+ * `m` — male
+ */
+export type AdsStatsSexValue = 'f' | 'm';

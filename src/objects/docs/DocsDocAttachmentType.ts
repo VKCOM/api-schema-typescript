@@ -3,8 +3,7 @@
  */
 
 // docs_doc_attachment_type
-export enum DocsDocAttachmentType {
-  DOC = 'doc',
-  GRAFFITI = 'graffiti',
-  AUDIO_MESSAGE = 'audio_message',
-}
+/**
+ * Doc attachment type
+ */
+export type DocsDocAttachmentType = 'doc' | 'graffiti' | 'audio_message';

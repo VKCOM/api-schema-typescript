@@ -11,11 +11,6 @@ import { MessagesMessageRequestData } from './MessagesMessageRequestData';
 import { MessagesOutReadBy } from './MessagesOutReadBy';
 import { MessagesPushSettings } from './MessagesPushSettings';
 
-// messages_conversation special_service_type enumNames
-export const MessagesConversationSpecialServiceTypeEnumNames = {
-  BUSINESS_NOTIFY: 'business_notify',
-} as const;
-
 // messages_conversation
 export interface MessagesConversation {
   peer: MessagesConversationPeer;

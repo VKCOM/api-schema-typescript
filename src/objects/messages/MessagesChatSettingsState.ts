@@ -3,8 +3,4 @@
  */
 
 // messages_chat_settings_state
-export enum MessagesChatSettingsState {
-  IN = 'in',
-  KICKED = 'kicked',
-  LEFT = 'left',
-}
+export type MessagesChatSettingsState = 'in' | 'kicked' | 'left';

@@ -3,10 +3,4 @@
  */
 
 // fave_bookmark_type
-export enum FaveBookmarkType {
-  POST = 'post',
-  VIDEO = 'video',
-  PRODUCT = 'product',
-  ARTICLE = 'article',
-  LINK = 'link',
-}
+export type FaveBookmarkType = 'post' | 'video' | 'product' | 'article' | 'link';

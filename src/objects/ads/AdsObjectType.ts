@@ -3,9 +3,7 @@
  */
 
 // ads_object_type
-export enum AdsObjectType {
-  AD = 'ad',
-  CAMPAIGN = 'campaign',
-  CLIENT = 'client',
-  OFFICE = 'office',
-}
+/**
+ * Object type
+ */
+export type AdsObjectType = 'ad' | 'campaign' | 'client' | 'office';

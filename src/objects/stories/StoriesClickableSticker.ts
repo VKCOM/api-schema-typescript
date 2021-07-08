@@ -9,44 +9,6 @@ import { MarketMarketItem } from '../market/MarketMarketItem';
 import { PollsPoll } from '../polls/PollsPoll';
 import { StoriesClickableArea } from './StoriesClickableArea';
 
-// stories_clickable_sticker style enumNames
-export const StoriesClickableStickerStyleEnumNames = {
-  TRANSPARENT: 'transparent',
-  BLUE_GRADIENT: 'blue_gradient',
-  RED_GRADIENT: 'red_gradient',
-  UNDERLINE: 'underline',
-  BLUE: 'blue',
-  GREEN: 'green',
-  WHITE: 'white',
-  QUESTION_REPLY: 'question_reply',
-  LIGHT: 'light',
-  IMPRESSIVE: 'impressive',
-} as const;
-
-// stories_clickable_sticker type enumNames
-export const StoriesClickableStickerTypeEnumNames = {
-  HASHTAG: 'hashtag',
-  MENTION: 'mention',
-  LINK: 'link',
-  QUESTION: 'question',
-  PLACE: 'place',
-  MARKET_ITEM: 'market_item',
-  MUSIC: 'music',
-  STORY_REPLY: 'story_reply',
-  OWNER: 'owner',
-  POST: 'post',
-  POLL: 'poll',
-  STICKER: 'sticker',
-  APP: 'app',
-  SITUATIONAL_THEME: 'situational_theme',
-} as const;
-
-// stories_clickable_sticker subtype enumNames
-export const StoriesClickableStickerSubtypeEnumNames = {
-  MARKET_ITEM: 'market_item',
-  ALIEXPRESS_PRODUCT: 'aliexpress_product',
-} as const;
-
 // stories_clickable_sticker
 export interface StoriesClickableSticker {
   clickable_area: StoriesClickableArea[];

@@ -3,6 +3,7 @@
  */
 
 // users_user_type
-export enum UsersUserType {
-  PROFILE = 'profile',
-}
+/**
+ * Object type
+ */
+export type UsersUserType = 'profile';

@@ -27,12 +27,6 @@ import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { FriendsFriendStatusStatus } from './FriendsFriendStatusStatus';
 import { FriendsRequestsMutual } from './FriendsRequestsMutual';
 
-// users_user_full wall_default enumNames
-export const UsersUserFullWallDefaultEnumNames = {
-  OWNER: 'owner',
-  ALL: 'all',
-} as const;
-
 // friends_user_xtr_lists
 export interface FriendsUserXtrLists {
   /**

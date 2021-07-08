@@ -3,6 +3,4 @@
  */
 
 // groups_member_role_permission
-export enum GroupsMemberRolePermission {
-  ADS = 'ads',
-}
+export type GroupsMemberRolePermission = 'ads';

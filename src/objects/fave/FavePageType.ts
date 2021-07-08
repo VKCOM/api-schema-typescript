@@ -3,8 +3,4 @@
  */
 
 // fave_page_type
-export enum FavePageType {
-  USER = 'user',
-  GROUP = 'group',
-  HINTS = 'hints',
-}
+export type FavePageType = 'user' | 'group' | 'hints';

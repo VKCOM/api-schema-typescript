@@ -4,12 +4,6 @@
 
 import { NewsfeedItemDigestButton } from './NewsfeedItemDigestButton';
 
-// newsfeed_item_digest_header style enumNames
-export const NewsfeedItemDigestHeaderStyleEnumNames = {
-  SINGLELINE: 'singleline',
-  MULTILINE: 'multiline',
-} as const;
-
 // newsfeed_item_digest_header
 export interface NewsfeedItemDigestHeader {
   /**

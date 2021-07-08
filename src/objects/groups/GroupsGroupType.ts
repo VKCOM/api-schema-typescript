@@ -3,8 +3,7 @@
  */
 
 // groups_group_type
-export enum GroupsGroupType {
-  GROUP = 'group',
-  PAGE = 'page',
-  EVENT = 'event',
-}
+/**
+ * Community type
+ */
+export type GroupsGroupType = 'group' | 'page' | 'event';

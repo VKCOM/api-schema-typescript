@@ -262,7 +262,7 @@ export interface DatabaseGetSchoolClassesParams {
 }
 
 // database.getSchoolClasses_response
-export type DatabaseGetSchoolClassesResponse = Array<string | number>[][];
+export type DatabaseGetSchoolClassesResponse = Array<string | number>[];
 
 /**
  * database.getSchools

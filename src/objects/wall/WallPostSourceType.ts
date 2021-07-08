@@ -3,11 +3,7 @@
  */
 
 // wall_post_source_type
-export enum WallPostSourceType {
-  VK = 'vk',
-  WIDGET = 'widget',
-  API = 'api',
-  RSS = 'rss',
-  SMS = 'sms',
-  MVK = 'mvk',
-}
+/**
+ * Type of post source
+ */
+export type WallPostSourceType = 'vk' | 'widget' | 'api' | 'rss' | 'sms' | 'mvk';

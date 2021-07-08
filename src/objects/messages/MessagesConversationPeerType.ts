@@ -3,9 +3,7 @@
  */
 
 // messages_conversation_peer_type
-export enum MessagesConversationPeerType {
-  CHAT = 'chat',
-  EMAIL = 'email',
-  USER = 'user',
-  GROUP = 'group',
-}
+/**
+ * Peer type
+ */
+export type MessagesConversationPeerType = 'chat' | 'email' | 'user' | 'group';

@@ -3,7 +3,7 @@
  */
 
 // groups_owner_xtr_ban_info_type
-export enum GroupsOwnerXtrBanInfoType {
-  GROUP = 'group',
-  PROFILE = 'profile',
-}
+/**
+ * Owner type
+ */
+export type GroupsOwnerXtrBanInfoType = 'group' | 'profile';

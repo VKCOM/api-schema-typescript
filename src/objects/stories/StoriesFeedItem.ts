@@ -6,17 +6,6 @@ import { AppsAppMin } from '../apps/AppsAppMin';
 import { StoriesPromoBlock } from './StoriesPromoBlock';
 import { StoriesStory } from './StoriesStory';
 
-// stories_feed_item type enumNames
-export const StoriesFeedItemTypeEnumNames = {
-  PROMO_STORIES: 'promo_stories',
-  STORIES: 'stories',
-  LIVE_ACTIVE: 'live_active',
-  LIVE_FINISHED: 'live_finished',
-  COMMUNITY_GROUPED_STORIES: 'community_grouped_stories',
-  APP_GROUPED_STORIES: 'app_grouped_stories',
-  BIRTHDAY: 'birthday',
-} as const;
-
 // stories_feed_item
 export interface StoriesFeedItem {
   /**

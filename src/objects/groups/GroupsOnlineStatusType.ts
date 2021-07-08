@@ -3,8 +3,7 @@
  */
 
 // groups_online_status_type
-export enum GroupsOnlineStatusType {
-  NONE = 'none',
-  ONLINE = 'online',
-  ANSWER_MARK = 'answer_mark',
-}
+/**
+ * Type of online status of group
+ */
+export type GroupsOnlineStatusType = 'none' | 'online' | 'answer_mark';

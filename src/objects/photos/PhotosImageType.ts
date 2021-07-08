@@ -3,16 +3,7 @@
  */
 
 // photos_image_type
-export enum PhotosImageType {
-  S = 's',
-  M = 'm',
-  X = 'x',
-  L = 'l',
-  O = 'o',
-  P = 'p',
-  Q = 'q',
-  R = 'r',
-  Y = 'y',
-  Z = 'z',
-  W = 'w',
-}
+/**
+ * Photo's type.
+ */
+export type PhotosImageType = 's' | 'm' | 'x' | 'l' | 'o' | 'p' | 'q' | 'r' | 'y' | 'z' | 'w';

@@ -3,8 +3,7 @@
  */
 
 // ads_access_role
-export enum AdsAccessRole {
-  ADMIN = 'admin',
-  MANAGER = 'manager',
-  REPORTS = 'reports',
-}
+/**
+ * Current user's role
+ */
+export type AdsAccessRole = 'admin' | 'manager' | 'reports';

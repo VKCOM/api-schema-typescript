@@ -3,8 +3,7 @@
  */
 
 // utils_link_checked_status
-export enum UtilsLinkCheckedStatus {
-  NOT_BANNED = 'not_banned',
-  BANNED = 'banned',
-  PROCESSING = 'processing',
-}
+/**
+ * Link status
+ */
+export type UtilsLinkCheckedStatus = 'not_banned' | 'banned' | 'processing';

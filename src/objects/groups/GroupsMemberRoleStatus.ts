@@ -3,9 +3,7 @@
  */
 
 // groups_member_role_status
-export enum GroupsMemberRoleStatus {
-  MODERATOR = 'moderator',
-  EDITOR = 'editor',
-  ADMINISTRATOR = 'administrator',
-  CREATOR = 'creator',
-}
+/**
+ * User's credentials as community admin
+ */
+export type GroupsMemberRoleStatus = 'moderator' | 'editor' | 'administrator' | 'creator';
