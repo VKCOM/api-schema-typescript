@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@vkontakte/api-schema-typescript-generator@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.6.0.tgz#28b6b04c71c89d3fe6220ef82793c4ba37113420"
-  integrity sha512-s7pHKLNsvXy34Px9EFL5RbnsyaY34nAqnc1jeg4PGNX54e3PonhJbqgWVMrmIxiv5xSC7hn4IMIRg2zSJrFvgQ==
+"@vkontakte/api-schema-typescript-generator@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.10.0.tgz#1ae88539b55b36b03db09b0043284fbf6e09939c"
+  integrity sha512-IO+CaFc8Wru1F7KMj/PSxMQT7plAK7H0HINO/aLc5RFCt0UVS0r2bUKRbxCswYxfl+n1R6svTMKW5k5Q07gWJQ==
   dependencies:
     arg "^4.1.3"
     chalk "4.1.0"
