@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "devDependencies": {
-    "@vkontakte/api-schema": "https://github.com/VKCOM/vk-api-schema.git#v5.130.0",
+    "@vkontakte/api-schema": "https://github.com/VKCOM/vk-api-schema.git#v5.131.89",
     "@vkontakte/api-schema-typescript-generator": "0.6.0",
     "typescript": "^3.9.6"
   },
