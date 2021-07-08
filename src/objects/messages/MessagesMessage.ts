@@ -87,4 +87,8 @@ export interface MessagesMessage {
    * Date when the message has been pinned in Unixtime
    */
   pinned_at?: number;
+  /**
+   * Is silent message, push without sound
+   */
+  is_silent?: boolean;
 }

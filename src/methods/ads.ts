@@ -799,6 +799,7 @@ export interface AdsGetTargetingStatsParams {
   ad_platform?: string;
   ad_platform_no_wall?: string;
   ad_platform_no_ad_network?: string;
+  publisher_platforms?: string;
   /**
    * URL for the advertised object.
    */

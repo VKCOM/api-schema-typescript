@@ -55,6 +55,7 @@ export interface MarketMarketItemFull {
   url?: string;
   variants_grouping_id?: number;
   is_main_variant?: boolean;
+  sku?: string;
   albums_ids?: number[];
   photos?: PhotosPhoto[];
   /**

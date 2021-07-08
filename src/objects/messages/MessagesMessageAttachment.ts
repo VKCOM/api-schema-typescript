@@ -4,7 +4,8 @@
 
 import { AudioAudio } from '../audio/AudioAudio';
 import { BaseLink } from '../base/BaseLink';
-import { BaseSticker } from '../base/BaseSticker';
+import { BaseStickerNew } from '../base/BaseStickerNew';
+import { BaseStickerOld } from '../base/BaseStickerOld';
 import { CallsCall } from '../calls/CallsCall';
 import { DocsDoc } from '../docs/DocsDoc';
 import { GiftsLayout } from '../gifts/GiftsLayout';
@@ -32,7 +33,7 @@ export interface MessagesMessageAttachment {
   market?: MarketMarketItem;
   market_market_album?: MarketMarketAlbum;
   photo?: PhotosPhoto;
-  sticker?: BaseSticker;
+  sticker?: BaseStickerOld | BaseStickerNew;
   story?: StoriesStory;
   type: MessagesMessageAttachmentType;
   video?: VideoVideo;

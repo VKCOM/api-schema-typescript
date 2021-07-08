@@ -245,11 +245,16 @@ export interface UsersUserFull {
   photo_max_size?: PhotosPhoto;
   language?: string;
   stories_archive_count?: number;
+  has_unseen_stories?: boolean;
   wall_default?: 'owner' | 'all';
   /**
    * Information whether current user can call
    */
   can_call?: boolean;
+  /**
+   * Information whether group can call user
+   */
+  can_call_from_group?: boolean;
   /**
    * Information whether current user can see the user's wishes
    */
@@ -400,5 +405,8 @@ export interface UsersUserFull {
   access_key?: string;
   can_upload_doc?: 0 | 1;
   hash?: string;
-  has_email?: boolean;
+  /**
+   * Access to user profile is restricted for search engines
+   */
+  is_no_index?: boolean;
 }

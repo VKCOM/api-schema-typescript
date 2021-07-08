@@ -3,6 +3,7 @@
  */
 
 import { AppsApp } from '../apps/AppsApp';
+import { BaseLink } from '../base/BaseLink';
 import { GroupsGroup } from '../groups/GroupsGroup';
 import { UsersUserMin } from '../users/UsersUserMin';
 import { SearchHintSection } from './SearchHintSection';
@@ -21,6 +22,7 @@ export interface SearchHint {
   global?: 0 | 1;
   group?: GroupsGroup;
   profile?: UsersUserMin;
-  section: SearchHintSection;
+  section?: SearchHintSection;
   type: SearchHintType;
+  link?: BaseLink;
 }

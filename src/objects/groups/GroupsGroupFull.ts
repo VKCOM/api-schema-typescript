@@ -266,4 +266,5 @@ export interface GroupsGroupFull {
    */
   live_covers?: GroupsLiveCovers;
   stories_archive_count?: number;
+  has_unseen_stories?: boolean;
 }

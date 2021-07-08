@@ -50,7 +50,7 @@ export interface VideoAddAlbumParams {
    */
   title?: string;
   /**
-   * new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
+   * new access permissions for the album. Possible values: , *'0' - all users,, *'1' - friends only,, *'2' - friends and friends of friends,, *'3' - "only me".
    */
   privacy?: string;
 }
@@ -238,7 +238,7 @@ export interface VideoEditAlbumParams {
    */
   title: string;
   /**
-   * new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
+   * new access permissions for the album. Possible values: , *'0' - all users,, *'1' - friends only,, *'2' - friends and friends of friends,, *'3' - "only me".
    */
   privacy?: string;
 }
@@ -305,19 +305,11 @@ export interface VideoGetParams {
    * '1' — to return an extended response with additional fields
    */
   extended?: 0 | 1;
+  fields?: string;
 }
 
 // video.get_response
 export interface VideoGetResponse {
-  /**
-   * Total number
-   */
-  count: number;
-  items: VideoVideoFull[];
-}
-
-// video.get_extendedResponse
-export interface VideoGetExtendedResponse {
   /**
    * Total number
    */
@@ -573,7 +565,7 @@ export interface VideoReportParams {
    */
   video_id: number;
   /**
-   * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   /**
@@ -605,7 +597,7 @@ export interface VideoReportCommentParams {
    */
   comment_id: number;
   /**
-   * Reason for the complaint: , 0 – spam , 1 – child pornography , 2 – extremism , 3 – violence , 4 – drug propaganda , 5 – adult material , 6 – insult, abuse
+   * Reason for the complaint: , 0 - spam , 1 - child pornography , 2 - extremism , 3 - violence , 4 - drug propaganda , 5 - adult material , 6 - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }

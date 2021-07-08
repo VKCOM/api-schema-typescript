@@ -137,6 +137,10 @@ export interface AccountGetCountersParams {
    * Counters to be returned.
    */
   filter?: string;
+  /**
+   * User ID
+   */
+  user_id?: number;
 }
 
 // account.getCounters_response
@@ -250,11 +254,11 @@ export interface AccountSaveProfileInfoParams {
    */
   cancel_request_id?: number;
   /**
-   * User sex. Possible values: , * '1' – female,, * '2' – male.
+   * User sex. Possible values: , * '1' - female,, * '2' - male.
    */
   sex?: 0 | 1 | 2;
   /**
-   * User relationship status. Possible values: , * '1' – single,, * '2' – in a relationship,, * '3' – engaged,, * '4' – married,, * '5' – it's complicated,, * '6' – actively searching,, * '7' – in love,, * '0' – not specified.
+   * User relationship status. Possible values: , * '1' - single,, * '2' - in a relationship,, * '3' - engaged,, * '4' - married,, * '5' - it's complicated,, * '6' - actively searching,, * '7' - in love,, * '0' - not specified.
    */
   relation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 0;
   /**
@@ -266,7 +270,7 @@ export interface AccountSaveProfileInfoParams {
    */
   bdate?: string;
   /**
-   * Birth date visibility. Returned values: , * '1' – show birth date,, * '2' – show only month and day,, * '0' – hide birth date.
+   * Birth date visibility. Returned values: , * '1' - show birth date,, * '2' - show only month and day,, * '0' - hide birth date.
    */
   bdate_visibility?: 1 | 2 | 0;
   /**

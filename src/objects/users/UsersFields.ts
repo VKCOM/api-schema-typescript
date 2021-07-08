@@ -88,6 +88,7 @@ export enum UsersFields {
   FRIENDSHIP_WEEKS = 'friendship_weeks',
   CAN_INVITE_TO_CHATS = 'can_invite_to_chats',
   STORIES_ARCHIVE_COUNT = 'stories_archive_count',
+  HAS_UNSEEN_STORIES = 'has_unseen_stories',
   VIDEO_LIVE_LEVEL = 'video_live_level',
   VIDEO_LIVE_COUNT = 'video_live_count',
   CLIPS_COUNT = 'clips_count',

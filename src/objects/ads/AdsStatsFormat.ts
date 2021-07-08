@@ -9,6 +9,10 @@ export interface AdsStatsFormat {
    */
   clicks?: number;
   /**
+   * External clicks number
+   */
+  link_external_clicks?: number;
+  /**
    * Day as YYYY-MM-DD
    */
   day?: string;

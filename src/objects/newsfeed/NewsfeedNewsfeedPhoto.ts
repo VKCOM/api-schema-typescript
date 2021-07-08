@@ -4,7 +4,6 @@
 
 import { BaseLikes } from '../base/BaseLikes';
 import { BaseObjectCount } from '../base/BaseObjectCount';
-import { MediaRestriction } from '../media/MediaRestriction';
 import { PhotosImage } from '../photos/PhotosImage';
 import { PhotosPhotoSizes } from '../photos/PhotosPhotoSizes';
 
@@ -73,7 +72,6 @@ export interface NewsfeedNewsfeedPhoto {
    * Whether photo has attached tag links
    */
   has_tags: boolean;
-  restrictions?: MediaRestriction;
   likes?: BaseLikes;
   comments?: BaseObjectCount;
   /**

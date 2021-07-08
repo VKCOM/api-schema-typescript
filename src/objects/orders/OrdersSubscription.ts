@@ -25,6 +25,10 @@ export interface OrdersSubscription {
    */
   next_bill_time?: number;
   /**
+   * Subscription expiration time in Unixtime
+   */
+  expire_time?: number;
+  /**
    * Pending cancel state
    */
   pending_cancel?: boolean;
@@ -40,6 +44,22 @@ export interface OrdersSubscription {
    * Subscription price
    */
   price: number;
+  /**
+   * Subscription name
+   */
+  title?: string;
+  /**
+   * Subscription's application id
+   */
+  app_id?: number;
+  /**
+   * Subscription's application name
+   */
+  application_name?: string;
+  /**
+   * Item photo image url
+   */
+  photo_url?: string;
   /**
    * Subscription status
    */

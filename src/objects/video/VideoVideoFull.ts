@@ -4,7 +4,6 @@
 
 import { BaseLikes } from '../base/BaseLikes';
 import { BaseRepostsInfo } from '../base/BaseRepostsInfo';
-import { MediaRestriction } from '../media/MediaRestriction';
 import { VideoLiveSettings } from './VideoLiveSettings';
 import { VideoVideoFiles } from './VideoVideoFiles';
 import { VideoVideoImage } from './VideoVideoImage';
@@ -129,7 +128,6 @@ export interface VideoVideoFull {
    * 1 if  video is being converted
    */
   converting?: 0 | 1;
-  restriction?: MediaRestriction;
   /**
    * 1 if video is added to user's albums
    */

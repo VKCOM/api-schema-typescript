@@ -29,6 +29,7 @@ export interface PollsPoll {
   can_vote: boolean;
   can_report: boolean;
   can_share: boolean;
+  embed_hash?: string;
   photo?: PollsBackground;
   answers: PollsAnswer[];
   /**

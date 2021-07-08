@@ -4,11 +4,12 @@
 
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { MarketMarketAlbum } from '../objects/market/MarketMarketAlbum';
-import { MarketMarketCategoryTree } from '../objects/market/MarketMarketCategoryTree';
+import { MarketMarketCategory } from '../objects/market/MarketMarketCategory';
 import { MarketMarketItem } from '../objects/market/MarketMarketItem';
 import { MarketMarketItemFull } from '../objects/market/MarketMarketItemFull';
 import { MarketOrder } from '../objects/market/MarketOrder';
 import { MarketOrderItem } from '../objects/market/MarketOrderItem';
+import { MarketServicesViewType } from '../objects/market/MarketServicesViewType';
 import { WallWallComment } from '../objects/wall/WallWallComment';
 
 /**
@@ -59,6 +60,7 @@ export interface MarketAddParams {
   dimension_height?: number;
   dimension_length?: number;
   weight?: number;
+  sku?: string;
 }
 
 // market.add_response
@@ -66,7 +68,7 @@ export interface MarketAddResponse {
   /**
    * Item ID
    */
-  market_item_id?: number;
+  market_item_id: number;
 }
 
 /**
@@ -89,9 +91,13 @@ export interface MarketAddAlbumParams {
    */
   photo_id?: number;
   /**
-   * Set as main ('1' – set, '0' – no).
+   * Set as main ('1' - set, '0' - no).
    */
   main_album?: 0 | 1;
+  /**
+   * Set as hidden
+   */
+  is_hidden?: 0 | 1;
 }
 
 // market.addAlbum_response
@@ -113,10 +119,7 @@ export interface MarketAddToAlbumParams {
    * ID of an item owner community.
    */
   owner_id: number;
-  /**
-   * Item ID.
-   */
-  item_id: number;
+  item_ids: string;
   /**
    * Collections IDs to add item to.
    */
@@ -260,7 +263,7 @@ export interface MarketEditParams {
   /**
    * Item price.
    */
-  price: number;
+  price?: number;
   /**
    * Item status ('1' — deleted, '0' — not deleted).
    */
@@ -268,7 +271,7 @@ export interface MarketEditParams {
   /**
    * Cover photo ID.
    */
-  main_photo_id: number;
+  main_photo_id?: number;
   /**
    * IDs of additional photos.
    */
@@ -306,9 +309,13 @@ export interface MarketEditAlbumParams {
    */
   photo_id?: number;
   /**
-   * Set as main ('1' – set, '0' – no).
+   * Set as main ('1' - set, '0' - no).
    */
   main_album?: 0 | 1;
+  /**
+   * Set as hidden
+   */
+  is_hidden?: 0 | 1;
 }
 
 // market.editAlbum_response
@@ -386,9 +393,17 @@ export interface MarketGetParams {
    */
   offset?: number;
   /**
-   * '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
+   * '1' - method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
    */
   extended?: 0 | 1;
+  /**
+   * Items update date from (format: yyyy-mm-dd)
+   */
+  date_from?: string;
+  /**
+   * Items update date to (format: yyyy-mm-dd)
+   */
+  date_to?: string;
 }
 
 // market.get_response
@@ -477,7 +492,7 @@ export interface MarketGetByIdParams {
    */
   item_ids: string;
   /**
-   * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
+   * '1' - to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
    */
   extended?: 0 | 1;
 }
@@ -519,7 +534,11 @@ export interface MarketGetCategoriesParams {
 
 // market.getCategories_response
 export interface MarketGetCategoriesResponse {
-  items: MarketMarketCategoryTree[];
+  /**
+   * Total number
+   */
+  count?: number;
+  items?: MarketMarketCategory[];
 }
 
 /**
@@ -620,6 +639,7 @@ export interface MarketGetOrderByIdResponse {
  */
 
 export interface MarketGetOrderItemsParams {
+  user_id?: number;
   order_id: number;
   offset?: number;
   count?: number;
@@ -642,6 +662,14 @@ export interface MarketGetOrdersParams {
   offset?: number;
   count?: number;
   extended?: 0 | 1;
+  /**
+   * Orders status updated date from (format: yyyy-mm-dd)
+   */
+  date_from?: string;
+  /**
+   * Orders status updated date to (format: yyyy-mm-dd)
+   */
+  date_to?: string;
 }
 
 // market.getOrders_response
@@ -873,7 +901,7 @@ export interface MarketSearchParams {
    */
   count?: number;
   /**
-   * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
+   * '1' - to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
    */
   extended?: 0 | 1;
   status?: 0 | 2;
@@ -884,8 +912,9 @@ export interface MarketSearchResponse {
   /**
    * Total number
    */
-  count?: number;
-  items?: MarketMarketItem[];
+  count: number;
+  view_type: MarketServicesViewType;
+  items: MarketMarketItem[];
 }
 
 // market.search_extendedResponse
@@ -893,6 +922,7 @@ export interface MarketSearchExtendedResponse {
   /**
    * Total number
    */
-  count?: number;
-  items?: MarketMarketItemFull[];
+  count: number;
+  view_type: MarketServicesViewType;
+  items: MarketMarketItemFull[];
 }

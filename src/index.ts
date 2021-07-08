@@ -300,8 +300,6 @@ export {
 export {
   FaveAddArticleParams,
   FaveAddArticleResponse,
-  FaveAddClassifiedParams,
-  FaveAddClassifiedResponse,
   FaveAddLinkParams,
   FaveAddLinkResponse,
   FaveAddPageParams,
@@ -327,8 +325,6 @@ export {
   FaveMarkSeenResponse,
   FaveRemoveArticleParams,
   FaveRemoveArticleResponse,
-  FaveRemoveClassifiedParams,
-  FaveRemoveClassifiedResponse,
   FaveRemoveLinkParams,
   FaveRemoveLinkResponse,
   FaveRemovePageParams,
@@ -1107,7 +1103,6 @@ export {
   VideoGetCommentsExtendedResponse,
   VideoGetCommentsParams,
   VideoGetCommentsResponse,
-  VideoGetExtendedResponse,
   VideoGetParams,
   VideoGetResponse,
   VideoRemoveFromAlbumParams,
@@ -1490,6 +1485,10 @@ export {
 } from './objects/apps/AppsAppType';
 
 export {
+  AppsCatalogList,
+} from './objects/apps/AppsCatalogList';
+
+export {
   AppsLeaderboard,
 } from './objects/apps/AppsLeaderboard';
 
@@ -1634,6 +1633,14 @@ export {
   BaseStickerAnimation,
   BaseStickerAnimationTypeEnumNames,
 } from './objects/base/BaseStickerAnimation';
+
+export {
+  BaseStickerNew,
+} from './objects/base/BaseStickerNew';
+
+export {
+  BaseStickerOld,
+} from './objects/base/BaseStickerOld';
 
 export {
   BaseStickersList,
@@ -2101,10 +2108,6 @@ export {
 } from './objects/market/MarketMarketCategoryOld';
 
 export {
-  MarketMarketCategoryTree,
-} from './objects/market/MarketMarketCategoryTree';
-
-export {
   MarketMarketItem,
 } from './objects/market/MarketMarketItem';
 
@@ -2133,8 +2136,8 @@ export {
 } from './objects/market/MarketSection';
 
 export {
-  MediaRestriction,
-} from './objects/media/MediaRestriction';
+  MarketServicesViewType,
+} from './objects/market/MarketServicesViewType';
 
 export {
   MessagesAudioMessage,
@@ -2902,11 +2905,6 @@ export {
 } from './objects/video/VideoLiveSettings';
 
 export {
-  VideoRestrictionButton,
-  VideoRestrictionButtonActionEnumNames,
-} from './objects/video/VideoRestrictionButton';
-
-export {
   VideoSaveResult,
 } from './objects/video/VideoSaveResult';
 
@@ -3021,6 +3019,7 @@ export {
 
 export {
   WallWallpostFull,
+  WallWallpostFullTopicIdEnumNames,
 } from './objects/wall/WallWallpostFull';
 
 export {

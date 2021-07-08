@@ -27,6 +27,7 @@ export enum GroupsFields {
   CAN_UPLOAD_CLIP = 'can_upload_clip',
   CAN_SEE_ALL_POSTS = 'can_see_all_posts',
   CAN_CREATE_TOPIC = 'can_create_topic',
+  CROP_PHOTO = 'crop_photo',
   ACTIVITY = 'activity',
   FIXED_POST = 'fixed_post',
   HAS_PHOTO = 'has_photo',
@@ -57,6 +58,7 @@ export enum GroupsFields {
   ADDRESSES = 'addresses',
   LIVE_COVERS = 'live_covers',
   IS_ADULT = 'is_adult',
+  IS_HIDDEN_FROM_FEED = 'is_hidden_from_feed',
   CAN_SUBSCRIBE_POSTS = 'can_subscribe_posts',
   WARNING_NOTIFICATION = 'warning_notification',
   MSG_PUSH_ALLOWED = 'msg_push_allowed',
@@ -64,6 +66,7 @@ export enum GroupsFields {
   VIDEO_LIVE_LEVEL = 'video_live_level',
   VIDEO_LIVE_COUNT = 'video_live_count',
   CLIPS_COUNT = 'clips_count',
+  HAS_UNSEEN_STORIES = 'has_unseen_stories',
   IS_BUSINESS = 'is_business',
   TEXTLIVES_COUNT = 'textlives_count',
 }

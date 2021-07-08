@@ -29,6 +29,17 @@ export interface WallAttachedNote {
    */
   title: string;
   /**
+   * Note text
+   */
+  text?: string;
+  privacy_view?: string[];
+  privacy_comment?: string[];
+  can_comment?: number;
+  /**
+   * Note wiki text
+   */
+  text_wiki?: string;
+  /**
    * URL of the page with note preview
    */
   view_url: string;

@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { MediaRestriction } from '../media/MediaRestriction';
 import { PhotosImage } from './PhotosImage';
 import { PhotosPhotoSizes } from './PhotosPhotoSizes';
 
@@ -71,5 +70,4 @@ export interface PhotosPhoto {
    * Whether photo has attached tag links
    */
   has_tags: boolean;
-  restrictions?: MediaRestriction;
 }

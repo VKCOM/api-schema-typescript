@@ -12,4 +12,8 @@ export interface MarketCurrency {
    * Currency sign
    */
   name: string;
+  /**
+   * Currency title
+   */
+  title: string;
 }

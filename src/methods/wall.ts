@@ -155,6 +155,10 @@ export interface WallEditParams {
   poster_bkg_owner_id?: number;
   poster_bkg_access_hash?: string;
   copyright?: string;
+  /**
+   * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+   */
+  topic_id?: 0 | 1 | 7 | 12 | 16 | 19 | 21 | 23 | 25 | 26 | 32 | 43;
 }
 
 // wall.edit_response
@@ -276,10 +280,7 @@ export interface WallGetParams {
    * Number of posts to return (maximum 100).
    */
   count?: number;
-  /**
-   * Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
-   */
-  filter?: 'owner' | 'others' | 'all' | 'postponed' | 'suggests';
+  filter?: string;
   /**
    * '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
    */
@@ -600,6 +601,10 @@ export interface WallPostParams {
   donut_paid_duration?: number;
   mute_notifications?: 0 | 1;
   copyright?: string;
+  /**
+   * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+   */
+  topic_id?: 0 | 1 | 7 | 12 | 16 | 19 | 21 | 23 | 25 | 26 | 32 | 43;
 }
 
 // wall.post_response
@@ -691,7 +696,7 @@ export interface WallReportCommentParams {
    */
   comment_id: number;
   /**
-   * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -715,7 +720,7 @@ export interface WallReportPostParams {
    */
   post_id: number;
   /**
-   * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -831,7 +836,7 @@ export interface WallSearchParams {
    */
   query?: string;
   /**
-   * '1' – returns only page owner's posts.
+   * '1' - returns only page owner's posts.
    */
   owners_only?: 0 | 1;
   /**

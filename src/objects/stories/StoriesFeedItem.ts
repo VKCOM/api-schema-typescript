@@ -47,4 +47,7 @@ export interface StoriesFeedItem {
    */
   promo_data?: StoriesPromoBlock;
   birthday_user_id?: number;
+  track_code?: string;
+  has_unseen?: boolean;
+  name?: string;
 }

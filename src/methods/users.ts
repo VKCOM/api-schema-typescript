@@ -139,7 +139,7 @@ export interface UsersReportParams {
    */
   user_id: number;
   /**
-   * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
+   * Type of complaint: 'porn' - pornography, 'spam' - spamming, 'insult' - abusive behavior, 'advertisement' - disruptive advertisements
    */
   type: 'porn' | 'spam' | 'insult' | 'advertisement';
   /**

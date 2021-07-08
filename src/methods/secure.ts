@@ -19,11 +19,11 @@ export interface SecureAddAppEventParams {
    */
   user_id: number;
   /**
-   * there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
+   * there are 2 default activities: , * 1 - level. Works similar to ,, * 2 - points, saves points amount, Any other value is for saving completed missions
    */
   activity_id: number;
   /**
-   * depends on activity_id: * 1 – number, current level number,, * 2 – number, current user's points amount, , Any other value is ignored
+   * depends on activity_id: * 1 - number, current level number,, * 2 - number, current user's points amount, , Any other value is ignored
    */
   value?: number;
 }

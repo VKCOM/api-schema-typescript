@@ -11,4 +11,5 @@ export enum SearchHintSection {
   PEOPLE = 'people',
   FRIENDS = 'friends',
   MUTUAL_FRIENDS = 'mutual_friends',
+  PROMO = 'promo',
 }

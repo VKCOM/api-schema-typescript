@@ -63,4 +63,5 @@ export interface GroupsAddress {
    * Status of information about timetable
    */
   work_info_status?: GroupsAddressWorkInfoStatus;
+  place_id?: number;
 }

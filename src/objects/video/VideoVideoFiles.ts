@@ -29,6 +29,14 @@ export interface VideoVideoFiles {
    */
   mp4_1080?: string;
   /**
+   * URL of the mpeg4 file with 2K quality
+   */
+  mp4_1440?: string;
+  /**
+   * URL of the mpeg4 file with 4K quality
+   */
+  mp4_2160?: string;
+  /**
    * URL of the flv file with 320p quality
    */
   flv_320?: string;

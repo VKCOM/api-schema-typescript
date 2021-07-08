@@ -8,9 +8,29 @@ import { AdsCampaignType } from './AdsCampaignType';
 // ads_campaign
 export interface AdsCampaign {
   /**
+   * Amount of active ads in campaign
+   */
+  ads_count?: number;
+  /**
    * Campaign's total limit, rubles
    */
   all_limit: string;
+  /**
+   * Campaign create time, as Unixtime
+   */
+  create_time?: number;
+  /**
+   * Campaign goal type
+   */
+  goal_type?: number;
+  /**
+   * Campaign user goal type
+   */
+  user_goal_type?: number;
+  /**
+   * Shows if Campaign Budget Optimization is on
+   */
+  is_cbo_enabled?: boolean;
   /**
    * Campaign's day limit, rubles
    */
@@ -33,4 +53,12 @@ export interface AdsCampaign {
    */
   stop_time: number;
   type: AdsCampaignType;
+  /**
+   * Campaign update time, as Unixtime
+   */
+  update_time?: number;
+  /**
+   * Limit of views per user per campaign
+   */
+  views_limit?: number;
 }

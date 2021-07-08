@@ -77,6 +77,10 @@ export interface NotificationsSendMessageParams {
   fragment?: string;
   group_id?: number;
   random_id?: number;
+  /**
+   * Type of sending (delivering) notifications: 'immediately' — push and bell notifications will be delivered as soon as possible, 'delayed' — push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' — only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
+   */
+  sending_mode?: 'delayed' | 'delayed_push' | 'immediately';
 }
 
 // notifications.sendMessage_response

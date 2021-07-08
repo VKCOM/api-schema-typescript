@@ -102,6 +102,14 @@ export interface MessagesDeleteParams {
    * '1' — delete message for for all.
    */
   delete_for_all?: 0 | 1;
+  /**
+   * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+   */
+  peer_id?: number;
+  /**
+   * Conversation message IDs.
+   */
+  conversation_message_ids?: string;
 }
 
 // messages.delete_response
@@ -1252,7 +1260,7 @@ export interface MessagesSetActivityParams {
   /**
    * 'typing' — user has started to type.
    */
-  type?: string;
+  type?: 'audiomessage' | 'file' | 'photo' | 'typing' | 'video';
   /**
    * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
    */

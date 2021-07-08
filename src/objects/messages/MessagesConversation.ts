@@ -25,6 +25,10 @@ export interface MessagesConversation {
    */
   last_message_id: number;
   /**
+   * Conversation message ID of the last message in conversation
+   */
+  last_conversation_message_id?: number;
+  /**
    * Last message user have read
    */
   in_read: number;

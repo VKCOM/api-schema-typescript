@@ -429,19 +429,19 @@ export interface PhotosGetAllParams {
    */
   count?: number;
   /**
-   * '1' – to return image sizes in [vk.com/dev/photo_sizes|special format].
+   * '1' - to return image sizes in [vk.com/dev/photo_sizes|special format].
    */
   photo_sizes?: 0 | 1;
   /**
-   * '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
+   * '1' - to return photos only from standard albums, '0' - to return all photos including those in service albums, e.g., 'My wall photos' (default)
    */
   no_service_albums?: 0 | 1;
   /**
-   * '1' – to show information about photos being hidden from the block above the wall.
+   * '1' - to show information about photos being hidden from the block above the wall.
    */
   need_hidden?: 0 | 1;
   /**
-   * '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
+   * '1' - not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
    */
   skip_hidden?: 0 | 1;
 }
@@ -757,7 +757,7 @@ export type PhotosGetOwnerCoverPhotoUploadServerResponse = BaseUploadServer;
 
 export interface PhotosGetOwnerPhotoUploadServerParams {
   /**
-   * identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
+   * identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' - user, 'owner_id=-1' - community, "
    */
   owner_id?: number;
 }
@@ -1050,7 +1050,7 @@ export interface PhotosReportParams {
    */
   photo_id: number;
   /**
-   * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -1074,7 +1074,7 @@ export interface PhotosReportCommentParams {
    */
   comment_id: number;
   /**
-   * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }

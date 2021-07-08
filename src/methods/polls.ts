@@ -41,7 +41,7 @@ export interface PollsCreateParams {
    */
   question?: string;
   /**
-   * '1' – anonymous poll, participants list is hidden,, '0' – public poll, participants list is available,, Default value is '0'.
+   * '1' - anonymous poll, participants list is hidden,, '0' - public poll, participants list is available,, Default value is '0'.
    */
   is_anonymous?: 0 | 1;
   is_multiple?: 0 | 1;
@@ -50,6 +50,7 @@ export interface PollsCreateParams {
    * If a poll will be added to a communty it is required to send a negative group identifier. Current user by default.
    */
   owner_id?: number;
+  app_id?: number;
   /**
    * available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
    */
@@ -111,7 +112,7 @@ export interface PollsEditParams {
    */
   add_answers?: string;
   /**
-   * object containing answers that need to be edited,, key – answer id, value – new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
+   * object containing answers that need to be edited,, key - answer id, value - new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
    */
   edit_answers?: string;
   /**
@@ -147,7 +148,7 @@ export interface PollsGetByIdParams {
    */
   owner_id?: number;
   /**
-   * '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
+   * '1' - poll is in a board, '0' - poll is on a wall. '0' by default.
    */
   is_board?: 0 | 1;
   /**

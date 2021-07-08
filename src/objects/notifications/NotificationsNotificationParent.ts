@@ -6,7 +6,6 @@ import { BaseCommentsInfo } from '../base/BaseCommentsInfo';
 import { BaseLikesInfo } from '../base/BaseLikesInfo';
 import { BaseRepostsInfo } from '../base/BaseRepostsInfo';
 import { BoardTopic } from '../board/BoardTopic';
-import { MediaRestriction } from '../media/MediaRestriction';
 import { PhotosImage } from '../photos/PhotosImage';
 import { PhotosPhoto } from '../photos/PhotosPhoto';
 import { PhotosPhotoSizes } from '../photos/PhotosPhotoSizes';
@@ -130,7 +129,6 @@ export interface NotificationsNotificationParent {
    * Whether photo has attached tag links
    */
   has_tags: boolean;
-  restrictions?: MediaRestriction;
   /**
    * Date when the topic has been created in Unixtime
    */
@@ -217,7 +215,6 @@ export interface NotificationsNotificationParent {
    * 1 if  video is being converted
    */
   converting?: 0 | 1;
-  restriction?: MediaRestriction;
   /**
    * 1 if video is added to user's albums
    */

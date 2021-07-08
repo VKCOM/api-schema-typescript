@@ -3,6 +3,7 @@
  */
 
 import { AppsApp } from '../objects/apps/AppsApp';
+import { AppsCatalogList } from '../objects/apps/AppsCatalogList';
 import { AppsLeaderboard } from '../objects/apps/AppsLeaderboard';
 import { AppsScope } from '../objects/apps/AppsScope';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
@@ -106,14 +107,7 @@ export interface AppsGetCatalogParams {
 }
 
 // apps.getCatalog_response
-export interface AppsGetCatalogResponse {
-  /**
-   * Total number
-   */
-  count?: number;
-  items?: AppsApp[];
-  profiles?: UsersUserMin[];
-}
+export type AppsGetCatalogResponse = AppsCatalogList;
 
 /**
  * apps.getFriendsList
@@ -292,7 +286,7 @@ export interface AppsSendRequestParams {
    */
   text?: string;
   /**
-   * request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
+   * request type. Values: 'invite' - if the request is sent to a user who does not have the app installed,, 'request' - if a user has already installed the app
    */
   type?: 'invite' | 'request';
   name?: string;

@@ -4,7 +4,8 @@
 
 import { AudioAudio } from '../audio/AudioAudio';
 import { BaseLink } from '../base/BaseLink';
-import { BaseSticker } from '../base/BaseSticker';
+import { BaseStickerNew } from '../base/BaseStickerNew';
+import { BaseStickerOld } from '../base/BaseStickerOld';
 import { DocsDoc } from '../docs/DocsDoc';
 import { MarketMarketAlbum } from '../market/MarketMarketAlbum';
 import { MarketMarketItem } from '../market/MarketMarketItem';
@@ -24,7 +25,7 @@ export interface WallCommentAttachment {
   note?: WallAttachedNote;
   page?: PagesWikipageFull;
   photo?: PhotosPhoto;
-  sticker?: BaseSticker;
+  sticker?: BaseStickerOld | BaseStickerNew;
   type: WallCommentAttachmentType;
   video?: VideoVideo;
 }

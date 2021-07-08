@@ -7,10 +7,6 @@ import { PhotosPhoto } from '../photos/PhotosPhoto';
 // market_market_album
 export interface MarketMarketAlbum {
   /**
-   * Items number
-   */
-  count: number;
-  /**
    * Market album ID
    */
   id: number;
@@ -18,11 +14,15 @@ export interface MarketMarketAlbum {
    * Market album owner's ID
    */
   owner_id: number;
-  photo?: PhotosPhoto;
   /**
    * Market album title
    */
   title: string;
+  /**
+   * Items number
+   */
+  count: number;
+  photo?: PhotosPhoto;
   /**
    * Date when album has been updated last time in Unixtime
    */

@@ -20,26 +20,6 @@ export interface FaveAddArticleParams {
 export type FaveAddArticleResponse = 1;
 
 /**
- * fave.addClassified
- *
- * Adds a link to user faves.
- */
-
-export interface FaveAddClassifiedParams {
-  /**
-   * Classifieds item source
-   */
-  item_source: 'youla';
-  /**
-   * Classifieds item id
-   */
-  item_id: string;
-}
-
-// fave.addClassified_response
-export type FaveAddClassifiedResponse = 1;
-
-/**
  * fave.addLink
  *
  * Adds a link to user faves.
@@ -139,7 +119,7 @@ export interface FaveGetParams {
    * '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
    */
   extended?: 0 | 1;
-  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video';
+  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video' | 'youla_product';
   /**
    * Tag ID.
    */
@@ -229,26 +209,6 @@ export interface FaveRemoveArticleParams {
 
 // fave.removeArticle_response
 export type FaveRemoveArticleResponse = 0 | 1;
-
-/**
- * fave.removeClassified
- *
- * Removes link from the user's faves.
- */
-
-export interface FaveRemoveClassifiedParams {
-  /**
-   * Classifieds item source
-   */
-  item_source: 'youla';
-  /**
-   * Classifieds item id
-   */
-  item_id: string;
-}
-
-// fave.removeClassified_response
-export type FaveRemoveClassifiedResponse = 1;
 
 /**
  * fave.removeLink
@@ -358,7 +318,7 @@ export type FaveSetPageTagsResponse = 1;
  */
 
 export interface FaveSetTagsParams {
-  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video';
+  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video' | 'youla_product';
   item_owner_id?: number;
   item_id?: number;
   tag_ids?: string;

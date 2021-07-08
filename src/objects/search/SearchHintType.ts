@@ -9,4 +9,5 @@ export enum SearchHintType {
   VK_APP = 'vk_app',
   APP = 'app',
   HTML5_GAME = 'html5_game',
+  LINK = 'link',
 }

@@ -4,7 +4,6 @@
 
 import { BaseLikes } from '../base/BaseLikes';
 import { BaseRepostsInfo } from '../base/BaseRepostsInfo';
-import { MediaRestriction } from '../media/MediaRestriction';
 import { VideoVideoImage } from './VideoVideoImage';
 
 // video_video type enumNames
@@ -127,7 +126,6 @@ export interface VideoVideo {
    * 1 if  video is being converted
    */
   converting?: 0 | 1;
-  restriction?: MediaRestriction;
   /**
    * 1 if video is added to user's albums
    */

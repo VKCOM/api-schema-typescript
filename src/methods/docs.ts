@@ -71,7 +71,7 @@ export interface DocsEditParams {
   /**
    * Document title.
    */
-  title?: string;
+  title: string;
   /**
    * Document tags.
    */

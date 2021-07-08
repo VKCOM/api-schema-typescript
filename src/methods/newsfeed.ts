@@ -362,11 +362,11 @@ export interface NewsfeedGetSuggestedSourcesResponse {
 
 export interface NewsfeedIgnoreItemParams {
   /**
-   * Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
+   * Item type. Possible values: *'wall' - post on the wall,, *'tag' - tag on a photo,, *'profilephoto' - profile photo,, *'video' - video,, *'audio' - audio.
    */
   type: string;
   /**
-   * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
+   * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' - user , 'owner_id=-1' - community "
    */
   owner_id?: number;
   /**
@@ -490,11 +490,11 @@ export interface NewsfeedSearchExtendedResponse {
 
 export interface NewsfeedUnignoreItemParams {
   /**
-   * Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
+   * Item type. Possible values: *'wall' - post on the wall,, *'tag' - tag on a photo,, *'profilephoto' - profile photo,, *'video' - video,, *'audio' - audio.
    */
   type: string;
   /**
-   * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
+   * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' - user , 'owner_id=-1' - community "
    */
   owner_id: number;
   /**

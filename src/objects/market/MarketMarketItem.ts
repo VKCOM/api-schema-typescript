@@ -51,4 +51,5 @@ export interface MarketMarketItem {
   url?: string;
   variants_grouping_id?: number;
   is_main_variant?: boolean;
+  sku?: string;
 }

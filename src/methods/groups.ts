@@ -152,7 +152,7 @@ export interface GroupsCreateParams {
    */
   description?: string;
   /**
-   * Community type. Possible values: *'group' – group,, *'event' – event,, *'public' – public page
+   * Community type. Possible values: *'group' - group,, *'event' - event,, *'public' - public page
    */
   type?: 'event' | 'group' | 'public';
   /**
@@ -160,7 +160,7 @@ export interface GroupsCreateParams {
    */
   public_category?: number;
   /**
-   * Public page subtype. Possible values: *'1' – place or small business,, *'2' – company, organization or website,, *'3' – famous person or group of people,, *'4' – product or work of art.
+   * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
    */
   subtype?: 1 | 2 | 3 | 4;
 }
@@ -247,7 +247,7 @@ export interface GroupsEditParams {
    */
   screen_name?: string;
   /**
-   * Community type. Possible values: *'0' – open,, *'1' – closed,, *'2' – private.
+   * Community type. Possible values: *'0' - open,, *'1' - closed,, *'2' - private.
    */
   access?: number;
   /**
@@ -255,7 +255,7 @@ export interface GroupsEditParams {
    */
   website?: string;
   /**
-   * Community subject. Possible values: , *'1' – auto/moto,, *'2' – activity holidays,, *'3' – business,, *'4' – pets,, *'5' – health,, *'6' – dating and communication, , *'7' – games,, *'8' – IT (computers and software),, *'9' – cinema,, *'10' – beauty and fashion,, *'11' – cooking,, *'12' – art and culture,, *'13' – literature,, *'14' – mobile services and internet,, *'15' – music,, *'16' – science and technology,, *'17' – real estate,, *'18' – news and media,, *'19' – security,, *'20' – education,, *'21' – home and renovations,, *'22' – politics,, *'23' – food,, *'24' – industry,, *'25' – travel,, *'26' – work,, *'27' – entertainment,, *'28' – religion,, *'29' – family,, *'30' – sports,, *'31' – insurance,, *'32' – television,, *'33' – goods and services,, *'34' – hobbies,, *'35' – finance,, *'36' – photo,, *'37' – esoterics,, *'38' – electronics and appliances,, *'39' – erotic,, *'40' – humor,, *'41' – society, humanities,, *'42' – design and graphics.
+   * Community subject. Possible values: , *'1' - auto/moto,, *'2' - activity holidays,, *'3' - business,, *'4' - pets,, *'5' - health,, *'6' - dating and communication, , *'7' - games,, *'8' - IT (computers and software),, *'9' - cinema,, *'10' - beauty and fashion,, *'11' - cooking,, *'12' - art and culture,, *'13' - literature,, *'14' - mobile services and internet,, *'15' - music,, *'16' - science and technology,, *'17' - real estate,, *'18' - news and media,, *'19' - security,, *'20' - education,, *'21' - home and renovations,, *'22' - politics,, *'23' - food,, *'24' - industry,, *'25' - travel,, *'26' - work,, *'27' - entertainment,, *'28' - religion,, *'29' - family,, *'30' - sports,, *'31' - insurance,, *'32' - television,, *'33' - goods and services,, *'34' - hobbies,, *'35' - finance,, *'36' - photo,, *'37' - esoterics,, *'38' - electronics and appliances,, *'39' - erotic,, *'40' - humor,, *'41' - society, humanities,, *'42' - design and graphics.
    */
   subject?: string;
   /**
@@ -295,47 +295,47 @@ export interface GroupsEditParams {
    */
   public_date?: string;
   /**
-   * Wall settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (groups and events only),, *'3' – closed (groups and events only).
+   * Wall settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (groups and events only),, *'3' - closed (groups and events only).
    */
   wall?: number;
   /**
-   * Board topics settings. Possbile values: , *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Board topics settings. Possbile values: , *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   topics?: number;
   /**
-   * Photos settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Photos settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   photos?: number;
   /**
-   * Video settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Video settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   video?: number;
   /**
-   * Audio settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Audio settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   audio?: number;
   /**
-   * Links settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+   * Links settings (for public pages only). Possible values: *'0' - disabled,, *'1' - enabled.
    */
   links?: 0 | 1;
   /**
-   * Events settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+   * Events settings (for public pages only). Possible values: *'0' - disabled,, *'1' - enabled.
    */
   events?: 0 | 1;
   /**
-   * Places settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+   * Places settings (for public pages only). Possible values: *'0' - disabled,, *'1' - enabled.
    */
   places?: 0 | 1;
   /**
-   * Contacts settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+   * Contacts settings (for public pages only). Possible values: *'0' - disabled,, *'1' - enabled.
    */
   contacts?: 0 | 1;
   /**
-   * Documents settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Documents settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   docs?: number;
   /**
-   * Wiki pages settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+   * Wiki pages settings. Possible values: *'0' - disabled,, *'1' - open,, *'2' - limited (for groups and events only).
    */
   wiki?: number;
   /**
@@ -349,11 +349,11 @@ export interface GroupsEditParams {
    */
   age_limits?: 1 | 2 | 3;
   /**
-   * Market settings. Possible values: *'0' – disabled,, *'1' – enabled.
+   * Market settings. Possible values: *'0' - disabled,, *'1' - enabled.
    */
   market?: 0 | 1;
   /**
-   * market comments settings. Possible values: *'0' – disabled,, *'1' – enabled.
+   * market comments settings. Possible values: *'0' - disabled,, *'1' - enabled.
    */
   market_comments?: 0 | 1;
   /**
@@ -365,7 +365,7 @@ export interface GroupsEditParams {
    */
   market_city?: string;
   /**
-   * Market currency settings. Possbile values: , *'643' – Russian rubles,, *'980' – Ukrainian hryvnia,, *'398' – Kazakh tenge,, *'978' – Euro,, *'840' – US dollars
+   * Market currency settings. Possbile values: , *'643' - Russian rubles,, *'980' - Ukrainian hryvnia,, *'398' - Kazakh tenge,, *'978' - Euro,, *'840' - US dollars
    */
   market_currency?: number;
   /**
@@ -377,11 +377,11 @@ export interface GroupsEditParams {
    */
   market_wiki?: number;
   /**
-   * Obscene expressions filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
+   * Obscene expressions filter in comments. Possible values: , *'0' - disabled,, *'1' - enabled.
    */
   obscene_filter?: 0 | 1;
   /**
-   * Stopwords filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
+   * Stopwords filter in comments. Possible values: , *'0' - disabled,, *'1' - enabled.
    */
   obscene_stopwords?: 0 | 1;
   /**
@@ -768,11 +768,11 @@ export interface GroupsGetCatalogResponse {
 
 export interface GroupsGetCatalogInfoParams {
   /**
-   * 1 – to return communities count and three communities for preview. By default: 0.
+   * 1 - to return communities count and three communities for preview. By default: 0.
    */
   extended?: 0 | 1;
   /**
-   * 1 – to return subcategories info. By default: 0.
+   * 1 - to return subcategories info. By default: 0.
    */
   subcategories?: 0 | 1;
 }
@@ -782,7 +782,7 @@ export interface GroupsGetCatalogInfoResponse {
   /**
    * Information whether catalog is enabled for current user
    */
-  enabled: number;
+  enabled: 0 | 1;
   categories?: GroupsGroupCategory[];
 }
 
@@ -791,7 +791,7 @@ export interface GroupsGetCatalogInfoExtendedResponse {
   /**
    * Information whether catalog is enabled for current user
    */
-  enabled: number;
+  enabled: 0 | 1;
   categories?: GroupsGroupCategoryFull[];
 }
 
@@ -938,7 +938,7 @@ export interface GroupsGetMembersParams {
    */
   fields?: string;
   /**
-   * *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+   * *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
    */
   filter?: 'friends' | 'unsure' | 'managers' | 'donut';
 }
@@ -1866,6 +1866,7 @@ export type GroupsTagUpdateResponse = 0 | 1;
 export interface GroupsToggleMarketParams {
   group_id: number;
   state: 'advanced' | 'basic' | 'none';
+  ref?: string;
 }
 
 // groups.toggleMarket_response

@@ -404,12 +404,16 @@ export type StoriesHideReplyResponse = 1;
 
 export interface StoriesSaveParams {
   upload_results: string;
+  extended?: 0 | 1;
+  fields?: string;
 }
 
 // stories.save_response
 export interface StoriesSaveResponse {
   count: number;
   items: StoriesStory[];
+  profiles?: UsersUser[];
+  groups?: GroupsGroup[];
 }
 
 /**

@@ -14,6 +14,22 @@ import { WallWallpost } from './WallWallpost';
 import { WallWallpostAttachment } from './WallWallpostAttachment';
 import { WallWallpostDonut } from './WallWallpostDonut';
 
+// wall_wallpost_full topic_id enumNames
+export const WallWallpostFullTopicIdEnumNames = {
+  EMPTY_TOPIC: 0,
+  ART: 1,
+  IT: 7,
+  GAMES: 12,
+  MUSIC: 16,
+  PHOTO: 19,
+  SCIENCE_AND_TECH: 21,
+  SPORT: 23,
+  TRAVEL: 25,
+  TV_AND_CINEMA: 26,
+  HUMOR: 32,
+  FASHION: 43,
+} as const;
+
 // wall_wallpost_full
 export interface WallWallpostFull {
   /**
@@ -113,6 +129,23 @@ export interface WallWallpostFull {
    * Information whether the post is marked as ads
    */
   marked_as_ads?: 0 | 1;
+  /**
+   * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+   *
+   * `0` — empty_topic
+   * `1` — art
+   * `7` — it
+   * `12` — games
+   * `16` — music
+   * `19` — photo
+   * `21` — science_and_tech
+   * `23` — sport
+   * `25` — travel
+   * `26` — tv_and_cinema
+   * `32` — humor
+   * `43` — fashion
+   */
+  topic_id?: 0 | 1 | 7 | 12 | 16 | 19 | 21 | 23 | 25 | 26 | 32 | 43;
   /**
    * Preview length control parameter
    */

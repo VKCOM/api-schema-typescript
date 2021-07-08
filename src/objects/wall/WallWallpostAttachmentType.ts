@@ -21,4 +21,7 @@ export enum WallWallpostAttachmentType {
   MARKET = 'market',
   EVENT = 'event',
   DONUT_LINK = 'donut_link',
+  ARTICLE = 'article',
+  TEXTLIVE = 'textlive',
+  TEXTPOST = 'textpost',
 }

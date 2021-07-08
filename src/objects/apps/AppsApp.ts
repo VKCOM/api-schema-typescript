@@ -53,10 +53,6 @@ export interface AppsApp {
    */
   icon_75?: string;
   /**
-   * If app need policy and terms confirmation
-   */
-  need_policy_confirmation?: boolean;
-  /**
    * Application author's URL
    */
   author_url?: string;
