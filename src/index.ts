@@ -1957,14 +1957,14 @@ export {
 } from './objects/groups/GroupsGroupFullAgeLimits';
 
 export {
-  GroupsGroupFullMainSection,
-  GroupsGroupFullMainSectionEnumNames,
-} from './objects/groups/GroupsGroupFullMainSection';
-
-export {
   GroupsGroupFullMemberStatus,
   GroupsGroupFullMemberStatusEnumNames,
 } from './objects/groups/GroupsGroupFullMemberStatus';
+
+export {
+  GroupsGroupFullSection,
+  GroupsGroupFullSectionEnumNames,
+} from './objects/groups/GroupsGroupFullSection';
 
 export {
   GroupsGroupIsClosed,

@@ -13,8 +13,8 @@ import { GroupsCover } from './GroupsCover';
 import { GroupsGroupAdminLevel } from './GroupsGroupAdminLevel';
 import { GroupsGroupBanInfo } from './GroupsGroupBanInfo';
 import { GroupsGroupFullAgeLimits } from './GroupsGroupFullAgeLimits';
-import { GroupsGroupFullMainSection } from './GroupsGroupFullMainSection';
 import { GroupsGroupFullMemberStatus } from './GroupsGroupFullMemberStatus';
+import { GroupsGroupFullSection } from './GroupsGroupFullSection';
 import { GroupsGroupIsClosed } from './GroupsGroupIsClosed';
 import { GroupsGroupType } from './GroupsGroupType';
 import { GroupsLinksItem } from './GroupsLinksItem';
@@ -205,8 +205,8 @@ export interface GroupsGroupFull {
    * Community's website
    */
   site?: string;
-  main_section?: GroupsGroupFullMainSection;
-  secondary_section?: number;
+  main_section?: GroupsGroupFullSection;
+  secondary_section?: GroupsGroupFullSection;
   /**
    * Information whether the community has a "fire" pictogram.
    */

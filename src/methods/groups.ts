@@ -14,7 +14,7 @@ import { GroupsGroupCategory } from '../objects/groups/GroupsGroupCategory';
 import { GroupsGroupCategoryFull } from '../objects/groups/GroupsGroupCategoryFull';
 import { GroupsGroupDocs } from '../objects/groups/GroupsGroupDocs';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
-import { GroupsGroupFullMainSection } from '../objects/groups/GroupsGroupFullMainSection';
+import { GroupsGroupFullSection } from '../objects/groups/GroupsGroupFullSection';
 import { GroupsGroupLink } from '../objects/groups/GroupsGroupLink';
 import { GroupsGroupPhotos } from '../objects/groups/GroupsGroupPhotos';
 import { GroupsGroupPublicCategoryList } from '../objects/groups/GroupsGroupPublicCategoryList';
@@ -1057,8 +1057,8 @@ export interface GroupsGetSettingsResponse {
   contacts?: 0 | 1;
   links?: 0 | 1;
   sections_list?: GroupsSectionsListItem[];
-  main_section?: GroupsGroupFullMainSection;
-  secondary_section?: number;
+  main_section?: GroupsGroupFullSection;
+  secondary_section?: GroupsGroupFullSection;
   age_limits?: GroupsGroupAgeLimits;
   /**
    * Country id of group

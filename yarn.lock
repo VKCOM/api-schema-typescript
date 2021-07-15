@@ -10,9 +10,9 @@
     arg "^4.1.3"
     chalk "4.1.0"
 
-"@vkontakte/api-schema@https://github.com/VKCOM/vk-api-schema.git#v5.131.89":
-  version "5.131.89"
-  resolved "https://github.com/VKCOM/vk-api-schema.git#0ef0732ae203ebddd448f70f71658228d9a9e4eb"
+"@vkontakte/api-schema@https://github.com/VKCOM/vk-api-schema.git#v5.131.90":
+  version "5.131.90"
+  resolved "https://github.com/VKCOM/vk-api-schema.git#a7cb054146c0c49e89851d5cc5bb708629699d80"
 
 ansi-styles@^4.1.0:
   version "4.3.0"

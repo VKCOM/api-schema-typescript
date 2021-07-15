@@ -8,7 +8,7 @@ import { PollsFriend } from './PollsFriend';
 
 // polls_poll
 export interface PollsPoll {
-  anonymous: boolean;
+  anonymous?: boolean;
   friends?: PollsFriend[];
   /**
    * Information whether the poll with multiple choices
