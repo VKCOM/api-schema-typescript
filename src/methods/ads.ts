@@ -39,8 +39,6 @@ export interface AdsAddOfficeUsersParams {
   account_id: number;
   /**
    * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-   *
-   * objects.json#/definitions/ads_user_specification_cutted
    */
   data: string;
 }
@@ -326,14 +324,6 @@ export interface AdsGetAdsLayoutParams {
    */
   account_id: number;
   /**
-   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
-   */
-  ad_ids?: string;
-  /**
-   * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
-   */
-  campaign_ids?: string;
-  /**
    * 'For advertising agencies.' ID of the client ads are retrieved from.
    */
   client_id?: number;
@@ -341,6 +331,18 @@ export interface AdsGetAdsLayoutParams {
    * Flag that specifies whether archived ads shall be shown. *0 — show only active ads,, *1 — show all ads.
    */
   include_deleted?: 0 | 1;
+  /**
+   * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
+   */
+  only_deleted?: 0 | 1;
+  /**
+   * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
+   */
+  campaign_ids?: string;
+  /**
+   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
+   */
+  ad_ids?: string;
   /**
    * Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
    */
@@ -970,8 +972,6 @@ export interface AdsUpdateOfficeUsersParams {
   account_id: number;
   /**
    * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-   *
-   * objects.json#/definitions/ads_user_specification
    */
   data: string;
 }

@@ -2,6 +2,7 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { SecureGiveEventStickerItem } from '../objects/secure/SecureGiveEventStickerItem';
 import { SecureLevel } from '../objects/secure/SecureLevel';
 import { SecureSmsNotification } from '../objects/secure/SecureSmsNotification';
 import { SecureTokenChecked } from '../objects/secure/SecureTokenChecked';
@@ -130,7 +131,7 @@ export interface SecureGiveEventStickerParams {
 }
 
 // secure.giveEventSticker_response
-export type SecureGiveEventStickerResponse = {}[];
+export type SecureGiveEventStickerResponse = SecureGiveEventStickerItem[];
 
 /**
  * secure.sendNotification

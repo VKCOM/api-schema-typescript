@@ -66,4 +66,20 @@ export interface PagesWikipageFull {
    * View settings of the page
    */
   who_can_view: PagesPrivacySettings;
+  /**
+   * URL
+   */
+  url?: string;
+  /**
+   * Parent
+   */
+  parent?: string;
+  /**
+   * Parent2
+   */
+  parent2?: string;
+  /**
+   * Owner ID
+   */
+  owner_id?: number;
 }

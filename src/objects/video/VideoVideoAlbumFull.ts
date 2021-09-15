@@ -7,13 +7,21 @@ import { VideoVideoImage } from './VideoVideoImage';
 // video_video_album_full
 export interface VideoVideoAlbumFull {
   /**
+   * Album ID
+   */
+  id: number;
+  /**
+   * Album owner's ID
+   */
+  owner_id: number;
+  /**
+   * Album title
+   */
+  title: string;
+  /**
    * Total number of videos in album
    */
   count: number;
-  /**
-   * Album ID
-   */
-  id?: number;
   /**
    * Album cover image in different sizes
    */
@@ -26,14 +34,6 @@ export interface VideoVideoAlbumFull {
    * Information whether album is system
    */
   is_system?: 1;
-  /**
-   * Album owner's ID
-   */
-  owner_id: number;
-  /**
-   * Album title
-   */
-  title: string;
   /**
    * Date when the album has been updated last time in Unixtime
    */

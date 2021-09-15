@@ -403,4 +403,11 @@ export interface UsersUserFull {
    * Access to user profile is restricted for search engines
    */
   is_no_index?: boolean;
+  /**
+   * Contact person ID
+   */
+  contact_id?: number;
+  is_message_request?: boolean;
+  descriptions?: string[];
+  lists?: number[];
 }

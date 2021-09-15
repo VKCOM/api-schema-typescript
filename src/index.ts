@@ -517,6 +517,23 @@ export {
 } from './methods/groups';
 
 export {
+  LeadFormsCreateParams,
+  LeadFormsCreateResponse,
+  LeadFormsDeleteParams,
+  LeadFormsDeleteResponse,
+  LeadFormsGetLeadsParams,
+  LeadFormsGetLeadsResponse,
+  LeadFormsGetParams,
+  LeadFormsGetResponse,
+  LeadFormsGetUploadURLParams,
+  LeadFormsGetUploadURLResponse,
+  LeadFormsListParams,
+  LeadFormsListResponse,
+  LeadFormsUpdateParams,
+  LeadFormsUpdateResponse,
+} from './methods/leadForms';
+
+export {
   LikesAddParams,
   LikesAddResponse,
   LikesDeleteParams,
@@ -1263,10 +1280,6 @@ export {
 } from './objects/ads/AdsAccessRole';
 
 export {
-  AdsAccessRolePublic,
-} from './objects/ads/AdsAccessRolePublic';
-
-export {
   AdsAccount,
 } from './objects/ads/AdsAccount';
 
@@ -1444,14 +1457,6 @@ export {
 } from './objects/ads/AdsUsers';
 
 export {
-  AdsUserSpecification,
-} from './objects/ads/AdsUserSpecification';
-
-export {
-  AdsUserSpecificationCutted,
-} from './objects/ads/AdsUserSpecificationCutted';
-
-export {
   AdswebGetAdCategoriesResponseCategoriesCategory,
 } from './objects/adsweb/AdswebGetAdCategoriesResponseCategoriesCategory';
 
@@ -1599,6 +1604,10 @@ export {
 export {
   BaseLinkRating,
 } from './objects/base/BaseLinkRating';
+
+export {
+  BaseMessageError,
+} from './objects/base/BaseMessageError';
 
 export {
   BaseObject,
@@ -1816,10 +1825,6 @@ export {
 } from './objects/friends/FriendsRequestsXtrMessage';
 
 export {
-  FriendsUserXtrLists,
-} from './objects/friends/FriendsUserXtrLists';
-
-export {
   FriendsUserXtrPhone,
 } from './objects/friends/FriendsUserXtrPhone';
 
@@ -1972,10 +1977,6 @@ export {
 } from './objects/groups/GroupsGroupIsClosed';
 
 export {
-  GroupsGroupLink,
-} from './objects/groups/GroupsGroupLink';
-
-export {
   GroupsGroupPhotos,
   GroupsGroupPhotosEnumNames,
 } from './objects/groups/GroupsGroupPhotos';
@@ -2082,6 +2083,10 @@ export {
 } from './objects/groups/GroupsOwnerXtrBanInfoType';
 
 export {
+  GroupsPhotoSize,
+} from './objects/groups/GroupsPhotoSize';
+
+export {
   GroupsRoleOptions,
 } from './objects/groups/GroupsRoleOptions';
 
@@ -2104,6 +2109,30 @@ export {
 export {
   GroupsUserXtrRole,
 } from './objects/groups/GroupsUserXtrRole';
+
+export {
+  LeadFormsAnswer,
+} from './objects/leadForms/LeadFormsAnswer';
+
+export {
+  LeadFormsAnswerItem,
+} from './objects/leadForms/LeadFormsAnswerItem';
+
+export {
+  LeadFormsForm,
+} from './objects/leadForms/LeadFormsForm';
+
+export {
+  LeadFormsLead,
+} from './objects/leadForms/LeadFormsLead';
+
+export {
+  LeadFormsQuestionItem,
+} from './objects/leadForms/LeadFormsQuestionItem';
+
+export {
+  LeadFormsQuestionItemOption,
+} from './objects/leadForms/LeadFormsQuestionItemOption';
 
 export {
   LinkTargetObject,
@@ -2232,6 +2261,14 @@ export {
 } from './objects/messages/MessagesForeignMessage';
 
 export {
+  MessagesGetConversationById,
+} from './objects/messages/MessagesGetConversationById';
+
+export {
+  MessagesGetConversationByIdExtended,
+} from './objects/messages/MessagesGetConversationByIdExtended';
+
+export {
   MessagesGraffiti,
 } from './objects/messages/MessagesGraffiti';
 
@@ -2314,6 +2351,10 @@ export {
 export {
   MessagesPushSettings,
 } from './objects/messages/MessagesPushSettings';
+
+export {
+  MessagesSendUserIdsResponseItem,
+} from './objects/messages/MessagesSendUserIdsResponseItem';
 
 export {
   MessagesTemplateActionTypeNames,
@@ -2523,10 +2564,6 @@ export {
 } from './objects/pages/PagesWikipageHistory';
 
 export {
-  PhotosCommentXtrPid,
-} from './objects/photos/PhotosCommentXtrPid';
-
-export {
   PhotosImage,
 } from './objects/photos/PhotosImage';
 
@@ -2625,6 +2662,10 @@ export {
 export {
   SearchHintType,
 } from './objects/search/SearchHintType';
+
+export {
+  SecureGiveEventStickerItem,
+} from './objects/secure/SecureGiveEventStickerItem';
 
 export {
   SecureLevel,

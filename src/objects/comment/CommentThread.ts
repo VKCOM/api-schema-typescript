@@ -7,20 +7,20 @@ import { WallWallComment } from '../wall/WallWallComment';
 // comment_thread
 export interface CommentThread {
   /**
+   * Comments number
+   */
+  count: number;
+  items?: WallWallComment[];
+  /**
    * Information whether current user can comment the post
    */
   can_post?: boolean;
   /**
-   * Comments number
+   * Information whether recommended to display reply button
    */
-  count: number;
+  show_reply_button?: boolean;
   /**
    * Information whether groups can comment the post
    */
   groups_can_post?: boolean;
-  items?: WallWallComment[];
-  /**
-   * Information whether recommended to display reply button
-   */
-  show_reply_button?: boolean;
 }

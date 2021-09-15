@@ -3,6 +3,7 @@
  */
 
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
+import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserMin } from '../objects/users/UsersUserMin';
 import { VideoSaveResult } from '../objects/video/VideoSaveResult';
 import { VideoVideo } from '../objects/video/VideoVideo';
@@ -716,6 +717,7 @@ export interface VideoSearchParams {
    * '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
    */
   adult?: 0 | 1;
+  live?: 0 | 1;
   /**
    * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
    */
@@ -750,6 +752,6 @@ export interface VideoSearchExtendedResponse {
    */
   count: number;
   items: VideoVideoFull[];
-  profiles: UsersUserMin[];
+  profiles: UsersUser[];
   groups: GroupsGroupFull[];
 }

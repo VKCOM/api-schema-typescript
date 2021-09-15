@@ -9,7 +9,7 @@ import { AccountOffer } from '../objects/account/AccountOffer';
 import { AccountPushSettings } from '../objects/account/AccountPushSettings';
 import { AccountUserSettings } from '../objects/account/AccountUserSettings';
 import { GroupsGroup } from '../objects/groups/GroupsGroup';
-import { UsersUserMin } from '../objects/users/UsersUserMin';
+import { UsersUserFull } from '../objects/users/UsersUserFull';
 
 /**
  * account.ban
@@ -122,7 +122,7 @@ export interface AccountGetBannedResponse {
    */
   count: number;
   items: number[];
-  profiles?: UsersUserMin[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroup[];
 }
 

@@ -5,7 +5,6 @@
 import { BaseImage } from '../objects/base/BaseImage';
 import { BaseUploadServer } from '../objects/base/BaseUploadServer';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
-import { PhotosCommentXtrPid } from '../objects/photos/PhotosCommentXtrPid';
 import { PhotosPhoto } from '../objects/photos/PhotosPhoto';
 import { PhotosPhotoAlbumFull } from '../objects/photos/PhotosPhotoAlbumFull';
 import { PhotosPhotoFull } from '../objects/photos/PhotosPhotoFull';
@@ -507,7 +506,7 @@ export interface PhotosGetAllCommentsResponse {
    * Total number
    */
   count?: number;
-  items?: PhotosCommentXtrPid[];
+  items?: WallWallComment[];
 }
 
 /**
@@ -1266,7 +1265,9 @@ export interface PhotosSaveOwnerCoverPhotoParams {
 }
 
 // photos.saveOwnerCoverPhoto_response
-export type PhotosSaveOwnerCoverPhotoResponse = BaseImage[];
+export interface PhotosSaveOwnerCoverPhotoResponse {
+  images?: BaseImage[];
+}
 
 /**
  * photos.saveOwnerPhoto

@@ -142,8 +142,8 @@ export interface NewsfeedGetBannedResponse {
 
 // newsfeed.getBanned_extendedResponse
 export interface NewsfeedGetBannedExtendedResponse {
-  groups?: UsersUserFull[];
-  profiles?: GroupsGroupFull[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**

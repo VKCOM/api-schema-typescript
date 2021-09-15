@@ -6,6 +6,7 @@ import { AudioAudio } from '../audio/AudioAudio';
 import { BaseCountry } from '../base/BaseCountry';
 import { BaseCropPhoto } from '../base/BaseCropPhoto';
 import { BaseObject } from '../base/BaseObject';
+import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { GroupsAddressesInfo } from './GroupsAddressesInfo';
 import { GroupsContactsItem } from './GroupsContactsItem';
 import { GroupsCountersGroup } from './GroupsCountersGroup';
@@ -21,6 +22,7 @@ import { GroupsLinksItem } from './GroupsLinksItem';
 import { GroupsLiveCovers } from './GroupsLiveCovers';
 import { GroupsMarketInfo } from './GroupsMarketInfo';
 import { GroupsOnlineStatus } from './GroupsOnlineStatus';
+import { GroupsPhotoSize } from './GroupsPhotoSize';
 
 // groups_group_full wall enumNames
 export const GroupsGroupFullWallEnumNames = {
@@ -83,6 +85,37 @@ export interface GroupsGroupFull {
    * URL of square photo of the community with 200 pixels in width
    */
   photo_200?: string;
+  /**
+   * URL of square photo of the community with 200 pixels in width original
+   */
+  photo_200_orig?: string;
+  /**
+   * URL of square photo of the community with 400 pixels in width
+   */
+  photo_400?: string;
+  /**
+   * URL of square photo of the community with 400 pixels in width original
+   */
+  photo_400_orig?: string;
+  /**
+   * URL of square photo of the community with max pixels in width
+   */
+  photo_max?: string;
+  /**
+   * URL of square photo of the community with max pixels in width original
+   */
+  photo_max_orig?: string;
+  /**
+   * Established date
+   */
+  est_date?: string;
+  /**
+   * Public date label
+   */
+  public_date_label?: string;
+  photo_max_size?: GroupsPhotoSize;
+  is_video_live_notifications_blocked?: 0 | 1;
+  video_live?: VideoLiveInfo;
   market?: GroupsMarketInfo;
   /**
    * Current user's member status

@@ -47,11 +47,11 @@ export interface GroupsLongPollEvents {
   wall_reply_new: 0 | 1;
   wall_reply_restore: 0 | 1;
   wall_repost: 0 | 1;
-  donut_subscription_create?: 0 | 1;
-  donut_subscription_prolonged?: 0 | 1;
-  donut_subscription_cancelled?: 0 | 1;
-  donut_subscription_expired?: 0 | 1;
-  donut_subscription_price_changed?: 0 | 1;
-  donut_money_withdraw?: 0 | 1;
-  donut_money_withdraw_error?: 0 | 1;
+  donut_subscription_create: 0 | 1;
+  donut_subscription_prolonged: 0 | 1;
+  donut_subscription_cancelled: 0 | 1;
+  donut_subscription_expired: 0 | 1;
+  donut_subscription_price_changed: 0 | 1;
+  donut_money_withdraw: 0 | 1;
+  donut_money_withdraw_error: 0 | 1;
 }

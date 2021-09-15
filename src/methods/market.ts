@@ -404,6 +404,14 @@ export interface MarketGetParams {
    * Items update date to (format: yyyy-mm-dd)
    */
   date_to?: string;
+  /**
+   * Add variants to response if exist
+   */
+  need_variants?: 0 | 1;
+  /**
+   * Add disabled items to response
+   */
+  with_disabled?: 0 | 1;
 }
 
 // market.get_response
@@ -413,6 +421,7 @@ export interface MarketGetResponse {
    */
   count?: number;
   items?: MarketMarketItem[];
+  variants?: MarketMarketItem[];
 }
 
 // market.get_extendedResponse
@@ -422,6 +431,7 @@ export interface MarketGetExtendedResponse {
    */
   count?: number;
   items?: MarketMarketItemFull[];
+  variants?: MarketMarketItemFull[];
 }
 
 /**
@@ -905,6 +915,10 @@ export interface MarketSearchParams {
    */
   extended?: 0 | 1;
   status?: 0 | 2;
+  /**
+   * Add variants to response if exist
+   */
+  need_variants?: 0 | 1;
 }
 
 // market.search_response
@@ -915,6 +929,7 @@ export interface MarketSearchResponse {
   count: number;
   view_type: MarketServicesViewType;
   items: MarketMarketItem[];
+  variants?: MarketMarketItem[];
 }
 
 // market.search_extendedResponse
@@ -925,4 +940,5 @@ export interface MarketSearchExtendedResponse {
   count: number;
   view_type: MarketServicesViewType;
   items: MarketMarketItemFull[];
+  variants?: MarketMarketItemFull[];
 }

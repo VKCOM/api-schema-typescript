@@ -3,9 +3,14 @@
  */
 
 import { MarketCurrency } from '../market/MarketCurrency';
+import { MarketPrice } from '../market/MarketPrice';
 
 // groups_market_info
 export interface GroupsMarketInfo {
+  /**
+   * Market type
+   */
+  type?: string;
   /**
    * Contact person ID
    */
@@ -31,4 +36,5 @@ export interface GroupsMarketInfo {
    * Minimum price
    */
   price_min?: string;
+  min_order_price?: MarketPrice;
 }

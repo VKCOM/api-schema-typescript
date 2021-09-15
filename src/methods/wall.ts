@@ -439,17 +439,18 @@ export interface WallGetCommentsResponse {
   count: number;
   items: WallWallComment[];
   /**
+   * Count of replies of current level
+   */
+  current_level_count?: number;
+  /**
    * Information whether current user can comment the post
    */
   can_post?: boolean;
+  show_reply_button?: boolean;
   /**
    * Information whether groups can comment the post
    */
   groups_can_post?: boolean;
-  /**
-   * Count of replies of current level
-   */
-  current_level_count?: number;
 }
 
 // wall.getComments_extendedResponse
@@ -459,21 +460,21 @@ export interface WallGetCommentsExtendedResponse {
    */
   count: number;
   items: WallWallComment[];
-  show_reply_button?: boolean;
-  /**
-   * Information whether current user can comment the post
-   */
-  can_post?: boolean;
-  /**
-   * Information whether groups can comment the post
-   */
-  groups_can_post?: boolean;
+  profiles: UsersUser[];
+  groups: GroupsGroup[];
   /**
    * Count of replies of current level
    */
   current_level_count?: number;
-  profiles: UsersUser[];
-  groups: GroupsGroup[];
+  /**
+   * Information whether current user can comment the post
+   */
+  can_post?: boolean;
+  show_reply_button?: boolean;
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: boolean;
 }
 
 /**

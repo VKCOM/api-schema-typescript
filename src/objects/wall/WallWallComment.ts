@@ -9,40 +9,47 @@ import { WallWallCommentDonut } from './WallWallCommentDonut';
 
 // wall_wall_comment
 export interface WallWallComment {
-  attachments?: WallCommentAttachment[];
-  /**
-   * Date when the comment has been added in Unixtime
-   */
-  date: number;
-  donut?: WallWallCommentDonut;
-  /**
-   * Author ID
-   */
-  from_id: number;
   /**
    * Comment ID
    */
   id: number;
+  /**
+   * Author ID
+   */
+  from_id: number;
+  can_edit?: 0 | 1;
+  post_id?: number;
+  owner_id?: number;
+  parents_stack?: number[];
+  photo_id?: number;
+  video_id?: number;
+  /**
+   * Date when the comment has been added in Unixtime
+   */
+  date: number;
+  /**
+   * Comment text
+   */
+  text: string;
+  attachments?: WallCommentAttachment[];
+  donut?: WallWallCommentDonut;
   likes?: BaseLikesInfo;
   /**
    * Real position of the comment
    */
   real_offset?: number;
   /**
-   * Replied comment ID
-   */
-  reply_to_comment?: number;
-  /**
    * Replied user ID
    */
   reply_to_user?: number;
   /**
-   * Comment text
+   * Replied comment ID
    */
-  text: string;
+  reply_to_comment?: number;
   thread?: CommentThread;
-  post_id?: number;
-  owner_id?: number;
-  parents_stack?: number[];
   deleted?: boolean;
+  /**
+   * Photo ID
+   */
+  pid?: number;
 }

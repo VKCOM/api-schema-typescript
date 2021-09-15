@@ -2,9 +2,11 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { GroupsGroupAdminLevel } from './GroupsGroupAdminLevel';
 import { GroupsGroupIsClosed } from './GroupsGroupIsClosed';
 import { GroupsGroupType } from './GroupsGroupType';
+import { GroupsPhotoSize } from './GroupsPhotoSize';
 
 // groups_group
 export interface GroupsGroup {
@@ -59,4 +61,35 @@ export interface GroupsGroup {
    * URL of square photo of the community with 200 pixels in width
    */
   photo_200?: string;
+  /**
+   * URL of square photo of the community with 200 pixels in width original
+   */
+  photo_200_orig?: string;
+  /**
+   * URL of square photo of the community with 400 pixels in width
+   */
+  photo_400?: string;
+  /**
+   * URL of square photo of the community with 400 pixels in width original
+   */
+  photo_400_orig?: string;
+  /**
+   * URL of square photo of the community with max pixels in width
+   */
+  photo_max?: string;
+  /**
+   * URL of square photo of the community with max pixels in width original
+   */
+  photo_max_orig?: string;
+  /**
+   * Established date
+   */
+  est_date?: string;
+  /**
+   * Public date label
+   */
+  public_date_label?: string;
+  photo_max_size?: GroupsPhotoSize;
+  is_video_live_notifications_blocked?: 0 | 1;
+  video_live?: VideoLiveInfo;
 }

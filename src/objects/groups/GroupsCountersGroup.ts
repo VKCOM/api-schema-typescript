@@ -40,4 +40,28 @@ export interface GroupsCountersGroup {
    * Videos number
    */
   videos?: number;
+  /**
+   * Market services number
+   */
+  market_services?: number;
+  /**
+   * Podcasts number
+   */
+  podcasts?: number;
+  /**
+   * Articles number
+   */
+  articles?: number;
+  /**
+   * Narratives number
+   */
+  narratives?: number;
+  /**
+   * Clips number
+   */
+  clips?: number;
+  /**
+   * Clips followers number
+   */
+  clips_followers?: number;
 }

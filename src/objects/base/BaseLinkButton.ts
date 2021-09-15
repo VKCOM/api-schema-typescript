@@ -28,6 +28,10 @@ export interface BaseLinkButton {
    */
   curator_id?: number;
   /**
+   * Video album id
+   */
+  album_id?: number;
+  /**
    * Owner id
    */
   owner_id?: number;

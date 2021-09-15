@@ -22,6 +22,14 @@ export interface MarketMarketAlbum {
    * Items number
    */
   count: number;
+  /**
+   * Is album main for owner
+   */
+  is_main?: boolean;
+  /**
+   * Is album hidden
+   */
+  is_hidden?: boolean;
   photo?: PhotosPhoto;
   /**
    * Date when album has been updated last time in Unixtime

@@ -5,6 +5,10 @@
 // groups_links_item
 export interface GroupsLinksItem {
   /**
+   * Link title
+   */
+  name?: string;
+  /**
    * Link description
    */
   desc?: string;
@@ -17,10 +21,6 @@ export interface GroupsLinksItem {
    */
   id?: number;
   /**
-   * Link title
-   */
-  name?: string;
-  /**
    * URL of square image of the link with 100 pixels in width
    */
   photo_100?: string;
@@ -32,4 +32,8 @@ export interface GroupsLinksItem {
    * Link URL
    */
   url?: string;
+  /**
+   * Information whether the image on processing
+   */
+  image_processing?: 0 | 1;
 }

@@ -15,7 +15,6 @@ import { GroupsGroupCategoryFull } from '../objects/groups/GroupsGroupCategoryFu
 import { GroupsGroupDocs } from '../objects/groups/GroupsGroupDocs';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { GroupsGroupFullSection } from '../objects/groups/GroupsGroupFullSection';
-import { GroupsGroupLink } from '../objects/groups/GroupsGroupLink';
 import { GroupsGroupPhotos } from '../objects/groups/GroupsGroupPhotos';
 import { GroupsGroupPublicCategoryList } from '../objects/groups/GroupsGroupPublicCategoryList';
 import { GroupsGroupSuggestedPrivacy } from '../objects/groups/GroupsGroupSuggestedPrivacy';
@@ -24,6 +23,7 @@ import { GroupsGroupTopics } from '../objects/groups/GroupsGroupTopics';
 import { GroupsGroupVideo } from '../objects/groups/GroupsGroupVideo';
 import { GroupsGroupWall } from '../objects/groups/GroupsGroupWall';
 import { GroupsGroupWiki } from '../objects/groups/GroupsGroupWiki';
+import { GroupsLinksItem } from '../objects/groups/GroupsLinksItem';
 import { GroupsLongPollServer } from '../objects/groups/GroupsLongPollServer';
 import { GroupsLongPollSettings } from '../objects/groups/GroupsLongPollSettings';
 import { GroupsMemberRole } from '../objects/groups/GroupsMemberRole';
@@ -98,7 +98,7 @@ export interface GroupsAddLinkParams {
 }
 
 // groups.addLink_response
-export type GroupsAddLinkResponse = GroupsGroupLink;
+export type GroupsAddLinkResponse = GroupsLinksItem;
 
 /**
  * groups.approveRequest
@@ -159,6 +159,10 @@ export interface GroupsCreateParams {
    * Category ID (for 'type' = 'public' only).
    */
   public_category?: number;
+  /**
+   * Public page subcategory ID.
+   */
+  public_subcategory?: number;
   /**
    * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
    */

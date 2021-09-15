@@ -10,6 +10,8 @@ import { MessagesChatRestrictions } from '../objects/messages/MessagesChatRestri
 import { MessagesConversation } from '../objects/messages/MessagesConversation';
 import { MessagesConversationMember } from '../objects/messages/MessagesConversationMember';
 import { MessagesConversationWithMessage } from '../objects/messages/MessagesConversationWithMessage';
+import { MessagesGetConversationById } from '../objects/messages/MessagesGetConversationById';
+import { MessagesGetConversationByIdExtended } from '../objects/messages/MessagesGetConversationByIdExtended';
 import { MessagesHistoryAttachment } from '../objects/messages/MessagesHistoryAttachment';
 import { MessagesLastActivity } from '../objects/messages/MessagesLastActivity';
 import { MessagesLongpollMessages } from '../objects/messages/MessagesLongpollMessages';
@@ -17,6 +19,7 @@ import { MessagesLongpollParams } from '../objects/messages/MessagesLongpollPara
 import { MessagesMessage } from '../objects/messages/MessagesMessage';
 import { MessagesMessagesArray } from '../objects/messages/MessagesMessagesArray';
 import { MessagesPinnedMessage } from '../objects/messages/MessagesPinnedMessage';
+import { MessagesSendUserIdsResponseItem } from '../objects/messages/MessagesSendUserIdsResponseItem';
 import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 
@@ -422,7 +425,7 @@ export interface MessagesGetConversationsParams {
   /**
    * Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
    */
-  filter?: 'all' | 'important' | 'unanswered' | 'unread';
+  filter?: 'all' | 'archive' | 'important' | 'unanswered' | 'unread';
   /**
    * '1' — return extra information about users and communities
    */
@@ -486,24 +489,10 @@ export interface MessagesGetConversationsByIdParams {
 }
 
 // messages.getConversationsById_response
-export interface MessagesGetConversationsByIdResponse {
-  /**
-   * Total number
-   */
-  count: number;
-  items: MessagesConversation[];
-}
+export type MessagesGetConversationsByIdResponse = MessagesGetConversationById;
 
 // messages.getConversationsById_extendedResponse
-export interface MessagesGetConversationsByIdExtendedResponse {
-  /**
-   * Total number
-   */
-  count: number;
-  items: MessagesConversation[];
-  profiles?: UsersUserFull[];
-  groups?: GroupsGroupFull[];
-}
+export type MessagesGetConversationsByIdExtendedResponse = MessagesGetConversationByIdExtended;
 
 /**
  * messages.getHistory
@@ -1230,7 +1219,7 @@ export interface MessagesSendParams {
 export type MessagesSendResponse = number;
 
 // messages.send_userIdsResponse
-export type MessagesSendUserIdsResponse = {}[];
+export type MessagesSendUserIdsResponse = MessagesSendUserIdsResponseItem[];
 
 /**
  * messages.sendMessageEventAnswer

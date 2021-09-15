@@ -17,6 +17,7 @@ export interface WallWallpost {
    * Access key to private object
    */
   access_key?: string;
+  is_deleted?: boolean;
   attachments?: WallWallpostAttachment[];
   /**
    * Information about the source of the post

@@ -8,7 +8,6 @@ import { FriendsFriendStatus } from '../objects/friends/FriendsFriendStatus';
 import { FriendsMutualFriend } from '../objects/friends/FriendsMutualFriend';
 import { FriendsRequests } from '../objects/friends/FriendsRequests';
 import { FriendsRequestsXtrMessage } from '../objects/friends/FriendsRequestsXtrMessage';
-import { FriendsUserXtrLists } from '../objects/friends/FriendsUserXtrLists';
 import { FriendsUserXtrPhone } from '../objects/friends/FriendsUserXtrPhone';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 
@@ -296,7 +295,7 @@ export interface FriendsGetFieldsResponse {
    * Total friends number
    */
   count: number;
-  items: FriendsUserXtrLists[];
+  items: UsersUserFull[];
 }
 
 /**

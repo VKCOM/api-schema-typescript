@@ -78,7 +78,7 @@ export interface OrdersGetAmountParams {
 }
 
 // orders.getAmount_response
-export type OrdersGetAmountResponse = OrdersAmount;
+export type OrdersGetAmountResponse = OrdersAmount[];
 
 /**
  * orders.getById

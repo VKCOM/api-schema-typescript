@@ -40,6 +40,7 @@ export interface WallWallpostFull {
    * Access key to private object
    */
   access_key?: string;
+  is_deleted?: boolean;
   attachments?: WallWallpostAttachment[];
   /**
    * Information about the source of the post
@@ -150,4 +151,8 @@ export interface WallWallpostFull {
    * Preview length control parameter
    */
   short_text_rate?: number;
+  /**
+   * Hash for sharing
+   */
+  hash?: string;
 }

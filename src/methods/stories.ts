@@ -73,7 +73,7 @@ export interface StoriesGetParams {
 export interface StoriesGetResponse {
   count: number;
   items: StoriesFeedItem[];
-  profiles?: UsersUser[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroup[];
   need_upload_screen?: boolean;
 }
@@ -241,7 +241,7 @@ export interface StoriesGetRepliesParams {
 export interface StoriesGetRepliesResponse {
   count: number;
   items: StoriesFeedItem[];
-  profiles?: UsersUser[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroup[];
   need_upload_screen?: boolean;
 }
@@ -349,6 +349,7 @@ export interface StoriesGetViewersResponse {
   count: number;
   items: StoriesViewersItem[];
   hidden_reason?: string;
+  next_from?: string;
 }
 
 // stories.getViewers_extendedResponse
@@ -359,6 +360,7 @@ export interface StoriesGetViewersExtendedResponse {
   count: number;
   items: StoriesViewersItem[];
   hidden_reason?: string;
+  next_from?: string;
 }
 
 /**
@@ -436,7 +438,7 @@ export interface StoriesSearchParams {
 export interface StoriesSearchResponse {
   count: number;
   items: StoriesFeedItem[];
-  profiles?: UsersUser[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroup[];
   need_upload_screen?: boolean;
 }

@@ -41,4 +41,6 @@ export interface NotesNote {
    * URL of the page with note preview
    */
   view_url: string;
+  privacy_view?: string[];
+  privacy_comment?: string[];
 }

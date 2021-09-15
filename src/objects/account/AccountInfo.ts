@@ -40,5 +40,5 @@ export interface AccountInfo {
    * Information whether only owners posts should be shown
    */
   'own_posts_default'?: 0 | 1;
-  'subscriptions'?: number[];
+  'subscriptions'?: {};
 }
