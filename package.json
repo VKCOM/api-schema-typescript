@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "engines": {
-    "yarn": ">=1.21.1 <=1.22.18"
+    "yarn": "^1.21.1"
   },
   "devDependencies": {
     "@vkontakte/api-schema": "https://github.com/VKCOM/vk-api-schema.git#v5.131.110",
