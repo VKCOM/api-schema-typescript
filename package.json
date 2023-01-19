@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/VKCOM/api-schema-typescript.git"
   },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
