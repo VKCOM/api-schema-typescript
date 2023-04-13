@@ -2,13 +2,14 @@
 # yarn lockfile v1
 
 
-"@vkontakte/api-schema-typescript-generator@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.10.0.tgz#1ae88539b55b36b03db09b0043284fbf6e09939c"
-  integrity sha512-IO+CaFc8Wru1F7KMj/PSxMQT7plAK7H0HINO/aLc5RFCt0UVS0r2bUKRbxCswYxfl+n1R6svTMKW5k5Q07gWJQ==
+"@vkontakte/api-schema-typescript-generator@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vkontakte/api-schema-typescript-generator/-/api-schema-typescript-generator-0.14.0.tgz#58b1be23674d8983680754909e0ea369a6c4e2dc"
+  integrity sha512-vmOb1pD1kstEqtYpPRFfYIyoJpAMhXGxr289HLbMmqkLLvKe4eog1BTMZ/P0uehMm924l3r0hRPtUurGBfQOAA==
   dependencies:
     arg "^4.1.3"
     chalk "4.1.0"
+    prettier "^2.7.1"
 
 "@vkontakte/api-schema@https://github.com/VKCOM/vk-api-schema.git#v5.131.110":
   version "5.131.110"
@@ -50,6 +51,11 @@ has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
+
+prettier@^2.7.1:
+  version "2.8.7"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
+  integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==
 
 supports-color@^7.1.0:
   version "7.2.0"
