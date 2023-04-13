@@ -18,7 +18,7 @@
   "devDependencies": {
     "@vkontakte/api-schema": "https://github.com/VKCOM/vk-api-schema.git#v5.131.110",
     "@vkontakte/api-schema-typescript-generator": "0.10.0",
-    "typescript": "^3.9.6"
+    "typescript": "^5.0.4"
   },
   "scripts": {
     "generate": "vk-api-schema-typescript-generator --schemaDir ./node_modules/@vkontakte/api-schema/ --outDir ./src --methods '*' && tsc -p ."
