@@ -18,7 +18,7 @@
     "typescript": "^3.9.6"
   },
   "scripts": {
-    "pregenerate": "sh ./node_modules/@vkontakte/api-schema/combine.sh",
+    "pregenerate": "./node_modules/@vkontakte/api-schema/combine.sh",
     "generate": "vk-api-schema-typescript-generator --schemaDir ./node_modules/@vkontakte/api-schema/_build --outDir ./src --methods '*' && tsc -p ."
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
