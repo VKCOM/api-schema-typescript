@@ -1,14 +1,14 @@
-name: 'Publish'
+name: "Publish"
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'version'
+        description: "version"
         required: true
 
       schemaTag:
-        description: 'vk-api-schema tag version'
+        description: "vk-api-schema tag version"
         required: false
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - run: yarn install --frozen-lockfile
 
@@ -39,7 +39,7 @@ jobs:
         run: yarn generate
 
       - name: Commit generated scheme
-        run: git add -A && git commit -m "Generate TypeScript files"
+        run: git add -A && git diff-index --quiet HEAD || git commit -m "Generate TypeScript files"
 
       - name: Bump version
         run: yarn version --new-version ${{ github.event.inputs.version }} --no-commit-hooks
