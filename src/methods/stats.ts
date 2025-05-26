@@ -42,7 +42,7 @@ export interface StatsGetPostReachParams {
   /**
    * post owner community id. Specify with "-" sign.
    */
-  owner_id: string;
+  owner_id: number;
   /**
    * wall posts id
    */
@@ -57,7 +57,7 @@ export type StatsGetPostReachResponse = StatsWallpostStat[];
  */
 
 export interface StatsTrackVisitorParams {
-  id: string;
+  type?: 'activity' | 'close' | 'open';
 }
 
 // stats.trackVisitor_response

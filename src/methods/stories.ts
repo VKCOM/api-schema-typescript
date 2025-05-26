@@ -2,7 +2,6 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { StoriesFeedItem } from '../objects/stories/StoriesFeedItem';
 import { StoriesStory } from '../objects/stories/StoriesStory';
@@ -60,7 +59,7 @@ export interface StoriesGetParams {
    */
   owner_id?: number;
   /**
-   * '1' — to return additional fields for users and communities. Default value is 0.
+   * '1' - to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
   /**
@@ -71,11 +70,13 @@ export interface StoriesGetParams {
 
 // stories.get_response
 export interface StoriesGetResponse {
-  count: number;
-  items: StoriesFeedItem[];
+  count?: number;
+  items?: StoriesFeedItem[];
   profiles?: UsersUserFull[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
   need_upload_screen?: boolean;
+  track_code?: string;
+  next_from?: string;
 }
 
 /**
@@ -86,7 +87,7 @@ export interface StoriesGetResponse {
 
 export interface StoriesGetBannedParams {
   /**
-   * '1' — to return additional fields for users and communities. Default value is 0.
+   * '1' - to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
   /**
@@ -102,8 +103,8 @@ export interface StoriesGetBannedResponse {
   /**
    * Stories count
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }
 
 // stories.getBanned_extendedResponse
@@ -111,10 +112,10 @@ export interface StoriesGetBannedExtendedResponse {
   /**
    * Stories count
    */
-  count: number;
-  items: number[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: number[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -129,7 +130,7 @@ export interface StoriesGetByIdParams {
    */
   stories: string;
   /**
-   * '1' — to return additional fields for users and communities. Default value is 0.
+   * '1' - to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
   /**
@@ -145,19 +146,10 @@ export interface StoriesGetByIdResponse {
   /**
    * Stories count
    */
-  count: number;
-  items: StoriesStory[];
-}
-
-// stories.getById_extendedResponse
-export interface StoriesGetByIdExtendedResponse {
-  /**
-   * Stories count
-   */
-  count: number;
-  items: StoriesStory[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: StoriesStory[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -168,7 +160,7 @@ export interface StoriesGetByIdExtendedResponse {
 
 export interface StoriesGetPhotoUploadServerParams {
   /**
-   * 1 — to add the story to friend's feed.
+   * 1 - to add the story to friend's feed.
    */
   add_to_news?: 0 | 1;
   /**
@@ -199,11 +191,11 @@ export interface StoriesGetPhotoUploadServerResponse {
   /**
    * Upload URL
    */
-  upload_url: string;
+  upload_url?: string;
   /**
    * Users ID who can to see story.
    */
-  user_ids: number[];
+  user_ids?: number[];
 }
 
 /**
@@ -226,7 +218,7 @@ export interface StoriesGetRepliesParams {
    */
   access_key?: string;
   /**
-   * '1' — to return additional fields for users and communities. Default value is 0.
+   * '1' - to return additional fields for users and communities. Default value is 0.
    */
   extended?: 0 | 1;
   /**
@@ -239,11 +231,13 @@ export interface StoriesGetRepliesParams {
 
 // stories.getReplies_response
 export interface StoriesGetRepliesResponse {
-  count: number;
-  items: StoriesFeedItem[];
+  count?: number;
+  items?: StoriesFeedItem[];
   profiles?: UsersUserFull[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
   need_upload_screen?: boolean;
+  track_code?: string;
+  next_from?: string;
 }
 
 /**
@@ -274,7 +268,7 @@ export type StoriesGetStatsResponse = StoriesStoryStats;
 
 export interface StoriesGetVideoUploadServerParams {
   /**
-   * 1 — to add the story to friend's feed.
+   * 1 - to add the story to friend's feed.
    */
   add_to_news?: 0 | 1;
   /**
@@ -305,11 +299,11 @@ export interface StoriesGetVideoUploadServerResponse {
   /**
    * Upload URL
    */
-  upload_url: string;
+  upload_url?: string;
   /**
    * Users ID who can to see story.
    */
-  user_ids: number[];
+  user_ids?: number[];
 }
 
 /**
@@ -322,7 +316,7 @@ export interface StoriesGetViewersParams {
   /**
    * Story owner ID.
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Story ID.
    */
@@ -336,9 +330,13 @@ export interface StoriesGetViewersParams {
    */
   offset?: number;
   /**
-   * '1' — to return detailed information about photos
+   * '1' - to return detailed information about photos
    */
   extended?: 0 | 1;
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // stories.getViewers_response
@@ -346,19 +344,8 @@ export interface StoriesGetViewersResponse {
   /**
    * Viewers count
    */
-  count: number;
-  items: StoriesViewersItem[];
-  hidden_reason?: string;
-  next_from?: string;
-}
-
-// stories.getViewers_extendedResponse
-export interface StoriesGetViewersExtendedResponse {
-  /**
-   * Viewers count
-   */
-  count: number;
-  items: StoriesViewersItem[];
+  count?: number;
+  items?: StoriesViewersItem[];
   hidden_reason?: string;
   next_from?: string;
 }
@@ -405,17 +392,21 @@ export type StoriesHideReplyResponse = 1;
  */
 
 export interface StoriesSaveParams {
-  upload_results: string;
+  upload_results?: string;
+  upload_results_json?: string;
   extended?: 0 | 1;
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
   fields?: string;
 }
 
 // stories.save_response
 export interface StoriesSaveResponse {
-  count: number;
-  items: StoriesStory[];
+  count?: number;
+  items?: StoriesStory[];
   profiles?: UsersUser[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -431,16 +422,21 @@ export interface StoriesSearchParams {
   mentioned_id?: number;
   count?: number;
   extended?: 0 | 1;
+  /**
+   * objects.json#/definitions/base_user_group_fields
+   */
   fields?: string;
 }
 
 // stories.search_response
 export interface StoriesSearchResponse {
-  count: number;
-  items: StoriesFeedItem[];
+  count?: number;
+  items?: StoriesFeedItem[];
   profiles?: UsersUserFull[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
   need_upload_screen?: boolean;
+  track_code?: string;
+  next_from?: string;
 }
 
 /**

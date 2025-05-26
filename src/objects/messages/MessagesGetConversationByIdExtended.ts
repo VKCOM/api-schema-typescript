@@ -11,8 +11,8 @@ export interface MessagesGetConversationByIdExtended {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesConversation[];
+  count?: number;
+  items?: MessagesConversation[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
 }

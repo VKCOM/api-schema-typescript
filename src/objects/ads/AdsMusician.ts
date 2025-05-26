@@ -7,11 +7,15 @@ export interface AdsMusician {
   /**
    * Targeting music artist ID
    */
-  id: number;
+  id?: number;
+  /**
+   * Music artist ID as in VKMusic
+   */
+  original_id?: string;
   /**
    * Music artist name
    */
-  name: string;
+  name?: string;
   /**
    * Music artist photo
    */

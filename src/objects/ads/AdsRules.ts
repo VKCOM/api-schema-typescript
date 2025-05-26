@@ -2,13 +2,22 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { AdsParagraphs } from './AdsParagraphs';
-
 // ads_rules
 export interface AdsRules {
-  paragraphs?: AdsParagraphs[];
   /**
-   * Comment
+   * Help url
    */
-  title?: string;
+  help_url?: string | boolean;
+  /**
+   * Label
+   */
+  help_label?: string;
+  /**
+   * Content Html
+   */
+  content_html?: string;
+  /**
+   * Help chat
+   */
+  help_chat?: boolean;
 }

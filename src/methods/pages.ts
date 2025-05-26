@@ -38,11 +38,11 @@ export interface PagesGetParams {
    */
   page_id?: number;
   /**
-   * '1' — to return information about a global wiki page
+   * '1' - to return information about a global wiki page
    */
   global?: 0 | 1;
   /**
-   * '1' — resulting wiki page is a preview for the attached link
+   * '1' - resulting wiki page is a preview for the attached link
    */
   site_preview?: 0 | 1;
   /**
@@ -51,7 +51,7 @@ export interface PagesGetParams {
   title?: string;
   need_source?: 0 | 1;
   /**
-   * '1' — to return the page as HTML,
+   * '1' - to return the page as HTML,
    */
   need_html?: 0 | 1;
 }
@@ -110,13 +110,27 @@ export interface PagesGetVersionParams {
   group_id?: number;
   user_id?: number;
   /**
-   * '1' — to return the page as HTML
+   * '1' - to return the page as HTML
    */
   need_html?: 0 | 1;
 }
 
 // pages.getVersion_response
-export type PagesGetVersionResponse = PagesWikipageFull;
+export interface PagesGetVersionResponse {
+  id?: number;
+  page_id?: number;
+  group_id?: number;
+  title?: string;
+  source?: string;
+  current_user_can_edit?: number;
+  who_can_view?: number;
+  who_can_edit?: number;
+  version_created?: number;
+  creator_id?: number;
+  parent?: string;
+  parent2?: string;
+  html?: string;
+}
 
 /**
  * pages.parseWiki
@@ -187,11 +201,11 @@ export interface PagesSaveAccessParams {
   group_id?: number;
   user_id?: number;
   /**
-   * Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
+   * Who can view the wiki page: '1' - only community members, '2' - all users can view the page, '0' - only community managers
    */
   view?: 0 | 1 | 2;
   /**
-   * Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
+   * Who can edit the wiki page: '1' - only community members, '2' - all users can edit the page, '0' - only community managers
    */
   edit?: 0 | 1 | 2;
 }

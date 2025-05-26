@@ -13,16 +13,16 @@ export interface GroupsGroup {
   /**
    * Community ID
    */
-  id: number;
+  id?: number;
   /**
    * Community name
    */
-  name: string;
+  name?: string;
   /**
    * Domain of the community page
    */
-  screen_name: string;
-  is_closed: GroupsGroupIsClosed;
+  screen_name?: string;
+  is_closed?: GroupsGroupIsClosed;
   type?: GroupsGroupType;
   /**
    * Information whether current user is administrator
@@ -45,6 +45,10 @@ export interface GroupsGroup {
    * Finish date in Unixtime format
    */
   finish_date?: number;
+  /**
+   * Information whether community is verified
+   */
+  verified?: 0 | 1;
   /**
    * Information whether community is banned
    */

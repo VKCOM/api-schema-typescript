@@ -8,6 +8,9 @@ import { AdsAdLayout } from '../objects/ads/AdsAdLayout';
 import { AdsCampaign } from '../objects/ads/AdsCampaign';
 import { AdsCategory } from '../objects/ads/AdsCategory';
 import { AdsClient } from '../objects/ads/AdsClient';
+import { AdsCreateAdStatus } from '../objects/ads/AdsCreateAdStatus';
+import { AdsCreateCampaignStatus } from '../objects/ads/AdsCreateCampaignStatus';
+import { AdsCreateClientsStatus } from '../objects/ads/AdsCreateClientsStatus';
 import { AdsDemoStats } from '../objects/ads/AdsDemoStats';
 import { AdsFloodStats } from '../objects/ads/AdsFloodStats';
 import { AdsLinkStatus } from '../objects/ads/AdsLinkStatus';
@@ -17,12 +20,15 @@ import { AdsPromotedPostReach } from '../objects/ads/AdsPromotedPostReach';
 import { AdsRejectReason } from '../objects/ads/AdsRejectReason';
 import { AdsStats } from '../objects/ads/AdsStats';
 import { AdsTargetGroup } from '../objects/ads/AdsTargetGroup';
+import { AdsTargetPixelInfo } from '../objects/ads/AdsTargetPixelInfo';
 import { AdsTargSettings } from '../objects/ads/AdsTargSettings';
 import { AdsTargStats } from '../objects/ads/AdsTargStats';
 import { AdsTargSuggestions } from '../objects/ads/AdsTargSuggestions';
 import { AdsTargSuggestionsCities } from '../objects/ads/AdsTargSuggestionsCities';
 import { AdsTargSuggestionsRegions } from '../objects/ads/AdsTargSuggestionsRegions';
 import { AdsTargSuggestionsSchools } from '../objects/ads/AdsTargSuggestionsSchools';
+import { AdsUpdateAdsStatus } from '../objects/ads/AdsUpdateAdsStatus';
+import { AdsUpdateClientsStatus } from '../objects/ads/AdsUpdateClientsStatus';
 import { AdsUpdateOfficeUsersResult } from '../objects/ads/AdsUpdateOfficeUsersResult';
 import { AdsUsers } from '../objects/ads/AdsUsers';
 
@@ -44,7 +50,7 @@ export interface AdsAddOfficeUsersParams {
 }
 
 // ads.addOfficeUsers_response
-export type AdsAddOfficeUsersResponse = boolean;
+export type AdsAddOfficeUsersResponse = boolean[];
 
 /**
  * ads.checkLink
@@ -58,9 +64,9 @@ export interface AdsCheckLinkParams {
    */
   account_id: number;
   /**
-   * Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
+   * Object type: *'community' - community,, *'post' - community post,, *'application' - VK application,, *'video' - video,, *'site' - external site.
    */
-  link_type: 'community' | 'post' | 'application' | 'video' | 'site';
+  link_type: 'application' | 'community' | 'mobile_app' | 'post' | 'site' | 'user' | 'user_post' | 'video';
   /**
    * Object URL.
    */
@@ -92,7 +98,7 @@ export interface AdsCreateAdsParams {
 }
 
 // ads.createAds_response
-export type AdsCreateAdsResponse = number[];
+export type AdsCreateAdsResponse = AdsCreateAdStatus[];
 
 /**
  * ads.createCampaigns
@@ -112,7 +118,7 @@ export interface AdsCreateCampaignsParams {
 }
 
 // ads.createCampaigns_response
-export type AdsCreateCampaignsResponse = number[];
+export type AdsCreateCampaignsResponse = AdsCreateCampaignStatus[];
 
 /**
  * ads.createClients
@@ -132,7 +138,26 @@ export interface AdsCreateClientsParams {
 }
 
 // ads.createClients_response
-export type AdsCreateClientsResponse = number[];
+export type AdsCreateClientsResponse = AdsCreateClientsStatus[];
+
+/**
+ * ads.createLookalikeRequest
+ */
+
+export interface AdsCreateLookalikeRequestParams {
+  account_id: number;
+  client_id?: number;
+  source_type: string;
+  retargeting_group_id?: number;
+}
+
+// ads.createLookalikeRequest_response
+export interface AdsCreateLookalikeRequestResponse {
+  /**
+   * Request ID
+   */
+  request_id?: number;
+}
 
 /**
  * ads.createTargetGroup
@@ -150,7 +175,7 @@ export interface AdsCreateTargetGroupParams {
    */
   client_id?: number;
   /**
-   * Name of the target group — a string up to 64 characters long.
+   * Name of the target group - a string up to 64 characters long.
    */
   name: string;
   /**
@@ -165,6 +190,30 @@ export interface AdsCreateTargetGroupParams {
 export interface AdsCreateTargetGroupResponse {
   /**
    * Group ID
+   */
+  id?: number;
+  /**
+   * Pixel code
+   */
+  pixel?: string;
+}
+
+/**
+ * ads.createTargetPixel
+ */
+
+export interface AdsCreateTargetPixelParams {
+  account_id: number;
+  client_id?: number;
+  name: string;
+  domain?: string;
+  category_id: number;
+}
+
+// ads.createTargetPixel_response
+export interface AdsCreateTargetPixelResponse {
+  /**
+   * Pixel ID
    */
   id?: number;
   /**
@@ -211,7 +260,7 @@ export interface AdsDeleteCampaignsParams {
 }
 
 // ads.deleteCampaigns_response
-export type AdsDeleteCampaignsResponse = number;
+export type AdsDeleteCampaignsResponse = number[];
 
 /**
  * ads.deleteClients
@@ -231,7 +280,7 @@ export interface AdsDeleteClientsParams {
 }
 
 // ads.deleteClients_response
-export type AdsDeleteClientsResponse = number;
+export type AdsDeleteClientsResponse = number[];
 
 /**
  * ads.deleteTargetGroup
@@ -258,6 +307,22 @@ export interface AdsDeleteTargetGroupParams {
 export type AdsDeleteTargetGroupResponse = 1;
 
 /**
+ * ads.deleteTargetPixel
+ */
+
+export interface AdsDeleteTargetPixelParams {
+  account_id: number;
+  client_id?: number;
+  target_pixel_id: number;
+}
+
+// ads.deleteTargetPixel_response
+export interface AdsDeleteTargetPixelResponse {
+  // empty interface
+  [key: string]: any;
+}
+
+/**
  * ads.getAccounts
  *
  * Returns a list of advertising accounts.
@@ -280,25 +345,25 @@ export interface AdsGetAdsParams {
    */
   account_id: number;
   /**
-   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
+   * 'Available and required for advertising agencies.' ID of the client ads are retrieved from.
    */
-  ad_ids?: string;
+  client_id?: number;
+  /**
+   * Flag that specifies whether archived ads shall be shown: *0 - show only active ads,, *1 - show all ads.
+   */
+  include_deleted?: 0 | 1;
+  /**
+   * Flag that specifies whether to show only archived ads: *0 - show all ads,, *1 - show only archived ads. Available when include_deleted flag is *1
+   */
+  only_deleted?: 0 | 1;
   /**
    * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
    */
   campaign_ids?: string;
   /**
-   * 'Available and required for advertising agencies.' ID of the client ads are retrieved from.
+   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
    */
-  client_id?: number;
-  /**
-   * Flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
-   */
-  include_deleted?: 0 | 1;
-  /**
-   * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
-   */
-  only_deleted?: 0 | 1;
+  ad_ids?: string;
   /**
    * Limit of number of returned ads. Used only if ad_ids parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
    */
@@ -328,11 +393,11 @@ export interface AdsGetAdsLayoutParams {
    */
   client_id?: number;
   /**
-   * Flag that specifies whether archived ads shall be shown. *0 — show only active ads,, *1 — show all ads.
+   * Flag that specifies whether archived ads shall be shown. *0 - show only active ads,, *1 - show all ads.
    */
   include_deleted?: 0 | 1;
   /**
-   * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
+   * Flag that specifies whether to show only archived ads: *0 - show all ads,, *1 - show only archived ads. Available when include_deleted flag is *1
    */
   only_deleted?: 0 | 1;
   /**
@@ -368,21 +433,22 @@ export interface AdsGetAdsTargetingParams {
    */
   account_id: number;
   /**
-   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
+   * 'For advertising agencies.' ID of the client ads are retrieved from.
    */
-  ad_ids?: string;
+  client_id?: number;
+  /**
+   * flag that specifies whether archived ads shall be shown: *0 - show only active ads,, *1 - show all ads.
+   */
+  include_deleted?: 0 | 1;
+  only_deleted?: 0 | 1;
   /**
    * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
    */
   campaign_ids?: string;
   /**
-   * 'For advertising agencies.' ID of the client ads are retrieved from.
+   * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
    */
-  client_id?: number;
-  /**
-   * flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
-   */
-  include_deleted?: 0 | 1;
+  ad_ids?: string;
   /**
    * Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
    */
@@ -410,7 +476,7 @@ export interface AdsGetBudgetParams {
 }
 
 // ads.getBudget_response
-export type AdsGetBudgetResponse = number;
+export type AdsGetBudgetResponse = string;
 
 /**
  * ads.getCampaigns
@@ -428,7 +494,7 @@ export interface AdsGetCampaignsParams {
    */
   client_id?: number;
   /**
-   * Flag that specifies whether archived ads shall be shown. *0 — show only active campaigns,, *1 — show all campaigns.
+   * Flag that specifies whether archived ads shall be shown. *0 - show only active campaigns,, *1 - show all campaigns.
    */
   include_deleted?: 0 | 1;
   /**
@@ -494,7 +560,7 @@ export interface AdsGetDemographicsParams {
    */
   account_id: number;
   /**
-   * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
+   * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns.
    */
   ids_type: 'ad' | 'campaign';
   /**
@@ -502,15 +568,15 @@ export interface AdsGetDemographicsParams {
    */
   ids: string;
   /**
-   * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
+   * Data grouping by dates: *day - statistics by days,, *month - statistics by months,, *overall - overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
    */
   period: 'day' | 'month' | 'overall';
   /**
-   * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
+   * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - day it was created on,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - month it was created in,, *overall: 0.
    */
   date_from: string;
   /**
-   * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+   * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - current day,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - current month,, *overall: 0.
    */
   date_to: string;
 }
@@ -521,7 +587,7 @@ export type AdsGetDemographicsResponse = AdsDemoStats[];
 /**
  * ads.getFloodStats
  *
- * Returns information about current state of a counter — number of remaining runs of methods and time to the next counter nulling in seconds.
+ * Returns information about current state of a counter - number of remaining runs of methods and time to the next counter nulling in seconds.
  */
 
 export interface AdsGetFloodStatsParams {
@@ -552,11 +618,11 @@ export interface AdsGetLookalikeRequestsResponse {
   /**
    * Total count of found lookalike requests
    */
-  count: number;
+  count?: number;
   /**
    * found lookalike requests
    */
-  items: AdsLookalikeRequest[];
+  items?: AdsLookalikeRequest[];
 }
 
 /**
@@ -572,7 +638,7 @@ export interface AdsGetMusiciansResponse {
   /**
    * Musicians
    */
-  items: AdsMusician[];
+  items?: AdsMusician[];
 }
 
 /**
@@ -588,7 +654,7 @@ export interface AdsGetMusiciansByIdsResponse {
   /**
    * Musicians
    */
-  items: AdsMusician[];
+  items?: AdsMusician[];
 }
 
 /**
@@ -619,7 +685,7 @@ export interface AdsGetPostsReachParams {
    */
   account_id: number;
   /**
-   * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
+   * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns.
    */
   ids_type: 'ad' | 'campaign';
   /**
@@ -663,7 +729,7 @@ export interface AdsGetStatisticsParams {
    */
   account_id: number;
   /**
-   * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns,, *client — clients,, *office — account.
+   * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns,, *client - clients,, *office - account.
    */
   ids_type: 'ad' | 'campaign' | 'client' | 'office';
   /**
@@ -671,15 +737,15 @@ export interface AdsGetStatisticsParams {
    */
   ids: string;
   /**
-   * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
+   * Data grouping by dates: *day - statistics by days,, *month - statistics by months,, *overall - overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
    */
-  period: 'day' | 'month' | 'overall';
+  period: 'day' | 'month' | 'overall' | 'week' | 'year';
   /**
-   * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
+   * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - day it was created on,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - month it was created in,, *overall: 0.
    */
   date_from: string;
   /**
-   * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+   * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - current day,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - current month,, *overall: 0.
    */
   date_to: string;
   /**
@@ -699,20 +765,29 @@ export type AdsGetStatisticsResponse = AdsStats[];
 
 export interface AdsGetSuggestionsParams {
   /**
-   * Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
+   * Section, suggestions are retrieved in. Available values: *countries - request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions - requested list of regions. 'country' parameter is required. *cities - requested list of cities. 'country' parameter is required. *districts - requested list of districts. 'cities' parameter is required. *stations - requested list of subway stations. 'cities' parameter is required. *streets - requested list of streets. 'cities' parameter is required. *schools - requested list of educational organizations. 'cities' parameter is required. *interests - requested list of interests. *positions - requested list of positions (professions). *group_types - requested list of group types. *religions - requested list of religious commitments. *browsers - requested list of browsers and mobile devices.
    */
-  section: 'countries' |
-  'regions' |
+  section: 'browsers' |
   'cities' |
+  'cities_regions' |
+  'countries' |
   'districts' |
+  'group_types' |
+  'interest_categories' |
+  'interest_categories_v2' |
+  'interests' |
+  'operators' |
+  'positions' |
+  'price_lists' |
+  'regions' |
+  'religions' |
+  'schools' |
   'stations' |
   'streets' |
-  'schools' |
-  'interests' |
-  'positions' |
-  'group_types' |
-  'religions' |
-  'browsers';
+  'user_browsers' |
+  'user_devices' |
+  'user_operating_systems' |
+  'user_os';
   /**
    * Objects IDs separated by commas. If the parameter is passed, 'q, country, cities' should not be passed.
    */
@@ -730,9 +805,9 @@ export interface AdsGetSuggestionsParams {
    */
   cities?: string;
   /**
-   * Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
+   * Language of the returned string values. Supported languages: *ru - Russian,, *ua - Ukrainian,, *en - English.
    */
-  lang?: 'ru' | 'ua' | 'en';
+  lang?: string;
 }
 
 // ads.getSuggestions_response
@@ -763,13 +838,25 @@ export interface AdsGetTargetGroupsParams {
    */
   client_id?: number;
   /**
-   * '1' — to return pixel code.
+   * '1' - to return pixel code.
    */
   extended?: 0 | 1;
 }
 
 // ads.getTargetGroups_response
 export type AdsGetTargetGroupsResponse = AdsTargetGroup[];
+
+/**
+ * ads.getTargetPixels
+ */
+
+export interface AdsGetTargetPixelsParams {
+  account_id: number;
+  client_id?: number;
+}
+
+// ads.getTargetPixels_response
+export type AdsGetTargetPixelsResponse = AdsTargetPixelInfo[];
 
 /**
  * ads.getTargetingStats
@@ -792,11 +879,11 @@ export interface AdsGetTargetingStatsParams {
    */
   ad_id?: number;
   /**
-   * Ad format. Possible values: *'1' — image and text,, *'2' — big image,, *'3' — exclusive format,, *'4' — community, square image,, *'7' — special app format,, *'8' — special community format,, *'9' — post in community,, *'10' — app board.
+   * Ad format. Possible values: *'1' - image and text,, *'2' - big image,, *'3' - exclusive format,, *'4' - community, square image,, *'7' - special app format,, *'8' - special community format,, *'9' - post in community,, *'10' - app board.
    */
-  ad_format?: 1 | 2 | 3 | 4 | 7 | 8 | 9 | 10;
+  ad_format?: 1 | 2 | 4 | 7 | 10 | 6 | 9 | 11;
   /**
-   * Platforms to use for ad showing. Possible values: (for 'ad_format' = '1'), *'0' — VK and partner sites,, *'1' — VK only. (for 'ad_format' = '9'), *'all' — all platforms,, *'desktop' — desktop version,, *'mobile' — mobile version and apps.
+   * Platforms to use for ad showing. Possible values: (for 'ad_format' = '1'), *'0' - VK and partner sites,, *'1' - VK only. (for 'ad_format' = '9'), *'all' - all platforms,, *'desktop' - desktop version,, *'mobile' - mobile version and apps.
    */
   ad_platform?: string;
   ad_platform_no_wall?: string;
@@ -831,9 +918,9 @@ export type AdsGetTargetingStatsResponse = AdsTargStats;
 
 export interface AdsGetUploadURLParams {
   /**
-   * Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
+   * Ad format: *1 - image and text,, *2 - big image,, *3 - exclusive format,, *4 - community, square image,, *7 - special app format.
    */
-  ad_format: 1 | 2 | 3 | 4 | 7;
+  ad_format: 1 | 2 | 4 | 7 | 10 | 11;
   icon?: number;
 }
 
@@ -897,7 +984,75 @@ export interface AdsRemoveOfficeUsersParams {
 }
 
 // ads.removeOfficeUsers_response
-export type AdsRemoveOfficeUsersResponse = boolean;
+export type AdsRemoveOfficeUsersResponse = boolean[];
+
+/**
+ * ads.removeTargetContacts
+ */
+
+export interface AdsRemoveTargetContactsParams {
+  account_id: number;
+  client_id?: number;
+  target_group_id: number;
+  contacts: string;
+}
+
+// ads.removeTargetContacts_response result enumNames
+export const AdsRemoveTargetContactsResponseResultEnumNames = {
+  OK: 1,
+} as const;
+
+// ads.removeTargetContacts_response
+export interface AdsRemoveTargetContactsResponse {
+  /**
+   * Operation result
+   *
+   * `1` — ok
+   */
+  result?: 1;
+}
+
+/**
+ * ads.saveLookalikeRequestResult
+ */
+
+export interface AdsSaveLookalikeRequestResultParams {
+  account_id: number;
+  client_id?: number;
+  request_id: number;
+  level: number;
+}
+
+// ads.saveLookalikeRequestResult_response
+export interface AdsSaveLookalikeRequestResultResponse {
+  /**
+   * Retargeting group ID
+   */
+  retargeting_group_id?: number;
+  /**
+   * Audience count
+   */
+  audience_count?: number;
+}
+
+/**
+ * ads.shareTargetGroup
+ */
+
+export interface AdsShareTargetGroupParams {
+  account_id: number;
+  client_id?: number;
+  target_group_id: number;
+  share_with_client_id?: number;
+}
+
+// ads.shareTargetGroup_response
+export interface AdsShareTargetGroupResponse {
+  /**
+   * Group ID
+   */
+  id?: number;
+}
 
 /**
  * ads.updateAds
@@ -917,7 +1072,7 @@ export interface AdsUpdateAdsParams {
 }
 
 // ads.updateAds_response
-export type AdsUpdateAdsResponse = number[];
+export type AdsUpdateAdsResponse = AdsUpdateAdsStatus[];
 
 /**
  * ads.updateCampaigns
@@ -937,7 +1092,7 @@ export interface AdsUpdateCampaignsParams {
 }
 
 // ads.updateCampaigns_response
-export type AdsUpdateCampaignsResponse = number;
+export type AdsUpdateCampaignsResponse = AdsCreateCampaignStatus[];
 
 /**
  * ads.updateClients
@@ -957,7 +1112,7 @@ export interface AdsUpdateClientsParams {
 }
 
 // ads.updateClients_response
-export type AdsUpdateClientsResponse = number;
+export type AdsUpdateClientsResponse = AdsUpdateClientsStatus[];
 
 /**
  * ads.updateOfficeUsers
@@ -999,7 +1154,7 @@ export interface AdsUpdateTargetGroupParams {
    */
   target_group_id: number;
   /**
-   * New name of the target group — a string up to 64 characters long.
+   * New name of the target group - a string up to 64 characters long.
    */
   name: string;
   /**
@@ -1016,3 +1171,22 @@ export interface AdsUpdateTargetGroupParams {
 
 // ads.updateTargetGroup_response
 export type AdsUpdateTargetGroupResponse = 1;
+
+/**
+ * ads.updateTargetPixel
+ */
+
+export interface AdsUpdateTargetPixelParams {
+  account_id: number;
+  client_id?: number;
+  target_pixel_id: number;
+  name: string;
+  domain?: string;
+  category_id: number;
+}
+
+// ads.updateTargetPixel_response
+export interface AdsUpdateTargetPixelResponse {
+  // empty interface
+  [key: string]: any;
+}

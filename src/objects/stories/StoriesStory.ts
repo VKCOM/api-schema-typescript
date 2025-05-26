@@ -3,7 +3,7 @@
  */
 
 import { PhotosPhoto } from '../photos/PhotosPhoto';
-import { VideoVideo } from '../video/VideoVideo';
+import { VideoVideoFull } from '../video/VideoVideoFull';
 import { StoriesClickableStickers } from './StoriesClickableStickers';
 import { StoriesReplies } from './StoriesReplies';
 import { StoriesStoryLink } from './StoriesStoryLink';
@@ -50,7 +50,7 @@ export interface StoriesStory {
   /**
    * Story ID.
    */
-  id: number;
+  id?: number;
   /**
    * Information whether the story is deleted (false - no, true - yes).
    */
@@ -63,7 +63,7 @@ export interface StoriesStory {
   /**
    * Story owner's ID.
    */
-  owner_id: number;
+  owner_id?: number;
   parent_story?: StoriesStory;
   /**
    * Access key for private object.
@@ -79,6 +79,10 @@ export interface StoriesStory {
   parent_story_owner_id?: number;
   photo?: PhotosPhoto;
   /**
+   * url with blured preview image.
+   */
+  blurred_preview?: string;
+  /**
    * Replies counters to current story.
    */
   replies?: StoriesReplies;
@@ -88,7 +92,7 @@ export interface StoriesStory {
   seen?: 0 | 1;
   type?: StoriesStoryType;
   clickable_stickers?: StoriesClickableStickers;
-  video?: VideoVideo;
+  video?: VideoVideoFull;
   /**
    * Views number.
    */
@@ -103,6 +107,6 @@ export interface StoriesStory {
   can_ask_anonymous?: 0 | 1;
   narratives_count?: number;
   first_narrative_title?: string;
-  birthday_wish_user_id?: number;
+  first_narrative_id?: number;
   can_use_in_narrative?: boolean;
 }

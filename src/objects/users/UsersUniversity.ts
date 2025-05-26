@@ -17,17 +17,21 @@ export interface UsersUniversity {
    */
   city?: number;
   /**
-   * Country ID
-   */
-  country?: number;
-  /**
    * Education form
    */
   education_form?: string;
   /**
+   * Education form id
+   */
+  education_form_id?: number;
+  /**
    * Education status
    */
   education_status?: string;
+  /**
+   * Education status id
+   */
+  education_status_id?: number;
   /**
    * Faculty ID
    */

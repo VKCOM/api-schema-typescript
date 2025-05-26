@@ -95,7 +95,7 @@ export interface UtilsGetLinkStatsParams {
    */
   intervals_count?: number;
   /**
-   * 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
+   * 1 - to return extended stats data (sex, age, geo). 0 - to return views number only.
    */
   extended?: 0 | 1;
 }
@@ -129,7 +129,7 @@ export interface UtilsGetShortLinkParams {
    */
   url: string;
   /**
-   * 1 — private stats, 0 — public stats.
+   * 1 - private stats, 0 - public stats.
    */
   private?: 0 | 1;
 }

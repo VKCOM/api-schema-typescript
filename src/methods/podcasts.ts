@@ -16,9 +16,9 @@ export interface PodcastsSearchPodcastParams {
 
 // podcasts.searchPodcast_response
 export interface PodcastsSearchPodcastResponse {
-  podcasts: PodcastExternalData[];
+  podcasts?: PodcastExternalData[];
   /**
    * Total amount of found results
    */
-  results_total: number;
+  results_total?: number;
 }

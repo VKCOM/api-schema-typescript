@@ -16,4 +16,8 @@ export interface VideoLiveSettings {
    * Max possible time for rewind
    */
   max_duration?: number;
+  /**
+   * If live in clips apps
+   */
+  is_clips_live?: 0 | 1;
 }

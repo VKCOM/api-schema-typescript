@@ -7,39 +7,39 @@ export interface AdsPromotedPostReach {
   /**
    * Hides amount
    */
-  hide: number;
+  hide?: number;
   /**
    * Object ID from 'ids' parameter
    */
-  id: number;
+  id?: number;
   /**
    * Community joins
    */
-  join_group: number;
+  join_group?: number;
   /**
    * Link clicks
    */
-  links: number;
+  links?: number;
   /**
    * Subscribers reach
    */
-  reach_subscribers: number;
+  reach_subscribers?: number;
   /**
    * Total reach
    */
-  reach_total: number;
+  reach_total?: number;
   /**
    * Reports amount
    */
-  report: number;
+  report?: number;
   /**
    * Community clicks
    */
-  to_group: number;
+  to_group?: number;
   /**
    * 'Unsubscribe' events amount
    */
-  unsubscribe: number;
+  unsubscribe?: number;
   /**
    * Video views for 100 percent
    */
@@ -53,6 +53,10 @@ export interface AdsPromotedPostReach {
    */
   video_views_3s?: number;
   /**
+   * Video views for 10 seconds
+   */
+  video_views_10s?: number;
+  /**
    * Video views for 50 percent
    */
   video_views_50p?: number;
@@ -64,4 +68,8 @@ export interface AdsPromotedPostReach {
    * Video starts
    */
   video_views_start?: number;
+  /**
+   * Pretty cards clicks
+   */
+  pretty_cards_clicks?: number;
 }

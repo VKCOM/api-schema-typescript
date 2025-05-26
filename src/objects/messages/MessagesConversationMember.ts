@@ -8,6 +8,10 @@ export interface MessagesConversationMember {
    * Is it possible for user to kick this member
    */
   can_kick?: boolean;
+  /**
+   * Does this member have write permission
+   */
+  is_restricted_to_write?: boolean;
   invited_by?: number;
   is_admin?: boolean;
   is_owner?: boolean;
@@ -17,5 +21,5 @@ export interface MessagesConversationMember {
    * Message request date
    */
   request_date?: number;
-  member_id: number;
+  member_id?: number;
 }

@@ -4,10 +4,10 @@
 
 // groups_callback_server
 export interface GroupsCallbackServer {
-  id: number;
-  title: string;
-  creator_id: number;
-  url: string;
-  secret_key: string;
-  status: 'unconfigured' | 'failed' | 'wait' | 'ok';
+  id?: number;
+  title?: string;
+  creator_id?: number;
+  url?: string;
+  secret_key?: string;
+  status?: 'unconfigured' | 'failed' | 'wait' | 'ok';
 }

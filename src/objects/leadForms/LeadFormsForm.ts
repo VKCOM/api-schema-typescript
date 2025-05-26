@@ -6,8 +6,8 @@ import { LeadFormsQuestionItem } from './LeadFormsQuestionItem';
 
 // leadForms_form
 export interface LeadFormsForm {
-  form_id: number;
-  group_id: number;
+  form_id?: number;
+  group_id?: number;
   photo?: string;
   name?: string;
   title?: string;
@@ -17,10 +17,10 @@ export interface LeadFormsForm {
   policy_link_url?: string;
   questions?: LeadFormsQuestionItem[];
   active?: 0 | 1;
-  leads_count: number;
+  leads_count?: number;
   pixel_code?: string;
   once_per_user?: number;
   notify_admins?: string;
   notify_emails?: string;
-  url: string;
+  url?: string;
 }

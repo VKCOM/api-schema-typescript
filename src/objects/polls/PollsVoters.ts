@@ -11,4 +11,8 @@ export interface PollsVoters {
    */
   answer_id?: number;
   users?: PollsVotersUsers;
+  /**
+   * Answer offset
+   */
+  answer_offset?: string;
 }

@@ -6,4 +6,4 @@
 /**
  * Attachments type
  */
-export type MessagesHistoryMessageAttachmentType = 'photo' | 'video' | 'audio' | 'doc' | 'link' | 'market' | 'wall' | 'share' | 'graffiti' | 'audio_message';
+export type MessagesHistoryMessageAttachmentType = 'app_action' | 'audio' | 'doc' | 'link' | 'market' | 'photo' | 'video' | 'wall' | 'graffiti' | 'audio_message';

@@ -4,6 +4,6 @@
 
 // groups_settings_twitter
 export interface GroupsSettingsTwitter {
-  status: 'loading' | 'sync';
+  status?: 'loading' | 'sync';
   name?: string;
 }

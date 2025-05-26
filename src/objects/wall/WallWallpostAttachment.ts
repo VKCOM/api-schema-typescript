@@ -14,7 +14,8 @@ import { PagesWikipageFull } from '../pages/PagesWikipageFull';
 import { PhotosPhoto } from '../photos/PhotosPhoto';
 import { PhotosPhotoAlbum } from '../photos/PhotosPhotoAlbum';
 import { PollsPoll } from '../polls/PollsPoll';
-import { VideoVideo } from '../video/VideoVideo';
+import { VideoVideoAlbumFull } from '../video/VideoVideoAlbumFull';
+import { VideoVideoFull } from '../video/VideoVideoFull';
 import { WallAppPost } from './WallAppPost';
 import { WallGraffiti } from './WallGraffiti';
 import { WallPostedPhoto } from './WallPostedPhoto';
@@ -39,9 +40,10 @@ export interface WallWallpostAttachment {
   note?: NotesNote;
   page?: PagesWikipageFull;
   photo?: PhotosPhoto;
-  photos_list?: string[];
   poll?: PollsPoll;
   posted_photo?: WallPostedPhoto;
-  type: WallWallpostAttachmentType;
-  video?: VideoVideo;
+  type?: WallWallpostAttachmentType;
+  video?: VideoVideoFull;
+  clip?: VideoVideoFull;
+  video_playlist?: VideoVideoAlbumFull;
 }

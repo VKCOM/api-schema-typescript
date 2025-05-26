@@ -6,4 +6,4 @@
 /**
  * Settings parameters
  */
-export type AccountPushParamsOnoff = 'on' | 'off';
+export type AccountPushParamsOnoff = 'on' | 'off' | 'no_sound';

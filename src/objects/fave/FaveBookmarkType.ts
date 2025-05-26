@@ -3,4 +3,4 @@
  */
 
 // fave_bookmark_type
-export type FaveBookmarkType = 'post' | 'video' | 'product' | 'article' | 'link';
+export type FaveBookmarkType = 'post' | 'video' | 'product' | 'article' | 'link' | 'clip' | 'game' | 'mini_app';

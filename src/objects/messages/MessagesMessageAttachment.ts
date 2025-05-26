@@ -3,9 +3,7 @@
  */
 
 import { AudioAudio } from '../audio/AudioAudio';
-import { BaseLink } from '../base/BaseLink';
-import { BaseStickerNew } from '../base/BaseStickerNew';
-import { BaseStickerOld } from '../base/BaseStickerOld';
+import { BaseSticker } from '../base/BaseSticker';
 import { CallsCall } from '../calls/CallsCall';
 import { DocsDoc } from '../docs/DocsDoc';
 import { GiftsLayout } from '../gifts/GiftsLayout';
@@ -14,9 +12,7 @@ import { MarketMarketItem } from '../market/MarketMarketItem';
 import { PhotosPhoto } from '../photos/PhotosPhoto';
 import { PollsPoll } from '../polls/PollsPoll';
 import { StoriesStory } from '../stories/StoriesStory';
-import { VideoVideo } from '../video/VideoVideo';
 import { WallWallComment } from '../wall/WallWallComment';
-import { WallWallpostFull } from '../wall/WallWallpostFull';
 import { MessagesAudioMessage } from './MessagesAudioMessage';
 import { MessagesGraffiti } from './MessagesGraffiti';
 import { MessagesMessageAttachmentType } from './MessagesMessageAttachmentType';
@@ -29,15 +25,12 @@ export interface MessagesMessageAttachment {
   doc?: DocsDoc;
   gift?: GiftsLayout;
   graffiti?: MessagesGraffiti;
-  link?: BaseLink;
   market?: MarketMarketItem;
   market_market_album?: MarketMarketAlbum;
   photo?: PhotosPhoto;
-  sticker?: BaseStickerOld | BaseStickerNew;
+  sticker?: BaseSticker;
   story?: StoriesStory;
-  type: MessagesMessageAttachmentType;
-  video?: VideoVideo;
-  wall?: WallWallpostFull;
+  type?: MessagesMessageAttachmentType;
   wall_reply?: WallWallComment;
   poll?: PollsPoll;
 }

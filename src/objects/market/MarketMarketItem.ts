@@ -12,12 +12,13 @@ export interface MarketMarketItem {
    * Access key for the market item
    */
   access_key?: string;
-  availability: MarketMarketItemAvailability;
+  availability?: MarketMarketItemAvailability;
   /**
    * Title for button for url
    */
   button_title?: string;
-  category: MarketMarketCategory;
+  category?: MarketMarketCategory;
+  category_v2?: MarketMarketCategory;
   /**
    * Date when the item has been created in Unixtime
    */
@@ -25,18 +26,20 @@ export interface MarketMarketItem {
   /**
    * Item description
    */
-  description: string;
+  description?: string;
   external_id?: string;
   /**
    * Item ID
    */
-  id: number;
+  id?: number;
   is_favorite?: boolean;
   /**
    * Item owner's ID
    */
-  owner_id: number;
-  price: MarketPrice;
+  owner_id?: number;
+  is_owner?: boolean;
+  is_adult?: boolean;
+  price?: MarketPrice;
   /**
    * URL of the preview image
    */
@@ -44,7 +47,7 @@ export interface MarketMarketItem {
   /**
    * Item title
    */
-  title: string;
+  title?: string;
   /**
    * URL to item
    */
@@ -52,4 +55,16 @@ export interface MarketMarketItem {
   variants_grouping_id?: number;
   is_main_variant?: boolean;
   sku?: string;
+  /**
+   * Inventory balances
+   */
+  stock_amount?: number;
+  /**
+   * Attach for post id
+   */
+  post_id?: number;
+  /**
+   * Attach for post owner id
+   */
+  post_owner_id?: number;
 }

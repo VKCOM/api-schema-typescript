@@ -9,14 +9,14 @@ export interface DocsDocPreviewPhotoSizes {
   /**
    * URL of the image
    */
-  src: string;
+  src?: string;
   /**
    * Width in px
    */
-  width: number;
+  width?: number;
   /**
    * Height in px
    */
-  height: number;
-  type: PhotosPhotoSizesType;
+  height?: number;
+  type?: PhotosPhotoSizesType;
 }

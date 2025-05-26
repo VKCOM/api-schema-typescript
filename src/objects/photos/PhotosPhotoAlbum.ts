@@ -9,7 +9,7 @@ export interface PhotosPhotoAlbum {
   /**
    * Date when the album has been created in Unixtime
    */
-  created: number;
+  created?: number;
   /**
    * Photo album description
    */
@@ -17,22 +17,22 @@ export interface PhotosPhotoAlbum {
   /**
    * Photo album ID
    */
-  id: number;
+  id?: number;
   /**
    * Album owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Photos number
    */
-  size: number;
+  size?: number;
   thumb?: PhotosPhoto;
   /**
    * Photo album title
    */
-  title: string;
+  title?: string;
   /**
    * Date when the album has been updated last time in Unixtime
    */
-  updated: number;
+  updated?: number;
 }

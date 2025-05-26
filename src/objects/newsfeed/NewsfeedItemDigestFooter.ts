@@ -6,10 +6,11 @@ import { NewsfeedItemDigestButton } from './NewsfeedItemDigestButton';
 
 // newsfeed_item_digest_footer
 export interface NewsfeedItemDigestFooter {
-  style: 'text' | 'button';
+  style?: 'text' | 'button';
   /**
    * text for invite to enable smart feed
    */
-  text: string;
+  text?: string;
   button?: NewsfeedItemDigestButton;
+  feed_id?: string;
 }

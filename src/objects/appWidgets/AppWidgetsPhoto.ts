@@ -9,6 +9,6 @@ export interface AppWidgetsPhoto {
   /**
    * Image ID
    */
-  id: string;
-  images: BaseImage[];
+  id?: string;
+  images?: BaseImage[];
 }

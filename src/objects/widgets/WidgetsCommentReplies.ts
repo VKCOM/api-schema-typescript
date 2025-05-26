@@ -15,4 +15,12 @@ export interface WidgetsCommentReplies {
    */
   count?: number;
   replies?: WidgetsCommentRepliesItem[];
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: 0 | 1;
+  /**
+   * Information whether current user can view the comments
+   */
+  can_view?: 0 | 1;
 }

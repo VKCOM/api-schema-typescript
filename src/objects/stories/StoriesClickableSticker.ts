@@ -11,17 +11,19 @@ import { StoriesClickableArea } from './StoriesClickableArea';
 
 // stories_clickable_sticker
 export interface StoriesClickableSticker {
-  clickable_area: StoriesClickableArea[];
+  clickable_area?: StoriesClickableArea[];
   /**
    * Clickable sticker ID
    */
-  id: number;
+  id?: number;
   hashtag?: string;
   link_object?: BaseLink;
   mention?: string;
   tooltip_text?: string;
   owner_id?: number;
   story_id?: number;
+  clip_id?: number;
+  video_id?: number;
   question?: string;
   question_button?: string;
   place_id?: number;
@@ -37,8 +39,34 @@ export interface StoriesClickableSticker {
   'white' |
   'question_reply' |
   'light' |
-  'impressive';
-  type: 'hashtag' |
+  'impressive' |
+  'dark' |
+  'accent_background' |
+  'accent_text' |
+  'dark_unique' |
+  'light_unique' |
+  'light_text' |
+  'dark_text' |
+  'black' |
+  'dark_without_bg' |
+  'light_without_bg' |
+  'rectangle' |
+  'circle' |
+  'poop' |
+  'heart' |
+  'star' |
+  'album' |
+  'horizontal' |
+  'equalizer' |
+  'header_meta' |
+  'preview' |
+  'miniature' |
+  'fullview' |
+  'cta' |
+  'sticker' |
+  'sticker_and_cta' |
+  'accent';
+  type?: 'hashtag' |
   'mention' |
   'link' |
   'question' |
@@ -51,7 +79,13 @@ export interface StoriesClickableSticker {
   'poll' |
   'sticker' |
   'app' |
-  'situational_theme';
+  'situational_theme' |
+  'playlist' |
+  'clip' |
+  'vk_video' |
+  'situational_template' |
+  'spoiler' |
+  'service_yc_item';
   subtype?: 'market_item' | 'aliexpress_product';
   post_owner_id?: number;
   post_id?: number;

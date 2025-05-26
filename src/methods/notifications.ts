@@ -8,7 +8,7 @@ import { NotificationsNotificationItem } from '../objects/notifications/Notifica
 import { NotificationsSendMessageItem } from '../objects/notifications/NotificationsSendMessageItem';
 import { PhotosPhoto } from '../objects/photos/PhotosPhoto';
 import { UsersUser } from '../objects/users/UsersUser';
-import { VideoVideo } from '../objects/video/VideoVideo';
+import { VideoVideoFull } from '../objects/video/VideoVideoFull';
 
 /**
  * notifications.get
@@ -23,7 +23,7 @@ export interface NotificationsGetParams {
   count?: number;
   start_from?: string;
   /**
-   * Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
+   * Type of notifications to return: 'wall' - wall posts, 'mentions' - mentions in wall posts, comments, or topics, 'comments' - comments to wall posts, photos, and videos, 'likes' - likes, 'reposted' - wall posts that are copied from the current user's wall, 'followers' - new followers, 'friends' - accepted friend requests
    */
   filters?: string;
   /**
@@ -50,7 +50,7 @@ export interface NotificationsGetResponse {
    */
   last_viewed?: number;
   photos?: PhotosPhoto[];
-  videos?: VideoVideo[];
+  videos?: VideoVideoFull[];
   apps?: AppsApp[];
   next_from?: string;
   ttl?: number;
@@ -65,6 +65,9 @@ export interface NotificationsGetResponse {
 export interface NotificationsMarkAsViewedParams {}
 
 // notifications.markAsViewed_response
+/**
+ * Result
+ */
 export type NotificationsMarkAsViewedResponse = 0 | 1;
 
 /**
@@ -78,9 +81,9 @@ export interface NotificationsSendMessageParams {
   group_id?: number;
   random_id?: number;
   /**
-   * Type of sending (delivering) notifications: 'immediately' — push and bell notifications will be delivered as soon as possible, 'delayed' — push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' — only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
+   * Type of sending (delivering) notifications: 'immediately' - push and bell notifications will be delivered as soon as possible, 'delayed' - push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' - only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
    */
-  sending_mode?: 'delayed' | 'delayed_push' | 'immediately';
+  sending_mode?: 'delayed' | 'delayed_push' | 'immediately' | 'without_push';
 }
 
 // notifications.sendMessage_response

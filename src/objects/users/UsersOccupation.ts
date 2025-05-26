@@ -15,5 +15,7 @@ export interface UsersOccupation {
   /**
    * Type of occupation
    */
-  type?: string;
+  type?: 'school' | 'university' | 'work';
+  graduate_year?: number;
+  city_id?: number;
 }

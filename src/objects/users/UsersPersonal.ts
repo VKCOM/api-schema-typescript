@@ -2,6 +2,8 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { DatabaseLanguageFull } from '../database/DatabaseLanguageFull';
+
 // users_personal
 export interface UsersPersonal {
   /**
@@ -13,6 +15,10 @@ export interface UsersPersonal {
    */
   inspired_by?: string;
   langs?: string[];
+  /**
+   * User's languages with full info
+   */
+  langs_full?: DatabaseLanguageFull[];
   /**
    * User's personal priority in life
    */

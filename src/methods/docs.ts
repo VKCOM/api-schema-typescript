@@ -63,7 +63,7 @@ export interface DocsEditParams {
   /**
    * User ID or community ID. Use a negative value to designate a community ID.
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Document ID.
    */
@@ -109,8 +109,8 @@ export interface DocsGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: DocsDoc[];
+  count?: number;
+  items?: DocsDoc[];
 }
 
 /**
@@ -160,7 +160,7 @@ export interface DocsGetTypesParams {
   /**
    * ID of the user or community that owns the documents. Use a negative value to designate a community ID.
    */
-  owner_id: number;
+  owner_id?: number;
 }
 
 // docs.getTypes_response
@@ -205,6 +205,18 @@ export interface DocsGetWallUploadServerParams {
 export type DocsGetWallUploadServerResponse = BaseUploadServer;
 
 /**
+ * docs.restore
+ */
+
+export interface DocsRestoreParams {
+  owner_id: number;
+  doc_id: number;
+}
+
+// docs.restore_response
+export type DocsRestoreResponse = 1;
+
+/**
  * docs.save
  *
  * Saves a document after [vk.com/dev/upload_files_2|uploading it to a server].
@@ -244,7 +256,7 @@ export interface DocsSearchParams {
   /**
    * Search query string.
    */
-  q: string;
+  q?: string;
   search_own?: 0 | 1;
   /**
    * Number of results to return.
@@ -262,6 +274,6 @@ export interface DocsSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  items: DocsDoc[];
+  count?: number;
+  items?: DocsDoc[];
 }

@@ -7,15 +7,15 @@ import { AppsAppType } from './AppsAppType';
 
 // apps_app
 export interface AppsApp {
-  type: AppsAppType;
+  type?: AppsAppType;
   /**
    * Application ID
    */
-  id: number;
+  id?: number;
   /**
    * Application title
    */
-  title: string;
+  title?: string;
   /**
    * Application author's ID
    */
@@ -53,6 +53,10 @@ export interface AppsApp {
    */
   icon_75?: string;
   /**
+   * Screen orientation
+   */
+  screen_orientation?: number;
+  /**
    * Application author's URL
    */
   author_url?: string;
@@ -76,10 +80,6 @@ export interface AppsApp {
    * Is push enabled
    */
   push_enabled?: 0 | 1;
-  /**
-   * Screen orientation
-   */
-  screen_orientation?: number;
   friends?: number[];
   /**
    * Catalog position

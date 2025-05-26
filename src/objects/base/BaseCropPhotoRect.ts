@@ -7,17 +7,17 @@ export interface BaseCropPhotoRect {
   /**
    * Coordinate X of the left upper corner
    */
-  x: number;
+  x?: number;
   /**
    * Coordinate Y of the left upper corner
    */
-  y: number;
+  y?: number;
   /**
    * Coordinate X of the right lower corner
    */
-  x2: number;
+  x2?: number;
   /**
    * Coordinate Y of the right lower corner
    */
-  y2: number;
+  y2?: number;
 }

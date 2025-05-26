@@ -15,9 +15,9 @@ export interface DatabaseStation {
   /**
    * Station ID
    */
-  id: number;
+  id?: number;
   /**
    * Station name
    */
-  name: string;
+  name?: string;
 }

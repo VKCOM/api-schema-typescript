@@ -4,7 +4,9 @@
 
 import { BaseUploadServer } from '../objects/base/BaseUploadServer';
 import { PollsBackground } from '../objects/polls/PollsBackground';
+import { PollsFieldsVoters } from '../objects/polls/PollsFieldsVoters';
 import { PollsPoll } from '../objects/polls/PollsPoll';
+import { PollsPollExtended } from '../objects/polls/PollsPollExtended';
 import { PollsVoters } from '../objects/polls/PollsVoters';
 
 /**
@@ -27,6 +29,9 @@ export interface PollsAddVoteParams {
 }
 
 // polls.addVote_response
+/**
+ * Result
+ */
 export type PollsAddVoteResponse = 0 | 1;
 
 /**
@@ -78,14 +83,13 @@ export interface PollsDeleteVoteParams {
    * Poll ID.
    */
   poll_id: number;
-  /**
-   * Answer ID.
-   */
-  answer_id: number;
   is_board?: 0 | 1;
 }
 
 // polls.deleteVote_response
+/**
+ * Result
+ */
 export type PollsDeleteVoteResponse = 0 | 1;
 
 /**
@@ -158,11 +162,11 @@ export interface PollsGetByIdParams {
   extended?: 0 | 1;
   friends_count?: number;
   fields?: string;
-  name_case?: 'abl' | 'acc' | 'dat' | 'gen' | 'ins' | 'nom';
+  name_case?: string;
 }
 
 // polls.getById_response
-export type PollsGetByIdResponse = PollsPoll;
+export type PollsGetByIdResponse = PollsPollExtended;
 
 /**
  * polls.getPhotoUploadServer
@@ -196,15 +200,15 @@ export interface PollsGetVotersParams {
   answer_ids: string;
   is_board?: 0 | 1;
   /**
-   * '1' — to return only current user's friends, '0' — to return all users (default),
+   * '1' - to return only current user's friends, '0' - to return all users (default),
    */
   friends_only?: 0 | 1;
   /**
-   * Offset needed to return a specific subset of voters. '0' — (default)
+   * Offset needed to return a specific subset of voters. '0' - (default)
    */
   offset?: number;
   /**
-   * Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' — (default)
+   * Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' - (default)
    */
   count?: number;
   /**
@@ -214,21 +218,24 @@ export interface PollsGetVotersParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: , 'nom' - nominative (default) , 'gen' - genitive , 'dat' - dative , 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
 }
 
 // polls.getVoters_response
 export type PollsGetVotersResponse = PollsVoters[];
+
+// polls.getVoters_fieldsResponse
+export type PollsGetVotersFieldsResponse = PollsFieldsVoters[];
 
 /**
  * polls.savePhoto
  */
 
 export interface PollsSavePhotoParams {
-  photo: string;
-  hash: string;
+  photo?: string;
+  hash?: string;
 }
 
 // polls.savePhoto_response

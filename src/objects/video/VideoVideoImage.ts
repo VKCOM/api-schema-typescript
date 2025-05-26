@@ -6,16 +6,18 @@
 export interface VideoVideoImage {
   id?: string;
   /**
-   * Image height
-   */
-  height: number;
-  /**
    * Image url
    */
-  url: string;
+  url?: string;
   /**
    * Image width
    */
-  width: number;
+  width?: number;
+  /**
+   * Image height
+   */
+  height?: number;
+  theme?: 'light' | 'dark';
   with_padding?: 1;
+  size?: string;
 }

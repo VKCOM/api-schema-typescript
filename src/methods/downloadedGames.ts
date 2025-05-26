@@ -15,5 +15,5 @@ export interface DownloadedGamesGetPaidStatusResponse {
   /**
    * Game has been paid
    */
-  is_paid: boolean;
+  is_paid?: boolean;
 }

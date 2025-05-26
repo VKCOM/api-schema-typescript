@@ -7,6 +7,7 @@ import { BaseStickerAnimation } from './BaseStickerAnimation';
 
 // base_sticker_new
 export interface BaseStickerNew {
+  inner_type?: 'base_sticker_new';
   /**
    * Sticker ID
    */

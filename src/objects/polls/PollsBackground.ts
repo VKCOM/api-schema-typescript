@@ -29,7 +29,7 @@ export interface PollsBackground {
    * Gradient points
    */
   points?: BaseGradientPoint[];
-  type?: 'gradient' | 'tile';
+  type?: 'gradient' | 'tile' | 'color';
   /**
    * Original with of pattern tile
    */

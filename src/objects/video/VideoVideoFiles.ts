@@ -9,6 +9,10 @@ export interface VideoVideoFiles {
    */
   external?: string;
   /**
+   * URL of the mpeg4 file with 144p quality
+   */
+  mp4_144?: string;
+  /**
    * URL of the mpeg4 file with 240p quality
    */
   mp4_240?: string;

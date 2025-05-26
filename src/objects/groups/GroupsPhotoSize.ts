@@ -7,9 +7,9 @@ export interface GroupsPhotoSize {
   /**
    * Image height
    */
-  height: number;
+  height?: number;
   /**
    * Image width
    */
-  width: number;
+  width?: number;
 }

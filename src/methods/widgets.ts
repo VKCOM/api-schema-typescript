@@ -29,8 +29,8 @@ export interface WidgetsGetCommentsResponse {
   /**
    * Total number
    */
-  count: number;
-  posts: WidgetsWidgetComment[];
+  count?: number;
+  posts?: WidgetsWidgetComment[];
 }
 
 /**
@@ -52,6 +52,6 @@ export interface WidgetsGetPagesResponse {
   /**
    * Total number
    */
-  count: number;
-  pages: WidgetsWidgetPage[];
+  count?: number;
+  pages?: WidgetsWidgetPage[];
 }

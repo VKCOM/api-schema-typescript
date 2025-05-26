@@ -4,5 +4,5 @@
 
 // wall_wallpost_donut_placeholder
 export interface WallWallpostDonutPlaceholder {
-  text: string;
+  text?: string;
 }

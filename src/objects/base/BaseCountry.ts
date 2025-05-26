@@ -7,9 +7,9 @@ export interface BaseCountry {
   /**
    * Country ID
    */
-  id: number;
+  id?: number;
   /**
    * Country title
    */
-  title: string;
+  title?: string;
 }

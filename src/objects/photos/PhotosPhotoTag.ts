@@ -7,19 +7,19 @@ export interface PhotosPhotoTag {
   /**
    * Date when tag has been added in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Tag ID
    */
-  id: number;
+  id?: number;
   /**
    * ID of the tag creator
    */
-  placer_id: number;
+  placer_id?: number;
   /**
    * Tag description
    */
-  tagged_name: string;
+  tagged_name?: string;
   /**
    * Tagged description.
    */
@@ -27,25 +27,25 @@ export interface PhotosPhotoTag {
   /**
    * Tagged user ID
    */
-  user_id: number;
+  user_id?: number;
   /**
    * Information whether the tag is reviewed
    */
-  viewed: 0 | 1;
+  viewed?: 0 | 1;
   /**
    * Coordinate X of the left upper corner
    */
-  x: number;
+  x?: number;
   /**
    * Coordinate X of the right lower corner
    */
-  x2: number;
+  x2?: number;
   /**
    * Coordinate Y of the left upper corner
    */
-  y: number;
+  y?: number;
   /**
    * Coordinate Y of the right lower corner
    */
-  y2: number;
+  y2?: number;
 }

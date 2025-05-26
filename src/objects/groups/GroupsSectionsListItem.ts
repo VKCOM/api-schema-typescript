@@ -3,7 +3,7 @@
  */
 
 // groups_sections_list_item
-/**
- * (index, title) tuples
- */
-export type GroupsSectionsListItem = Array<number | string>;
+export interface GroupsSectionsListItem {
+  // empty interface
+  [key: string]: any;
+}

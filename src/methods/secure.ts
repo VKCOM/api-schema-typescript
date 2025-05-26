@@ -4,6 +4,7 @@
 
 import { SecureGiveEventStickerItem } from '../objects/secure/SecureGiveEventStickerItem';
 import { SecureLevel } from '../objects/secure/SecureLevel';
+import { SecureSetCounterItem } from '../objects/secure/SecureSetCounterItem';
 import { SecureSmsNotification } from '../objects/secure/SecureSmsNotification';
 import { SecureTokenChecked } from '../objects/secure/SecureTokenChecked';
 import { SecureTransaction } from '../objects/secure/SecureTransaction';
@@ -18,7 +19,7 @@ export interface SecureAddAppEventParams {
   /**
    * ID of a user to save the data
    */
-  user_id: number;
+  user_id?: number;
   /**
    * there are 2 default activities: , * 1 - level. Works similar to ,, * 2 - points, saves points amount, Any other value is for saving completed missions
    */
@@ -80,7 +81,7 @@ export interface SecureGetSMSHistoryParams {
    */
   date_to?: number;
   /**
-   * number of returned posts. By default — 1000.
+   * number of returned posts. By default - 1000.
    */
   limit?: number;
 }
@@ -146,6 +147,8 @@ export interface SecureSendNotificationParams {
    * notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
    */
   message: string;
+  notification_id?: number;
+  promo_id?: number;
 }
 
 // secure.sendNotification_response
@@ -187,5 +190,8 @@ export interface SecureSetCounterParams {
   increment?: 0 | 1;
 }
 
-// secure.setCounter_response
-export type SecureSetCounterResponse = 1;
+// secure.setCounter_responseInteger
+export type SecureSetCounterResponseInteger = 0 | 1;
+
+// secure.setCounter_responseArray
+export type SecureSetCounterResponseArray = SecureSetCounterItem[];

@@ -4,11 +4,14 @@
 
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { UsersUser } from '../objects/users/UsersUser';
-import { UsersUserMin } from '../objects/users/UsersUserMin';
+import { UsersUserFull } from '../objects/users/UsersUserFull';
+import { VideoLiveCategory } from '../objects/video/VideoLiveCategory';
 import { VideoSaveResult } from '../objects/video/VideoSaveResult';
-import { VideoVideo } from '../objects/video/VideoVideo';
+import { VideoStreamInputParams } from '../objects/video/VideoStreamInputParams';
+import { VideoVideoAlbum } from '../objects/video/VideoVideoAlbum';
 import { VideoVideoAlbumFull } from '../objects/video/VideoVideoAlbumFull';
 import { VideoVideoFull } from '../objects/video/VideoVideoFull';
+import { VideoVideoImage } from '../objects/video/VideoVideoImage';
 import { WallWallComment } from '../objects/wall/WallWallComment';
 
 /**
@@ -52,6 +55,8 @@ export interface VideoAddAlbumParams {
   title?: string;
   /**
    * new access permissions for the album. Possible values: , *'0' - all users,, *'1' - friends only,, *'2' - friends and friends of friends,, *'3' - "only me".
+   *
+   * objects.json#/definitions/video_playlist_privacy_category
    */
   privacy?: string;
 }
@@ -61,7 +66,7 @@ export interface VideoAddAlbumResponse {
   /**
    * Created album ID
    */
-  album_id: number;
+  album_id?: number;
 }
 
 /**
@@ -78,6 +83,9 @@ export interface VideoAddToAlbumParams {
 
 // video.addToAlbum_response
 export type VideoAddToAlbumResponse = 1;
+
+// video.addToAlbum_multiResponse
+export type VideoAddToAlbumMultiResponse = number[];
 
 /**
  * video.createComment
@@ -99,16 +107,17 @@ export interface VideoCreateCommentParams {
    */
   message?: string;
   /**
-   * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+   * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media attachment owner. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
   /**
-   * '1' — to post the comment from a community name (only if 'owner_id'<0)
+   * '1' - to post the comment from a community name (only if 'owner_id'<0)
    */
   from_group?: 0 | 1;
   reply_to_comment?: number;
   sticker_id?: number;
   guid?: string;
+  track_code?: string;
 }
 
 // video.createComment_response
@@ -150,6 +159,7 @@ export interface VideoDeleteAlbumParams {
    * Album ID.
    */
   album_id: number;
+  owner_id?: number;
 }
 
 // video.deleteAlbum_response
@@ -174,6 +184,26 @@ export interface VideoDeleteCommentParams {
 
 // video.deleteComment_response
 export type VideoDeleteCommentResponse = 1;
+
+/**
+ * video.deleteThread
+ *
+ * Deletes a thread on a video.
+ */
+
+export interface VideoDeleteThreadParams {
+  /**
+   * ID of the user or community that owns the video.
+   */
+  owner_id: number;
+  /**
+   * ID of the main comment to be deleted as thread.
+   */
+  thread_id: number;
+}
+
+// video.deleteThread_response
+export type VideoDeleteThreadResponse = 1;
 
 /**
  * video.edit
@@ -211,13 +241,20 @@ export interface VideoEditParams {
    */
   no_comments?: 0 | 1;
   /**
-   * '1' — to repeat the playback of the video, '0' — to play the video once,
+   * '1' - to repeat the playback of the video, '0' - to play the video once,
    */
   repeat?: 0 | 1;
+  ord_info?: string;
 }
 
 // video.edit_response
-export type VideoEditResponse = 1;
+export interface VideoEditResponse {
+  success?: 0 | 1;
+  /**
+   * Access key for access link
+   */
+  access_key?: string;
+}
 
 /**
  * video.editAlbum
@@ -237,11 +274,14 @@ export interface VideoEditAlbumParams {
   /**
    * New album title.
    */
-  title: string;
+  title?: string;
   /**
    * new access permissions for the album. Possible values: , *'0' - all users,, *'1' - friends only,, *'2' - friends and friends of friends,, *'3' - "only me".
+   *
+   * objects.json#/definitions/video_playlist_privacy_category
    */
   privacy?: string;
+  owner_id?: number;
 }
 
 // video.editAlbum_response
@@ -267,7 +307,7 @@ export interface VideoEditCommentParams {
    */
   message?: string;
   /**
-   * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+   * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media attachment owner. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
 }
@@ -303,10 +343,14 @@ export interface VideoGetParams {
    */
   offset?: number;
   /**
-   * '1' — to return an extended response with additional fields
+   * '1' - to return an extended response with additional fields
    */
   extended?: 0 | 1;
   fields?: string;
+  /**
+   * Sort order: '0' - newest video first, '1' - oldest video first
+   */
+  sort_album?: 0 | 1;
 }
 
 // video.get_response
@@ -314,10 +358,14 @@ export interface VideoGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: VideoVideoFull[];
-  profiles?: UsersUserMin[];
+  count?: number;
+  items?: VideoVideoFull[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
+  /**
+   * Max attached short videos
+   */
+  max_attached_short_videos?: number;
 }
 
 /**
@@ -360,7 +408,7 @@ export interface VideoGetAlbumsParams {
    */
   count?: number;
   /**
-   * '1' — to return additional information about album privacy settings for the current user
+   * '1' - to return additional information about album privacy settings for the current user
    */
   extended?: 0 | 1;
   need_system?: 0 | 1;
@@ -371,8 +419,8 @@ export interface VideoGetAlbumsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: VideoVideoAlbumFull[];
+  count?: number;
+  items?: VideoVideoAlbum[];
 }
 
 // video.getAlbums_extendedResponse
@@ -380,8 +428,8 @@ export interface VideoGetAlbumsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: VideoVideoAlbumFull[];
+  count?: number;
+  items?: VideoVideoAlbumFull[];
 }
 
 /**
@@ -423,7 +471,7 @@ export interface VideoGetCommentsParams {
    */
   video_id: number;
   /**
-   * '1' — to return an additional 'likes' field
+   * '1' - to return an additional 'likes' field
    */
   need_likes?: 0 | 1;
   start_comment_id?: number;
@@ -436,11 +484,13 @@ export interface VideoGetCommentsParams {
    */
   count?: number;
   /**
-   * Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
+   * Sort order: 'asc' - oldest comment first, 'desc' - newest comment first
    */
-  sort?: 'asc' | 'desc';
+  sort?: 'asc' | 'desc' | 'interest';
   extended?: 0 | 1;
   fields?: string;
+  comment_id?: number;
+  thread_items_count?: number;
 }
 
 // video.getComments_response
@@ -448,8 +498,22 @@ export interface VideoGetCommentsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallComment[];
+  count?: number;
+  items?: WallWallComment[];
+  /**
+   * Count of replies of current level
+   */
+  current_level_count?: number;
+  /**
+   * Information whether current user can comment the post
+   */
+  can_post?: boolean;
+  show_reply_button?: boolean;
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: boolean;
+  real_offset?: number;
 }
 
 // video.getComments_extendedResponse
@@ -457,11 +521,137 @@ export interface VideoGetCommentsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallComment[];
-  profiles: UsersUserMin[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: WallWallComment[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+  /**
+   * Count of replies of current level
+   */
+  current_level_count?: number;
+  /**
+   * Information whether current user can comment the post
+   */
+  can_post?: boolean;
+  show_reply_button?: boolean;
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: boolean;
+  real_offset?: number;
 }
+
+/**
+ * video.getLongPollServer
+ */
+
+export interface VideoGetLongPollServerParams {
+  owner_id?: number;
+  video_id: number;
+}
+
+// video.getLongPollServer_response
+export interface VideoGetLongPollServerResponse {
+  url?: string;
+}
+
+/**
+ * video.getOembed
+ *
+ * Returns oEmbed player to video
+ */
+
+export interface VideoGetOembedParams {
+  /**
+   * Link to video
+   */
+  url: string;
+  /**
+   * Maximum width of player
+   */
+  maxwidth?: number;
+  /**
+   * Maximum width of player
+   */
+  maxheight?: number;
+}
+
+// video.getOembed_response
+export interface VideoGetOembedResponse {
+  /**
+   * Version of oEmbed (always 1.0)
+   */
+  version?: string;
+  /**
+   * Type of embed content (always video)
+   */
+  type?: string;
+  /**
+   * Title of video
+   */
+  title?: string;
+  /**
+   * Author of video
+   */
+  author_name?: string;
+  /**
+   * HTML of player
+   */
+  html?: string;
+  /**
+   * Width of player
+   */
+  width?: number;
+  /**
+   * Height of player
+   */
+  height?: number;
+  /**
+   * Name of video provider
+   */
+  provider_name?: string;
+  /**
+   * Video provider url
+   */
+  provider_url?: string;
+  /**
+   * Video thumbnail url
+   */
+  thumbnail_url?: string;
+  /**
+   * Video thumbnail width
+   */
+  thumbnail_width?: number;
+  /**
+   * Video thumbnail height
+   */
+  thumbnail_height?: number;
+}
+
+/**
+ * video.getThumbUploadUrl
+ */
+
+export interface VideoGetThumbUploadUrlParams {
+  owner_id: number;
+}
+
+// video.getThumbUploadUrl_response
+export interface VideoGetThumbUploadUrlResponse {
+  /**
+   * Url for thumb upload
+   */
+  upload_url?: string;
+}
+
+/**
+ * video.liveGetCategories
+ */
+
+export interface VideoLiveGetCategoriesParams {}
+
+// video.liveGetCategories_response
+export type VideoLiveGetCategoriesResponse = VideoLiveCategory[];
 
 /**
  * video.removeFromAlbum
@@ -477,6 +667,9 @@ export interface VideoRemoveFromAlbumParams {
 
 // video.removeFromAlbum_response
 export type VideoRemoveFromAlbumResponse = 1;
+
+// video.removeFromAlbum_multiResponse
+export type VideoRemoveFromAlbumMultiResponse = number[];
 
 /**
  * video.reorderAlbums
@@ -568,7 +761,7 @@ export interface VideoReportParams {
   /**
    * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
-  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  reason?: 0 | 1 | 2 | 4 | 5 | 6 | 8 | 9 | 10 | 11 | 12 | 13 | 15 | 27 | 41 | 42 | 43 | 101;
   /**
    * Comment describing the complaint.
    */
@@ -600,7 +793,7 @@ export interface VideoReportCommentParams {
   /**
    * Reason for the complaint: , 0 - spam , 1 - child pornography , 2 - extremism , 3 - violence , 4 - drug propaganda , 5 - adult material , 6 - insult, abuse
    */
-  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  reason?: 0 | 1 | 2 | 4 | 5 | 6 | 8 | 9 | 10 | 11 | 12 | 13 | 15 | 27 | 41 | 42 | 43 | 101;
 }
 
 // video.reportComment_response
@@ -644,7 +837,30 @@ export interface VideoRestoreCommentParams {
 }
 
 // video.restoreComment_response
+/**
+ * Returns 1 if request has been processed successfully, 0 if the comment is not found
+ */
 export type VideoRestoreCommentResponse = 0 | 1;
+
+/**
+ * video.restoreThread
+ *
+ * Restores a deleted thread on a video.
+ */
+
+export interface VideoRestoreThreadParams {
+  /**
+   * ID of the user or community that owns the video.
+   */
+  owner_id: number;
+  /**
+   * ID of the main comment to be deleted as thread.
+   */
+  thread_id: number;
+}
+
+// video.restoreThread_response
+export type VideoRestoreThreadResponse = 1;
 
 /**
  * video.save
@@ -662,11 +878,11 @@ export interface VideoSaveParams {
    */
   description?: string;
   /**
-   * '1' — to designate the video as private (send it via a private message), the video will not appear on the user's video list and will not be available by ID for other users, '0' — not to designate the video as private
+   * '1' - to designate the video as private (send it via a private message), the video will not appear on the user's video list and will not be available by ID for other users, '0' - not to designate the video as private
    */
   is_private?: 0 | 1;
   /**
-   * '1' — to post the saved video on a user's wall, '0' — not to post the saved video on a user's wall
+   * '1' - to post the saved video on a user's wall, '0' - not to post the saved video on a user's wall
    */
   wallpost?: 0 | 1;
   /**
@@ -685,14 +901,52 @@ export interface VideoSaveParams {
   privacy_comment?: string;
   no_comments?: 0 | 1;
   /**
-   * '1' — to repeat the playback of the video, '0' — to play the video once,
+   * '1' - to repeat the playback of the video, '0' - to play the video once,
    */
   repeat?: 0 | 1;
   compression?: 0 | 1;
+  ord_info?: string;
+  auto_publish?: 0 | 1;
 }
 
 // video.save_response
 export type VideoSaveResponse = VideoSaveResult;
+
+/**
+ * video.saveUploadedThumb
+ */
+
+export interface VideoSaveUploadedThumbParams {
+  owner_id: number;
+  thumb_json: string;
+  thumb_size?: string;
+  random_tag?: string;
+  /**
+   * Video ID.
+   */
+  video_id?: number;
+  /**
+   * If flag passed uploaded thumb will automatically set to passed video. Work only with video_id.
+   */
+  set_thumb?: 0 | 1;
+}
+
+// video.saveUploadedThumb_response
+export interface VideoSaveUploadedThumbResponse {
+  image?: VideoVideoImage[];
+  /**
+   * ID of uploaded thumb
+   */
+  photo_id?: number;
+  /**
+   * Owner ID of uploaded thumb
+   */
+  photo_owner_id?: number;
+  /**
+   * Hash of uploaded thumb
+   */
+  photo_hash?: string;
+}
 
 /**
  * video.search
@@ -704,9 +958,9 @@ export interface VideoSearchParams {
   /**
    * Search query string (e.g., 'The Beatles').
    */
-  q: string;
+  q?: string;
   /**
-   * Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
+   * Sort order: '1' - by duration, '2' - by relevance, '0' - by date added
    */
   sort?: 1 | 2 | 0;
   /**
@@ -714,12 +968,12 @@ export interface VideoSearchParams {
    */
   hd?: number;
   /**
-   * '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
+   * '1' - to disable the Safe Search filter, '0' - to enable the Safe Search filter
    */
   adult?: 0 | 1;
   live?: 0 | 1;
   /**
-   * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+   * Filters to apply: 'youtube' - return YouTube videos only, 'vimeo' - return Vimeo videos only, 'vk' - return VK videos only, 'short' - return short videos only, 'long' - return long videos only
    */
   filters?: string;
   search_own?: 0 | 1;
@@ -734,6 +988,8 @@ export interface VideoSearchParams {
    */
   count?: number;
   extended?: 0 | 1;
+  owner_id?: number;
+  fields?: string;
 }
 
 // video.search_response
@@ -741,8 +997,8 @@ export interface VideoSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  items: VideoVideo[];
+  count?: number;
+  items?: VideoVideoFull[];
 }
 
 // video.search_extendedResponse
@@ -750,8 +1006,82 @@ export interface VideoSearchExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: VideoVideoFull[];
-  profiles: UsersUser[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: VideoVideoFull[];
+  profiles?: UsersUser[];
+  groups?: GroupsGroupFull[];
 }
+
+/**
+ * video.startStreaming
+ */
+
+export interface VideoStartStreamingParams {
+  video_id?: number;
+  name?: string;
+  description?: string;
+  wallpost?: 0 | 1;
+  group_id?: number;
+  privacy_view?: string;
+  privacy_comment?: string;
+  no_comments?: 0 | 1;
+  category_id?: number;
+  publish?: 0 | 1;
+}
+
+// video.startStreaming_response
+export interface VideoStartStreamingResponse {
+  /**
+   * Owner ID of created video object
+   */
+  owner_id?: number;
+  /**
+   * Video ID of created video object
+   */
+  video_id?: number;
+  /**
+   * Video title
+   */
+  name?: string;
+  /**
+   * Video description
+   */
+  description?: string;
+  /**
+   * Video access key
+   */
+  access_key?: string;
+  stream?: VideoStreamInputParams;
+  post_id?: number;
+}
+
+/**
+ * video.stopStreaming
+ */
+
+export interface VideoStopStreamingParams {
+  group_id?: number;
+  video_id?: number;
+}
+
+// video.stopStreaming_response
+export interface VideoStopStreamingResponse {
+  unique_viewers?: number;
+}
+
+/**
+ * video.unpinComment
+ *
+ * Unpin comment of a video.
+ */
+
+export interface VideoUnpinCommentParams {
+  /**
+   * ID of the user or community that owns the video.
+   */
+  owner_id: number;
+  comment_id: number;
+}
+
+// video.unpinComment_response
+export type VideoUnpinCommentResponse = 1;

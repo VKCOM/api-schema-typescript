@@ -7,9 +7,9 @@ export interface MessagesLastActivity {
   /**
    * Information whether user is online
    */
-  online: 0 | 1;
+  online?: 0 | 1;
   /**
    * Time when user was online in Unixtime
    */
-  time: number;
+  time?: number;
 }

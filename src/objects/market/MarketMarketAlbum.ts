@@ -4,24 +4,30 @@
 
 import { PhotosPhoto } from '../photos/PhotosPhoto';
 
+// market_market_album type enumNames
+export const MarketMarketAlbumTypeEnumNames = {
+  MARKET: 0,
+  MARKET_SERVICES: 1,
+} as const;
+
 // market_market_album
 export interface MarketMarketAlbum {
   /**
    * Market album ID
    */
-  id: number;
+  id?: number;
   /**
    * Market album owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Market album title
    */
-  title: string;
+  title?: string;
   /**
    * Items number
    */
-  count: number;
+  count?: number;
   /**
    * Is album main for owner
    */
@@ -34,5 +40,16 @@ export interface MarketMarketAlbum {
   /**
    * Date when album has been updated last time in Unixtime
    */
-  updated_time: number;
+  updated_time?: number;
+  /**
+   * Type of album
+   *
+   * `0` — market
+   * `1` — market_services
+   */
+  type?: 0 | 1;
+  /**
+   * Is album needed to be blurred (18+) or not
+   */
+  is_blur_enabled?: boolean;
 }

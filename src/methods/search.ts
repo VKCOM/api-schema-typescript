@@ -30,7 +30,7 @@ export interface SearchGetHintsParams {
 
 // search.getHints_response
 export interface SearchGetHintsResponse {
-  count: number;
-  items: SearchHint[];
+  count?: number;
+  items?: SearchHint[];
   suggested_queries?: string[];
 }

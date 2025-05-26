@@ -11,14 +11,9 @@ export interface StoriesFeedItem {
   /**
    * Type of Feed Item
    */
-  type: 'promo_stories' |
-  'stories' |
-  'live_active' |
-  'live_finished' |
-  'community_grouped_stories' |
-  'app_grouped_stories' |
-  'birthday';
+  type?: 'promo_stories' | 'stories' | 'live_active' | 'live_finished' | 'app_grouped_stories' | 'discover';
   id?: string;
+  owner_id?: number;
   /**
    * Author stories
    */
@@ -35,7 +30,6 @@ export interface StoriesFeedItem {
    * Additional data for promo stories (for type promo_stories)
    */
   promo_data?: StoriesPromoBlock;
-  birthday_user_id?: number;
   track_code?: string;
   has_unseen?: boolean;
   name?: string;

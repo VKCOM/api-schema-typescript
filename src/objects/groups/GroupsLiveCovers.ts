@@ -7,7 +7,7 @@ export interface GroupsLiveCovers {
   /**
    * Information whether live covers is enabled
    */
-  is_enabled: boolean;
+  is_enabled?: boolean;
   /**
    * Information whether live covers photo scaling is enabled
    */

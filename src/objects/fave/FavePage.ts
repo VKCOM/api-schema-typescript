@@ -12,13 +12,13 @@ export interface FavePage {
   /**
    * Some info about user or group
    */
-  description: string;
+  description?: string;
   group?: GroupsGroupFull;
-  tags: FaveTag[];
+  tags?: FaveTag[];
   /**
    * Item type
    */
-  type: FavePageType;
+  type?: FavePageType;
   /**
    * Timestamp, when this page was bookmarked
    */

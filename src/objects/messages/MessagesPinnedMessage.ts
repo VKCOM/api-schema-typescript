@@ -15,30 +15,38 @@ export interface MessagesPinnedMessage {
    */
   conversation_message_id?: number;
   /**
+   * Message ID
+   */
+  id?: number;
+  /**
    * Date when the message has been sent in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Message author's ID
    */
-  from_id: number;
+  from_id?: number;
   /**
    * Forwarded messages
    */
   fwd_messages?: MessagesForeignMessage[];
   geo?: BaseGeo;
   /**
-   * Message ID
-   */
-  id: number;
-  /**
    * Peer ID
    */
-  peer_id: number;
+  peer_id?: number;
   reply_message?: MessagesForeignMessage;
   /**
    * Message text
    */
-  text: string;
+  text?: string;
   keyboard?: MessagesKeyboard;
+  /**
+   * Information whether the message is outcoming
+   */
+  out?: boolean;
+  /**
+   * Is it an important message
+   */
+  important?: boolean;
 }

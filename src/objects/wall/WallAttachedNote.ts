@@ -7,27 +7,27 @@ export interface WallAttachedNote {
   /**
    * Comments number
    */
-  comments: number;
+  comments?: number;
   /**
    * Date when the note has been created in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Note ID
    */
-  id: number;
+  id?: number;
   /**
    * Note owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Read comments number
    */
-  read_comments: number;
+  read_comments?: number;
   /**
    * Note title
    */
-  title: string;
+  title?: string;
   /**
    * Note text
    */
@@ -42,5 +42,5 @@ export interface WallAttachedNote {
   /**
    * URL of the page with note preview
    */
-  view_url: string;
+  view_url?: string;
 }

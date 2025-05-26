@@ -10,5 +10,5 @@ export interface GroupsOnlineStatus {
    * Estimated time of answer (for status = answer_mark)
    */
   minutes?: number;
-  status: GroupsOnlineStatusType;
+  status?: GroupsOnlineStatusType;
 }

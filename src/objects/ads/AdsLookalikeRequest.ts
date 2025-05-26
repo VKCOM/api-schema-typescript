@@ -9,15 +9,15 @@ export interface AdsLookalikeRequest {
   /**
    * Lookalike request ID
    */
-  id: number;
+  id?: number;
   /**
    * Lookalike request create time, as Unixtime
    */
-  create_time: number;
+  create_time?: number;
   /**
    * Lookalike request update time, as Unixtime
    */
-  update_time: number;
+  update_time?: number;
   /**
    * Time by which lookalike request would be deleted, as Unixtime
    */
@@ -25,11 +25,11 @@ export interface AdsLookalikeRequest {
   /**
    * Lookalike request status
    */
-  status: 'search_in_progress' | 'search_failed' | 'search_done' | 'save_in_progress' | 'save_failed' | 'save_done';
+  status?: 'search_in_progress' | 'search_failed' | 'search_done' | 'save_in_progress' | 'save_failed' | 'save_done';
   /**
    * Lookalike request source type
    */
-  source_type: 'retargeting_group';
+  source_type?: 'retargeting_group';
   /**
    * Retargeting group id, which was used as lookalike seed
    */

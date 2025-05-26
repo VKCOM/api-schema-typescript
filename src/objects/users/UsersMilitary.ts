@@ -5,10 +5,6 @@
 // users_military
 export interface UsersMilitary {
   /**
-   * Country ID
-   */
-  country_id: number;
-  /**
    * From year
    */
   from?: number;
@@ -19,11 +15,11 @@ export interface UsersMilitary {
   /**
    * Unit name
    */
-  unit: string;
+  unit?: string;
   /**
    * Unit ID
    */
-  unit_id: number;
+  unit_id?: number;
   /**
    * Till year
    */

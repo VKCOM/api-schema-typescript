@@ -11,15 +11,15 @@ export interface OrdersSubscription {
   /**
    * Date of creation in Unixtime
    */
-  create_time: number;
+  create_time?: number;
   /**
    * Subscription ID
    */
-  id: number;
+  id?: number;
   /**
    * Subscription order item
    */
-  item_id: string;
+  item_id?: string;
   /**
    * Date of next bill in Unixtime
    */
@@ -35,15 +35,15 @@ export interface OrdersSubscription {
   /**
    * Subscription period
    */
-  period: number;
+  period?: number;
   /**
    * Date of last period start in Unixtime
    */
-  period_start_time: number;
+  period_start_time?: number;
   /**
    * Subscription price
    */
-  price: number;
+  price?: number;
   /**
    * Subscription name
    */
@@ -63,7 +63,7 @@ export interface OrdersSubscription {
   /**
    * Subscription status
    */
-  status: string;
+  status?: string;
   /**
    * Is test subscription
    */
@@ -75,5 +75,9 @@ export interface OrdersSubscription {
   /**
    * Date of last change in Unixtime
    */
-  update_time: number;
+  update_time?: number;
+  /**
+   * Is game (not miniapp) subscription
+   */
+  is_game?: boolean;
 }

@@ -6,15 +6,15 @@ import { AppsAppType } from './AppsAppType';
 
 // apps_app_min
 export interface AppsAppMin {
-  type: AppsAppType;
+  type?: AppsAppType;
   /**
    * Application ID
    */
-  id: number;
+  id?: number;
   /**
    * Application title
    */
-  title: string;
+  title?: string;
   /**
    * Application author's ID
    */
@@ -51,4 +51,8 @@ export interface AppsAppMin {
    * URL of the app icon with 75 px in width
    */
   icon_75?: string;
+  /**
+   * Screen orientation
+   */
+  screen_orientation?: number;
 }

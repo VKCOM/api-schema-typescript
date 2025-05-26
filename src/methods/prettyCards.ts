@@ -3,6 +3,7 @@
  */
 
 import { PrettyCardsPrettyCard } from '../objects/prettyCards/PrettyCardsPrettyCard';
+import { PrettyCardsPrettyCardOrError } from '../objects/prettyCards/PrettyCardsPrettyCardOrError';
 
 /**
  * prettyCards.create
@@ -23,11 +24,11 @@ export interface PrettyCardsCreateResponse {
   /**
    * Owner ID of created pretty card
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Card ID of created pretty card
    */
-  card_id: string;
+  card_id?: string;
 }
 
 /**
@@ -44,11 +45,11 @@ export interface PrettyCardsDeleteResponse {
   /**
    * Owner ID of deleted pretty card
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Card ID of deleted pretty card
    */
-  card_id: string;
+  card_id?: string;
   /**
    * Error reason if error happened
    */
@@ -75,11 +76,11 @@ export interface PrettyCardsEditResponse {
   /**
    * Owner ID of edited pretty card
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Card ID of edited pretty card
    */
-  card_id: string;
+  card_id?: string;
 }
 
 /**
@@ -97,8 +98,8 @@ export interface PrettyCardsGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: PrettyCardsPrettyCard[];
+  count?: number;
+  items?: PrettyCardsPrettyCard[];
 }
 
 /**
@@ -111,7 +112,7 @@ export interface PrettyCardsGetByIdParams {
 }
 
 // prettyCards.getById_response
-export type PrettyCardsGetByIdResponse = PrettyCardsPrettyCard[];
+export type PrettyCardsGetByIdResponse = PrettyCardsPrettyCardOrError[];
 
 /**
  * prettyCards.getUploadURL

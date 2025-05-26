@@ -2,9 +2,9 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { AppsAppMin } from '../apps/AppsAppMin';
 import { AudioAudio } from '../audio/AudioAudio';
 import { BaseCity } from '../base/BaseCity';
-import { BaseCountry } from '../base/BaseCountry';
 import { BaseCropPhoto } from '../base/BaseCropPhoto';
 import { BaseSex } from '../base/BaseSex';
 import { FriendsFriendStatusStatus } from '../friends/FriendsFriendStatusStatus';
@@ -26,6 +26,7 @@ import { UsersUserMin } from '../users/UsersUserMin';
 import { UsersUserRelation } from '../users/UsersUserRelation';
 import { UsersUserType } from '../users/UsersUserType';
 import { VideoLiveInfo } from '../video/VideoLiveInfo';
+import { GroupsMemberRolePermission } from './GroupsMemberRolePermission';
 import { GroupsRoleOptions } from './GroupsRoleOptions';
 
 // groups_user_xtr_role
@@ -37,7 +38,7 @@ export interface GroupsUserXtrRole {
   /**
    * User first name
    */
-  first_name: string;
+  first_name?: string;
   /**
    * Returns if a profile is hidden.
    */
@@ -45,11 +46,11 @@ export interface GroupsUserXtrRole {
   /**
    * User ID
    */
-  id: number;
+  id?: number;
   /**
    * User last name
    */
-  last_name: string;
+  last_name?: string;
   can_access_closed?: boolean;
   is_closed?: boolean;
   /**
@@ -160,7 +161,6 @@ export interface GroupsUserXtrRole {
    */
   bdate?: string;
   city?: BaseCity;
-  country?: BaseCountry;
   /**
    * User's timezone
    */
@@ -203,6 +203,10 @@ export interface GroupsUserXtrRole {
    */
   is_friend?: 0 | 1;
   /**
+   * Information whether the user is a best friend of current user
+   */
+  is_best_friend?: boolean;
+  /**
    * Information whether current user can comment wall posts
    */
   wall_comments?: 0 | 1;
@@ -231,9 +235,9 @@ export interface GroupsUserXtrRole {
   is_video_live_notifications_blocked?: 0 | 1;
   is_service?: boolean;
   service_description?: string;
-  photo_rec?: boolean | string;
-  photo_medium?: boolean | string;
-  photo_medium_rec?: boolean | string;
+  photo_rec?: string | boolean;
+  photo_medium?: string | boolean;
+  photo_medium_rec?: string | boolean;
   photo?: string;
   photo_big?: string;
   photo_400?: string;
@@ -250,6 +254,10 @@ export interface GroupsUserXtrRole {
    * Information whether group can call user
    */
   can_call_from_group?: boolean;
+  /**
+   * Information whether user/group can invite user as voicerooms speakr
+   */
+  can_invite_as_voicerooms_speaker?: boolean;
   /**
    * Information whether current user can see the user's wishes
    */
@@ -300,11 +308,12 @@ export interface GroupsUserXtrRole {
    * User's status
    */
   activity?: string;
+  status_app?: AppsAppMin;
   last_seen?: UsersLastSeen;
   exports?: UsersExports;
   crop_photo?: BaseCropPhoto;
   /**
-   * Number of user's followers
+   * Number of user's followers and friends
    */
   followers_count?: number;
   /**
@@ -399,6 +408,10 @@ export interface GroupsUserXtrRole {
   counters?: UsersUserCounters;
   access_key?: string;
   can_upload_doc?: 0 | 1;
+  /**
+   * Information whether the user can be baned (added to black list) by me
+   */
+  can_ban?: boolean;
   hash?: string;
   /**
    * Access to user profile is restricted for search engines
@@ -411,5 +424,6 @@ export interface GroupsUserXtrRole {
   is_message_request?: boolean;
   descriptions?: string[];
   lists?: number[];
+  permissions?: GroupsMemberRolePermission[];
   role?: GroupsRoleOptions;
 }

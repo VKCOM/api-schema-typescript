@@ -52,7 +52,7 @@ export interface AccountChangePasswordResponse {
   /**
    * New token
    */
-  token: string;
+  token?: string;
   /**
    * New secret
    */
@@ -78,8 +78,8 @@ export interface AccountGetActiveOffersResponse {
   /**
    * Total number
    */
-  count: number;
-  items: AccountOffer[];
+  count?: number;
+  items?: AccountOffer[];
 }
 
 /**
@@ -92,7 +92,7 @@ export interface AccountGetAppPermissionsParams {
   /**
    * User ID whose settings information shall be got. By default: current user.
    */
-  user_id: number;
+  user_id?: number;
 }
 
 // account.getAppPermissions_response
@@ -113,6 +113,12 @@ export interface AccountGetBannedParams {
    * Number of results to return.
    */
   count?: number;
+  /**
+   * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+   *
+   * objects.json#/definitions/base_user_group_fields
+   */
+  fields?: string;
 }
 
 // account.getBanned_response
@@ -120,8 +126,8 @@ export interface AccountGetBannedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroup[];
 }
@@ -135,12 +141,10 @@ export interface AccountGetBannedResponse {
 export interface AccountGetCountersParams {
   /**
    * Counters to be returned.
+   *
+   * objects.json#/definitions/account_counters_filter
    */
   filter?: string;
-  /**
-   * User ID
-   */
-  user_id?: number;
 }
 
 // account.getCounters_response
@@ -154,7 +158,7 @@ export type AccountGetCountersResponse = AccountAccountCounters;
 
 export interface AccountGetInfoParams {
   /**
-   * Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
+   * Fields to return. Possible values: *'country' - user country,, *'https_required' - is "HTTPS only" option enabled,, *'own_posts_default' - is "Show my posts only" option is enabled,, *'no_wall_replies' - are wall replies disabled or not,, *'intro' - is intro passed by user or not,, *'lang' - user language. By default: all.
    */
   fields?: string;
 }
@@ -221,6 +225,7 @@ export interface AccountRegisterDeviceParams {
    */
   settings?: string;
   sandbox?: 0 | 1;
+  pushes_granted?: 0 | 1;
 }
 
 // account.registerDevice_response
@@ -260,7 +265,7 @@ export interface AccountSaveProfileInfoParams {
   /**
    * User relationship status. Possible values: , * '1' - single,, * '2' - in a relationship,, * '3' - engaged,, * '4' - married,, * '5' - it's complicated,, * '6' - actively searching,, * '7' - in love,, * '0' - not specified.
    */
-  relation?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 0;
+  relation?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   /**
    * ID of the relationship partner.
    */
@@ -272,7 +277,7 @@ export interface AccountSaveProfileInfoParams {
   /**
    * Birth date visibility. Returned values: , * '1' - show birth date,, * '2' - show only month and day,, * '0' - hide birth date.
    */
-  bdate_visibility?: 1 | 2 | 0;
+  bdate_visibility?: 0 | 1 | 2;
   /**
    * User home town.
    */
@@ -310,7 +315,7 @@ export interface AccountSetInfoParams {
   /**
    * Setting name.
    */
-  name?: string;
+  name?: 'audio_autoplay' | 'intro' | 'no_wall_replies' | 'own_posts_default';
   /**
    * Setting value.
    */
@@ -319,26 +324,6 @@ export interface AccountSetInfoParams {
 
 // account.setInfo_response
 export type AccountSetInfoResponse = 1;
-
-/**
- * account.setNameInMenu
- *
- * Sets an application screen name (up to 17 characters), that is shown to the user in the left menu.
- */
-
-export interface AccountSetNameInMenuParams {
-  /**
-   * User ID.
-   */
-  user_id: number;
-  /**
-   * Application screen name.
-   */
-  name?: string;
-}
-
-// account.setNameInMenu_response
-export type AccountSetNameInMenuResponse = 1;
 
 /**
  * account.setOffline
@@ -415,7 +400,7 @@ export interface AccountSetSilenceModeParams {
    */
   peer_id?: number;
   /**
-   * '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id' contains user or community ID.
+   * '1' - to enable sound in this dialog, '0' - to disable sound. Only if 'peer_id' contains user or community ID.
    */
   sound?: number;
 }

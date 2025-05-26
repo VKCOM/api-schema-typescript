@@ -7,7 +7,7 @@ export interface MessagesPushSettings {
   /**
    * Information whether push notifications are disabled forever
    */
-  disabled_forever: boolean;
+  disabled_forever?: boolean;
   /**
    * Time until what notifications are disabled
    */
@@ -15,7 +15,7 @@ export interface MessagesPushSettings {
   /**
    * Information whether the sound is on
    */
-  no_sound: boolean;
+  no_sound?: boolean;
   /**
    * Information whether the mentions are disabled
    */

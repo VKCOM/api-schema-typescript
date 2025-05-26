@@ -7,21 +7,21 @@ export interface PagesWikipageHistory {
   /**
    * Version ID
    */
-  id: number;
+  id?: number;
   /**
    * Page size in bytes
    */
-  length: number;
+  length?: number;
   /**
    * Date when the page has been edited in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Last editor ID
    */
-  editor_id: number;
+  editor_id?: number;
   /**
    * Last editor name
    */
-  editor_name: string;
+  editor_name?: string;
 }

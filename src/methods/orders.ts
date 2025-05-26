@@ -17,6 +17,9 @@ export interface OrdersCancelSubscriptionParams {
 }
 
 // orders.cancelSubscription_response
+/**
+ * Result
+ */
 export type OrdersCancelSubscriptionResponse = 0 | 1;
 
 /**
@@ -31,7 +34,7 @@ export interface OrdersChangeStateParams {
    */
   order_id: number;
   /**
-   * action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
+   * action to be done with the order. Available actions: *cancel - to cancel unconfirmed order. *charge - to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund - to cancel confirmed order.
    */
   action: 'cancel' | 'charge' | 'refund';
   /**
@@ -39,7 +42,7 @@ export interface OrdersChangeStateParams {
    */
   app_order_id?: number;
   /**
-   * if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+   * if this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
    */
   test_mode?: 0 | 1;
 }
@@ -60,7 +63,7 @@ export interface OrdersGetParams {
    */
   count?: number;
   /**
-   * if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+   * if this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
    */
   test_mode?: 0 | 1;
 }
@@ -96,7 +99,7 @@ export interface OrdersGetByIdParams {
    */
   order_ids?: string;
   /**
-   * if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+   * if this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
    */
   test_mode?: 0 | 1;
 }
@@ -132,16 +135,3 @@ export interface OrdersGetUserSubscriptionsResponse {
   count?: number;
   items?: OrdersSubscription[];
 }
-
-/**
- * orders.updateSubscription
- */
-
-export interface OrdersUpdateSubscriptionParams {
-  user_id: number;
-  subscription_id: number;
-  price: number;
-}
-
-// orders.updateSubscription_response
-export type OrdersUpdateSubscriptionResponse = 0 | 1;

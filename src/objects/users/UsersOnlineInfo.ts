@@ -7,7 +7,7 @@ export interface UsersOnlineInfo {
   /**
    * Whether you can see real online status of user or not
    */
-  visible: boolean;
+  visible?: boolean;
   /**
    * Last time we saw user being active
    */

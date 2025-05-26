@@ -4,6 +4,6 @@
 
 // storage_value
 export interface StorageValue {
-  key: string;
-  value: string;
+  key?: string;
+  value?: string;
 }

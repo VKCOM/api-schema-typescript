@@ -6,7 +6,7 @@ import { BaseError } from '../base/BaseError';
 
 // ads_updateOfficeUsers_result
 export interface AdsUpdateOfficeUsersResult {
-  user_id: number;
-  is_success: boolean;
+  user_id?: number;
+  is_success?: boolean;
   error?: BaseError;
 }

@@ -6,4 +6,4 @@
 /**
  * Attachment type
  */
-export type MessagesMessageAttachmentType = 'photo' | 'audio' | 'video' | 'doc' | 'link' | 'market' | 'market_album' | 'gift' | 'sticker' | 'wall' | 'wall_reply' | 'article' | 'poll' | 'call' | 'graffiti' | 'audio_message';
+export type MessagesMessageAttachmentType = 'photo' | 'audio' | 'video' | 'video_playlist' | 'doc' | 'link' | 'market' | 'gift' | 'sticker' | 'wall' | 'wall_reply' | 'article' | 'poll' | 'podcasts' | 'call' | 'graffiti' | 'audio_message';

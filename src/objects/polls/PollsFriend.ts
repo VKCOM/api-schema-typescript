@@ -4,5 +4,5 @@
 
 // polls_friend
 export interface PollsFriend {
-  id: number;
+  id?: number;
 }

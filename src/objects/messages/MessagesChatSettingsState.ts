@@ -3,4 +3,4 @@
  */
 
 // messages_chat_settings_state
-export type MessagesChatSettingsState = 'in' | 'kicked' | 'left';
+export type MessagesChatSettingsState = 'in' | 'kicked' | 'left' | 'out';

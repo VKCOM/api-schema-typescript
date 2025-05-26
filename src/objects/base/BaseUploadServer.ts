@@ -7,5 +7,5 @@ export interface BaseUploadServer {
   /**
    * Upload URL
    */
-  upload_url: string;
+  upload_url?: string;
 }

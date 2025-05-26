@@ -6,15 +6,16 @@
 export interface BaseImage {
   id?: string;
   /**
-   * Image height
-   */
-  height: number;
-  /**
    * Image url
    */
-  url: string;
+  url?: string;
   /**
    * Image width
    */
-  width: number;
+  width?: number;
+  /**
+   * Image height
+   */
+  height?: number;
+  theme?: 'light' | 'dark';
 }

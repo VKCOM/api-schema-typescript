@@ -13,7 +13,7 @@ export interface PagesWikipage {
   /**
    * Page creator name
    */
-  creator_name?: number;
+  creator_name?: string;
   /**
    * Last editor ID
    */
@@ -25,25 +25,27 @@ export interface PagesWikipage {
   /**
    * Community ID
    */
-  group_id: number;
+  group_id?: number;
   /**
    * Page ID
    */
-  id: number;
+  id?: number;
   /**
    * Page title
    */
-  title: string;
+  title?: string;
   /**
    * Views number
    */
-  views: number;
+  views?: number;
   /**
    * Edit settings of the page
    */
-  who_can_edit: PagesPrivacySettings;
+  who_can_edit?: PagesPrivacySettings;
   /**
    * View settings of the page
    */
-  who_can_view: PagesPrivacySettings;
+  who_can_view?: PagesPrivacySettings;
+  created?: number;
+  edited?: number;
 }

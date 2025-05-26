@@ -7,17 +7,17 @@ export interface PollsAnswer {
   /**
    * Answer ID
    */
-  id: number;
+  id?: number;
   /**
    * Answer rate in percents
    */
-  rate: number;
+  rate?: number;
   /**
    * Answer text
    */
-  text: string;
+  text?: string;
   /**
    * Votes number
    */
-  votes: number;
+  votes?: number;
 }

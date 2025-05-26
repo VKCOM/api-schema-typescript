@@ -5,12 +5,12 @@
 import { BaseCommentsInfo } from '../base/BaseCommentsInfo';
 import { BaseLikesInfo } from '../base/BaseLikesInfo';
 import { BaseRepostsInfo } from '../base/BaseRepostsInfo';
+import { NewsfeedItemWallpostFeedback } from '../newsfeed/NewsfeedItemWallpostFeedback';
 import { WallGeo } from './WallGeo';
 import { WallPostCopyright } from './WallPostCopyright';
 import { WallPostSource } from './WallPostSource';
 import { WallPostType } from './WallPostType';
 import { WallViews } from './WallViews';
-import { WallWallpost } from './WallWallpost';
 import { WallWallpostAttachment } from './WallWallpostAttachment';
 import { WallWallpostDonut } from './WallWallpostDonut';
 
@@ -36,11 +36,15 @@ export interface WallWallpostFull {
    * Index of current carousel element
    */
   carousel_offset?: number;
+  inner_type?: 'wall_wallpost';
   /**
    * Access key to private object
    */
   access_key?: string;
   is_deleted?: boolean;
+  deleted_reason?: string;
+  deleted_details?: string;
+  donut_miniapp_url?: string;
   attachments?: WallWallpostAttachment[];
   /**
    * Information about the source of the post
@@ -79,7 +83,6 @@ export interface WallWallpostFull {
    * Wall owner's ID
    */
   owner_id?: number;
-  poster?: {};
   /**
    * If post type 'reply', contains original post ID
    */
@@ -103,7 +106,7 @@ export interface WallWallpostFull {
    * Count of views
    */
   views?: WallViews;
-  copy_history?: WallWallpost[];
+  copy_history?: WallWallpostFull[];
   /**
    * Information whether current user can edit the post
    */
@@ -124,7 +127,7 @@ export interface WallWallpostFull {
   /**
    * Information whether the post is pinned
    */
-  is_pinned?: number;
+  is_pinned?: 0 | 1;
   comments?: BaseCommentsInfo;
   /**
    * Information whether the post is marked as ads
@@ -155,4 +158,7 @@ export interface WallWallpostFull {
    * Hash for sharing
    */
   hash?: string;
+  type?: WallPostType;
+  feedback?: NewsfeedItemWallpostFeedback;
+  to_id?: number;
 }

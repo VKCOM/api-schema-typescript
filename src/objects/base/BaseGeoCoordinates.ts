@@ -4,6 +4,6 @@
 
 // base_geo_coordinates
 export interface BaseGeoCoordinates {
-  latitude: number;
-  longitude: number;
+  latitude?: number;
+  longitude?: number;
 }

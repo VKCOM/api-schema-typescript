@@ -9,10 +9,10 @@ export interface StoriesViewersItem {
   /**
    * user has like for this object
    */
-  is_liked: boolean;
+  is_liked?: boolean;
   /**
    * user id
    */
-  user_id: number;
+  user_id?: number;
   user?: UsersUserFull;
 }

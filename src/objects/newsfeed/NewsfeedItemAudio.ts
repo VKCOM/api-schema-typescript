@@ -3,19 +3,25 @@
  */
 
 import { NewsfeedItemAudioAudio } from './NewsfeedItemAudioAudio';
+import { NewsfeedItemWallpostFeedback } from './NewsfeedItemWallpostFeedback';
 import { NewsfeedNewsfeedItemType } from './NewsfeedNewsfeedItemType';
 
 // newsfeed_item_audio
 export interface NewsfeedItemAudio {
-  type: NewsfeedNewsfeedItemType;
+  type?: NewsfeedNewsfeedItemType;
   /**
    * Item source ID
    */
-  source_id: number;
+  source_id?: number;
   /**
    * Date when item has been added in Unixtime
    */
-  date: number;
+  date?: number;
+  /**
+   * Preview length control parameter
+   */
+  short_text_rate?: number;
+  feedback?: NewsfeedItemWallpostFeedback;
   audio?: NewsfeedItemAudioAudio;
   /**
    * Post ID

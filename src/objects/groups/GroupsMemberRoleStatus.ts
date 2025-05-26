@@ -6,4 +6,4 @@
 /**
  * User's credentials as community admin
  */
-export type GroupsMemberRoleStatus = 'moderator' | 'editor' | 'administrator' | 'creator';
+export type GroupsMemberRoleStatus = 'moderator' | 'editor' | 'administrator' | 'creator' | 'advertiser';

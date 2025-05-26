@@ -23,8 +23,12 @@ export interface DonutGetFriendsResponse {
   /**
    * Total members number
    */
-  count: number;
-  items: GroupsUserXtrRole[];
+  count?: number;
+  items?: GroupsUserXtrRole[];
+  /**
+   * Encoded string for a next page
+   */
+  next_from?: string;
 }
 
 /**
@@ -55,7 +59,7 @@ export interface DonutGetSubscriptionsParams {
 
 // donut.getSubscriptions_response
 export interface DonutGetSubscriptionsResponse {
-  subscriptions: DonutDonatorSubscriptionInfo[];
+  subscriptions?: DonutDonatorSubscriptionInfo[];
   count?: number;
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];

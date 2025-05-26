@@ -11,6 +11,6 @@ export interface AdsDemoStats {
    * Object ID
    */
   id?: number;
-  stats?: AdsDemostatsFormat;
+  stats?: AdsDemostatsFormat[];
   type?: AdsObjectType;
 }

@@ -4,6 +4,6 @@
 
 // newsfeed_item_digest_button
 export interface NewsfeedItemDigestButton {
-  title: string;
+  title?: string;
   style?: 'primary';
 }

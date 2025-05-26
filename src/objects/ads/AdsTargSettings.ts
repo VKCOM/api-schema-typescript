@@ -9,19 +9,19 @@ export interface AdsTargSettings {
   /**
    * Ad ID
    */
-  id?: number;
+  id?: string;
   /**
    * Campaign ID
    */
-  campaign_id?: number;
+  campaign_id?: string;
   /**
    * Age from
    */
-  age_from?: number;
+  age_from?: string;
   /**
    * Age to
    */
-  age_to?: number;
+  age_to?: string;
   /**
    * Apps IDs
    */
@@ -33,7 +33,7 @@ export interface AdsTargSettings {
   /**
    * Days to birthday
    */
-  birthday?: number;
+  birthday?: string;
   /**
    * Cities IDs
    */
@@ -42,10 +42,6 @@ export interface AdsTargSettings {
    * Cities IDs to except
    */
   cities_not?: string;
-  /**
-   * Country ID
-   */
-  country?: number;
   /**
    * Districts IDs
    */
@@ -65,7 +61,7 @@ export interface AdsTargSettings {
   /**
    * Information whether the user has proceeded VK payments before
    */
-  paying?: 0 | 1;
+  paying?: string;
   /**
    * Positions IDs
    */
@@ -75,21 +71,21 @@ export interface AdsTargSettings {
    */
   religions?: string;
   /**
-   * Retargeting groups IDs
+   * Retargeting groups ids
    */
   retargeting_groups?: string;
   /**
-   * Retargeting groups IDs to except
+   * Retargeting groups NOT ids
    */
   retargeting_groups_not?: string;
   /**
    * School graduation year from
    */
-  school_from?: number;
+  school_from?: string;
   /**
    * School graduation year to
    */
-  school_to?: number;
+  school_to?: string;
   /**
    * Schools IDs
    */
@@ -108,17 +104,21 @@ export interface AdsTargSettings {
    */
   streets?: string;
   /**
-   * Travellers only
+   * Travellers
    */
-  travellers?: 1;
+  travellers?: string;
+  /**
+   * AB test
+   */
+  ab_test?: string;
   /**
    * University graduation year from
    */
-  uni_from?: number;
+  uni_from?: string;
   /**
    * University graduation year to
    */
-  uni_to?: number;
+  uni_to?: string;
   /**
    * Browsers
    */
@@ -131,4 +131,108 @@ export interface AdsTargSettings {
    * Operating systems
    */
   user_os?: string;
+  /**
+   * Suggested criteria
+   */
+  suggested_criteria?: string;
+  /**
+   * Group not
+   */
+  groups_not?: string;
+  /**
+   * Price list audience type
+   */
+  price_list_audience_type?: string;
+  /**
+   * Count
+   */
+  count?: string;
+  /**
+   * Group active formula
+   */
+  groups_active_formula?: string;
+  /**
+   * Interest categories formula
+   */
+  interest_categories_formula?: string;
+  /**
+   * Groups formula
+   */
+  groups_formula?: string;
+  /**
+   * Groups active
+   */
+  groups_active?: string;
+  /**
+   * Group types
+   */
+  group_types?: string;
+  /**
+   * Key phrases
+   */
+  key_phrases?: string;
+  /**
+   * Key phrases days
+   */
+  key_phrases_days?: string;
+  /**
+   * Geo near
+   */
+  geo_near?: string;
+  /**
+   * Geo point type
+   */
+  geo_point_type?: string;
+  /**
+   * Price list id
+   */
+  price_list_id?: string;
+  /**
+   * Groups recommended ids
+   */
+  groups_recommended?: string;
+  /**
+   * Groups active recommended ids
+   */
+  groups_active_recommended?: string;
+  /**
+   * Music artists formula
+   */
+  music_artists_formula?: string;
+  /**
+   * Price list retargeting formula
+   */
+  price_list_retargeting_formula?: string;
+  /**
+   * Tags
+   */
+  tags?: string;
+  /**
+   * Browsers
+   */
+  browsers?: string;
+  /**
+   * Mobile os min version
+   */
+  mobile_os_min_version?: string;
+  /**
+   * Mobile apps events formula
+   */
+  mobile_apps_events_formula?: string;
+  /**
+   * Mobile os max version
+   */
+  mobile_os_max_version?: string;
+  /**
+   * operators
+   */
+  operators?: string;
+  /**
+   * wifi_only
+   */
+  wifi_only?: string;
+  /**
+   * mobile_manufacturers
+   */
+  mobile_manufacturers?: string;
 }

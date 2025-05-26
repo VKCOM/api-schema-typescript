@@ -2,6 +2,9 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { BaseCountry } from '../base/BaseCountry';
+import { DatabaseCityById } from '../database/DatabaseCityById';
+import { DatabaseStation } from '../database/DatabaseStation';
 import { GroupsAddressTimetable } from './GroupsAddressTimetable';
 import { GroupsAddressWorkInfoStatus } from './GroupsAddressWorkInfoStatus';
 
@@ -20,9 +23,17 @@ export interface GroupsAddress {
    */
   city_id?: number;
   /**
-   * Country id of address
+   * City for address
    */
-  country_id?: number;
+  city?: DatabaseCityById;
+  /**
+   * Metro for address
+   */
+  metro_station?: DatabaseStation;
+  /**
+   * Country for address
+   */
+  country?: BaseCountry;
   /**
    * Distance from the point
    */
@@ -30,7 +41,7 @@ export interface GroupsAddress {
   /**
    * Address id
    */
-  id: number;
+  id?: number;
   /**
    * Address latitude
    */

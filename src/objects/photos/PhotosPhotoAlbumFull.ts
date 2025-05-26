@@ -15,25 +15,37 @@ export interface PhotosPhotoAlbumFull {
    */
   comments_disabled?: 0 | 1;
   /**
-   * Date when the album has been created in Unixtime
+   * Date when the album has been created in Unixtime, not set for system albums
    */
-  created: number;
+  created?: number;
   /**
    * Photo album description
    */
   description?: string;
   /**
+   * album can delete
+   */
+  can_delete?: boolean;
+  /**
    * Photo album ID
    */
-  id: number;
+  id?: number;
+  /**
+   * album can be selected to feed
+   */
+  can_include_to_feed?: boolean;
+  /**
+   * Need show privacy lock at album
+   */
+  is_locked?: boolean;
   /**
    * Album owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Photos number
    */
-  size: number;
+  size?: number;
   sizes?: PhotosPhotoSizes[];
   /**
    * Thumb photo ID
@@ -50,11 +62,11 @@ export interface PhotosPhotoAlbumFull {
   /**
    * Photo album title
    */
-  title: string;
+  title?: string;
   /**
-   * Date when the album has been updated last time in Unixtime
+   * Date when the album has been updated last time in Unixtime, not set for system albums
    */
-  updated: number;
+  updated?: number;
   /**
    * Information whether only community administrators can upload photos
    */

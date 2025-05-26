@@ -17,10 +17,6 @@ export interface UsersCareer {
    */
   company?: string;
   /**
-   * Country ID
-   */
-  country_id?: number;
-  /**
    * From year
    */
   from?: number;

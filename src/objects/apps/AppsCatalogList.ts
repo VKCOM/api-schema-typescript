@@ -10,7 +10,7 @@ export interface AppsCatalogList {
   /**
    * Total number
    */
-  count: number;
-  items: AppsApp[];
+  count?: number;
+  items?: AppsApp[];
   profiles?: UsersUserMin[];
 }

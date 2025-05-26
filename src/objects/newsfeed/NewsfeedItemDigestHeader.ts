@@ -9,11 +9,15 @@ export interface NewsfeedItemDigestHeader {
   /**
    * Title of the header
    */
-  title: string;
+  title?: string;
   /**
    * Subtitle of the header, when title have two strings
    */
   subtitle?: string;
-  style: 'singleline' | 'multiline';
+  /**
+   * Optional field for red badge in Trends feed blocks
+   */
+  badge_text?: string;
+  style?: 'singleline' | 'multiline';
   button?: NewsfeedItemDigestButton;
 }

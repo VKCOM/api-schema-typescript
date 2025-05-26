@@ -7,9 +7,9 @@ export interface BaseGradientPoint {
   /**
    * Hex color code without #
    */
-  color: string;
+  color?: string;
   /**
    * Point position
    */
-  position: number;
+  position?: number;
 }

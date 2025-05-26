@@ -4,9 +4,9 @@
 
 // ads_criteria_sex enumNames
 export const AdsCriteriaSexEnumNames = {
-  ANY: 0,
-  MALE: 1,
-  FEMALE: 2,
+  ANY: '0',
+  MALE: '1',
+  FEMALE: '2',
 } as const;
 
 // ads_criteria_sex
@@ -20,4 +20,4 @@ export const AdsCriteriaSexEnumNames = {
  * `1` — male
  * `2` — female
  */
-export type AdsCriteriaSex = 0 | 1 | 2;
+export type AdsCriteriaSex = '0' | '1' | '2';

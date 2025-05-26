@@ -40,4 +40,12 @@ export interface BoardTopic {
    * ID of user who updated the topic
    */
   updated_by?: number;
+  /**
+   * First comment text
+   */
+  first_comment?: string;
+  /**
+   * Last comment text
+   */
+  last_comment?: string;
 }

@@ -19,5 +19,5 @@ export interface UsersRelative {
   /**
    * Relative type
    */
-  type: 'parent' | 'child' | 'grandparent' | 'grandchild' | 'sibling';
+  type?: 'parent' | 'child' | 'grandparent' | 'grandchild' | 'sibling';
 }

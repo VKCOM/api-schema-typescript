@@ -12,4 +12,5 @@ export interface BaseLinkRating {
    * Count of stars
    */
   stars?: number;
+  type?: 'rating';
 }

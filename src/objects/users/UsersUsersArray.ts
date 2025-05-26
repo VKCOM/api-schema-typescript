@@ -7,6 +7,6 @@ export interface UsersUsersArray {
   /**
    * Users number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }

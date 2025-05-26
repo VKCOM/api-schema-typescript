@@ -4,7 +4,6 @@
 
 import { AudioAudio } from '../audio/AudioAudio';
 import { BaseCity } from '../base/BaseCity';
-import { BaseCountry } from '../base/BaseCountry';
 import { BaseSex } from '../base/BaseSex';
 import { UsersPersonal } from '../users/UsersPersonal';
 import { UsersUserConnections } from '../users/UsersUserConnections';
@@ -22,7 +21,7 @@ export interface AccountUserSettings {
   /**
    * User first name
    */
-  first_name: string;
+  first_name?: string;
   /**
    * Returns if a profile is hidden.
    */
@@ -30,11 +29,11 @@ export interface AccountUserSettings {
   /**
    * User ID
    */
-  id: number;
+  id?: number;
   /**
    * User last name
    */
-  last_name: string;
+  last_name?: string;
   can_access_closed?: boolean;
   is_closed?: boolean;
   connections?: UsersUserConnections;
@@ -47,11 +46,10 @@ export interface AccountUserSettings {
    */
   bdate_visibility?: number;
   city?: BaseCity;
-  country?: BaseCountry;
   /**
    * User's hometown
    */
-  home_town: string;
+  home_town?: string;
   /**
    * User maiden name
    */
@@ -83,7 +81,7 @@ export interface AccountUserSettings {
   /**
    * User status
    */
-  status: string;
+  status?: string;
   status_audio?: AudioAudio;
   interests?: AccountUserSettingsInterests;
   languages?: string[];

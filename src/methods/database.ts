@@ -5,9 +5,11 @@
 import { BaseCountry } from '../objects/base/BaseCountry';
 import { BaseObject } from '../objects/base/BaseObject';
 import { DatabaseCity } from '../objects/database/DatabaseCity';
+import { DatabaseCityById } from '../objects/database/DatabaseCityById';
 import { DatabaseFaculty } from '../objects/database/DatabaseFaculty';
 import { DatabaseRegion } from '../objects/database/DatabaseRegion';
 import { DatabaseSchool } from '../objects/database/DatabaseSchool';
+import { DatabaseSchoolClass } from '../objects/database/DatabaseSchoolClass';
 import { DatabaseStation } from '../objects/database/DatabaseStation';
 import { DatabaseUniversity } from '../objects/database/DatabaseUniversity';
 
@@ -49,10 +51,6 @@ export interface DatabaseGetChairsResponse {
 
 export interface DatabaseGetCitiesParams {
   /**
-   * Country ID.
-   */
-  country_id: number;
-  /**
    * Region ID.
    */
   region_id?: number;
@@ -61,7 +59,7 @@ export interface DatabaseGetCitiesParams {
    */
   q?: string;
   /**
-   * '1' — to return all cities in the country, '0' — to return major cities in the country (default),
+   * '1' - to return all cities in the country, '0' - to return major cities in the country (default),
    */
   need_all?: 0 | 1;
   /**
@@ -72,6 +70,12 @@ export interface DatabaseGetCitiesParams {
    * Number of cities to return.
    */
   count?: number;
+  /**
+   * Cities fields to return. Sample values: 'fias_guid'
+   *
+   * objects.json#/definitions/database_cities_fields
+   */
+  fields?: string;
 }
 
 // database.getCities_response
@@ -94,10 +98,16 @@ export interface DatabaseGetCitiesByIdParams {
    * City IDs.
    */
   city_ids?: string;
+  /**
+   * Cities fields to return. Sample values: 'fias_guid'
+   *
+   * objects.json#/definitions/database_cities_fields
+   */
+  fields?: string;
 }
 
 // database.getCitiesById_response
-export type DatabaseGetCitiesByIdResponse = BaseObject[];
+export type DatabaseGetCitiesByIdResponse = DatabaseCityById[];
 
 /**
  * database.getCountries
@@ -107,7 +117,7 @@ export type DatabaseGetCitiesByIdResponse = BaseObject[];
 
 export interface DatabaseGetCountriesParams {
   /**
-   * '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
+   * '1' - to return a full list of all countries, '0' - to return a list of countries near the current user's country (default).
    */
   need_all?: 0 | 1;
   /**
@@ -222,10 +232,6 @@ export type DatabaseGetMetroStationsByIdResponse = DatabaseStation[];
 
 export interface DatabaseGetRegionsParams {
   /**
-   * Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
-   */
-  country_id: number;
-  /**
    * Search query.
    */
   q?: string;
@@ -262,7 +268,7 @@ export interface DatabaseGetSchoolClassesParams {
 }
 
 // database.getSchoolClasses_response
-export type DatabaseGetSchoolClassesResponse = Array<string | number>[];
+export type DatabaseGetSchoolClassesResponse = DatabaseSchoolClass[];
 
 /**
  * database.getSchools
@@ -309,10 +315,6 @@ export interface DatabaseGetUniversitiesParams {
    * Search query.
    */
   q?: string;
-  /**
-   * Country ID.
-   */
-  country_id?: number;
   /**
    * City ID.
    */

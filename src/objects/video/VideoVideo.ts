@@ -8,6 +8,7 @@ import { VideoVideoImage } from './VideoVideoImage';
 
 // video_video
 export interface VideoVideo {
+  response_type?: 'min' | 'full';
   /**
    * Video access key
    */
@@ -25,17 +26,25 @@ export interface VideoVideo {
    */
   can_edit?: 0 | 1;
   /**
+   * Information whether current user can delete the video
+   */
+  can_delete?: 0 | 1;
+  /**
    * Information whether current user can like the video
    */
   can_like?: 0 | 1;
   /**
    * Information whether current user can repost the video
    */
-  can_repost?: 0 | 1;
+  can_repost?: number;
   /**
    * Information whether current user can subscribe to author of the video
    */
   can_subscribe?: 0 | 1;
+  /**
+   * Information whether current user can promote the video
+   */
+  can_be_promoted?: 0 | 1;
   /**
    * Information whether current user can add the video to favourites
    */
@@ -48,6 +57,10 @@ export interface VideoVideo {
    * Information whether current user can attach action button to the video
    */
   can_attach_link?: 0 | 1;
+  /**
+   * Information whether current user can edit the video privacy
+   */
+  can_edit_privacy?: 0 | 1;
   /**
    * 1 if video is private
    */
@@ -123,7 +136,7 @@ export interface VideoVideo {
    * Information whether the video is repeated
    */
   repeat?: 1;
-  type?: 'video' | 'music_video' | 'movie';
+  type?: 'interactive' | 'video' | 'music_video' | 'movie' | 'live' | 'short_video' | 'story' | 'video_message';
   /**
    * Number of views
    */
@@ -144,10 +157,6 @@ export interface VideoVideo {
    * Live donations balance
    */
   balance?: number;
-  /**
-   * Live stream status
-   */
-  live_status?: 'waiting' | 'started' | 'finished' | 'failed' | 'upcoming';
   /**
    * 1 if the video is a live stream
    */

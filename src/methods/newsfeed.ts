@@ -3,13 +3,13 @@
  */
 
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
+import { NewsfeedCommentsItem } from '../objects/newsfeed/NewsfeedCommentsItem';
 import { NewsfeedList } from '../objects/newsfeed/NewsfeedList';
 import { NewsfeedListFull } from '../objects/newsfeed/NewsfeedListFull';
 import { NewsfeedNewsfeedItem } from '../objects/newsfeed/NewsfeedNewsfeedItem';
 import { UsersSubscriptionsItem } from '../objects/users/UsersSubscriptionsItem';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallpostFull } from '../objects/wall/WallWallpostFull';
-import { WallWallpostToId } from '../objects/wall/WallWallpostToId';
 
 /**
  * newsfeed.addBan
@@ -23,7 +23,7 @@ export interface NewsfeedAddBanParams {
 }
 
 // newsfeed.addBan_response
-export type NewsfeedAddBanResponse = 1;
+export type NewsfeedAddBanResponse = 0 | 1;
 
 /**
  * newsfeed.deleteBan
@@ -58,13 +58,13 @@ export type NewsfeedDeleteListResponse = 1;
 
 export interface NewsfeedGetParams {
   /**
-   * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
+   * Filters to apply: 'post' - new wall posts, 'photo' - new photos, 'photo_tag' - new photo tags, 'wall_photo' - new wall photos, 'friend' - new friends
    *
-   * objects.json#/definitions/newsfeed_filters
+   * objects.json#/definitions/newsfeed_newsfeed_item_type
    */
   filters?: string;
   /**
-   * '1' — to return news items from banned sources
+   * '1' - to return news items from banned sources
    */
   return_banned?: 0 | 1;
   /**
@@ -105,10 +105,7 @@ export interface NewsfeedGetResponse {
   items?: NewsfeedNewsfeedItem[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
-  /**
-   * New from value
-   */
-  next_from?: string;
+  lives_items?: NewsfeedNewsfeedItem[];
 }
 
 /**
@@ -119,7 +116,7 @@ export interface NewsfeedGetResponse {
 
 export interface NewsfeedGetBannedParams {
   /**
-   * '1' — return extra information about users and communities
+   * '1' - return extra information about users and communities
    */
   extended?: 0 | 1;
   /**
@@ -129,9 +126,9 @@ export interface NewsfeedGetBannedParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
 }
 
 // newsfeed.getBanned_response
@@ -158,7 +155,7 @@ export interface NewsfeedGetCommentsParams {
    */
   count?: number;
   /**
-   * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+   * Filters to apply: 'post' - new comments on wall posts, 'photo' - new comments on photos, 'video' - new comments on videos, 'topic' - new comments on discussions, 'note' - new comments on notes,
    *
    * objects.json#/definitions/newsfeed_comments_filters
    */
@@ -190,9 +187,9 @@ export interface NewsfeedGetCommentsParams {
 
 // newsfeed.getComments_response
 export interface NewsfeedGetCommentsResponse {
-  items: NewsfeedNewsfeedItem[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  items?: NewsfeedCommentsItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
   /**
    * Next from value
    */
@@ -221,8 +218,8 @@ export interface NewsfeedGetListsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: NewsfeedList[];
+  count?: number;
+  items?: NewsfeedList[];
 }
 
 // newsfeed.getLists_extendedResponse
@@ -230,8 +227,8 @@ export interface NewsfeedGetListsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: NewsfeedListFull[];
+  count?: number;
+  items?: NewsfeedListFull[];
 }
 
 /**
@@ -268,8 +265,8 @@ export interface NewsfeedGetMentionsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallpostToId[];
+  count?: number;
+  items?: WallWallpostFull[];
 }
 
 /**
@@ -312,10 +309,7 @@ export interface NewsfeedGetRecommendedResponse {
   items?: NewsfeedNewsfeedItem[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
-  /**
-   * Next from value
-   */
-  next_from?: string;
+  lives_items?: NewsfeedNewsfeedItem[];
 }
 
 /**
@@ -376,7 +370,9 @@ export interface NewsfeedIgnoreItemParams {
 }
 
 // newsfeed.ignoreItem_response
-export type NewsfeedIgnoreItemResponse = 1;
+export interface NewsfeedIgnoreItemResponse {
+  status?: boolean;
+}
 
 /**
  * newsfeed.saveList
@@ -396,7 +392,7 @@ export interface NewsfeedSaveListParams {
   /**
    * users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
    */
-  source_ids?: string;
+  source_ids: string;
   /**
    * reposts display on and off ('1' is for off).
    */
@@ -418,7 +414,7 @@ export interface NewsfeedSearchParams {
    */
   q?: string;
   /**
-   * '1' — to return additional information about the user or community that placed the post.
+   * '1' - to return additional information about the user or community that placed the post.
    */
   extended?: 0 | 1;
   /**
@@ -465,8 +461,40 @@ export interface NewsfeedSearchResponse {
   total_count?: number;
 }
 
+// newsfeed.search_responseStrict
+export interface NewsfeedSearchResponseStrict {
+  items?: WallWallpostFull[];
+  suggested_queries?: string[];
+  next_from?: string;
+  /**
+   * Filtered number
+   */
+  count?: number;
+  /**
+   * Total number
+   */
+  total_count?: number;
+}
+
 // newsfeed.search_extendedResponse
 export interface NewsfeedSearchExtendedResponse {
+  items?: WallWallpostFull[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+  suggested_queries?: string[];
+  next_from?: string;
+  /**
+   * Filtered number
+   */
+  count?: number;
+  /**
+   * Total number
+   */
+  total_count?: number;
+}
+
+// newsfeed.search_extendedResponseStrict
+export interface NewsfeedSearchExtendedResponseStrict {
   items?: WallWallpostFull[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
@@ -496,11 +524,11 @@ export interface NewsfeedUnignoreItemParams {
   /**
    * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' - user , 'owner_id=-1' - community "
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Item identifier
    */
-  item_id: number;
+  item_id?: number;
   /**
    * Track code of unignored item
    */
@@ -518,9 +546,9 @@ export type NewsfeedUnignoreItemResponse = 1;
 
 export interface NewsfeedUnsubscribeParams {
   /**
-   * Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
+   * Type of object from which to unsubscribe: 'note' - note, 'photo' - photo, 'post' - post on user wall or community wall, 'topic' - topic, 'video' - video
    */
-  type: 'note' | 'photo' | 'post' | 'topic' | 'video';
+  type: 'clip' | 'market' | 'note' | 'photo' | 'post' | 'topic' | 'video';
   /**
    * Object owner ID.
    */

@@ -4,7 +4,7 @@
 
 import { LinkTargetObject } from '../link/LinkTargetObject';
 import { PhotosPhoto } from '../photos/PhotosPhoto';
-import { VideoVideo } from '../video/VideoVideo';
+import { VideoVideoFull } from '../video/VideoVideoFull';
 import { BaseLinkApplication } from './BaseLinkApplication';
 import { BaseLinkButton } from './BaseLinkButton';
 import { BaseLinkProduct } from './BaseLinkProduct';
@@ -36,7 +36,6 @@ export interface BaseLink {
    * URL of the page with article preview
    */
   preview_url?: string;
-  product?: BaseLinkProduct;
   rating?: BaseLinkRating;
   /**
    * Link title
@@ -45,7 +44,7 @@ export interface BaseLink {
   /**
    * Link URL
    */
-  url: string;
+  url?: string;
   target_object?: LinkTargetObject;
   /**
    * Information whether the current link is external
@@ -54,5 +53,7 @@ export interface BaseLink {
   /**
    * Video from link
    */
-  video?: VideoVideo;
+  video?: VideoVideoFull;
+  text?: string;
+  product?: BaseLinkProduct;
 }

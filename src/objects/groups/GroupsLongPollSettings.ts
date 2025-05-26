@@ -10,9 +10,9 @@ export interface GroupsLongPollSettings {
    * API version used for the events
    */
   api_version?: string;
-  events: GroupsLongPollEvents;
+  events?: GroupsLongPollEvents;
   /**
    * Shows whether Long Poll is enabled
    */
-  is_enabled: boolean;
+  is_enabled?: boolean;
 }

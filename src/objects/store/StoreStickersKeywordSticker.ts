@@ -7,9 +7,9 @@ export interface StoreStickersKeywordSticker {
   /**
    * Pack id
    */
-  pack_id: number;
+  pack_id?: number;
   /**
    * Sticker id
    */
-  sticker_id: number;
+  sticker_id?: number;
 }

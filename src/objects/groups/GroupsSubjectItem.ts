@@ -7,9 +7,9 @@ export interface GroupsSubjectItem {
   /**
    * Subject ID
    */
-  id: number;
+  id?: number;
   /**
    * Subject title
    */
-  name: string;
+  name?: string;
 }

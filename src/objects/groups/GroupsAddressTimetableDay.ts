@@ -15,9 +15,9 @@ export interface GroupsAddressTimetableDay {
   /**
    * Close time in minutes
    */
-  close_time: number;
+  close_time?: number;
   /**
    * Open time in minutes
    */
-  open_time: number;
+  open_time?: number;
 }

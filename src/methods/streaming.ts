@@ -2,6 +2,8 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { StreamingStats } from '../objects/streaming/StreamingStats';
+
 /**
  * streaming.getServerUrl
  *
@@ -23,12 +25,31 @@ export interface StreamingGetServerUrlResponse {
 }
 
 /**
- * streaming.setSettings
+ * streaming.getStats
  */
 
-export interface StreamingSetSettingsParams {
-  monthly_tier?: 'tier_1' | 'tier_2' | 'tier_3' | 'tier_4' | 'tier_5' | 'tier_6' | 'unlimited';
+export interface StreamingGetStatsParams {
+  type?: 'prepared' | 'received';
+  interval?: '1h' | '24h' | '5m';
+  start_time?: number;
+  end_time?: number;
 }
 
-// streaming.setSettings_response
-export type StreamingSetSettingsResponse = 1;
+// streaming.getStats_response
+export type StreamingGetStatsResponse = StreamingStats[];
+
+/**
+ * streaming.getStem
+ */
+
+export interface StreamingGetStemParams {
+  word: string;
+}
+
+// streaming.getStem_response
+export interface StreamingGetStemResponse {
+  /**
+   * part of a word responsible for its lexical meaning
+   */
+  stem?: string;
+}

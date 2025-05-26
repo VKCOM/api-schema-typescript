@@ -17,10 +17,6 @@ export interface BasePlace {
    */
   city?: string;
   /**
-   * Country name
-   */
-  country?: string;
-  /**
    * Date of the place creation in Unixtime
    */
   created?: number;

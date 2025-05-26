@@ -5,5 +5,5 @@
 // leadForms_answer_item
 export interface LeadFormsAnswerItem {
   key?: string;
-  value: string;
+  value?: string;
 }
