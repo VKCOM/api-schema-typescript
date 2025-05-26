@@ -6,4 +6,4 @@
 /**
  * Story type.
  */
-export type StoriesStoryType = 'photo' | 'video' | 'live_active' | 'live_finished' | 'birthday_invite';
+export type StoriesStoryType = 'photo' | 'video' | 'live_active' | 'live_finished';

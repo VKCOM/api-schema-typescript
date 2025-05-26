@@ -7,9 +7,9 @@ export interface NewsfeedList {
   /**
    * List ID
    */
-  id: number;
+  id?: number;
   /**
    * List title
    */
-  title: string;
+  title?: string;
 }

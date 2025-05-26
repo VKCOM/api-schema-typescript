@@ -3,10 +3,9 @@
  */
 
 import { AudioAudio } from '../audio/AudioAudio';
-import { BaseLink } from '../base/BaseLink';
 import { DocsDoc } from '../docs/DocsDoc';
+import { MarketMarketItem } from '../market/MarketMarketItem';
 import { PhotosPhoto } from '../photos/PhotosPhoto';
-import { VideoVideo } from '../video/VideoVideo';
 import { MessagesAudioMessage } from './MessagesAudioMessage';
 import { MessagesGraffiti } from './MessagesGraffiti';
 import { MessagesHistoryMessageAttachmentType } from './MessagesHistoryMessageAttachmentType';
@@ -17,11 +16,7 @@ export interface MessagesHistoryMessageAttachment {
   audio_message?: MessagesAudioMessage;
   doc?: DocsDoc;
   graffiti?: MessagesGraffiti;
-  link?: BaseLink;
-  market?: BaseLink;
+  market?: MarketMarketItem;
   photo?: PhotosPhoto;
-  share?: BaseLink;
-  type: MessagesHistoryMessageAttachmentType;
-  video?: VideoVideo;
-  wall?: BaseLink;
+  type?: MessagesHistoryMessageAttachmentType;
 }

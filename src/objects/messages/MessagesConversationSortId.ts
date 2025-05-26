@@ -7,9 +7,9 @@ export interface MessagesConversationSortId {
   /**
    * Major id for sorting conversations
    */
-  major_id: number;
+  major_id?: number;
   /**
    * Minor id for sorting conversations
    */
-  minor_id: number;
+  minor_id?: number;
 }

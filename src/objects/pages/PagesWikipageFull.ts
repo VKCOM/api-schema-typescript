@@ -9,7 +9,7 @@ export interface PagesWikipageFull {
   /**
    * Date when the page has been created in Unixtime
    */
-  created: number;
+  created?: number;
   /**
    * Page creator ID
    */
@@ -25,7 +25,7 @@ export interface PagesWikipageFull {
   /**
    * Date when the page has been edited in Unixtime
    */
-  edited: number;
+  edited?: number;
   /**
    * Last editor ID
    */
@@ -33,7 +33,7 @@ export interface PagesWikipageFull {
   /**
    * Community ID
    */
-  group_id: number;
+  group_id?: number;
   /**
    * Page content, HTML
    */
@@ -41,7 +41,7 @@ export interface PagesWikipageFull {
   /**
    * Page ID
    */
-  id: number;
+  id?: number;
   /**
    * Page content, wiki
    */
@@ -49,23 +49,23 @@ export interface PagesWikipageFull {
   /**
    * Page title
    */
-  title: string;
+  title?: string;
   /**
    * URL of the page preview
    */
-  view_url: string;
+  view_url?: string;
   /**
    * Views number
    */
-  views: number;
+  views?: number;
   /**
    * Edit settings of the page
    */
-  who_can_edit: PagesPrivacySettings;
+  who_can_edit?: PagesPrivacySettings;
   /**
    * View settings of the page
    */
-  who_can_view: PagesPrivacySettings;
+  who_can_view?: PagesPrivacySettings;
   /**
    * URL
    */

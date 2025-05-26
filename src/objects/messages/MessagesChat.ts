@@ -9,11 +9,11 @@ export interface MessagesChat {
   /**
    * Chat creator ID
    */
-  admin_id: number;
+  admin_id?: number;
   /**
    * Chat ID
    */
-  id: number;
+  id?: number;
   /**
    * Shows that user has been kicked from the chat
    */
@@ -42,10 +42,18 @@ export interface MessagesChat {
   /**
    * Chat type
    */
-  type: string;
-  users: number[];
+  type?: string;
+  users?: number[];
   /**
    * If provided photo is default
    */
   is_default_photo?: boolean;
+  /**
+   * Count members in a chat
+   */
+  members_count?: number;
+  /**
+   * If chat is group channel
+   */
+  is_group_channel?: boolean;
 }

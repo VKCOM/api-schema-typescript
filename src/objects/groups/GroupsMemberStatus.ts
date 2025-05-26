@@ -7,9 +7,9 @@ export interface GroupsMemberStatus {
   /**
    * Information whether user is a member of the group
    */
-  member: 0 | 1;
+  member?: 0 | 1;
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
 }

@@ -7,13 +7,13 @@ export interface MarketCurrency {
   /**
    * Currency ID
    */
-  id: number;
+  id?: number;
   /**
    * Currency sign
    */
-  name: string;
+  name?: string;
   /**
    * Currency title
    */
-  title: string;
+  title?: string;
 }

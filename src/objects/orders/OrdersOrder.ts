@@ -7,11 +7,11 @@ export interface OrdersOrder {
   /**
    * Amount
    */
-  amount: string;
+  amount?: string;
   /**
    * App order ID
    */
-  app_order_id: string;
+  app_order_id?: string;
   /**
    * Cancel transaction ID
    */
@@ -19,23 +19,23 @@ export interface OrdersOrder {
   /**
    * Date of creation in Unixtime
    */
-  date: string;
+  date?: string;
   /**
    * Order ID
    */
-  id: string;
+  id?: string;
   /**
    * Order item
    */
-  item: string;
+  item?: string;
   /**
    * Receiver ID
    */
-  receiver_id: string;
+  receiver_id?: string;
   /**
    * Order status
    */
-  status: 'created' | 'charged' | 'refunded' | 'chargeable' | 'cancelled' | 'declined';
+  status?: 'created' | 'charged' | 'refunded' | 'chargeable' | 'cancelled' | 'declined';
   /**
    * Transaction ID
    */
@@ -43,5 +43,5 @@ export interface OrdersOrder {
   /**
    * User ID
    */
-  user_id: string;
+  user_id?: string;
 }

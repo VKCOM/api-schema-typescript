@@ -12,4 +12,12 @@ export interface AdsTargSuggestions {
    * Object name
    */
   name?: string;
+  /**
+   * Object type
+   */
+  type?: string;
+  /**
+   * Parent
+   */
+  parent?: string;
 }

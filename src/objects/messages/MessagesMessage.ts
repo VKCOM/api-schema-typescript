@@ -3,14 +3,16 @@
  */
 
 import { BaseGeo } from '../base/BaseGeo';
+import { MessagesActionOneOf } from './MessagesActionOneOf';
 import { MessagesForeignMessage } from './MessagesForeignMessage';
+import { MessagesFwdMessages } from './MessagesFwdMessages';
 import { MessagesKeyboard } from './MessagesKeyboard';
-import { MessagesMessageAction } from './MessagesMessageAction';
 import { MessagesMessageAttachment } from './MessagesMessageAttachment';
+import { MessagesReactionCounterResponseItem } from './MessagesReactionCounterResponseItem';
 
 // messages_message
 export interface MessagesMessage {
-  action?: MessagesMessageAction;
+  action?: MessagesActionOneOf;
   /**
    * Only for messages from community. Contains user ID of community admin, who sent this message.
    */
@@ -23,7 +25,7 @@ export interface MessagesMessage {
   /**
    * Date when the message has been sent in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Is it an deleted message
    */
@@ -31,54 +33,76 @@ export interface MessagesMessage {
   /**
    * Message author's ID
    */
-  from_id: number;
-  /**
-   * Forwarded messages
-   */
-  fwd_messages?: MessagesForeignMessage[];
+  from_id?: number;
+  fwd_messages?: MessagesFwdMessages;
   geo?: BaseGeo;
   /**
    * Message ID
    */
-  id: number;
-  /**
-   * Is it an important message
-   */
-  important?: boolean;
-  is_hidden?: boolean;
+  id?: number;
   /**
    * this message is cropped for bot
    */
   is_cropped?: boolean;
   keyboard?: MessagesKeyboard;
+  payload?: string;
   /**
-   * Members number
+   * Message text
    */
-  members_count?: number;
+  text?: string;
+  /**
+   * Date when the message has been updated in Unixtime
+   */
+  update_time?: number;
+  /**
+   * Is silent message, push without sound
+   */
+  is_silent?: boolean;
+  /**
+   * Is message unavailable for some reason, including its id equals 0
+   */
+  is_unavailable?: boolean;
+  version?: number;
   /**
    * Information whether the message is outcoming
    */
-  out: 0 | 1;
-  payload?: string;
+  out?: 0 | 1;
   /**
    * Peer ID
    */
-  peer_id: number;
+  peer_id?: number;
   /**
    * ID used for sending messages. It returned only for outgoing messages
    */
   random_id?: number;
   ref?: string;
   ref_source?: string;
+  /**
+   * Is it an important message
+   */
+  important?: boolean;
+  is_hidden?: boolean;
+  /**
+   * Members number
+   */
+  members_count?: number;
   reply_message?: MessagesForeignMessage;
   /**
-   * Message text
+   * Reaction id set on message
    */
-  text: string;
+  reaction_id?: number;
   /**
-   * Date when the message has been updated in Unixtime
+   * Actual reactions counters on this message
    */
-  update_time?: number;
+  reactions?: MessagesReactionCounterResponseItem[];
+  /**
+   * Last reaction id set on this message
+   */
+  last_reaction_id?: number;
+  /**
+   * Is message pinned in its conversation
+   */
+  is_pinned?: boolean;
   /**
    * Was the audio message inside already listened by you
    */
@@ -87,8 +111,4 @@ export interface MessagesMessage {
    * Date when the message has been pinned in Unixtime
    */
   pinned_at?: number;
-  /**
-   * Is silent message, push without sound
-   */
-  is_silent?: boolean;
 }

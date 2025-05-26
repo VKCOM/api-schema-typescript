@@ -7,9 +7,9 @@ export interface FriendsFriendsList {
   /**
    * List ID
    */
-  id: number;
+  id?: number;
   /**
    * List title
    */
-  name: string;
+  name?: string;
 }

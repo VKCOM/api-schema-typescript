@@ -13,19 +13,19 @@ export interface EventsEventAttach {
   /**
    * text of attach
    */
-  button_text: string;
+  button_text?: string;
   /**
    * array of friends ids
    */
-  friends: number[];
+  friends?: number[];
   /**
    * event ID
    */
-  id: number;
+  id?: number;
   /**
    * is favorite
    */
-  is_favorite: boolean;
+  is_favorite?: boolean;
   /**
    * Current user's member status
    */
@@ -33,7 +33,7 @@ export interface EventsEventAttach {
   /**
    * text of attach
    */
-  text: string;
+  text?: string;
   /**
    * event start time
    */

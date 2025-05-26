@@ -9,23 +9,23 @@ export interface MessagesGraffiti {
    */
   access_key?: string;
   /**
-   * Graffiti height
-   */
-  height: number;
-  /**
    * Graffiti ID
    */
-  id: number;
+  id?: number;
   /**
    * Graffiti owner ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Graffiti URL
    */
-  url: string;
+  url?: string;
   /**
    * Graffiti width
    */
-  width: number;
+  width?: number;
+  /**
+   * Graffiti height
+   */
+  height?: number;
 }

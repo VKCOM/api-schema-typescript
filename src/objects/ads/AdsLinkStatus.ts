@@ -7,13 +7,13 @@ export interface AdsLinkStatus {
   /**
    * Reject reason
    */
-  description: string;
+  description?: string;
   /**
    * URL
    */
-  redirect_url: string;
+  redirect_url?: string;
   /**
    * Link status
    */
-  status: string;
+  status?: string;
 }

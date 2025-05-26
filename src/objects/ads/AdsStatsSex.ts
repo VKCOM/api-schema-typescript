@@ -6,6 +6,7 @@ import { AdsStatsSexValue } from './AdsStatsSexValue';
 
 // ads_stats_sex
 export interface AdsStatsSex {
+  value?: AdsStatsSexValue;
   /**
    * Clicks rate
    */
@@ -14,5 +15,4 @@ export interface AdsStatsSex {
    * Impressions rate
    */
   impressions_rate?: number;
-  value?: AdsStatsSexValue;
 }

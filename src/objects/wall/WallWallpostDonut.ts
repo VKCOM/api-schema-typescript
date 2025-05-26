@@ -9,7 +9,7 @@ export interface WallWallpostDonut {
   /**
    * Post only for dons
    */
-  is_donut: boolean;
+  is_donut?: boolean;
   /**
    * Value of this field need to pass in wall.post/edit in donut_paid_duration
    */

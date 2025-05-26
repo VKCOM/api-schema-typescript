@@ -13,37 +13,37 @@ export interface PollsPoll {
   /**
    * Information whether the poll with multiple choices
    */
-  multiple: boolean;
+  multiple?: boolean;
   /**
    * Current user's answer ID
    */
   answer_id?: number;
-  end_date: number;
+  end_date?: number;
   /**
    * Current user's answer IDs
    */
   answer_ids?: number[];
-  closed: boolean;
-  is_board: boolean;
-  can_edit: boolean;
-  can_vote: boolean;
-  can_report: boolean;
-  can_share: boolean;
+  closed?: boolean;
+  is_board?: boolean;
+  can_edit?: boolean;
+  can_vote?: boolean;
+  can_report?: boolean;
+  can_share?: boolean;
   embed_hash?: string;
   photo?: PollsBackground;
-  answers: PollsAnswer[];
+  answers?: PollsAnswer[];
   /**
    * Date when poll has been created in Unixtime
    */
-  created: number;
+  created?: number;
   /**
    * Poll ID
    */
-  id: number;
+  id?: number;
   /**
    * Poll owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Poll author's ID
    */
@@ -51,11 +51,11 @@ export interface PollsPoll {
   /**
    * Poll question
    */
-  question: string;
+  question?: string;
   background?: PollsBackground;
   /**
    * Votes number
    */
-  votes: number;
-  disable_unvote: boolean;
+  votes?: number;
+  disable_unvote?: boolean;
 }

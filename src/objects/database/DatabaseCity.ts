@@ -7,11 +7,11 @@ export interface DatabaseCity {
   /**
    * Object ID
    */
-  id: number;
+  id?: number;
   /**
    * Object title
    */
-  title: string;
+  title?: string;
   /**
    * Area title
    */

@@ -6,8 +6,8 @@ import { LeadFormsQuestionItemOption } from './LeadFormsQuestionItemOption';
 
 // leadForms_question_item
 export interface LeadFormsQuestionItem {
-  key: string;
-  type: 'input' | 'textarea' | 'radio' | 'checkbox' | 'select';
+  key?: string;
+  type?: 'input' | 'textarea' | 'radio' | 'checkbox' | 'select';
   label?: string;
   /**
    * Опции выбора для типов radio, checkbox, select

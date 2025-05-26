@@ -3,7 +3,7 @@
  */
 
 import { BaseImage } from '../base/BaseImage';
-import { BaseStickersList } from '../base/BaseStickersList';
+import { BaseStickerNew } from '../base/BaseStickerNew';
 import { StoreProductIcon } from './StoreProductIcon';
 
 // store_product
@@ -11,15 +11,27 @@ export interface StoreProduct {
   /**
    * Id of the product
    */
-  id: number;
+  id?: number;
   /**
    * Product type
    */
-  type: 'stickers';
+  type?: 'stickers';
   /**
    * Information whether sticker product wasn't used after being purchased
    */
   is_new?: boolean;
+  /**
+   * Product copyright information
+   */
+  copyright?: string;
+  /**
+   * Id of the base pack (for sticker pack styles)
+   */
+  base_id?: number;
+  /**
+   * Array of style ids available for the sticker pack
+   */
+  style_ids?: number[];
   /**
    * Information whether the product is purchased (1 - yes, 0 - no)
    */
@@ -40,7 +52,7 @@ export interface StoreProduct {
    * Title of the product
    */
   title?: string;
-  stickers?: BaseStickersList;
+  stickers?: BaseStickerNew[];
   /**
    * Array of style sticker ids (for sticker pack styles)
    */
@@ -61,4 +73,16 @@ export interface StoreProduct {
    * Subtitle of the product
    */
   subtitle?: string;
+  payment_region?: string;
+  /**
+   * Information whether sticker pack is a vmoji pack
+   */
+  is_vmoji?: boolean;
+  title_lang_key?: string;
+  description_lang_key?: string;
+  url?: string;
+  /**
+   * Information whether the product is a sticker pack with popup stickers (for stickers product type)
+   */
+  is_popup?: boolean;
 }

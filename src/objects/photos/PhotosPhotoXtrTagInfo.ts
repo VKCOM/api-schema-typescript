@@ -13,11 +13,11 @@ export interface PhotosPhotoXtrTagInfo {
   /**
    * Album ID
    */
-  album_id: number;
+  album_id?: number;
   /**
    * Date when uploaded
    */
-  date: number;
+  date?: number;
   /**
    * Original photo height
    */
@@ -25,7 +25,7 @@ export interface PhotosPhotoXtrTagInfo {
   /**
    * Photo ID
    */
-  id: number;
+  id?: number;
   /**
    * Latitude
    */
@@ -37,7 +37,7 @@ export interface PhotosPhotoXtrTagInfo {
   /**
    * Photo owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * URL of image with 1280 px width
    */
@@ -91,4 +91,8 @@ export interface PhotosPhotoXtrTagInfo {
    * Original photo width
    */
   width?: number;
+  /**
+   * Whether photo has attached tag links
+   */
+  has_tags?: boolean;
 }

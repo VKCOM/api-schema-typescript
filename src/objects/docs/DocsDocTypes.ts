@@ -7,13 +7,13 @@ export interface DocsDocTypes {
   /**
    * Doc type ID
    */
-  id: number;
+  id?: number;
   /**
    * Doc type title
    */
-  name: string;
+  name?: string;
   /**
    * Number of docs
    */
-  count: number;
+  count?: number;
 }

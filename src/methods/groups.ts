@@ -3,10 +3,8 @@
  */
 
 import { GroupsAddress } from '../objects/groups/GroupsAddress';
-import { GroupsBannedItem } from '../objects/groups/GroupsBannedItem';
 import { GroupsCallbackServer } from '../objects/groups/GroupsCallbackServer';
 import { GroupsCallbackSettings } from '../objects/groups/GroupsCallbackSettings';
-import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupAccess } from '../objects/groups/GroupsGroupAccess';
 import { GroupsGroupAgeLimits } from '../objects/groups/GroupsGroupAgeLimits';
 import { GroupsGroupAudio } from '../objects/groups/GroupsGroupAudio';
@@ -29,6 +27,9 @@ import { GroupsLongPollSettings } from '../objects/groups/GroupsLongPollSettings
 import { GroupsMemberRole } from '../objects/groups/GroupsMemberRole';
 import { GroupsMemberStatus } from '../objects/groups/GroupsMemberStatus';
 import { GroupsMemberStatusFull } from '../objects/groups/GroupsMemberStatusFull';
+import { GroupsOnlineStatusType } from '../objects/groups/GroupsOnlineStatusType';
+import { GroupsOwnerXtrBanInfo } from '../objects/groups/GroupsOwnerXtrBanInfo';
+import { GroupsProfileItem } from '../objects/groups/GroupsProfileItem';
 import { GroupsSectionsListItem } from '../objects/groups/GroupsSectionsListItem';
 import { GroupsSettingsTwitter } from '../objects/groups/GroupsSettingsTwitter';
 import { GroupsSubjectItem } from '../objects/groups/GroupsSubjectItem';
@@ -46,7 +47,6 @@ export interface GroupsAddAddressParams {
   title: string;
   address: string;
   additional_address?: string;
-  country_id: number;
   city_id: number;
   metro_id?: number;
   latitude: number;
@@ -73,7 +73,7 @@ export interface GroupsAddCallbackServerParams {
 
 // groups.addCallbackServer_response
 export interface GroupsAddCallbackServerResponse {
-  server_id: number;
+  server_id?: number;
 }
 
 /**
@@ -166,11 +166,11 @@ export interface GroupsCreateParams {
   /**
    * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
    */
-  subtype?: 1 | 2 | 3 | 4;
+  subtype?: 0 | 1 | 2 | 3 | 4;
 }
 
 // groups.create_response
-export type GroupsCreateResponse = GroupsGroup;
+export type GroupsCreateResponse = GroupsGroupFull;
 
 /**
  * groups.deleteAddress
@@ -261,7 +261,7 @@ export interface GroupsEditParams {
   /**
    * Community subject. Possible values: , *'1' - auto/moto,, *'2' - activity holidays,, *'3' - business,, *'4' - pets,, *'5' - health,, *'6' - dating and communication, , *'7' - games,, *'8' - IT (computers and software),, *'9' - cinema,, *'10' - beauty and fashion,, *'11' - cooking,, *'12' - art and culture,, *'13' - literature,, *'14' - mobile services and internet,, *'15' - music,, *'16' - science and technology,, *'17' - real estate,, *'18' - news and media,, *'19' - security,, *'20' - education,, *'21' - home and renovations,, *'22' - politics,, *'23' - food,, *'24' - industry,, *'25' - travel,, *'26' - work,, *'27' - entertainment,, *'28' - religion,, *'29' - family,, *'30' - sports,, *'31' - insurance,, *'32' - television,, *'33' - goods and services,, *'34' - hobbies,, *'35' - finance,, *'36' - photo,, *'37' - esoterics,, *'38' - electronics and appliances,, *'39' - erotic,, *'40' - humor,, *'41' - society, humanities,, *'42' - design and graphics.
    */
-  subject?: string;
+  subject?: number;
   /**
    * Organizer email (for events).
    */
@@ -343,19 +343,23 @@ export interface GroupsEditParams {
    */
   wiki?: number;
   /**
-   * Community messages. Possible values: *'0' — disabled,, *'1' — enabled.
+   * Community messages. Possible values: *'0' - disabled,, *'1' - enabled.
    */
   messages?: 0 | 1;
   articles?: 0 | 1;
   addresses?: 0 | 1;
   /**
-   * Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+.
+   * Community age limits. Possible values: *'1' - no limits,, *'2' - 16+,, *'3' - 18+.
    */
   age_limits?: 1 | 2 | 3;
   /**
    * Market settings. Possible values: *'0' - disabled,, *'1' - enabled.
    */
   market?: 0 | 1;
+  /**
+   * objects.json#/definitions/market_custom_button
+   */
+  market_buttons?: string;
   /**
    * market comments settings. Possible values: *'0' - disabled,, *'1' - enabled.
    */
@@ -388,6 +392,8 @@ export interface GroupsEditParams {
    * Stopwords filter in comments. Possible values: , *'0' - disabled,, *'1' - enabled.
    */
   obscene_stopwords?: 0 | 1;
+  toxic_filter?: 0 | 1;
+  disable_replies_from_groups?: 0 | 1;
   /**
    * Keywords for stopwords filter.
    */
@@ -417,7 +423,6 @@ export interface GroupsEditAddressParams {
   title?: string;
   address?: string;
   additional_address?: string;
-  country_id?: number;
   city_id?: number;
   metro_id?: number;
   latitude?: number;
@@ -490,7 +495,11 @@ export interface GroupsEditManagerParams {
    */
   role?: string;
   /**
-   * '1' — to show the manager in Contacts block of the community.
+   * '1' — allow the manager to accept community calls.
+   */
+  is_call_operator?: 0 | 1;
+  /**
+   * '1' - to show the manager in Contacts block of the community.
    */
   is_contact?: 0 | 1;
   /**
@@ -533,11 +542,11 @@ export interface GroupsGetParams {
    */
   user_id?: number;
   /**
-   * '1' — to return complete information about a user's communities, '0' — to return a list of community IDs without any additional fields (default),
+   * '1' - to return complete information about a user's communities, '0' - to return a list of community IDs without any additional fields (default),
    */
   extended?: 0 | 1;
   /**
-   * Types of communities to return: 'admin' — to return communities administered by the user , 'editor' — to return communities where the user is an administrator or editor, 'moder' — to return communities where the user is an administrator, editor, or moderator, 'groups' — to return only groups, 'publics' — to return only public pages, 'events' — to return only events
+   * Types of communities to return: 'admin' - to return communities administered by the user , 'editor' - to return communities where the user is an administrator or editor, 'moder' - to return communities where the user is an administrator, editor, or moderator, 'groups' - to return only groups, 'publics' - to return only public pages, 'events' - to return only events
    *
    * objects.json#/definitions/groups_filter
    */
@@ -563,8 +572,8 @@ export interface GroupsGetResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }
 
 // groups.get_extendedResponse
@@ -572,8 +581,8 @@ export interface GroupsGetExtendedResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: GroupsGroupFull[];
+  count?: number;
+  items?: GroupsGroupFull[];
 }
 
 /**
@@ -607,7 +616,7 @@ export interface GroupsGetAddressesParams {
   /**
    * Address fields
    *
-   * objects.json#/definitions/addresses_fields
+   * objects.json#/definitions/address_fields
    */
   fields?: string;
 }
@@ -617,8 +626,8 @@ export interface GroupsGetAddressesResponse {
   /**
    * Total count of addresses
    */
-  count: number;
-  items: GroupsAddress[];
+  count?: number;
+  items?: GroupsAddress[];
 }
 
 /**
@@ -652,8 +661,8 @@ export interface GroupsGetBannedResponse {
   /**
    * Total users number
    */
-  count: number;
-  items: GroupsBannedItem[];
+  count?: number;
+  items?: GroupsOwnerXtrBanInfo[];
 }
 
 /**
@@ -670,7 +679,7 @@ export interface GroupsGetByIdParams {
   /**
    * ID or screen name of the community.
    */
-  group_id?: string;
+  group_id?: number | string;
   /**
    * Group fields to return.
    *
@@ -680,7 +689,10 @@ export interface GroupsGetByIdParams {
 }
 
 // groups.getById_response
-export type GroupsGetByIdResponse = GroupsGroupFull[];
+export interface GroupsGetByIdResponse {
+  groups?: GroupsGroupFull[];
+  profiles?: GroupsProfileItem[];
+}
 
 /**
  * groups.getCallbackConfirmationCode
@@ -700,7 +712,7 @@ export interface GroupsGetCallbackConfirmationCodeResponse {
   /**
    * Confirmation code
    */
-  code: string;
+  code?: string;
 }
 
 /**
@@ -714,8 +726,8 @@ export interface GroupsGetCallbackServersParams {
 
 // groups.getCallbackServers_response
 export interface GroupsGetCallbackServersResponse {
-  count: number;
-  items: GroupsCallbackServer[];
+  count?: number;
+  items?: GroupsCallbackServer[];
 }
 
 /**
@@ -739,32 +751,6 @@ export interface GroupsGetCallbackSettingsParams {
 export type GroupsGetCallbackSettingsResponse = GroupsCallbackSettings;
 
 /**
- * groups.getCatalog
- *
- * Returns communities list for a catalog category.
- */
-
-export interface GroupsGetCatalogParams {
-  /**
-   * Category id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
-   */
-  category_id?: number;
-  /**
-   * Subcategory id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
-   */
-  subcategory_id?: number;
-}
-
-// groups.getCatalog_response
-export interface GroupsGetCatalogResponse {
-  /**
-   * Total communities number
-   */
-  count: number;
-  items: GroupsGroup[];
-}
-
-/**
  * groups.getCatalogInfo
  *
  * Returns categories list for communities catalog
@@ -786,7 +772,7 @@ export interface GroupsGetCatalogInfoResponse {
   /**
    * Information whether catalog is enabled for current user
    */
-  enabled: 0 | 1;
+  enabled?: 0 | 1;
   categories?: GroupsGroupCategory[];
 }
 
@@ -795,7 +781,7 @@ export interface GroupsGetCatalogInfoExtendedResponse {
   /**
    * Information whether catalog is enabled for current user
    */
-  enabled: 0 | 1;
+  enabled?: 0 | 1;
   categories?: GroupsGroupCategoryFull[];
 }
 
@@ -825,9 +811,9 @@ export interface GroupsGetInvitedUsersParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname. Possible values: *'nom' — nominative (default),, *'gen' — genitive,, *'dat' — dative,, *'acc' — accusative, , *'ins' — instrumental,, *'abl' — prepositional.
+   * Case for declension of user name and surname. Possible values: *'nom' - nominative (default),, *'gen' - genitive,, *'dat' - dative,, *'acc' - accusative, , *'ins' - instrumental,, *'abl' - prepositional.
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
 }
 
 // groups.getInvitedUsers_response
@@ -835,8 +821,8 @@ export interface GroupsGetInvitedUsersResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  items?: UsersUserFull[];
 }
 
 /**
@@ -855,7 +841,7 @@ export interface GroupsGetInvitesParams {
    */
   count?: number;
   /**
-   * '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
+   * '1' - to return additional [vk.com/dev/fields_groups|fields] for communities..
    */
   extended?: 0 | 1;
 }
@@ -865,8 +851,8 @@ export interface GroupsGetInvitesResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: GroupsGroupFull[];
+  count?: number;
+  items?: GroupsGroupFull[];
 }
 
 // groups.getInvites_extendedResponse
@@ -874,10 +860,10 @@ export interface GroupsGetInvitesExtendedResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: GroupsGroupFull[];
-  profiles: UsersUserMin[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: GroupsGroupFull[];
+  profiles?: UsersUserMin[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -888,7 +874,7 @@ export interface GroupsGetInvitesExtendedResponse {
 
 export interface GroupsGetLongPollServerParams {
   /**
-   * Community ID
+   * Community ID.
    */
   group_id: number;
 }
@@ -922,7 +908,7 @@ export interface GroupsGetMembersParams {
   /**
    * ID or screen name of the community.
    */
-  group_id?: string;
+  group_id?: number | string;
   /**
    * Sort order. Available values: 'id_asc', 'id_desc', 'time_asc', 'time_desc'. 'time_asc' and 'time_desc' are availavle only if the method is called by the group's 'moderator'.
    */
@@ -944,7 +930,7 @@ export interface GroupsGetMembersParams {
   /**
    * *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
    */
-  filter?: 'friends' | 'unsure' | 'managers' | 'donut';
+  filter?: 'donut' | 'friends' | 'managers' | 'unsure' | 'unsure_friends';
 }
 
 // groups.getMembers_response
@@ -952,8 +938,12 @@ export interface GroupsGetMembersResponse {
   /**
    * Total members number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
+  /**
+   * Encoded string for a next page
+   */
+  next_from?: string;
 }
 
 // groups.getMembers_fieldsResponse
@@ -961,8 +951,12 @@ export interface GroupsGetMembersFieldsResponse {
   /**
    * Total members number
    */
-  count: number;
-  items: GroupsUserXtrRole[];
+  count?: number;
+  items?: GroupsUserXtrRole[];
+  /**
+   * Encoded string for a next page
+   */
+  next_from?: string;
 }
 
 // groups.getMembers_filterResponse
@@ -970,8 +964,29 @@ export interface GroupsGetMembersFilterResponse {
   /**
    * Total members number
    */
-  count: number;
-  items: GroupsMemberRole[];
+  count?: number;
+  items?: GroupsMemberRole[];
+  /**
+   * Encoded string for a next page
+   */
+  next_from?: string;
+}
+
+/**
+ * groups.getOnlineStatus
+ */
+
+export interface GroupsGetOnlineStatusParams {
+  group_id: number;
+}
+
+// groups.getOnlineStatus_response
+export interface GroupsGetOnlineStatusResponse {
+  /**
+   * Estimated time of answer (for status = answer_mark)
+   */
+  minutes?: number;
+  status?: GroupsOnlineStatusType;
 }
 
 /**
@@ -1006,8 +1021,8 @@ export interface GroupsGetRequestsResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }
 
 // groups.getRequests_fieldsResponse
@@ -1015,8 +1030,8 @@ export interface GroupsGetRequestsFieldsResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  items?: UsersUserFull[];
 }
 
 /**
@@ -1029,7 +1044,7 @@ export interface GroupsGetSettingsParams {
   /**
    * Community ID.
    */
-  group_id: number;
+  group_id: number | string;
 }
 
 // groups.getSettings_response
@@ -1045,11 +1060,11 @@ export interface GroupsGetSettingsResponse {
   /**
    * Audio settings
    */
-  audio: GroupsGroupAudio;
+  audio?: GroupsGroupAudio;
   /**
    * Articles settings
    */
-  articles: number;
+  articles?: number;
   /**
    * Photo suggests setting
    */
@@ -1057,7 +1072,11 @@ export interface GroupsGetSettingsResponse {
   /**
    * City id of group
    */
-  city_id: number;
+  city_id?: number;
+  /**
+   * City name of group
+   */
+  city_name?: string;
   contacts?: 0 | 1;
   links?: 0 | 1;
   sections_list?: GroupsSectionsListItem[];
@@ -1065,35 +1084,53 @@ export interface GroupsGetSettingsResponse {
   secondary_section?: GroupsGroupFullSection;
   age_limits?: GroupsGroupAgeLimits;
   /**
-   * Country id of group
-   */
-  country_id: number;
-  /**
    * Community description
    */
-  description: string;
+  description?: string;
   /**
    * Docs settings
    */
-  docs: GroupsGroupDocs;
+  docs?: GroupsGroupDocs;
   events?: 0 | 1;
+  addresses?: boolean;
+  /**
+   * By enabling bot abilities, you can send users messages with a customized keyboard attached as well as use other promotional abilities
+   */
+  bots_capabilities?: 0 | 1;
+  /**
+   * If this setting is enabled, users will see a Start button when they start a chat with your community for the first time
+   */
+  bots_start_button?: 0 | 1;
+  /**
+   * If this setting is enabled then users can add your community to a chat
+   */
+  bots_add_to_chat?: 0 | 1;
+  bot_online_booking_enabled?: 0 | 1;
   /**
    * Information whether the obscene filter is enabled
    */
-  obscene_filter: 0 | 1;
+  obscene_filter?: 0 | 1;
   /**
    * Information whether the stop words filter is enabled
    */
-  obscene_stopwords: 0 | 1;
+  obscene_stopwords?: 0 | 1;
   /**
    * The list of stop words
    */
-  obscene_words: string[];
+  obscene_words?: string[];
+  /**
+   * Information whether the toxic filter is enabled
+   */
+  toxic_filter?: 0 | 1;
+  /**
+   * Information whether the replies from groups is disabled
+   */
+  disable_replies_from_groups?: 0 | 1;
   event_group_id?: number;
   /**
    * Photos settings
    */
-  photos: GroupsGroupPhotos;
+  photos?: GroupsGroupPhotos;
   /**
    * Information about the group category
    */
@@ -1126,20 +1163,20 @@ export interface GroupsGetSettingsResponse {
   /**
    * Community title
    */
-  title: string;
+  title?: string;
   /**
    * Topics settings
    */
-  topics: GroupsGroupTopics;
+  topics?: GroupsGroupTopics;
   twitter?: GroupsSettingsTwitter;
   /**
    * Video settings
    */
-  video: GroupsGroupVideo;
+  video?: GroupsGroupVideo;
   /**
    * Wall settings
    */
-  wall: GroupsGroupWall;
+  wall?: GroupsGroupWall;
   /**
    * Community website
    */
@@ -1155,7 +1192,7 @@ export interface GroupsGetSettingsResponse {
   /**
    * Wiki settings
    */
-  wiki: GroupsGroupWiki;
+  wiki?: GroupsGroupWiki;
 }
 
 /**
@@ -1179,8 +1216,8 @@ export interface GroupsGetTokenPermissionsParams {}
 
 // groups.getTokenPermissions_response
 export interface GroupsGetTokenPermissionsResponse {
-  mask: number;
-  permissions: GroupsTokenPermissionSetting[];
+  mask?: number;
+  permissions?: GroupsTokenPermissionSetting[];
 }
 
 /**
@@ -1197,11 +1234,23 @@ export interface GroupsInviteParams {
   /**
    * User ID.
    */
-  user_id: number;
+  user_id?: number;
+  /**
+   * User IDs.
+   */
+  user_ids_list?: string;
 }
 
 // groups.invite_response
 export type GroupsInviteResponse = 1;
+
+// groups.invite_userIdsResponse
+export interface GroupsInviteUserIdsResponse {
+  /**
+   * Total invited users number
+   */
+  invites_send_count?: number;
+}
 
 /**
  * groups.isMember
@@ -1213,7 +1262,7 @@ export interface GroupsIsMemberParams {
   /**
    * ID or screen name of the community.
    */
-  group_id: string;
+  group_id: number | string;
   /**
    * User ID.
    */
@@ -1223,12 +1272,15 @@ export interface GroupsIsMemberParams {
    */
   user_ids?: string;
   /**
-   * '1' — to return an extended response with additional fields. By default: '0'.
+   * '1' - to return an extended response with additional fields. By default: '0'.
    */
   extended?: 0 | 1;
 }
 
 // groups.isMember_response
+/**
+ * Information whether user is a member of the group
+ */
 export type GroupsIsMemberResponse = 0 | 1;
 
 // groups.isMember_userIdsResponse
@@ -1239,7 +1291,7 @@ export interface GroupsIsMemberExtendedResponse {
   /**
    * Information whether user is a member of the group
    */
-  member: 0 | 1;
+  member?: 0 | 1;
   /**
    * Information whether user has been invited to the group
    */
@@ -1271,9 +1323,9 @@ export interface GroupsJoinParams {
   /**
    * ID or screen name of the community.
    */
-  group_id?: number;
+  group_id: number;
   /**
-   * Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
+   * Optional parameter which is taken into account when 'gid' belongs to the event: '1' - Perhaps I will attend, '0' - I will be there for sure (default), ,
    */
   not_sure?: string;
 }
@@ -1355,7 +1407,7 @@ export interface GroupsSearchParams {
   /**
    * Community type. Possible values: 'group, page, event.'
    */
-  type?: 'group' | 'page' | 'event';
+  type?: 'event' | 'group' | 'page';
   /**
    * Country ID.
    */
@@ -1365,17 +1417,17 @@ export interface GroupsSearchParams {
    */
   city_id?: number;
   /**
-   * '1' — to return only upcoming events. Works with the 'type' = 'event' only.
+   * '1' - to return only upcoming events. Works with the 'type' = 'event' only.
    */
   future?: 0 | 1;
   /**
-   * '1' — to return communities with enabled market only.
+   * '1' - to return communities with enabled market only.
    */
   market?: 0 | 1;
   /**
-   * Sort order. Possible values: *'0' — default sorting (similar the full version of the site),, *'1' — by growth speed,, *'2'— by the "day attendance/members number" ratio,, *'3' — by the "Likes number/members number" ratio,, *'4' — by the "comments number/members number" ratio,, *'5' — by the "boards entries number/members number" ratio.
+   * Sort order. Possible values: *'0' - default sorting (similar the full version of the site),, *'1' - by growth speed,, *'2'- by the "day attendance/members number" ratio,, *'3' - by the "Likes number/members number" ratio,, *'4' - by the "comments number/members number" ratio,, *'5' - by the "boards entries number/members number" ratio.
    */
-  sort?: 0 | 1 | 2 | 3 | 4 | 5;
+  sort?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Offset needed to return a specific subset of results.
    */
@@ -1391,8 +1443,8 @@ export interface GroupsSearchResponse {
   /**
    * Total communities number
    */
-  count: number;
-  items: GroupsGroup[];
+  count?: number;
+  items?: GroupsGroupFull[];
 }
 
 /**
@@ -1412,135 +1464,147 @@ export interface GroupsSetCallbackSettingsParams {
   server_id?: number;
   api_version?: string;
   /**
-   * A new incoming message has been received ('0' — disabled, '1' — enabled).
+   * A new incoming message has been received ('0' - disabled, '1' - enabled).
    */
   message_new?: 0 | 1;
   /**
-   * A new outcoming message has been received ('0' — disabled, '1' — enabled).
+   * A new outcoming message has been received ('0' - disabled, '1' - enabled).
    */
   message_reply?: 0 | 1;
   /**
-   * Allowed messages notifications ('0' — disabled, '1' — enabled).
+   * Allowed messages notifications ('0' - disabled, '1' - enabled).
    */
   message_allow?: 0 | 1;
   message_edit?: 0 | 1;
   /**
-   * Denied messages notifications ('0' — disabled, '1' — enabled).
+   * Denied messages notifications ('0' - disabled, '1' - enabled).
    */
   message_deny?: 0 | 1;
   message_typing_state?: 0 | 1;
   /**
-   * New photos notifications ('0' — disabled, '1' — enabled).
+   * Messages read notifications ('0' - disabled, '1' - enabled).
+   */
+  message_read?: 0 | 1;
+  /**
+   * New photos notifications ('0' - disabled, '1' - enabled).
    */
   photo_new?: 0 | 1;
   /**
-   * New audios notifications ('0' — disabled, '1' — enabled).
+   * New audios notifications ('0' - disabled, '1' - enabled).
    */
   audio_new?: 0 | 1;
   /**
-   * New videos notifications ('0' — disabled, '1' — enabled).
+   * New videos notifications ('0' - disabled, '1' - enabled).
    */
   video_new?: 0 | 1;
   /**
-   * New wall replies notifications ('0' — disabled, '1' — enabled).
+   * New wall replies notifications ('0' - disabled, '1' - enabled).
    */
   wall_reply_new?: 0 | 1;
   /**
-   * Wall replies edited notifications ('0' — disabled, '1' — enabled).
+   * Wall replies edited notifications ('0' - disabled, '1' - enabled).
    */
   wall_reply_edit?: 0 | 1;
   /**
-   * A wall comment has been deleted ('0' — disabled, '1' — enabled).
+   * A wall comment has been deleted ('0' - disabled, '1' - enabled).
    */
   wall_reply_delete?: 0 | 1;
   /**
-   * A wall comment has been restored ('0' — disabled, '1' — enabled).
+   * A wall comment has been restored ('0' - disabled, '1' - enabled).
    */
   wall_reply_restore?: 0 | 1;
   /**
-   * New wall posts notifications ('0' — disabled, '1' — enabled).
+   * New wall posts notifications ('0' - disabled, '1' - enabled).
    */
   wall_post_new?: 0 | 1;
   /**
-   * New wall posts notifications ('0' — disabled, '1' — enabled).
+   * New wall posts notifications ('0' - disabled, '1' - enabled).
    */
   wall_repost?: 0 | 1;
   /**
-   * New board posts notifications ('0' — disabled, '1' — enabled).
+   * Scheduled post added to time slot ('0' - disabled, '1' - enabled).
+   */
+  wall_schedule_post_new?: 0 | 1;
+  /**
+   * Scheduled post removed from time slot ('0' - disabled, '1' - enabled).
+   */
+  wall_schedule_post_delete?: 0 | 1;
+  /**
+   * New board posts notifications ('0' - disabled, '1' - enabled).
    */
   board_post_new?: 0 | 1;
   /**
-   * Board posts edited notifications ('0' — disabled, '1' — enabled).
+   * Board posts edited notifications ('0' - disabled, '1' - enabled).
    */
   board_post_edit?: 0 | 1;
   /**
-   * Board posts restored notifications ('0' — disabled, '1' — enabled).
+   * Board posts restored notifications ('0' - disabled, '1' - enabled).
    */
   board_post_restore?: 0 | 1;
   /**
-   * Board posts deleted notifications ('0' — disabled, '1' — enabled).
+   * Board posts deleted notifications ('0' - disabled, '1' - enabled).
    */
   board_post_delete?: 0 | 1;
   /**
-   * New comment to photo notifications ('0' — disabled, '1' — enabled).
+   * New comment to photo notifications ('0' - disabled, '1' - enabled).
    */
   photo_comment_new?: 0 | 1;
   /**
-   * A photo comment has been edited ('0' — disabled, '1' — enabled).
+   * A photo comment has been edited ('0' - disabled, '1' - enabled).
    */
   photo_comment_edit?: 0 | 1;
   /**
-   * A photo comment has been deleted ('0' — disabled, '1' — enabled).
+   * A photo comment has been deleted ('0' - disabled, '1' - enabled).
    */
   photo_comment_delete?: 0 | 1;
   /**
-   * A photo comment has been restored ('0' — disabled, '1' — enabled).
+   * A photo comment has been restored ('0' - disabled, '1' - enabled).
    */
   photo_comment_restore?: 0 | 1;
   /**
-   * New comment to video notifications ('0' — disabled, '1' — enabled).
+   * New comment to video notifications ('0' - disabled, '1' - enabled).
    */
   video_comment_new?: 0 | 1;
   /**
-   * A video comment has been edited ('0' — disabled, '1' — enabled).
+   * A video comment has been edited ('0' - disabled, '1' - enabled).
    */
   video_comment_edit?: 0 | 1;
   /**
-   * A video comment has been deleted ('0' — disabled, '1' — enabled).
+   * A video comment has been deleted ('0' - disabled, '1' - enabled).
    */
   video_comment_delete?: 0 | 1;
   /**
-   * A video comment has been restored ('0' — disabled, '1' — enabled).
+   * A video comment has been restored ('0' - disabled, '1' - enabled).
    */
   video_comment_restore?: 0 | 1;
   /**
-   * New comment to market item notifications ('0' — disabled, '1' — enabled).
+   * New comment to market item notifications ('0' - disabled, '1' - enabled).
    */
   market_comment_new?: 0 | 1;
   /**
-   * A market comment has been edited ('0' — disabled, '1' — enabled).
+   * A market comment has been edited ('0' - disabled, '1' - enabled).
    */
   market_comment_edit?: 0 | 1;
   /**
-   * A market comment has been deleted ('0' — disabled, '1' — enabled).
+   * A market comment has been deleted ('0' - disabled, '1' - enabled).
    */
   market_comment_delete?: 0 | 1;
   /**
-   * A market comment has been restored ('0' — disabled, '1' — enabled).
+   * A market comment has been restored ('0' - disabled, '1' - enabled).
    */
   market_comment_restore?: 0 | 1;
   market_order_new?: 0 | 1;
   market_order_edit?: 0 | 1;
   /**
-   * A vote in a public poll has been added ('0' — disabled, '1' — enabled).
+   * A vote in a public poll has been added ('0' - disabled, '1' - enabled).
    */
   poll_vote_new?: 0 | 1;
   /**
-   * Joined community notifications ('0' — disabled, '1' — enabled).
+   * Joined community notifications ('0' - disabled, '1' - enabled).
    */
   group_join?: 0 | 1;
   /**
-   * Left community notifications ('0' — disabled, '1' — enabled).
+   * Left community notifications ('0' - disabled, '1' - enabled).
    */
   group_leave?: 0 | 1;
   group_change_settings?: 0 | 1;
@@ -1561,6 +1625,7 @@ export interface GroupsSetCallbackSettingsParams {
   like_add?: 0 | 1;
   like_remove?: 0 | 1;
   message_event?: 0 | 1;
+  message_reaction_event?: 0 | 1;
   donut_subscription_create?: 0 | 1;
   donut_subscription_prolonged?: 0 | 1;
   donut_subscription_cancelled?: 0 | 1;
@@ -1585,141 +1650,145 @@ export interface GroupsSetLongPollSettingsParams {
    */
   group_id: number;
   /**
-   * Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
+   * Sets whether Long Poll is enabled ('0' - disabled, '1' - enabled).
    */
   enabled?: 0 | 1;
   api_version?: string;
   /**
-   * A new incoming message has been received ('0' — disabled, '1' — enabled).
+   * A new incoming message has been received ('0' - disabled, '1' - enabled).
    */
   message_new?: 0 | 1;
   /**
-   * A new outcoming message has been received ('0' — disabled, '1' — enabled).
+   * A new outcoming message has been received ('0' - disabled, '1' - enabled).
    */
   message_reply?: 0 | 1;
   /**
-   * Allowed messages notifications ('0' — disabled, '1' — enabled).
+   * Allowed messages notifications ('0' - disabled, '1' - enabled).
    */
   message_allow?: 0 | 1;
   /**
-   * Denied messages notifications ('0' — disabled, '1' — enabled).
+   * Denied messages notifications ('0' - disabled, '1' - enabled).
    */
   message_deny?: 0 | 1;
   /**
-   * A message has been edited ('0' — disabled, '1' — enabled).
+   * A message has been edited ('0' - disabled, '1' - enabled).
    */
   message_edit?: 0 | 1;
   message_typing_state?: 0 | 1;
   /**
-   * New photos notifications ('0' — disabled, '1' — enabled).
+   * Messages read notifications ('0' - disabled, '1' - enabled).
+   */
+  message_read?: 0 | 1;
+  /**
+   * New photos notifications ('0' - disabled, '1' - enabled).
    */
   photo_new?: 0 | 1;
   /**
-   * New audios notifications ('0' — disabled, '1' — enabled).
+   * New audios notifications ('0' - disabled, '1' - enabled).
    */
   audio_new?: 0 | 1;
   /**
-   * New videos notifications ('0' — disabled, '1' — enabled).
+   * New videos notifications ('0' - disabled, '1' - enabled).
    */
   video_new?: 0 | 1;
   /**
-   * New wall replies notifications ('0' — disabled, '1' — enabled).
+   * New wall replies notifications ('0' - disabled, '1' - enabled).
    */
   wall_reply_new?: 0 | 1;
   /**
-   * Wall replies edited notifications ('0' — disabled, '1' — enabled).
+   * Wall replies edited notifications ('0' - disabled, '1' - enabled).
    */
   wall_reply_edit?: 0 | 1;
   /**
-   * A wall comment has been deleted ('0' — disabled, '1' — enabled).
+   * A wall comment has been deleted ('0' - disabled, '1' - enabled).
    */
   wall_reply_delete?: 0 | 1;
   /**
-   * A wall comment has been restored ('0' — disabled, '1' — enabled).
+   * A wall comment has been restored ('0' - disabled, '1' - enabled).
    */
   wall_reply_restore?: 0 | 1;
   /**
-   * New wall posts notifications ('0' — disabled, '1' — enabled).
+   * New wall posts notifications ('0' - disabled, '1' - enabled).
    */
   wall_post_new?: 0 | 1;
   /**
-   * New wall posts notifications ('0' — disabled, '1' — enabled).
+   * New wall posts notifications ('0' - disabled, '1' - enabled).
    */
   wall_repost?: 0 | 1;
   /**
-   * New board posts notifications ('0' — disabled, '1' — enabled).
+   * New board posts notifications ('0' - disabled, '1' - enabled).
    */
   board_post_new?: 0 | 1;
   /**
-   * Board posts edited notifications ('0' — disabled, '1' — enabled).
+   * Board posts edited notifications ('0' - disabled, '1' - enabled).
    */
   board_post_edit?: 0 | 1;
   /**
-   * Board posts restored notifications ('0' — disabled, '1' — enabled).
+   * Board posts restored notifications ('0' - disabled, '1' - enabled).
    */
   board_post_restore?: 0 | 1;
   /**
-   * Board posts deleted notifications ('0' — disabled, '1' — enabled).
+   * Board posts deleted notifications ('0' - disabled, '1' - enabled).
    */
   board_post_delete?: 0 | 1;
   /**
-   * New comment to photo notifications ('0' — disabled, '1' — enabled).
+   * New comment to photo notifications ('0' - disabled, '1' - enabled).
    */
   photo_comment_new?: 0 | 1;
   /**
-   * A photo comment has been edited ('0' — disabled, '1' — enabled).
+   * A photo comment has been edited ('0' - disabled, '1' - enabled).
    */
   photo_comment_edit?: 0 | 1;
   /**
-   * A photo comment has been deleted ('0' — disabled, '1' — enabled).
+   * A photo comment has been deleted ('0' - disabled, '1' - enabled).
    */
   photo_comment_delete?: 0 | 1;
   /**
-   * A photo comment has been restored ('0' — disabled, '1' — enabled).
+   * A photo comment has been restored ('0' - disabled, '1' - enabled).
    */
   photo_comment_restore?: 0 | 1;
   /**
-   * New comment to video notifications ('0' — disabled, '1' — enabled).
+   * New comment to video notifications ('0' - disabled, '1' - enabled).
    */
   video_comment_new?: 0 | 1;
   /**
-   * A video comment has been edited ('0' — disabled, '1' — enabled).
+   * A video comment has been edited ('0' - disabled, '1' - enabled).
    */
   video_comment_edit?: 0 | 1;
   /**
-   * A video comment has been deleted ('0' — disabled, '1' — enabled).
+   * A video comment has been deleted ('0' - disabled, '1' - enabled).
    */
   video_comment_delete?: 0 | 1;
   /**
-   * A video comment has been restored ('0' — disabled, '1' — enabled).
+   * A video comment has been restored ('0' - disabled, '1' - enabled).
    */
   video_comment_restore?: 0 | 1;
   /**
-   * New comment to market item notifications ('0' — disabled, '1' — enabled).
+   * New comment to market item notifications ('0' - disabled, '1' - enabled).
    */
   market_comment_new?: 0 | 1;
   /**
-   * A market comment has been edited ('0' — disabled, '1' — enabled).
+   * A market comment has been edited ('0' - disabled, '1' - enabled).
    */
   market_comment_edit?: 0 | 1;
   /**
-   * A market comment has been deleted ('0' — disabled, '1' — enabled).
+   * A market comment has been deleted ('0' - disabled, '1' - enabled).
    */
   market_comment_delete?: 0 | 1;
   /**
-   * A market comment has been restored ('0' — disabled, '1' — enabled).
+   * A market comment has been restored ('0' - disabled, '1' - enabled).
    */
   market_comment_restore?: 0 | 1;
   /**
-   * A vote in a public poll has been added ('0' — disabled, '1' — enabled).
+   * A vote in a public poll has been added ('0' - disabled, '1' - enabled).
    */
   poll_vote_new?: 0 | 1;
   /**
-   * Joined community notifications ('0' — disabled, '1' — enabled).
+   * Joined community notifications ('0' - disabled, '1' - enabled).
    */
   group_join?: 0 | 1;
   /**
-   * Left community notifications ('0' — disabled, '1' — enabled).
+   * Left community notifications ('0' - disabled, '1' - enabled).
    */
   group_leave?: 0 | 1;
   group_change_settings?: 0 | 1;
@@ -1736,6 +1805,7 @@ export interface GroupsSetLongPollSettingsParams {
   like_add?: 0 | 1;
   like_remove?: 0 | 1;
   message_event?: 0 | 1;
+  message_reaction_event?: 0 | 1;
   donut_subscription_create?: 0 | 1;
   donut_subscription_prolonged?: 0 | 1;
   donut_subscription_cancelled?: 0 | 1;
@@ -1755,9 +1825,22 @@ export type GroupsSetLongPollSettingsResponse = 1;
 export interface GroupsSetSettingsParams {
   group_id: number;
   messages?: 0 | 1;
+  /**
+   * By enabling bot abilities, you can send users messages with a customized keyboard attached as well as use other promotional abilities
+   */
   bots_capabilities?: 0 | 1;
+  /**
+   * If this setting is enabled, users will see a Start button when they start a chat with your community for the first time
+   */
   bots_start_button?: 0 | 1;
+  /**
+   * If this setting is enabled then users can add your community to a chat
+   */
   bots_add_to_chat?: 0 | 1;
+  /**
+   * If this setting is enabled then online booking chatbot add in your community chats
+   */
+  bot_online_booking_enabled?: 0 | 1;
 }
 
 // groups.setSettings_response

@@ -5,6 +5,14 @@
 // ads_stats_cities
 export interface AdsStatsCities {
   /**
+   * City name
+   */
+  name?: string;
+  /**
+   * City ID
+   */
+  value?: number | string;
+  /**
    * Clicks rate
    */
   clicks_rate?: number;
@@ -12,12 +20,4 @@ export interface AdsStatsCities {
    * Impressions rate
    */
   impressions_rate?: number;
-  /**
-   * City name
-   */
-  name?: string;
-  /**
-   * City ID
-   */
-  value?: number;
 }

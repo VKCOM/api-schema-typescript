@@ -8,7 +8,7 @@ import { BaseCropPhotoRect } from './BaseCropPhotoRect';
 
 // base_crop_photo
 export interface BaseCropPhoto {
-  photo: PhotosPhoto;
-  crop: BaseCropPhotoCrop;
-  rect: BaseCropPhotoRect;
+  photo?: PhotosPhoto;
+  crop?: BaseCropPhotoCrop;
+  rect?: BaseCropPhotoRect;
 }

@@ -12,7 +12,7 @@ export interface AdsStats {
    * Object ID
    */
   id?: number;
-  stats?: AdsStatsFormat;
+  stats?: AdsStatsFormat[];
   type?: AdsObjectType;
   views_times?: AdsStatsViewsTimes;
 }

@@ -7,9 +7,9 @@ export interface BaseCity {
   /**
    * City ID
    */
-  id: number;
+  id?: number;
   /**
    * City title
    */
-  title: string;
+  title?: string;
 }

@@ -5,7 +5,6 @@
 import { UsersUser } from '../users/UsersUser';
 import { GroupsBanInfo } from './GroupsBanInfo';
 import { GroupsGroup } from './GroupsGroup';
-import { GroupsOwnerXtrBanInfoType } from './GroupsOwnerXtrBanInfoType';
 
 // groups_owner_xtr_ban_info
 export interface GroupsOwnerXtrBanInfo {
@@ -18,5 +17,5 @@ export interface GroupsOwnerXtrBanInfo {
    * Information about group if type = profile
    */
   profile?: UsersUser;
-  type?: GroupsOwnerXtrBanInfoType;
+  type?: 'group' | 'profile';
 }

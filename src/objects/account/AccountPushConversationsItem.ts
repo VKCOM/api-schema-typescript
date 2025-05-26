@@ -7,15 +7,15 @@ export interface AccountPushConversationsItem {
   /**
    * Time until that notifications are disabled in seconds
    */
-  disabled_until: number;
+  disabled_until?: number;
   /**
    * Peer ID
    */
-  peer_id: number;
+  peer_id?: number;
   /**
    * Information whether the sound are enabled
    */
-  sound: 0 | 1;
+  sound?: 0 | 1;
   /**
    * Information whether the mentions are disabled
    */

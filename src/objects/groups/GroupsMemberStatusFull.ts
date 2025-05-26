@@ -19,7 +19,7 @@ export interface GroupsMemberStatusFull {
   /**
    * Information whether user is a member of the group
    */
-  member: 0 | 1;
+  member?: 0 | 1;
   /**
    * Information whether user has send request to the group
    */
@@ -27,5 +27,5 @@ export interface GroupsMemberStatusFull {
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
 }

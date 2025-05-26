@@ -28,8 +28,8 @@ export interface LeadFormsCreateParams {
 
 // leadForms.create_response
 export interface LeadFormsCreateResponse {
-  form_id: number;
-  url: string;
+  form_id?: number;
+  url?: string;
 }
 
 /**
@@ -43,7 +43,7 @@ export interface LeadFormsDeleteParams {
 
 // leadForms.delete_response
 export interface LeadFormsDeleteResponse {
-  form_id: number;
+  form_id?: number;
 }
 
 /**
@@ -71,7 +71,7 @@ export interface LeadFormsGetLeadsParams {
 
 // leadForms.getLeads_response
 export interface LeadFormsGetLeadsResponse {
-  leads: LeadFormsLead[];
+  leads?: LeadFormsLead[];
   next_page_token?: string;
 }
 
@@ -119,6 +119,6 @@ export interface LeadFormsUpdateParams {
 
 // leadForms.update_response
 export interface LeadFormsUpdateResponse {
-  form_id: number;
-  url: string;
+  form_id?: number;
+  url?: string;
 }

@@ -6,4 +6,4 @@
 /**
  * Attachment type
  */
-export type WallCommentAttachmentType = 'photo' | 'audio' | 'video' | 'doc' | 'link' | 'note' | 'page' | 'market_market_album' | 'market' | 'sticker';
+export type WallCommentAttachmentType = 'photo' | 'audio' | 'audio_playlist' | 'video' | 'doc' | 'link' | 'note' | 'page' | 'market_market_album' | 'market' | 'sticker' | 'graffiti';

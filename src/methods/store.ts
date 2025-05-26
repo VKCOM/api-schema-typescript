@@ -2,7 +2,7 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { BaseSticker } from '../objects/base/BaseSticker';
+import { BaseStickerNew } from '../objects/base/BaseStickerNew';
 import { StoreProduct } from '../objects/store/StoreProduct';
 import { StoreStickersKeyword } from '../objects/store/StoreStickersKeyword';
 
@@ -29,7 +29,16 @@ export type StoreAddStickersToFavoriteResponse = 1;
 export interface StoreGetFavoriteStickersParams {}
 
 // store.getFavoriteStickers_response
-export type StoreGetFavoriteStickersResponse = BaseSticker[];
+export interface StoreGetFavoriteStickersResponse {
+  /**
+   * Count of favorite stickers
+   */
+  count?: number;
+  /**
+   * List of sticker objects
+   */
+  items?: BaseStickerNew[];
+}
 
 /**
  * store.getProducts
@@ -45,7 +54,10 @@ export interface StoreGetProductsParams {
 }
 
 // store.getProducts_response
-export type StoreGetProductsResponse = StoreProduct[];
+export interface StoreGetProductsResponse {
+  items?: StoreProduct[];
+  count?: number;
+}
 
 /**
  * store.getStickersKeywords
@@ -57,12 +69,13 @@ export interface StoreGetStickersKeywordsParams {
   aliases?: 0 | 1;
   all_products?: 0 | 1;
   need_stickers?: 0 | 1;
+  vmoji_promo?: 0 | 1;
 }
 
 // store.getStickersKeywords_response
 export interface StoreGetStickersKeywordsResponse {
-  count: number;
-  dictionary: StoreStickersKeyword[];
+  count?: number;
+  dictionary?: StoreStickersKeyword[];
   /**
    * Total count of chunks to load
    */

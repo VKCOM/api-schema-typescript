@@ -7,7 +7,7 @@ export interface StoriesReplies {
   /**
    * Replies number.
    */
-  count: number;
+  count?: number;
   /**
    * New replies number.
    */

@@ -3,7 +3,7 @@
  */
 
 import { GroupsGroupFull } from '../groups/GroupsGroupFull';
-import { UsersUserXtrType } from './UsersUserXtrType';
+import { UsersUserFull } from './UsersUserFull';
 
 // users_subscriptions_item
-export type UsersSubscriptionsItem = UsersUserXtrType | GroupsGroupFull;
+export type UsersSubscriptionsItem = UsersUserFull | GroupsGroupFull;

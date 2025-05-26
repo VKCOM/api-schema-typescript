@@ -7,17 +7,17 @@ export interface DocsDocPreviewVideo {
   /**
    * Video URL
    */
-  src: string;
+  src?: string;
   /**
    * Video's width in pixels
    */
-  width: number;
+  width?: number;
   /**
    * Video's height in pixels
    */
-  height: number;
+  height?: number;
   /**
    * Video file size in bites
    */
-  file_size: number;
+  file_size?: number;
 }

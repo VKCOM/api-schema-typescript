@@ -24,6 +24,10 @@ export interface BaseLinkButton {
    */
   section_id?: string;
   /**
+   * artist id
+   */
+  artist_id?: string;
+  /**
    * curator id
    */
   curator_id?: number;
@@ -40,4 +44,6 @@ export interface BaseLinkButton {
    */
   icon?: string;
   style?: BaseLinkButtonStyle;
+  audio_id?: number;
+  hashtag?: string;
 }

@@ -2,6 +2,7 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { BaseLink } from '../base/BaseLink';
 import { WallPostSourceType } from './WallPostSourceType';
 
 // wall_post_source
@@ -19,4 +20,5 @@ export interface WallPostSource {
    * URL to an external site used to publish the post
    */
   url?: string;
+  link?: BaseLink;
 }

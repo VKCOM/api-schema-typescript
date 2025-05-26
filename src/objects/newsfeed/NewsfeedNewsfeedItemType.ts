@@ -6,4 +6,4 @@
 /**
  * Item type
  */
-export type NewsfeedNewsfeedItemType = 'post' | 'photo' | 'photo_tag' | 'wall_photo' | 'friend' | 'audio' | 'video' | 'topic' | 'digest' | 'stories';
+export type NewsfeedNewsfeedItemType = 'post' | 'photo' | 'photo_tag' | 'wall_photo' | 'friend' | 'audio' | 'video' | 'topic' | 'digest' | 'stories' | 'note' | 'audio_playlist' | 'clip' | 'clips_retention';

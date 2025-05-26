@@ -13,9 +13,9 @@ export interface UsersSchool {
    */
   class?: string;
   /**
-   * Country ID
+   * School class id
    */
-  country?: number;
+  class_id?: number;
   /**
    * School ID
    */

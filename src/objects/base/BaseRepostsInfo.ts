@@ -7,7 +7,7 @@ export interface BaseRepostsInfo {
   /**
    * Total reposts counter. Sum of wall and mail reposts counters
    */
-  count: number;
+  count?: number;
   /**
    * Wall reposts counter
    */
@@ -19,5 +19,5 @@ export interface BaseRepostsInfo {
   /**
    * Information whether current user has reposted the post
    */
-  user_reposted?: number;
+  user_reposted?: 0 | 1;
 }

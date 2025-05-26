@@ -4,6 +4,7 @@
 
 // messages_conversation_can_write
 export interface MessagesConversationCanWrite {
-  allowed: boolean;
+  allowed?: boolean;
   reason?: number;
+  until?: number;
 }

@@ -2,6 +2,9 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { BaseLikes } from '../base/BaseLikes';
+import { BaseObjectCount } from '../base/BaseObjectCount';
+import { BaseRepostsInfo } from '../base/BaseRepostsInfo';
 import { PhotosImage } from './PhotosImage';
 import { PhotosPhotoSizes } from './PhotosPhotoSizes';
 
@@ -14,11 +17,11 @@ export interface PhotosPhoto {
   /**
    * Album ID
    */
-  album_id: number;
+  album_id?: number;
   /**
    * Date when uploaded
    */
-  date: number;
+  date?: number;
   /**
    * Original photo height
    */
@@ -26,7 +29,7 @@ export interface PhotosPhoto {
   /**
    * Photo ID
    */
-  id: number;
+  id?: number;
   images?: PhotosImage[];
   /**
    * Latitude
@@ -39,11 +42,15 @@ export interface PhotosPhoto {
   /**
    * Photo owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * URL of image with 2560 px width
    */
   photo_256?: string;
+  /**
+   * Thumb Hash
+   */
+  thumb_hash?: string;
   /**
    * Information whether current user can comment the photo
    */
@@ -54,6 +61,7 @@ export interface PhotosPhoto {
    */
   post_id?: number;
   sizes?: PhotosPhotoSizes[];
+  square_crop?: string;
   /**
    * Photo caption
    */
@@ -69,5 +77,21 @@ export interface PhotosPhoto {
   /**
    * Whether photo has attached tag links
    */
-  has_tags: boolean;
+  has_tags?: boolean;
+  likes?: BaseLikes;
+  comments?: BaseObjectCount;
+  reposts?: BaseRepostsInfo;
+  tags?: BaseObjectCount;
+  /**
+   * Returns if the photo is hidden above the wall
+   */
+  hidden?: 1;
+  /**
+   * Real position of the photo
+   */
+  real_offset?: number;
+  /**
+   * Sets vertical alignment of a photo
+   */
+  vertical_align?: 'top' | 'middle' | 'bottom';
 }

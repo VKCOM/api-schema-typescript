@@ -20,4 +20,20 @@ export interface WallGraffiti {
    * URL of the preview image with 586 px in width
    */
   photo_586?: string;
+  /**
+   * Graffiti height
+   */
+  height?: number;
+  /**
+   * Graffiti URL
+   */
+  url?: string;
+  /**
+   * Graffiti width
+   */
+  width?: number;
+  /**
+   * Access key for graffiti
+   */
+  access_key?: string;
 }

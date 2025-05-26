@@ -3,14 +3,13 @@
  */
 
 import { AudioAudio } from '../audio/AudioAudio';
-import { BaseCountry } from '../base/BaseCountry';
 import { BaseCropPhoto } from '../base/BaseCropPhoto';
 import { BaseObject } from '../base/BaseObject';
+import { BaseOwnerCover } from '../base/BaseOwnerCover';
 import { VideoLiveInfo } from '../video/VideoLiveInfo';
 import { GroupsAddressesInfo } from './GroupsAddressesInfo';
 import { GroupsContactsItem } from './GroupsContactsItem';
 import { GroupsCountersGroup } from './GroupsCountersGroup';
-import { GroupsCover } from './GroupsCover';
 import { GroupsGroupAdminLevel } from './GroupsGroupAdminLevel';
 import { GroupsGroupBanInfo } from './GroupsGroupBanInfo';
 import { GroupsGroupFullAgeLimits } from './GroupsGroupFullAgeLimits';
@@ -37,16 +36,16 @@ export interface GroupsGroupFull {
   /**
    * Community ID
    */
-  id: number;
+  id?: number;
   /**
    * Community name
    */
-  name: string;
+  name?: string;
   /**
    * Domain of the community page
    */
-  screen_name: string;
-  is_closed: GroupsGroupIsClosed;
+  screen_name?: string;
+  is_closed?: GroupsGroupIsClosed;
   type?: GroupsGroupType;
   /**
    * Information whether current user is administrator
@@ -69,6 +68,10 @@ export interface GroupsGroupFull {
    * Finish date in Unixtime format
    */
   finish_date?: number;
+  /**
+   * Information whether community is verified
+   */
+  verified?: 0 | 1;
   /**
    * Information whether community is banned
    */
@@ -118,6 +121,11 @@ export interface GroupsGroupFull {
   video_live?: VideoLiveInfo;
   market?: GroupsMarketInfo;
   /**
+   * Information whether community has installed market app
+   */
+  has_market_app?: boolean;
+  using_vkpay_market_app?: boolean;
+  /**
    * Current user's member status
    */
   member_status?: GroupsGroupFullMemberStatus;
@@ -138,11 +146,6 @@ export interface GroupsGroupFull {
    */
   is_subscribed?: 0 | 1;
   city?: BaseObject;
-  country?: BaseCountry;
-  /**
-   * Information whether community is verified
-   */
-  verified?: 0 | 1;
   /**
    * Community description
    */
@@ -155,6 +158,10 @@ export interface GroupsGroupFull {
    * Community members number
    */
   members_count?: number;
+  /**
+   * Info about number of users in group
+   */
+  members_count_text?: string;
   /**
    * The number of incoming requests to the community
    */
@@ -172,7 +179,12 @@ export interface GroupsGroupFull {
    */
   clips_count?: number;
   counters?: GroupsCountersGroup;
-  cover?: GroupsCover;
+  /**
+   * Textlives number
+   */
+  textlives_count?: number;
+  cover?: BaseOwnerCover;
+  video_cover?: BaseOwnerCover;
   /**
    * Information whether current user can post on community's wall
    */
@@ -183,6 +195,10 @@ export interface GroupsGroupFull {
    */
   can_upload_story?: 0 | 1;
   /**
+   * Information whether current user can call to community
+   */
+  can_call_to_community?: boolean;
+  /**
    * Information whether current user can upload doc
    */
   can_upload_doc?: 0 | 1;
@@ -190,6 +206,10 @@ export interface GroupsGroupFull {
    * Information whether current user can upload video
    */
   can_upload_video?: 0 | 1;
+  /**
+   * Information whether current user can upload clip
+   */
+  can_upload_clip?: 0 | 1;
   /**
    * Information whether current user can see all posts on community's wall
    */
@@ -272,11 +292,6 @@ export interface GroupsGroupFull {
    * User ban info
    */
   ban_info?: GroupsGroupBanInfo;
-  /**
-   * Information whether community has installed market app
-   */
-  has_market_app?: boolean;
-  using_vkpay_market_app?: boolean;
   has_group_channel?: boolean;
   /**
    * Info about addresses in groups
@@ -300,4 +315,12 @@ export interface GroupsGroupFull {
   live_covers?: GroupsLiveCovers;
   stories_archive_count?: number;
   has_unseen_stories?: boolean;
+  /**
+   * Information about the status of video notifications for the current user.
+   */
+  video_notifications_status?: 'none' | 'all' | 'preferred';
+  /**
+   * Community videos number
+   */
+  videos_count?: number;
 }

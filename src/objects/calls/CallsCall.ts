@@ -14,16 +14,16 @@ export interface CallsCall {
   /**
    * Caller initiator
    */
-  initiator_id: number;
+  initiator_id?: number;
   /**
    * Caller receiver
    */
-  receiver_id: number;
-  state: CallsEndState;
+  receiver_id?: number;
+  state?: CallsEndState;
   /**
    * Timestamp for call
    */
-  time: number;
+  time?: number;
   /**
    * Was this call initiated as video call
    */

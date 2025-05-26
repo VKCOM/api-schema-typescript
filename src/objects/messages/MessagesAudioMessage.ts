@@ -12,22 +12,22 @@ export interface MessagesAudioMessage {
   /**
    * Audio message duration in seconds
    */
-  duration: number;
+  duration?: number;
   /**
    * Audio message ID
    */
-  id: number;
+  id?: number;
   /**
    * MP3 file URL
    */
-  link_mp3: string;
+  link_mp3?: string;
   /**
    * OGG file URL
    */
-  link_ogg: string;
+  link_ogg?: string;
   /**
    * Audio message owner ID
    */
-  owner_id: number;
-  waveform: number[];
+  owner_id?: number;
+  waveform?: number[];
 }

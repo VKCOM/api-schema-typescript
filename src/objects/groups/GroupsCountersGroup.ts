@@ -41,6 +41,10 @@ export interface GroupsCountersGroup {
    */
   videos?: number;
   /**
+   * Playlists number
+   */
+  video_playlists?: number;
+  /**
    * Market services number
    */
   market_services?: number;
@@ -64,4 +68,16 @@ export interface GroupsCountersGroup {
    * Clips followers number
    */
   clips_followers?: number;
+  /**
+   * Videos followers number
+   */
+  videos_followers?: number;
+  /**
+   * Clips views number
+   */
+  clips_views?: number;
+  /**
+   * Clips likes number
+   */
+  clips_likes?: number;
 }

@@ -4,6 +4,6 @@
 
 // account_user_settings_interest
 export interface AccountUserSettingsInterest {
-  title: string;
-  value: string;
+  title?: string;
+  value?: string;
 }

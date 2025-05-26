@@ -7,23 +7,23 @@ export interface NotesNoteComment {
   /**
    * Date when the comment has beed added in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Comment ID
    */
-  id: number;
+  id?: number;
   /**
    * Comment text
    */
-  message: string;
+  message?: string;
   /**
    * Note ID
    */
-  nid: number;
+  nid?: number;
   /**
    * Note ID
    */
-  oid: number;
+  oid?: number;
   /**
    * ID of replied comment
    */
@@ -31,5 +31,5 @@ export interface NotesNoteComment {
   /**
    * Comment author's ID
    */
-  uid: number;
+  uid?: number;
 }

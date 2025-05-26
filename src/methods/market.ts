@@ -2,14 +2,21 @@
  * This is auto-generated file, don't modify this file manually
  */
 
+import { BaseUploadServer } from '../objects/base/BaseUploadServer';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
+import { MarketGlobalSearchFilters } from '../objects/market/MarketGlobalSearchFilters';
 import { MarketMarketAlbum } from '../objects/market/MarketMarketAlbum';
-import { MarketMarketCategory } from '../objects/market/MarketMarketCategory';
+import { MarketMarketCategoryTree } from '../objects/market/MarketMarketCategoryTree';
 import { MarketMarketItem } from '../objects/market/MarketMarketItem';
+import { MarketMarketItemBasicWithGroup } from '../objects/market/MarketMarketItemBasicWithGroup';
 import { MarketMarketItemFull } from '../objects/market/MarketMarketItemFull';
 import { MarketOrder } from '../objects/market/MarketOrder';
 import { MarketOrderItem } from '../objects/market/MarketOrderItem';
+import { MarketProperty } from '../objects/market/MarketProperty';
 import { MarketServicesViewType } from '../objects/market/MarketServicesViewType';
+import { MarketUploadPhotoData } from '../objects/market/MarketUploadPhotoData';
+import { PhotosPhoto } from '../objects/photos/PhotosPhoto';
+import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallComment } from '../objects/wall/WallWallComment';
 
 /**
@@ -41,7 +48,7 @@ export interface MarketAddParams {
   price?: number;
   old_price?: number;
   /**
-   * Item status ('1' — deleted, '0' — not deleted).
+   * Item status ('1' - deleted, '0' - not deleted).
    */
   deleted?: 0 | 1;
   /**
@@ -53,14 +60,27 @@ export interface MarketAddParams {
    */
   photo_ids?: string;
   /**
+   * IDs of additional videos.
+   */
+  video_ids?: string;
+  /**
    * Url for button in market item.
    */
   url?: string;
+  /**
+   * IDs of properties variants.
+   */
+  variant_ids?: string;
+  /**
+   * Is main in their group.
+   */
+  is_main_variant?: 0 | 1;
   dimension_width?: number;
   dimension_height?: number;
   dimension_length?: number;
   weight?: number;
   sku?: string;
+  stock_amount?: number;
 }
 
 // market.add_response
@@ -68,7 +88,7 @@ export interface MarketAddResponse {
   /**
    * Item ID
    */
-  market_item_id: number;
+  market_item_id?: number;
 }
 
 /**
@@ -106,6 +126,58 @@ export interface MarketAddAlbumResponse {
    * Album ID
    */
   market_album_id?: number;
+  /**
+   * Albums count
+   */
+  albums_count?: number;
+}
+
+/**
+ * market.addProperty
+ *
+ * Adds property
+ */
+
+export interface MarketAddPropertyParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Property name.
+   */
+  title: string;
+}
+
+// market.addProperty_response
+export interface MarketAddPropertyResponse {
+  property_id?: number;
+}
+
+/**
+ * market.addPropertyVariant
+ *
+ * Adds property variant
+ */
+
+export interface MarketAddPropertyVariantParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Property id.
+   */
+  property_id: number;
+  /**
+   * Variant name.
+   */
+  title: string;
+}
+
+// market.addPropertyVariant_response
+export interface MarketAddPropertyVariantResponse {
+  variant_id?: number;
 }
 
 /**
@@ -126,8 +198,8 @@ export interface MarketAddToAlbumParams {
   album_ids: string;
 }
 
-// market.addToAlbum_response
-export type MarketAddToAlbumResponse = 1;
+// market.addToAlbum_baseResponse
+export type MarketAddToAlbumBaseResponse = 1;
 
 /**
  * market.createComment
@@ -231,7 +303,46 @@ export interface MarketDeleteCommentParams {
 }
 
 // market.deleteComment_response
+/**
+ * Returns 1 if request has been processed successfully (0 if the comment is not found)
+ */
 export type MarketDeleteCommentResponse = 0 | 1;
+
+/**
+ * market.deleteProperty
+ */
+
+export interface MarketDeletePropertyParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Property id.
+   */
+  property_id: number;
+}
+
+// market.deleteProperty_response
+export type MarketDeletePropertyResponse = 1;
+
+/**
+ * market.deletePropertyVariant
+ */
+
+export interface MarketDeletePropertyVariantParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Variant id.
+   */
+  variant_id: number;
+}
+
+// market.deletePropertyVariant_response
+export type MarketDeletePropertyVariantResponse = 1;
 
 /**
  * market.edit
@@ -251,21 +362,22 @@ export interface MarketEditParams {
   /**
    * Item name.
    */
-  name: string;
+  name?: string;
   /**
    * Item description.
    */
-  description: string;
+  description?: string;
   /**
    * Item category ID.
    */
-  category_id: number;
+  category_id?: number;
   /**
    * Item price.
    */
   price?: number;
+  old_price?: number;
   /**
-   * Item status ('1' — deleted, '0' — not deleted).
+   * Item status ('1' - deleted, '0' - not deleted).
    */
   deleted?: 0 | 1;
   /**
@@ -277,9 +389,27 @@ export interface MarketEditParams {
    */
   photo_ids?: string;
   /**
+   * IDs of additional videos.
+   */
+  video_ids?: string;
+  /**
    * Url for button in market item.
    */
   url?: string;
+  /**
+   * IDs of properties variants.
+   */
+  variant_ids?: string;
+  /**
+   * Is main in their group.
+   */
+  is_main_variant?: 0 | 1;
+  dimension_width?: number;
+  dimension_height?: number;
+  dimension_length?: number;
+  weight?: number;
+  sku?: string;
+  stock_amount?: number;
 }
 
 // market.edit_response
@@ -367,10 +497,86 @@ export interface MarketEditOrderParams {
   length?: number;
   height?: number;
   weight?: number;
+  comment_for_user?: string;
+  receipt_link?: string;
 }
 
 // market.editOrder_response
 export type MarketEditOrderResponse = 1;
+
+/**
+ * market.editProperty
+ *
+ * Adds property
+ */
+
+export interface MarketEditPropertyParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Property id.
+   */
+  property_id: number;
+  /**
+   * Property name
+   */
+  title: string;
+}
+
+// market.editProperty_response
+export type MarketEditPropertyResponse = 1;
+
+/**
+ * market.editPropertyVariant
+ *
+ * Edit property variant name
+ */
+
+export interface MarketEditPropertyVariantParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Variant id.
+   */
+  variant_id: number;
+  /**
+   * Variant name.
+   */
+  title: string;
+}
+
+// market.editPropertyVariant_response
+export type MarketEditPropertyVariantResponse = 1;
+
+/**
+ * market.filterCategories
+ *
+ * Returns a filter list of market categories.
+ */
+
+export interface MarketFilterCategoriesParams {
+  /**
+   * Category_id filter categories
+   */
+  category_id?: number;
+  /**
+   * Query filter categories
+   */
+  query?: string;
+  /**
+   * Number of results to return.
+   */
+  count?: number;
+}
+
+// market.filterCategories_response
+export interface MarketFilterCategoriesResponse {
+  items?: MarketMarketCategoryTree[];
+}
 
 /**
  * market.get
@@ -412,6 +618,7 @@ export interface MarketGetParams {
    * Add disabled items to response
    */
   with_disabled?: 0 | 1;
+  fields?: string;
 }
 
 // market.get_response
@@ -533,22 +740,15 @@ export interface MarketGetByIdExtendedResponse {
 
 export interface MarketGetCategoriesParams {
   /**
-   * Number of results to return.
+   * Group Id.
    */
-  count?: number;
-  /**
-   * Offset needed to return a specific subset of results.
-   */
-  offset?: number;
+  group_id?: number;
+  album_id?: number;
 }
 
 // market.getCategories_response
 export interface MarketGetCategoriesResponse {
-  /**
-   * Total number
-   */
-  count?: number;
-  items?: MarketMarketCategory[];
+  items?: MarketMarketCategoryTree[];
 }
 
 /**
@@ -567,7 +767,7 @@ export interface MarketGetCommentsParams {
    */
   item_id: number;
   /**
-   * '1' — to return likes info.
+   * '1' - to return likes info.
    */
   need_likes?: 0 | 1;
   /**
@@ -580,11 +780,11 @@ export interface MarketGetCommentsParams {
    */
   count?: number;
   /**
-   * Sort order ('asc' — from old to new, 'desc' — from new to old)
+   * Sort order ('asc' - from old to new, 'desc' - from new to old)
    */
   sort?: 'asc' | 'desc';
   /**
-   * '1' — comments will be returned as numbered objects, in addition lists of 'profiles' and 'groups' objects will be returned.
+   * '1' - comments will be returned as numbered objects, in addition lists of 'profiles' and 'groups' objects will be returned.
    */
   extended?: 0 | 1;
   /**
@@ -602,6 +802,43 @@ export interface MarketGetCommentsResponse {
    */
   count?: number;
   items?: WallWallComment[];
+  /**
+   * List of users, available only if extended=true exists in query params
+   */
+  profiles?: UsersUserFull[];
+  /**
+   * List of groups, available only if extended=true exists in query params
+   */
+  groups?: GroupsGroupFull[];
+}
+
+/**
+ * market.getFavesForAttach
+ */
+
+export interface MarketGetFavesForAttachParams {
+  /**
+   * Group which represents content
+   */
+  current_group_id?: number;
+  public_only?: 0 | 1;
+  /**
+   * Offset needed to return a specific subset of users.
+   */
+  offset?: number;
+  /**
+   * Number of users to return.
+   */
+  count?: number;
+}
+
+// market.getFavesForAttach_response
+export interface MarketGetFavesForAttachResponse {
+  market_items?: MarketMarketItem[];
+  /**
+   * Offset for using in next query
+   */
+  next_from?: number;
 }
 
 /**
@@ -611,7 +848,10 @@ export interface MarketGetCommentsResponse {
  */
 
 export interface MarketGetGroupOrdersParams {
-  group_id: number;
+  /**
+   * ID or groups domain
+   */
+  group_id?: number | string;
   offset?: number;
   count?: number;
 }
@@ -621,8 +861,8 @@ export interface MarketGetGroupOrdersResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MarketOrder[];
+  count?: number;
+  items?: MarketOrder[];
 }
 
 /**
@@ -660,8 +900,8 @@ export interface MarketGetOrderItemsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MarketOrderItem[];
+  count?: number;
+  items?: MarketOrderItem[];
 }
 
 /**
@@ -687,8 +927,8 @@ export interface MarketGetOrdersResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MarketOrder[];
+  count?: number;
+  items?: MarketOrder[];
 }
 
 // market.getOrders_extendedResponse
@@ -696,9 +936,66 @@ export interface MarketGetOrdersExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MarketOrder[];
+  count?: number;
+  items?: MarketOrder[];
   groups?: GroupsGroupFull[];
+}
+
+/**
+ * market.getProductPhotoUploadServer
+ *
+ * Returns the server address for market photo upload.
+ */
+
+export interface MarketGetProductPhotoUploadServerParams {
+  /**
+   * Community ID.
+   */
+  group_id: number;
+  bulk?: 0 | 1;
+}
+
+// market.getProductPhotoUploadServer_response
+export type MarketGetProductPhotoUploadServerResponse = BaseUploadServer;
+
+/**
+ * market.getProperties
+ *
+ * Get properties
+ */
+
+export interface MarketGetPropertiesParams {
+  group_id: number;
+}
+
+// market.getProperties_response
+export interface MarketGetPropertiesResponse {
+  items?: MarketProperty[];
+  count?: number;
+}
+
+/**
+ * market.groupItems
+ */
+
+export interface MarketGroupItemsParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Item ids.
+   */
+  item_ids: string;
+  /**
+   * Items group id.
+   */
+  item_group_id?: number;
+}
+
+// market.groupItems_response
+export interface MarketGroupItemsResponse {
+  item_group_id?: number;
 }
 
 /**
@@ -801,7 +1098,7 @@ export interface MarketReportParams {
    */
   item_id: number;
   /**
-   * Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
+   * Complaint reason. Possible values: *'0' - spam,, *'1' - child porn,, *'2' - extremism,, *'3' - violence,, *'4' - drugs propaganda,, *'5' - adult materials,, *'6' - insult.
    */
   reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -825,7 +1122,7 @@ export interface MarketReportCommentParams {
    */
   comment_id: number;
   /**
-   * Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
+   * Complaint reason. Possible values: *'0' - spam,, *'1' - child porn,, *'2' - extremism,, *'3' - violence,, *'4' - drugs propaganda,, *'5' - adult materials,, *'6' - insult.
    */
   reason: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -871,7 +1168,48 @@ export interface MarketRestoreCommentParams {
 }
 
 // market.restoreComment_response
+/**
+ * Returns 1 if request has been processed successfully (0 if the comment is not found)
+ */
 export type MarketRestoreCommentResponse = 0 | 1;
+
+/**
+ * market.saveProductPhoto
+ *
+ * Save market photo after upload.
+ */
+
+export interface MarketSaveProductPhotoParams {
+  /**
+   * Upload response
+   */
+  upload_response: string;
+}
+
+// market.saveProductPhoto_response
+export interface MarketSaveProductPhotoResponse {
+  /**
+   * Photo ID
+   */
+  photo_id?: number;
+  photo?: PhotosPhoto;
+}
+
+/**
+ * market.saveProductPhotoBulk
+ *
+ * Bulk save market photo after upload.
+ */
+
+export interface MarketSaveProductPhotoBulkParams {
+  /**
+   * Upload response
+   */
+  upload_response: string;
+}
+
+// market.saveProductPhotoBulk_response
+export type MarketSaveProductPhotoBulkResponse = MarketUploadPhotoData[];
 
 /**
  * market.search
@@ -899,7 +1237,7 @@ export interface MarketSearchParams {
   price_to?: number;
   sort?: 0 | 1 | 2 | 3;
   /**
-   * '0' — do not use reverse order, '1' — use reverse order
+   * '0' - do not use reverse order, '1' - use reverse order
    */
   rev?: 0 | 1;
   /**
@@ -914,7 +1252,7 @@ export interface MarketSearchParams {
    * '1' - to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
    */
   extended?: 0 | 1;
-  status?: 0 | 2;
+  status?: string;
   /**
    * Add variants to response if exist
    */
@@ -926,10 +1264,12 @@ export interface MarketSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  view_type: MarketServicesViewType;
-  items: MarketMarketItem[];
+  count?: number;
+  view_type?: MarketServicesViewType;
+  items?: MarketMarketItem[];
   variants?: MarketMarketItem[];
+  groups?: GroupsGroupFull[];
+  filters?: MarketGlobalSearchFilters;
 }
 
 // market.search_extendedResponse
@@ -937,8 +1277,91 @@ export interface MarketSearchExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  view_type: MarketServicesViewType;
-  items: MarketMarketItemFull[];
+  count?: number;
+  view_type?: MarketServicesViewType;
+  items?: MarketMarketItemFull[];
   variants?: MarketMarketItemFull[];
 }
+
+/**
+ * market.searchItems
+ */
+
+export interface MarketSearchItemsParams {
+  q: string;
+  offset?: number;
+  count?: number;
+  category_id?: number;
+  price_from?: number;
+  price_to?: number;
+  sort_by?: 1 | 2 | 3;
+  sort_direction?: 0 | 1;
+  country?: number;
+  city?: number;
+}
+
+// market.searchItems_response
+export interface MarketSearchItemsResponse {
+  /**
+   * Total number
+   */
+  count?: number;
+  view_type?: MarketServicesViewType;
+  items?: MarketMarketItem[];
+  variants?: MarketMarketItem[];
+  groups?: GroupsGroupFull[];
+  filters?: MarketGlobalSearchFilters;
+}
+
+/**
+ * market.searchItemsBasic
+ */
+
+export interface MarketSearchItemsBasicParams {
+  q: string;
+  offset?: number;
+  count?: number;
+  category_id?: number;
+  price_from?: number;
+  price_to?: number;
+  sort_by?: 1 | 2 | 3;
+  sort_direction?: 0 | 1;
+  country?: number;
+  city?: number;
+  only_my_groups?: 0 | 1;
+}
+
+// market.searchItemsBasic_response
+export interface MarketSearchItemsBasicResponse {
+  /**
+   * Current chunk size
+   */
+  count?: number;
+  /**
+   * Total size
+   */
+  total?: number;
+  /**
+   * Next chunk present
+   */
+  has_more?: boolean;
+  items?: MarketMarketItemBasicWithGroup[];
+}
+
+/**
+ * market.ungroupItems
+ */
+
+export interface MarketUngroupItemsParams {
+  /**
+   * Group id.
+   */
+  group_id: number;
+  /**
+   * Items group id.
+   */
+  item_group_id: number;
+}
+
+// market.ungroupItems_response
+export type MarketUngroupItemsResponse = 1;

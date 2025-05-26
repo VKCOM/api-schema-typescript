@@ -116,10 +116,21 @@ export type FaveEditTagResponse = 1;
 
 export interface FaveGetParams {
   /**
-   * '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
+   * '1' - to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
    */
   extended?: 0 | 1;
-  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video' | 'youla_product';
+  item_type?: 'article' |
+  'clip' |
+  'game' |
+  'link' |
+  'mini_app' |
+  'narrative' |
+  'page' |
+  'podcast' |
+  'post' |
+  'product' |
+  'video' |
+  'youla_product';
   /**
    * Tag ID.
    */
@@ -318,7 +329,18 @@ export type FaveSetPageTagsResponse = 1;
  */
 
 export interface FaveSetTagsParams {
-  item_type?: 'article' | 'clip' | 'link' | 'narrative' | 'page' | 'podcast' | 'post' | 'product' | 'video' | 'youla_product';
+  item_type?: 'article' |
+  'clip' |
+  'game' |
+  'link' |
+  'mini_app' |
+  'narrative' |
+  'page' |
+  'podcast' |
+  'post' |
+  'product' |
+  'video' |
+  'youla_product';
   item_owner_id?: number;
   item_id?: number;
   tag_ids?: string;

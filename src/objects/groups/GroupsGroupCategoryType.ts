@@ -4,6 +4,6 @@
 
 // groups_group_category_type
 export interface GroupsGroupCategoryType {
-  id: number;
-  name: string;
+  id?: number;
+  name?: string;
 }

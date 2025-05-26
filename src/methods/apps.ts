@@ -4,10 +4,46 @@
 
 import { AppsApp } from '../objects/apps/AppsApp';
 import { AppsCatalogList } from '../objects/apps/AppsCatalogList';
+import { AppsCustomSnippet } from '../objects/apps/AppsCustomSnippet';
 import { AppsLeaderboard } from '../objects/apps/AppsLeaderboard';
 import { AppsScope } from '../objects/apps/AppsScope';
+import { AppsTestingGroup } from '../objects/apps/AppsTestingGroup';
+import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
+import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
-import { UsersUserMin } from '../objects/users/UsersUserMin';
+
+/**
+ * apps.addSnippet
+ */
+
+export interface AppsAddSnippetParams {
+  vk_ref?: string;
+  group_id?: string;
+  hash?: string;
+  snippet_id?: number;
+  title?: string;
+  description?: string;
+  image_url?: string;
+  small_image_url?: string;
+  button?: 'buy' | 'buy_ticket' | 'contact' | 'create' | 'enroll' | 'fill' | 'go' | 'help' | 'open' | 'play';
+}
+
+// apps.addSnippet_response
+export interface AppsAddSnippetResponse {
+  snippet_id?: number;
+}
+
+/**
+ * apps.addUsersToTestingGroup
+ */
+
+export interface AppsAddUsersToTestingGroupParams {
+  user_ids: string;
+  group_id: number;
+}
+
+// apps.addUsersToTestingGroup_response
+export type AppsAddUsersToTestingGroupResponse = 0 | 1;
 
 /**
  * apps.deleteAppRequests
@@ -19,6 +55,17 @@ export interface AppsDeleteAppRequestsParams {}
 
 // apps.deleteAppRequests_response
 export type AppsDeleteAppRequestsResponse = 1;
+
+/**
+ * apps.deleteSnippet
+ */
+
+export interface AppsDeleteSnippetParams {
+  id?: number;
+}
+
+// apps.deleteSnippet_response
+export type AppsDeleteSnippetResponse = 1;
 
 /**
  * apps.get
@@ -36,9 +83,9 @@ export interface AppsGetParams {
    */
   app_ids?: string;
   /**
-   * platform. Possible values: *'ios' — iOS,, *'android' — Android,, *'winphone' — Windows Phone,, *'web' — приложения на vk.com. By default: 'web'.
+   * platform. Possible values: *'ios' - iOS,, *'android' - Android,, *'winphone' - Windows Phone,, *'web' - приложения на vk.com. By default: 'web'.
    */
-  platform?: 'android' | 'ios' | 'web' | 'winphone';
+  platform?: 'android' | 'ios' | 'web';
   extended?: 0 | 1;
   return_friends?: 0 | 1;
   /**
@@ -48,9 +95,15 @@ export interface AppsGetParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
+   * Case for declension of user name and surname: 'nom' - nominative (default),, 'gen' - genitive,, 'dat' - dative,, 'acc' - accusative,, 'ins' - instrumental,, 'abl' - prepositional. (only if 'return_friends' = '1')
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
+  /**
+   * List of app fields to return. Fields 'id', 'type' and 'title' will always be in response. Leave this field empty to get all fields
+   *
+   * objects.json#/definitions/apps_app_fields
+   */
+  app_fields?: string;
 }
 
 // apps.get_response
@@ -63,6 +116,14 @@ export interface AppsGetResponse {
    * List of applications
    */
   items?: AppsApp[];
+  /**
+   * List of friends profiles, used only when return_friends=true
+   */
+  profiles?: UsersUserFull[];
+  /**
+   * List of groups, used only when extended=true
+   */
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -73,9 +134,9 @@ export interface AppsGetResponse {
 
 export interface AppsGetCatalogParams {
   /**
-   * Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
+   * Sort order: 'popular_today' - popular for one day (default), 'visitors' - by visitors number , 'create_date' - by creation date, 'growth_rate' - by growth rate, 'popular_week' - popular for one week
    */
-  sort?: 'popular_today' | 'visitors' | 'create_date' | 'growth_rate' | 'popular_week';
+  sort?: 'create_date' | 'growth_rate' | 'popular' | 'popular_today' | 'popular_week' | 'visitors';
   /**
    * Offset required to return a specific subset of apps.
    */
@@ -83,10 +144,10 @@ export interface AppsGetCatalogParams {
   /**
    * Number of apps to return.
    */
-  count: number;
+  count?: number;
   platform?: string;
   /**
-   * '1' — to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' — not to return additional fields (default).
+   * '1' - to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' - not to return additional fields (default).
    */
   extended?: 0 | 1;
   return_friends?: 0 | 1;
@@ -101,9 +162,9 @@ export interface AppsGetCatalogParams {
   q?: string;
   genre_id?: number;
   /**
-   * 'installed' — to return list of installed apps (only for mobile platform).
+   * 'installed' - to return list of installed apps (only for mobile platform).
    */
-  filter?: 'favorite' | 'featured' | 'installed' | 'new';
+  filter?: 'favorite' | 'featured' | 'installed' | 'new' | 'recommended';
 }
 
 // apps.getCatalog_response
@@ -123,7 +184,7 @@ export interface AppsGetFriendsListParams {
   count?: number;
   offset?: number;
   /**
-   * List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
+   * List type. Possible values: * 'invite' - available for invites (don't play the game),, * 'request' - available for request (play the game). By default: 'invite'.
    */
   type?: 'invite' | 'request';
   /**
@@ -132,10 +193,23 @@ export interface AppsGetFriendsListParams {
    * objects.json#/definitions/users_fields
    */
   fields?: string;
+  /**
+   * Search query string (e.g., 'Vasya Babich').
+   */
+  query?: string;
 }
 
 // apps.getFriendsList_response
 export interface AppsGetFriendsListResponse {
+  /**
+   * Total number
+   */
+  count?: number;
+  items?: number[];
+}
+
+// apps.getFriendsList_extendedResponse
+export interface AppsGetFriendsListExtendedResponse {
   /**
    * Total number
    */
@@ -151,15 +225,15 @@ export interface AppsGetFriendsListResponse {
 
 export interface AppsGetLeaderboardParams {
   /**
-   * Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
+   * Leaderboard type. Possible values: *'level' - by level,, *'points' - by mission points,, *'score' - by score ().
    */
   type: 'level' | 'points' | 'score';
   /**
-   * Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
+   * Rating type. Possible values: *'1' - global rating among all players,, *'0' - rating among user friends.
    */
   global?: 0 | 1;
   /**
-   * 1 — to return additional info about users
+   * 1 - to return additional info about users
    */
   extended?: 0 | 1;
 }
@@ -180,7 +254,7 @@ export interface AppsGetLeaderboardExtendedResponse {
    */
   count?: number;
   items?: AppsLeaderboard[];
-  profiles?: UsersUserMin[];
+  profiles?: UsersUser[];
 }
 
 /**
@@ -223,8 +297,8 @@ export interface AppsGetScopesResponse {
   /**
    * Total number
    */
-  count: number;
-  items: AppsScope[];
+  count?: number;
+  items?: AppsScope[];
 }
 
 /**
@@ -234,11 +308,49 @@ export interface AppsGetScopesResponse {
  */
 
 export interface AppsGetScoreParams {
-  user_id: number;
+  user_id?: number;
 }
 
 // apps.getScore_response
 export type AppsGetScoreResponse = number;
+
+/**
+ * apps.getSnippets
+ */
+
+export interface AppsGetSnippetsParams {}
+
+// apps.getSnippets_response
+export interface AppsGetSnippetsResponse {
+  items?: AppsCustomSnippet[];
+}
+
+/**
+ * apps.getTestingGroups
+ */
+
+export interface AppsGetTestingGroupsParams {
+  group_id?: number;
+}
+
+// apps.getTestingGroups_response
+export type AppsGetTestingGroupsResponse = AppsTestingGroup[];
+
+/**
+ * apps.isNotificationsAllowed
+ */
+
+export interface AppsIsNotificationsAllowedParams {
+  user_id?: number;
+}
+
+// apps.isNotificationsAllowed_response
+export interface AppsIsNotificationsAllowedResponse {
+  /**
+   * Whether notifications are allowed for current user from concrete app or not
+   */
+  is_allowed?: boolean;
+}
 
 /**
  * apps.promoHasActiveGift
@@ -271,6 +383,28 @@ export interface AppsPromoUseGiftParams {
 export type AppsPromoUseGiftResponse = 0 | 1;
 
 /**
+ * apps.removeTestingGroup
+ */
+
+export interface AppsRemoveTestingGroupParams {
+  group_id: number;
+}
+
+// apps.removeTestingGroup_response
+export type AppsRemoveTestingGroupResponse = 0 | 1;
+
+/**
+ * apps.removeUsersFromTestingGroups
+ */
+
+export interface AppsRemoveUsersFromTestingGroupsParams {
+  user_ids: string;
+}
+
+// apps.removeUsersFromTestingGroups_response
+export type AppsRemoveUsersFromTestingGroupsResponse = 0 | 1;
+
+/**
  * apps.sendRequest
  *
  * Sends a request to another user in an app that uses VK authorization.
@@ -299,3 +433,20 @@ export interface AppsSendRequestParams {
 
 // apps.sendRequest_response
 export type AppsSendRequestResponse = number;
+
+/**
+ * apps.updateMetaForTestingGroup
+ */
+
+export interface AppsUpdateMetaForTestingGroupParams {
+  group_id?: number;
+  webview: string;
+  name: string;
+  platforms: string;
+  user_ids?: string;
+}
+
+// apps.updateMetaForTestingGroup_response
+export interface AppsUpdateMetaForTestingGroupResponse {
+  group_id?: number;
+}

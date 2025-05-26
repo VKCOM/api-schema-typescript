@@ -7,17 +7,21 @@ export interface StoriesPromoBlock {
   /**
    * Promo story title
    */
-  name: string;
+  name?: string;
   /**
    * RL of square photo of the story with 50 pixels in width
    */
-  photo_50: string;
+  photo_50?: string;
   /**
    * RL of square photo of the story with 100 pixels in width
    */
-  photo_100: string;
+  photo_100?: string;
   /**
    * Hide animation for promo story
    */
-  not_animated: boolean;
+  not_animated?: boolean;
+  /**
+   * Promo story from advice
+   */
+  is_advice?: boolean;
 }

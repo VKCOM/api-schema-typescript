@@ -4,6 +4,6 @@
 
 // groups_token_permission_setting
 export interface GroupsTokenPermissionSetting {
-  name: string;
-  setting: number;
+  name?: string;
+  setting?: number;
 }

@@ -6,17 +6,34 @@ import { MessagesHistoryMessageAttachment } from './MessagesHistoryMessageAttach
 
 // messages_history_attachment
 export interface MessagesHistoryAttachment {
-  attachment: MessagesHistoryMessageAttachment;
+  attachment?: MessagesHistoryMessageAttachment;
+  /**
+   * Message sending time
+   */
+  date?: number;
   /**
    * Message ID
    */
-  message_id: number;
+  message_id?: number;
+  /**
+   * Message Exipire ttl
+   */
+  message_expire_ttl?: number;
+  /**
+   * Conversation Message ID
+   */
+  cmid?: number;
   /**
    * Message author's ID
    */
-  from_id: number;
+  from_id?: number;
   /**
    * Forward level (optional)
    */
   forward_level?: number;
+  was_listened?: boolean;
+  /**
+   * Attachment position in the Message
+   */
+  position?: number;
 }

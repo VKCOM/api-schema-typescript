@@ -11,19 +11,19 @@ export interface AudioAudio {
   /**
    * Artist name
    */
-  artist: string;
+  artist?: string;
   /**
    * Audio ID
    */
-  id: number;
+  id?: number;
   /**
    * Audio owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Title
    */
-  title: string;
+  title?: string;
   /**
    * URL of mp3 file
    */
@@ -31,7 +31,11 @@ export interface AudioAudio {
   /**
    * Duration in seconds
    */
-  duration: number;
+  duration?: number;
+  /**
+   * Stream duration in seconds
+   */
+  stream_duration?: number;
   /**
    * Date when uploaded
    */
@@ -41,11 +45,11 @@ export interface AudioAudio {
    */
   album_id?: number;
   /**
-   * Genre ID
-   */
-  genre_id?: number;
-  /**
    * Performer name
    */
   performer?: string;
+  /**
+   * Примерный объем памяти занимаемый аудио на устройстве. Реализовано только для эпизодов подкастов
+   */
+  file_size?: number;
 }

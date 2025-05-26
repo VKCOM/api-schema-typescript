@@ -7,15 +7,15 @@ export interface MessagesLongpollParams {
   /**
    * Server URL
    */
-  server: string;
+  server?: string;
   /**
    * Key
    */
-  key: string;
+  key?: string;
   /**
    * Timestamp
    */
-  ts: number;
+  ts?: number;
   /**
    * Persistent timestamp
    */

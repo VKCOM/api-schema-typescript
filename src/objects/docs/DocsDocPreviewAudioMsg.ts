@@ -7,14 +7,14 @@ export interface DocsDocPreviewAudioMsg {
   /**
    * Audio message duration in seconds
    */
-  duration: number;
+  duration?: number;
   /**
    * MP3 file URL
    */
-  link_mp3: string;
+  link_mp3?: string;
   /**
    * OGG file URL
    */
-  link_ogg: string;
-  waveform: number[];
+  link_ogg?: string;
+  waveform?: number[];
 }

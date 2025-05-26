@@ -5,5 +5,5 @@
 // leadForms_question_item_option
 export interface LeadFormsQuestionItemOption {
   key?: string;
-  label: string;
+  label?: string;
 }

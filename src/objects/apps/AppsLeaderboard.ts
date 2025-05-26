@@ -19,5 +19,5 @@ export interface AppsLeaderboard {
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
 }

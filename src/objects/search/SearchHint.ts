@@ -15,7 +15,7 @@ export interface SearchHint {
   /**
    * Object description
    */
-  description: string;
+  description?: string;
   /**
    * Information whether the object has been found globally
    */
@@ -23,6 +23,6 @@ export interface SearchHint {
   group?: GroupsGroup;
   profile?: UsersUserMin;
   section?: SearchHintSection;
-  type: SearchHintType;
+  type?: SearchHintType;
   link?: BaseLink;
 }

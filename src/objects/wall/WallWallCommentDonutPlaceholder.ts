@@ -4,5 +4,5 @@
 
 // wall_wall_comment_donut_placeholder
 export interface WallWallCommentDonutPlaceholder {
-  text: string;
+  text?: string;
 }

@@ -4,19 +4,19 @@
 
 import { BaseLikesInfo } from '../base/BaseLikesInfo';
 import { CommentThread } from '../comment/CommentThread';
-import { WallCommentAttachment } from './WallCommentAttachment';
 import { WallWallCommentDonut } from './WallWallCommentDonut';
+import { WallWallpostAttachment } from './WallWallpostAttachment';
 
 // wall_wall_comment
 export interface WallWallComment {
   /**
    * Comment ID
    */
-  id: number;
+  id?: number;
   /**
    * Author ID
    */
-  from_id: number;
+  from_id?: number;
   can_edit?: 0 | 1;
   post_id?: number;
   owner_id?: number;
@@ -26,12 +26,12 @@ export interface WallWallComment {
   /**
    * Date when the comment has been added in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Comment text
    */
-  text: string;
-  attachments?: WallCommentAttachment[];
+  text?: string;
+  attachments?: WallWallpostAttachment[];
   donut?: WallWallCommentDonut;
   likes?: BaseLikesInfo;
   /**
@@ -47,6 +47,10 @@ export interface WallWallComment {
    */
   reply_to_comment?: number;
   thread?: CommentThread;
+  /**
+   * Whether post is by author of the post or not
+   */
+  is_from_post_author?: boolean;
   deleted?: boolean;
   /**
    * Photo ID

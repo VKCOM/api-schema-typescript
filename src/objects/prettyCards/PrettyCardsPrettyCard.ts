@@ -6,10 +6,11 @@ import { BaseImage } from '../base/BaseImage';
 
 // prettyCards_prettyCard
 export interface PrettyCardsPrettyCard {
+  inner_type?: 'prettyCards_prettyCard';
   /**
    * Button key
    */
-  button?: string;
+  button?: {} | string;
   /**
    * Button text in current language
    */
@@ -17,16 +18,16 @@ export interface PrettyCardsPrettyCard {
   /**
    * Card ID (long int returned as string)
    */
-  card_id: string;
+  card_id?: string;
   images?: BaseImage[];
   /**
    * Link URL
    */
-  link_url: string;
+  link_url?: string;
   /**
    * Photo ID (format "<owner_id>_<media_id>")
    */
-  photo: string;
+  photo?: string;
   /**
    * Price if set (decimal number returned as string)
    */
@@ -38,5 +39,5 @@ export interface PrettyCardsPrettyCard {
   /**
    * Title
    */
-  title: string;
+  title?: string;
 }

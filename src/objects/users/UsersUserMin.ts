@@ -11,7 +11,7 @@ export interface UsersUserMin {
   /**
    * User first name
    */
-  first_name: string;
+  first_name?: string;
   /**
    * Returns if a profile is hidden.
    */
@@ -19,11 +19,11 @@ export interface UsersUserMin {
   /**
    * User ID
    */
-  id: number;
+  id?: number;
   /**
    * User last name
    */
-  last_name: string;
+  last_name?: string;
   can_access_closed?: boolean;
   is_closed?: boolean;
 }

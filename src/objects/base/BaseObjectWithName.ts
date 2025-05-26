@@ -7,9 +7,9 @@ export interface BaseObjectWithName {
   /**
    * Object ID
    */
-  id: number;
+  id?: number;
   /**
    * Object name
    */
-  name: string;
+  name?: string;
 }

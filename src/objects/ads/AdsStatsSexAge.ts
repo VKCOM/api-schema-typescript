@@ -5,6 +5,10 @@
 // ads_stats_sex_age
 export interface AdsStatsSexAge {
   /**
+   * Sex and age interval
+   */
+  value?: string;
+  /**
    * Clicks rate
    */
   clicks_rate?: number;
@@ -12,8 +16,4 @@ export interface AdsStatsSexAge {
    * Impressions rate
    */
   impressions_rate?: number;
-  /**
-   * Sex and age interval
-   */
-  value?: string;
 }

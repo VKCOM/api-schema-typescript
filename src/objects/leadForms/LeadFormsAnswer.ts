@@ -6,6 +6,6 @@ import { LeadFormsAnswerItem } from './LeadFormsAnswerItem';
 
 // leadForms_answer
 export interface LeadFormsAnswer {
-  key: string;
-  answer: LeadFormsAnswerItem | LeadFormsAnswerItem[];
+  key?: string;
+  answer?: LeadFormsAnswerItem | LeadFormsAnswerItem[];
 }

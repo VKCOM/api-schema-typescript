@@ -6,7 +6,7 @@ import { StoriesClickableSticker } from './StoriesClickableSticker';
 
 // stories_clickable_stickers
 export interface StoriesClickableStickers {
-  clickable_stickers: StoriesClickableSticker[];
-  original_height: number;
-  original_width: number;
+  clickable_stickers?: StoriesClickableSticker[];
+  original_height?: number;
+  original_width?: number;
 }

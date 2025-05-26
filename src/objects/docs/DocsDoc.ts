@@ -9,23 +9,23 @@ export interface DocsDoc {
   /**
    * Document ID
    */
-  id: number;
+  id?: number;
   /**
    * Document owner ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Document title
    */
-  title: string;
+  title?: string;
   /**
    * File size in bites
    */
-  size: number;
+  size?: number;
   /**
    * File extension
    */
-  ext: string;
+  ext?: string;
   /**
    * File URL
    */
@@ -33,11 +33,11 @@ export interface DocsDoc {
   /**
    * Date when file has been uploaded in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Document type
    */
-  type: number;
+  type?: number;
   preview?: DocsDocPreview;
   is_licensed?: 0 | 1;
   /**

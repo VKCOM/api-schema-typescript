@@ -6,7 +6,7 @@ import { FriendsFriendStatusStatus } from './FriendsFriendStatusStatus';
 
 // friends_friend_status
 export interface FriendsFriendStatus {
-  friend_status: FriendsFriendStatusStatus;
+  friend_status?: FriendsFriendStatusStatus;
   /**
    * MD5 hash for the result validation
    */
@@ -14,5 +14,5 @@ export interface FriendsFriendStatus {
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
 }

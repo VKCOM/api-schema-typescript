@@ -9,6 +9,6 @@ export interface StatusStatus {
   /**
    * Status text
    */
-  text: string;
+  text?: string;
   audio?: AudioAudio;
 }

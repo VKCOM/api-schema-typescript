@@ -9,19 +9,24 @@ export interface VideoVideoAlbumFull {
   /**
    * Album ID
    */
-  id: number;
+  id?: number;
   /**
    * Album owner's ID
    */
-  owner_id: number;
+  owner_id?: number;
   /**
    * Album title
    */
-  title: string;
+  title?: string;
+  /**
+   * Album trackcode
+   */
+  track_code?: string;
+  response_type?: 'min' | 'full';
   /**
    * Total number of videos in album
    */
-  count: number;
+  count?: number;
   /**
    * Album cover image in different sizes
    */
@@ -37,5 +42,17 @@ export interface VideoVideoAlbumFull {
   /**
    * Date when the album has been updated last time in Unixtime
    */
-  updated_time: number;
+  updated_time?: number;
+  /**
+   * Is user can edit playlist
+   */
+  can_edit?: 0 | 1;
+  /**
+   * Is user can delete playlist
+   */
+  can_delete?: 0 | 1;
+  /**
+   * Is user can upload video to playlist
+   */
+  can_upload?: 0 | 1;
 }

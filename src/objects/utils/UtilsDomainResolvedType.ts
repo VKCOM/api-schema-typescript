@@ -6,4 +6,4 @@
 /**
  * Object type
  */
-export type UtilsDomainResolvedType = 'user' | 'group' | 'application' | 'page' | 'vk_app' | 'community_application';
+export type UtilsDomainResolvedType = 'user' | 'group' | 'application' | 'event' | 'page' | 'vk_app' | 'community_application';

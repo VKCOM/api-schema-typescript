@@ -20,4 +20,8 @@ export interface MessagesChatSettingsPhoto {
    * If provided photo is default
    */
   is_default_photo?: boolean;
+  /**
+   * If provided photo is default call photo
+   */
+  is_default_call_photo?: boolean;
 }

@@ -7,13 +7,13 @@ export interface DocsDocPreviewGraffiti {
   /**
    * Graffiti file URL
    */
-  src: string;
+  src?: string;
   /**
    * Graffiti width
    */
-  width: number;
+  width?: number;
   /**
    * Graffiti height
    */
-  height: number;
+  height?: number;
 }

@@ -10,15 +10,15 @@ export interface GroupsGroupCategoryFull {
   /**
    * Category ID
    */
-  id: number;
+  id?: number;
   /**
    * Category name
    */
-  name: string;
+  name?: string;
   /**
    * Pages number
    */
-  page_count: number;
-  page_previews: GroupsGroup[];
+  page_count?: number;
+  page_previews?: GroupsGroup[];
   subcategories?: GroupsGroupCategory[];
 }

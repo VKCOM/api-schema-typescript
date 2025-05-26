@@ -4,6 +4,6 @@
 
 // newsfeed_item_wallpost_feedback_answer
 export interface NewsfeedItemWallpostFeedbackAnswer {
-  title: string;
-  id: string;
+  title?: string;
+  id?: string;
 }

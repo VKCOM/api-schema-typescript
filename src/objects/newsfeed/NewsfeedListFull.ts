@@ -7,11 +7,11 @@ export interface NewsfeedListFull {
   /**
    * List ID
    */
-  id: number;
+  id?: number;
   /**
    * List title
    */
-  title: string;
+  title?: string;
   /**
    * Information whether reposts hiding is enabled
    */

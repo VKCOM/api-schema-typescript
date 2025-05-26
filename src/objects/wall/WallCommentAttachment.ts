@@ -4,8 +4,7 @@
 
 import { AudioAudio } from '../audio/AudioAudio';
 import { BaseLink } from '../base/BaseLink';
-import { BaseStickerNew } from '../base/BaseStickerNew';
-import { BaseStickerOld } from '../base/BaseStickerOld';
+import { BaseSticker } from '../base/BaseSticker';
 import { DocsDoc } from '../docs/DocsDoc';
 import { MarketMarketAlbum } from '../market/MarketMarketAlbum';
 import { MarketMarketItem } from '../market/MarketMarketItem';
@@ -14,6 +13,7 @@ import { PhotosPhoto } from '../photos/PhotosPhoto';
 import { VideoVideo } from '../video/VideoVideo';
 import { WallAttachedNote } from './WallAttachedNote';
 import { WallCommentAttachmentType } from './WallCommentAttachmentType';
+import { WallGraffiti } from './WallGraffiti';
 
 // wall_comment_attachment
 export interface WallCommentAttachment {
@@ -25,7 +25,8 @@ export interface WallCommentAttachment {
   note?: WallAttachedNote;
   page?: PagesWikipageFull;
   photo?: PhotosPhoto;
-  sticker?: BaseStickerOld | BaseStickerNew;
-  type: WallCommentAttachmentType;
+  sticker?: BaseSticker;
+  type?: WallCommentAttachmentType;
   video?: VideoVideo;
+  graffiti?: WallGraffiti;
 }

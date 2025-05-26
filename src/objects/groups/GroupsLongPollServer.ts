@@ -7,13 +7,13 @@ export interface GroupsLongPollServer {
   /**
    * Long Poll key
    */
-  key: string;
+  key?: string;
   /**
    * Long Poll server address
    */
-  server: string;
+  server?: string;
   /**
    * Number of the last event
    */
-  ts: string;
+  ts?: string;
 }

@@ -7,6 +7,6 @@ export interface GroupsGroupsArray {
   /**
    * Communities number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }

@@ -15,6 +15,8 @@ export interface AdsDemostatsFormat {
    * Day as YYYY-MM-DD
    */
   day?: string;
+  day_from?: string;
+  day_to?: string;
   /**
    * Month as YYYY-MM
    */

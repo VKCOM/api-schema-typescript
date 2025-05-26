@@ -11,7 +11,7 @@ export interface StatsSexAge {
   /**
    * Sex/age value
    */
-  value: string;
+  value?: string;
   reach?: number;
   reach_subscribers?: number;
   count_subscribers?: number;

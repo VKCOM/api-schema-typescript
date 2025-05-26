@@ -10,7 +10,11 @@ export interface GroupsMemberRole {
   /**
    * User ID
    */
-  id: number;
+  id?: number;
+  /**
+   * Allow the manager to accept community calls.
+   */
+  is_call_operator?: boolean;
   permissions?: GroupsMemberRolePermission[];
   role?: GroupsMemberRoleStatus;
 }

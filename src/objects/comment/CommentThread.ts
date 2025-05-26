@@ -9,7 +9,7 @@ export interface CommentThread {
   /**
    * Comments number
    */
-  count: number;
+  count?: number;
   items?: WallWallComment[];
   /**
    * Information whether current user can comment the post
@@ -23,4 +23,8 @@ export interface CommentThread {
    * Information whether groups can comment the post
    */
   groups_can_post?: boolean;
+  /**
+   * Information whether author commented the thread
+   */
+  author_replied?: boolean;
 }

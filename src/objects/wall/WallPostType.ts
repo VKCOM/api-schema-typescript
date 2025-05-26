@@ -6,4 +6,4 @@
 /**
  * Post type
  */
-export type WallPostType = 'post' | 'copy' | 'reply' | 'postpone' | 'suggest';
+export type WallPostType = 'post' | 'copy' | 'reply' | 'postpone' | 'suggest' | 'post_ads' | 'photo' | 'video' | 'clip';

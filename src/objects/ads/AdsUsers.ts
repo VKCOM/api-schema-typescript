@@ -6,9 +6,9 @@ import { AdsAccesses } from './AdsAccesses';
 
 // ads_users
 export interface AdsUsers {
-  accesses: AdsAccesses[];
+  accesses?: AdsAccesses[];
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
 }

@@ -6,4 +6,4 @@
 /**
  * Size type
  */
-export type PhotosPhotoSizesType = 's' | 'm' | 'x' | 'o' | 'p' | 'q' | 'r' | 'k' | 'l' | 'y' | 'z' | 'c' | 'w' | 'a' | 'b' | 'e' | 'i' | 'd' | 'j' | 'temp' | 'h' | 'g' | 'n' | 'f' | 'max';
+export type PhotosPhotoSizesType = 't' | 's' | 'm' | 'x' | 'o' | 'p' | 'q' | 'r' | 'k' | 'l' | 'y' | 'z' | 'c' | 'w' | 'a' | 'b' | 'e' | 'i' | 'd' | 'j' | 'temp' | 'h' | 'g' | 'n' | 'f' | 'max' | 'base' | 'u' | 'v' | 'orig';

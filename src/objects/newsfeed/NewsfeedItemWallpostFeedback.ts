@@ -7,9 +7,11 @@ import { NewsfeedItemWallpostFeedbackType } from './NewsfeedItemWallpostFeedback
 
 // newsfeed_item_wallpost_feedback
 export interface NewsfeedItemWallpostFeedback {
-  type: NewsfeedItemWallpostFeedbackType;
-  question: string;
+  type?: NewsfeedItemWallpostFeedbackType;
+  question?: string;
   answers?: NewsfeedItemWallpostFeedbackAnswer[];
   stars_count?: number;
+  descriptions?: string[];
   gratitude?: string;
+  track_code?: string;
 }

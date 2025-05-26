@@ -7,9 +7,13 @@ export interface StoriesStoryLink {
   /**
    * Link text
    */
-  text: string;
+  text?: string;
   /**
    * Link URL
    */
-  url: string;
+  url?: string;
+  /**
+   * How to open url
+   */
+  link_url_target?: string;
 }

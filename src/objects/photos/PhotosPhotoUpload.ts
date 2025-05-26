@@ -7,11 +7,11 @@ export interface PhotosPhotoUpload {
   /**
    * Album ID
    */
-  album_id: number;
+  album_id?: number;
   /**
    * URL to upload photo
    */
-  upload_url: string;
+  upload_url?: string;
   /**
    * Fallback URL if upload_url returned error
    */
@@ -19,7 +19,7 @@ export interface PhotosPhotoUpload {
   /**
    * User ID
    */
-  user_id: number;
+  user_id?: number;
   /**
    * Group ID
    */

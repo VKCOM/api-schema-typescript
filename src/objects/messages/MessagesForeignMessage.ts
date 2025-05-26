@@ -15,11 +15,11 @@ export interface MessagesForeignMessage {
   /**
    * Date when the message was created
    */
-  date: number;
+  date?: number;
   /**
    * Message author's ID
    */
-  from_id: number;
+  from_id?: number;
   fwd_messages?: MessagesForeignMessage[];
   geo?: BaseGeo;
   /**
@@ -34,7 +34,7 @@ export interface MessagesForeignMessage {
   /**
    * Message text
    */
-  text: string;
+  text?: string;
   /**
    * Date when the message has been updated in Unixtime
    */

@@ -9,18 +9,18 @@ export interface PhotosPhotoSizes {
   /**
    * Height in px
    */
-  height: number;
+  height?: number;
   /**
    * URL of the image
    */
-  url: string;
+  url?: string;
   /**
    * URL of the image
    */
   src?: string;
-  type: PhotosPhotoSizesType;
+  type?: PhotosPhotoSizesType;
   /**
    * Width in px
    */
-  width: number;
+  width?: number;
 }

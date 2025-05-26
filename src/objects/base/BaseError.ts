@@ -6,6 +6,7 @@ import { BaseRequestParam } from './BaseRequestParam';
 
 // base_error
 export interface BaseError {
+  inner_type?: 'base_error';
   /**
    * Error code
    */

@@ -11,15 +11,15 @@ export interface BoardTopicComment {
   /**
    * Date when the comment has been added in Unixtime
    */
-  date: number;
+  date?: number;
   /**
    * Author ID
    */
-  from_id: number;
+  from_id?: number;
   /**
    * Comment ID
    */
-  id: number;
+  id?: number;
   /**
    * Real position of the comment
    */
@@ -27,7 +27,7 @@ export interface BoardTopicComment {
   /**
    * Comment text
    */
-  text: string;
+  text?: string;
   /**
    * Information whether current user can edit the comment
    */

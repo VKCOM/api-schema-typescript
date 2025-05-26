@@ -2,11 +2,12 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallComment } from '../objects/wall/WallWallComment';
+import { WallWallItem } from '../objects/wall/WallWallItem';
+import { WallWallpostAttachment } from '../objects/wall/WallWallpostAttachment';
 import { WallWallpostFull } from '../objects/wall/WallWallpostFull';
 
 /**
@@ -60,7 +61,7 @@ export interface WallCreateCommentParams {
    */
   reply_to_comment?: number;
   /**
-   * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
+   * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media ojbect: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. For example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
   /**
@@ -78,7 +79,8 @@ export interface WallCreateCommentResponse {
   /**
    * Created comment ID
    */
-  comment_id: number;
+  comment_id?: number;
+  parents_stack?: number[];
 }
 
 /**
@@ -113,6 +115,10 @@ export interface WallDeleteCommentParams {
    */
   owner_id?: number;
   /**
+   * Post ID.
+   */
+  post_id?: number;
+  /**
    * Comment ID.
    */
   comment_id: number;
@@ -139,7 +145,7 @@ export interface WallEditParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
    */
   attachments?: string;
   services?: string;
@@ -166,7 +172,7 @@ export interface WallEditResponse {
   /**
    * Edited post ID
    */
-  post_id: number;
+  post_id?: number;
 }
 
 /**
@@ -189,11 +195,11 @@ export interface WallEditAdsStealthParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'page' - wiki-page, 'note' - note, 'poll' - poll, 'album' - photo album, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
   attachments?: string;
   /**
-   * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
+   * Only for posts in communities with 'from_group' set to '1': '1' - post will be signed with the name of the posting user, '0' - post will not be signed (default)
    */
   signed?: 0 | 1;
   /**
@@ -241,6 +247,10 @@ export interface WallEditCommentParams {
    */
   owner_id?: number;
   /**
+   * Post ID.
+   */
+  post_id?: number;
+  /**
    * Comment ID.
    */
   comment_id: number;
@@ -249,7 +259,7 @@ export interface WallEditCommentParams {
    */
   message?: string;
   /**
-   * List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
+   * List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media attachment owner. '<media_id>' - Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
 }
@@ -265,13 +275,9 @@ export type WallEditCommentResponse = 1;
 
 export interface WallGetParams {
   /**
-   * ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
-   */
-  owner_id?: number;
-  /**
    * User or community short address.
    */
-  domain?: string;
+  domain?: number | string;
   /**
    * Offset needed to return a specific subset of posts.
    */
@@ -282,7 +288,7 @@ export interface WallGetParams {
   count?: number;
   filter?: string;
   /**
-   * '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
+   * '1' - to return 'wall', 'profiles', and 'groups' fields, '0' - to return no additional fields (default)
    */
   extended?: 0 | 1;
   /**
@@ -296,8 +302,8 @@ export interface WallGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallpostFull[];
+  count?: number;
+  items?: WallWallItem[];
 }
 
 // wall.get_extendedResponse
@@ -305,10 +311,10 @@ export interface WallGetExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallpostFull[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: WallWallItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -323,7 +329,7 @@ export interface WallGetByIdParams {
    */
   posts: string;
   /**
-   * '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
+   * '1' - to return user and community objects needed to display posts, '0' - no additional fields are returned (default)
    */
   extended?: 0 | 1;
   /**
@@ -337,13 +343,15 @@ export interface WallGetByIdParams {
 }
 
 // wall.getById_response
-export type WallGetByIdResponse = WallWallpostFull[];
+export interface WallGetByIdResponse {
+  items?: WallWallItem[];
+}
 
 // wall.getById_extendedResponse
 export interface WallGetByIdExtendedResponse {
-  items: WallWallpostFull[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  items?: WallWallItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -370,14 +378,36 @@ export interface WallGetCommentParams {
 
 // wall.getComment_response
 export interface WallGetCommentResponse {
-  items: WallWallComment[];
+  items?: WallWallComment[];
+  /**
+   * Information whether current user can comment the post
+   */
+  can_post?: boolean;
+  show_reply_button?: boolean;
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: boolean;
 }
 
 // wall.getComment_extendedResponse
 export interface WallGetCommentExtendedResponse {
-  items: WallWallComment[];
-  profiles: UsersUser[];
-  groups: GroupsGroup[];
+  items?: WallWallComment[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+  /**
+   * Information whether current user can comment the post
+   */
+  can_post?: boolean;
+  show_reply_button?: boolean;
+  /**
+   * Information whether groups can comment the post
+   */
+  groups_can_post?: boolean;
+  /**
+   * Author id of the comment's post
+   */
+  post_author_id?: number;
 }
 
 /**
@@ -396,7 +426,7 @@ export interface WallGetCommentsParams {
    */
   post_id?: number;
   /**
-   * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
+   * '1' - to return the 'likes' field, '0' - not to return the 'likes' field (default)
    */
   need_likes?: 0 | 1;
   start_comment_id?: number;
@@ -409,9 +439,9 @@ export interface WallGetCommentsParams {
    */
   count?: number;
   /**
-   * Sort order: 'asc' — chronological, 'desc' — reverse chronological
+   * Sort order: 'asc' - chronological, 'desc' - reverse chronological
    */
-  sort?: 'asc' | 'desc';
+  sort?: 'asc' | 'desc' | 'smart';
   /**
    * Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
    */
@@ -436,8 +466,8 @@ export interface WallGetCommentsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallComment[];
+  count?: number;
+  items?: WallWallComment[];
   /**
    * Count of replies of current level
    */
@@ -458,10 +488,10 @@ export interface WallGetCommentsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallComment[];
-  profiles: UsersUser[];
-  groups: GroupsGroup[];
+  count?: number;
+  items?: WallWallComment[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
   /**
    * Count of replies of current level
    */
@@ -475,6 +505,10 @@ export interface WallGetCommentsExtendedResponse {
    * Information whether groups can comment the post
    */
   groups_can_post?: boolean;
+  /**
+   * Author id of comments' post
+   */
+  post_author_id?: number;
 }
 
 /**
@@ -504,9 +538,9 @@ export interface WallGetRepostsParams {
 
 // wall.getReposts_response
 export interface WallGetRepostsResponse {
-  items: WallWallpostFull[];
-  profiles: UsersUser[];
-  groups: GroupsGroup[];
+  items?: WallWallpostFull[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -520,6 +554,24 @@ export interface WallOpenCommentsParams {
 
 // wall.openComments_response
 export type WallOpenCommentsResponse = 0 | 1;
+
+/**
+ * wall.parseAttachedLink
+ */
+
+export interface WallParseAttachedLinkParams {
+  links: string;
+  extended?: 0 | 1;
+  fields?: string;
+  name_case?: string;
+}
+
+// wall.parseAttachedLink_response
+export interface WallParseAttachedLinkResponse {
+  data?: WallWallpostAttachment[];
+  groups?: GroupsGroupFull[];
+  profiles?: UsersUser[];
+}
 
 /**
  * wall.pin
@@ -553,11 +605,11 @@ export interface WallPostParams {
    */
   owner_id?: number;
   /**
-   * '1' — post will be available to friends only, '0' — post will be available to all users (default)
+   * '1' - post will be available to friends only, '0' - post will be available to all users (default)
    */
   friends_only?: 0 | 1;
   /**
-   * For a community: '1' — post will be published by the community, '0' — post will be published by the user (default)
+   * For a community: '1' - post will be published by the community, '0' - post will be published by the user (default)
    */
   from_group?: 0 | 1;
   /**
@@ -565,7 +617,7 @@ export interface WallPostParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'page' - wiki-page, 'note' - note, 'poll' - poll, 'album' - photo album, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
   attachments?: string;
   /**
@@ -573,7 +625,7 @@ export interface WallPostParams {
    */
   services?: string;
   /**
-   * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
+   * Only for posts in communities with 'from_group' set to '1': '1' - post will be signed with the name of the posting user, '0' - post will not be signed (default)
    */
   signed?: 0 | 1;
   /**
@@ -598,14 +650,12 @@ export interface WallPostParams {
   post_id?: number;
   guid?: string;
   mark_as_ads?: 0 | 1;
+  link_title?: string;
+  link_photo_id?: string;
   close_comments?: 0 | 1;
   donut_paid_duration?: number;
   mute_notifications?: 0 | 1;
   copyright?: string;
-  /**
-   * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
-   */
-  topic_id?: 0 | 1 | 7 | 12 | 16 | 19 | 21 | 23 | 25 | 26 | 32 | 43;
 }
 
 // wall.post_response
@@ -613,7 +663,7 @@ export interface WallPostResponse {
   /**
    * Created post ID
    */
-  post_id: number;
+  post_id?: number;
 }
 
 /**
@@ -632,11 +682,11 @@ export interface WallPostAdsStealthParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'page' - wiki-page, 'note' - note, 'poll' - poll, 'album' - photo album, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
    */
   attachments?: string;
   /**
-   * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
+   * Only for posts in communities with 'from_group' set to '1': '1' - post will be signed with the name of the posting user, '0' - post will not be signed (default)
    */
   signed?: 0 | 1;
   /**
@@ -678,7 +728,7 @@ export interface WallPostAdsStealthResponse {
   /**
    * Created post ID
    */
-  post_id: number;
+  post_id?: number;
 }
 
 /**
@@ -699,7 +749,7 @@ export interface WallReportCommentParams {
   /**
    * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
-  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  reason: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 11;
 }
 
 // wall.reportComment_response
@@ -723,7 +773,7 @@ export interface WallReportPostParams {
   /**
    * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
    */
-  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  reason: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 11;
 }
 
 // wall.reportPost_response
@@ -754,15 +804,15 @@ export interface WallRepostParams {
 
 // wall.repost_response
 export interface WallRepostResponse {
-  success: number;
+  success?: number;
   /**
    * Created post ID
    */
-  post_id: number;
+  post_id?: number;
   /**
    * Reposts number
    */
-  reposts_count: number;
+  reposts_count?: number;
   /**
    * Reposts to wall number
    */
@@ -774,7 +824,7 @@ export interface WallRepostResponse {
   /**
    * Reposts number
    */
-  likes_count: number;
+  likes_count?: number;
 }
 
 /**
@@ -825,13 +875,9 @@ export type WallRestoreCommentResponse = 1;
 
 export interface WallSearchParams {
   /**
-   * user or community id. "Remember that for a community 'owner_id' must be negative."
-   */
-  owner_id?: number;
-  /**
    * user or community screen name.
    */
-  domain?: string;
+  domain?: number | string;
   /**
    * search query string.
    */
@@ -863,8 +909,8 @@ export interface WallSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallpostFull[];
+  count?: number;
+  items?: WallWallItem[];
 }
 
 // wall.search_extendedResponse
@@ -872,10 +918,10 @@ export interface WallSearchExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: WallWallpostFull[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  count?: number;
+  items?: WallWallItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**

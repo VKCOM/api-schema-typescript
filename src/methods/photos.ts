@@ -7,11 +7,8 @@ import { BaseUploadServer } from '../objects/base/BaseUploadServer';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { PhotosPhoto } from '../objects/photos/PhotosPhoto';
 import { PhotosPhotoAlbumFull } from '../objects/photos/PhotosPhotoAlbumFull';
-import { PhotosPhotoFull } from '../objects/photos/PhotosPhotoFull';
-import { PhotosPhotoFullXtrRealOffset } from '../objects/photos/PhotosPhotoFullXtrRealOffset';
 import { PhotosPhotoTag } from '../objects/photos/PhotosPhotoTag';
 import { PhotosPhotoUpload } from '../objects/photos/PhotosPhotoUpload';
-import { PhotosPhotoXtrRealOffset } from '../objects/photos/PhotosPhotoXtrRealOffset';
 import { PhotosPhotoXtrTagInfo } from '../objects/photos/PhotosPhotoXtrTagInfo';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { WallWallComment } from '../objects/wall/WallWallComment';
@@ -112,11 +109,11 @@ export interface PhotosCreateCommentParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - Media attachment owner ID. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
   /**
-   * '1' — to post a comment from the community
+   * '1' - to post a comment from the community
    */
   from_group?: 0 | 1;
   reply_to_comment?: number;
@@ -142,7 +139,8 @@ export interface PhotosDeleteParams {
   /**
    * Photo ID.
    */
-  photo_id: number;
+  photo_id?: number;
+  photos?: string;
 }
 
 // photos.delete_response
@@ -186,6 +184,9 @@ export interface PhotosDeleteCommentParams {
 }
 
 // photos.deleteComment_response
+/**
+ * Returns 1 if request has been processed successfully, 0 if the comment is not found
+ */
 export type PhotosDeleteCommentResponse = 0 | 1;
 
 /**
@@ -269,7 +270,7 @@ export interface PhotosEditCommentParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+   * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - Media attachment owner ID. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
 }
@@ -297,11 +298,11 @@ export interface PhotosGetParams {
    */
   photo_ids?: string;
   /**
-   * Sort order: '1' — reverse chronological, '0' — chronological
+   * Sort order: '1' - reverse chronological, '0' - chronological
    */
   rev?: 0 | 1;
   /**
-   * '1' — to return additional 'likes', 'comments', and 'tags' fields, '0' — (default)
+   * '1' - to return additional 'likes', 'comments', and 'tags' fields, '0' - (default)
    */
   extended?: 0 | 1;
   /**
@@ -313,7 +314,7 @@ export interface PhotosGetParams {
    */
   feed?: number;
   /**
-   * '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
+   * '1' - to return photo sizes in a [vk.com/dev/photo_sizes|special format]
    */
   photo_sizes?: 0 | 1;
   offset?: number;
@@ -325,17 +326,12 @@ export interface PhotosGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: PhotosPhoto[];
-}
-
-// photos.get_extendedResponse
-export interface PhotosGetExtendedResponse {
+  count?: number;
+  items?: PhotosPhoto[];
   /**
-   * Total number
+   * next from pagination cursor
    */
-  count: number;
-  items: PhotosPhotoFull[];
+  next_from?: string;
 }
 
 /**
@@ -362,15 +358,15 @@ export interface PhotosGetAlbumsParams {
    */
   count?: number;
   /**
-   * '1' — to return system albums with negative IDs
+   * '1' - to return system albums with negative IDs
    */
   need_system?: 0 | 1;
   /**
-   * '1' — to return an additional 'thumb_src' field, '0' — (default)
+   * '1' - to return an additional 'thumb_src' field, '0' - (default)
    */
   need_covers?: 0 | 1;
   /**
-   * '1' — to return photo sizes in a
+   * '1' - to return photo sizes in a
    */
   photo_sizes?: 0 | 1;
 }
@@ -380,8 +376,8 @@ export interface PhotosGetAlbumsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: PhotosPhotoAlbumFull[];
+  count?: number;
+  items?: PhotosPhotoAlbumFull[];
 }
 
 /**
@@ -399,6 +395,7 @@ export interface PhotosGetAlbumsCountParams {
    * Community ID.
    */
   group_id?: number;
+  need_system?: 0 | 1;
 }
 
 // photos.getAlbumsCount_response
@@ -416,7 +413,7 @@ export interface PhotosGetAllParams {
    */
   owner_id?: number;
   /**
-   * '1' — to return detailed information about photos
+   * '1' - to return detailed information about photos
    */
   extended?: 0 | 1;
   /**
@@ -451,20 +448,7 @@ export interface PhotosGetAllResponse {
    * Total number
    */
   count?: number;
-  items?: PhotosPhotoXtrRealOffset[];
-  /**
-   * Information whether next page is presented
-   */
-  more?: 0 | 1;
-}
-
-// photos.getAll_extendedResponse
-export interface PhotosGetAllExtendedResponse {
-  /**
-   * Total number
-   */
-  count?: number;
-  items?: PhotosPhotoFullXtrRealOffset[];
+  items?: PhotosPhoto[];
   /**
    * Information whether next page is presented
    */
@@ -487,7 +471,7 @@ export interface PhotosGetAllCommentsParams {
    */
   album_id?: number;
   /**
-   * '1' — to return an additional 'likes' field, '0' — (default)
+   * '1' - to return an additional 'likes' field, '0' - (default)
    */
   need_likes?: 0 | 1;
   /**
@@ -521,20 +505,17 @@ export interface PhotosGetByIdParams {
    */
   photos: string;
   /**
-   * '1' — to return additional fields, '0' — (default)
+   * '1' - to return additional fields, '0' - (default)
    */
   extended?: 0 | 1;
   /**
-   * '1' — to return photo sizes in a
+   * '1' - to return photo sizes in a
    */
   photo_sizes?: 0 | 1;
 }
 
 // photos.getById_response
 export type PhotosGetByIdResponse = PhotosPhoto[];
-
-// photos.getById_extendedResponse
-export type PhotosGetByIdExtendedResponse = PhotosPhotoFull[];
 
 /**
  * photos.getChatUploadServer
@@ -574,7 +555,7 @@ export interface PhotosGetCommentsParams {
    */
   photo_id: number;
   /**
-   * '1' — to return an additional 'likes' field, '0' — (default)
+   * '1' - to return an additional 'likes' field, '0' - (default)
    */
   need_likes?: 0 | 1;
   start_comment_id?: number;
@@ -587,7 +568,7 @@ export interface PhotosGetCommentsParams {
    */
   count?: number;
   /**
-   * Sort order: 'asc' — old first, 'desc' — new first
+   * Sort order: 'asc' - old first, 'desc' - new first
    */
   sort?: 'asc' | 'desc';
   access_key?: string;
@@ -616,14 +597,14 @@ export interface PhotosGetCommentsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
+  count?: number;
   /**
    * Real offset of the comments
    */
   real_offset?: number;
-  items: WallWallComment[];
-  profiles: UsersUserFull[];
-  groups: GroupsGroupFull[];
+  items?: WallWallComment[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -641,38 +622,6 @@ export interface PhotosGetMarketAlbumUploadServerParams {
 
 // photos.getMarketAlbumUploadServer_response
 export type PhotosGetMarketAlbumUploadServerResponse = BaseUploadServer;
-
-/**
- * photos.getMarketUploadServer
- *
- * Returns the server address for market photo upload.
- */
-
-export interface PhotosGetMarketUploadServerParams {
-  /**
-   * Community ID.
-   */
-  group_id: number;
-  /**
-   * '1' if you want to upload the main item photo.
-   */
-  main_photo?: 0 | 1;
-  /**
-   * X coordinate of the crop left upper corner.
-   */
-  crop_x?: number;
-  /**
-   * Y coordinate of the crop left upper corner.
-   */
-  crop_y?: number;
-  /**
-   * Width of the cropped photo in px.
-   */
-  crop_width?: number;
-}
-
-// photos.getMarketUploadServer_response
-export type PhotosGetMarketUploadServerResponse = BaseUploadServer;
 
 /**
  * photos.getMessagesUploadServer
@@ -712,8 +661,8 @@ export interface PhotosGetNewTagsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: PhotosPhotoXtrTagInfo[];
+  count?: number;
+  items?: PhotosPhotoXtrTagInfo[];
 }
 
 /**
@@ -726,7 +675,7 @@ export interface PhotosGetOwnerCoverPhotoUploadServerParams {
   /**
    * ID of community that owns the album (if the photo will be uploaded to a community album).
    */
-  group_id: number;
+  group_id?: number;
   /**
    * X coordinate of the left-upper corner
    */
@@ -743,6 +692,7 @@ export interface PhotosGetOwnerCoverPhotoUploadServerParams {
    * Y coordinate of the right-bottom corner
    */
   crop_y2?: number;
+  is_video_cover?: 0 | 1;
 }
 
 // photos.getOwnerCoverPhotoUploadServer_response
@@ -792,11 +742,11 @@ export type PhotosGetTagsResponse = PhotosPhotoTag[];
  */
 
 export interface PhotosGetUploadServerParams {
+  album_id?: number;
   /**
    * ID of community that owns the album (if the photo will be uploaded to a community album).
    */
   group_id?: number;
-  album_id?: number;
 }
 
 // photos.getUploadServer_response
@@ -822,11 +772,11 @@ export interface PhotosGetUserPhotosParams {
    */
   count?: number;
   /**
-   * '1' — to return an additional 'likes' field, '0' — (default)
+   * '1' - to return an additional 'likes' field, '0' - (default)
    */
   extended?: 0 | 1;
   /**
-   * Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
+   * Sort order: '1' - by date the tag was added in ascending order, '0' - by date the tag was added in descending order
    */
   sort?: string;
 }
@@ -836,17 +786,12 @@ export interface PhotosGetUserPhotosResponse {
   /**
    * Total number
    */
-  count: number;
-  items: PhotosPhoto[];
-}
-
-// photos.getUserPhotos_extendedResponse
-export interface PhotosGetUserPhotosExtendedResponse {
+  count?: number;
+  items?: PhotosPhoto[];
   /**
-   * Total number
+   * next from pagination cursor
    */
-  count: number;
-  items: PhotosPhotoFull[];
+  next_from?: string;
 }
 
 /**
@@ -904,10 +849,7 @@ export interface PhotosMoveParams {
    * ID of the album to which the photo will be moved.
    */
   target_album_id: number;
-  /**
-   * Photo ID.
-   */
-  photo_id: number;
+  photo_ids: string;
 }
 
 // photos.move_response
@@ -1049,9 +991,9 @@ export interface PhotosReportParams {
    */
   photo_id: number;
   /**
-   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
+   * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse, '8' - suicide calls
    */
-  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  reason?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8;
 }
 
 // photos.report_response
@@ -1119,6 +1061,9 @@ export interface PhotosRestoreCommentParams {
 }
 
 // photos.restoreComment_response
+/**
+ * Returns 1 if request has been processed successfully, 0 if the comment is not found
+ */
 export type PhotosRestoreCommentResponse = 0 | 1;
 
 /**
@@ -1194,42 +1139,6 @@ export interface PhotosSaveMarketAlbumPhotoParams {
 export type PhotosSaveMarketAlbumPhotoResponse = PhotosPhoto[];
 
 /**
- * photos.saveMarketPhoto
- *
- * Saves market photos after successful uploading.
- */
-
-export interface PhotosSaveMarketPhotoParams {
-  /**
-   * Community ID.
-   */
-  group_id?: number;
-  /**
-   * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-   */
-  photo: string;
-  /**
-   * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-   */
-  server: number;
-  /**
-   * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-   */
-  hash: string;
-  /**
-   * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-   */
-  crop_data?: string;
-  /**
-   * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-   */
-  crop_hash?: string;
-}
-
-// photos.saveMarketPhoto_response
-export type PhotosSaveMarketPhotoResponse = PhotosPhoto[];
-
-/**
  * photos.saveMessagesPhoto
  *
  * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
@@ -1254,14 +1163,20 @@ export type PhotosSaveMessagesPhotoResponse = PhotosPhoto[];
  */
 
 export interface PhotosSaveOwnerCoverPhotoParams {
+  crop_x?: number;
+  crop_height?: number;
+  crop_y?: number;
+  crop_width?: number;
+  response_json?: string;
   /**
    * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
    */
-  hash: string;
+  hash?: string;
   /**
    * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
    */
-  photo: string;
+  photo?: string;
+  is_video_cover?: 0 | 1;
 }
 
 // photos.saveOwnerCoverPhoto_response
@@ -1295,11 +1210,11 @@ export interface PhotosSaveOwnerPhotoResponse {
   /**
    * Photo hash
    */
-  photo_hash: string;
+  photo_hash?: string;
   /**
    * Uploaded image url
    */
-  photo_src: string;
+  photo_src?: string;
   /**
    * Uploaded image url
    */

@@ -7,11 +7,11 @@ export interface UsersUserConnections {
   /**
    * User's Skype nickname
    */
-  skype: string;
+  skype?: string;
   /**
    * User's Facebook account
    */
-  facebook: string;
+  facebook?: string;
   /**
    * User's Facebook name
    */
@@ -19,7 +19,7 @@ export interface UsersUserConnections {
   /**
    * User's Twitter account
    */
-  twitter: string;
+  twitter?: string;
   /**
    * User's Livejournal account
    */
@@ -27,5 +27,5 @@ export interface UsersUserConnections {
   /**
    * User's Instagram account
    */
-  instagram: string;
+  instagram?: string;
 }

@@ -13,12 +13,12 @@ import { MessagesPushSettings } from './MessagesPushSettings';
 
 // messages_conversation
 export interface MessagesConversation {
-  peer: MessagesConversationPeer;
+  peer?: MessagesConversationPeer;
   sort_id?: MessagesConversationSortId;
   /**
    * ID of the last message in conversation
    */
-  last_message_id: number;
+  last_message_id?: number;
   /**
    * Conversation message ID of the last message in conversation
    */
@@ -26,17 +26,17 @@ export interface MessagesConversation {
   /**
    * Last message user have read
    */
-  in_read: number;
+  in_read?: number;
   /**
    * Last outcoming message have been read by the opponent
    */
-  out_read: number;
+  out_read?: number;
   /**
    * Unread messages number
    */
   unread_count?: number;
   /**
-   * Is this conversation uread
+   * Is this conversation unread
    */
   is_marked_unread?: boolean;
   out_read_by?: MessagesOutReadBy;
@@ -52,4 +52,5 @@ export interface MessagesConversation {
   push_settings?: MessagesPushSettings;
   can_write?: MessagesConversationCanWrite;
   chat_settings?: MessagesChatSettings;
+  version?: number;
 }

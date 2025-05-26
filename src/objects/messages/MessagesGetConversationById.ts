@@ -9,6 +9,6 @@ export interface MessagesGetConversationById {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesConversation[];
+  count?: number;
+  items?: MessagesConversation[];
 }

@@ -5,10 +5,8 @@
 import { BoardDefaultOrder } from '../objects/board/BoardDefaultOrder';
 import { BoardTopic } from '../objects/board/BoardTopic';
 import { BoardTopicComment } from '../objects/board/BoardTopicComment';
-import { BoardTopicPoll } from '../objects/board/BoardTopicPoll';
-import { GroupsGroup } from '../objects/groups/GroupsGroup';
-import { UsersUser } from '../objects/users/UsersUser';
-import { UsersUserMin } from '../objects/users/UsersUserMin';
+import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
+import { UsersUserFull } from '../objects/users/UsersUserFull';
 
 /**
  * board.addTopic
@@ -30,11 +28,11 @@ export interface BoardAddTopicParams {
    */
   text?: string;
   /**
-   * For a community: '1' — to post the topic as by the community, '0' — to post the topic as by the user (default)
+   * For a community: '1' - to post the topic as by the community, '0' - to post the topic as by the user (default)
    */
   from_group?: 0 | 1;
   /**
-   * List of media objects attached to the topic, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one reference, an error will be thrown.",
+   * List of media objects attached to the topic, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media object: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one reference, an error will be thrown.",
    */
   attachments?: string;
 }
@@ -82,11 +80,11 @@ export interface BoardCreateCommentParams {
    */
   message?: string;
   /**
-   * (Required if 'text' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID.
+   * (Required if 'text' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media object: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID.
    */
   attachments?: string;
   /**
-   * '1' — to post the comment as by the community, '0' — to post the comment as by the user (default)
+   * '1' - to post the comment as by the community, '0' - to post the comment as by the user (default)
    */
   from_group?: 0 | 1;
   /**
@@ -170,7 +168,7 @@ export interface BoardEditCommentParams {
    */
   message?: string;
   /**
-   * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
+   * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' - Type of media object: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. Example: "photo100172_166443618,photo66748_265827614"
    */
   attachments?: string;
 }
@@ -238,7 +236,7 @@ export interface BoardGetCommentsParams {
    */
   topic_id: number;
   /**
-   * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
+   * '1' - to return the 'likes' field, '0' - not to return the 'likes' field (default)
    */
   need_likes?: 0 | 1;
   start_comment_id?: number;
@@ -251,11 +249,11 @@ export interface BoardGetCommentsParams {
    */
   count?: number;
   /**
-   * '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
+   * '1' - to return information about users who posted comments, '0' - to return no additional fields (default)
    */
   extended?: 0 | 1;
   /**
-   * Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
+   * Sort order: 'asc' - by creation date in chronological order, 'desc' - by creation date in reverse chronological order,
    */
   sort?: 'asc' | 'desc';
 }
@@ -265,9 +263,13 @@ export interface BoardGetCommentsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: BoardTopicComment[];
-  poll?: BoardTopicPoll;
+  count?: number;
+  items?: BoardTopicComment[];
+  poll?: {};
+  /**
+   * Offset of comment
+   */
+  real_offset?: number;
 }
 
 // board.getComments_extendedResponse
@@ -275,11 +277,15 @@ export interface BoardGetCommentsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: BoardTopicComment[];
-  poll?: BoardTopicPoll;
-  profiles: UsersUser[];
-  groups: GroupsGroup[];
+  count?: number;
+  items?: BoardTopicComment[];
+  poll?: {};
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+  /**
+   * Offset of comment
+   */
+  real_offset?: number;
 }
 
 /**
@@ -298,7 +304,7 @@ export interface BoardGetTopicsParams {
    */
   topic_ids?: string;
   /**
-   * Sort order: '1' — by date updated in reverse chronological order. '2' — by date created in reverse chronological order. '-1' — by date updated in chronological order. '-2' — by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
+   * Sort order: '1' - by date updated in reverse chronological order. '2' - by date created in reverse chronological order. '-1' - by date updated in chronological order. '-2' - by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
    */
   order?: 1 | 2 | -1 | -2 | 0;
   /**
@@ -310,11 +316,11 @@ export interface BoardGetTopicsParams {
    */
   count?: number;
   /**
-   * '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
+   * '1' - to return information about users who created topics or who posted there last, '0' - to return no additional fields (default)
    */
   extended?: 0 | 1;
   /**
-   * '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
+   * '1' - to return the first comment in each topic,, '2' - to return the last comment in each topic,, '0' - to return no comments. By default: '0'.
    */
   preview?: 1 | 2 | 0;
   /**
@@ -328,13 +334,13 @@ export interface BoardGetTopicsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: BoardTopic[];
-  default_order: BoardDefaultOrder;
+  count?: number;
+  items?: BoardTopic[];
+  default_order?: BoardDefaultOrder;
   /**
    * Information whether current user can add topic
    */
-  can_add_topics: 0 | 1;
+  can_add_topics?: 0 | 1;
 }
 
 // board.getTopics_extendedResponse
@@ -342,14 +348,15 @@ export interface BoardGetTopicsExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: BoardTopic[];
-  default_order: BoardDefaultOrder;
+  count?: number;
+  items?: BoardTopic[];
+  default_order?: BoardDefaultOrder;
   /**
    * Information whether current user can add topic
    */
-  can_add_topics: 0 | 1;
-  profiles: UsersUserMin[];
+  can_add_topics?: 0 | 1;
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**

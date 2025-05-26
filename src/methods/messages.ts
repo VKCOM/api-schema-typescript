@@ -2,16 +2,17 @@
  * This is auto-generated file, don't modify this file manually
  */
 
-import { GroupsGroup } from '../objects/groups/GroupsGroup';
 import { GroupsGroupFull } from '../objects/groups/GroupsGroupFull';
 import { MessagesChat } from '../objects/messages/MessagesChat';
+import { MessagesChatFull } from '../objects/messages/MessagesChatFull';
 import { MessagesChatPreview } from '../objects/messages/MessagesChatPreview';
-import { MessagesChatRestrictions } from '../objects/messages/MessagesChatRestrictions';
 import { MessagesConversation } from '../objects/messages/MessagesConversation';
-import { MessagesConversationMember } from '../objects/messages/MessagesConversationMember';
 import { MessagesConversationWithMessage } from '../objects/messages/MessagesConversationWithMessage';
+import { MessagesDeleteFullResponseItem } from '../objects/messages/MessagesDeleteFullResponseItem';
 import { MessagesGetConversationById } from '../objects/messages/MessagesGetConversationById';
 import { MessagesGetConversationByIdExtended } from '../objects/messages/MessagesGetConversationByIdExtended';
+import { MessagesGetConversationMembers } from '../objects/messages/MessagesGetConversationMembers';
+import { MessagesGetInviteLinkByOwnerResponseItem } from '../objects/messages/MessagesGetInviteLinkByOwnerResponseItem';
 import { MessagesHistoryAttachment } from '../objects/messages/MessagesHistoryAttachment';
 import { MessagesLastActivity } from '../objects/messages/MessagesLastActivity';
 import { MessagesLongpollMessages } from '../objects/messages/MessagesLongpollMessages';
@@ -19,6 +20,10 @@ import { MessagesLongpollParams } from '../objects/messages/MessagesLongpollPara
 import { MessagesMessage } from '../objects/messages/MessagesMessage';
 import { MessagesMessagesArray } from '../objects/messages/MessagesMessagesArray';
 import { MessagesPinnedMessage } from '../objects/messages/MessagesPinnedMessage';
+import { MessagesReactionAssetItem } from '../objects/messages/MessagesReactionAssetItem';
+import { MessagesReactionCounterResponseItem } from '../objects/messages/MessagesReactionCounterResponseItem';
+import { MessagesReactionCountersResponseItem } from '../objects/messages/MessagesReactionCountersResponseItem';
+import { MessagesReactionResponseItem } from '../objects/messages/MessagesReactionResponseItem';
 import { MessagesSendUserIdsResponseItem } from '../objects/messages/MessagesSendUserIdsResponseItem';
 import { UsersUser } from '../objects/users/UsersUser';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
@@ -42,7 +47,25 @@ export interface MessagesAddChatUserParams {
 }
 
 // messages.addChatUser_response
-export type MessagesAddChatUserResponse = 1;
+export type MessagesAddChatUserResponse = {};
+
+/**
+ * messages.addChatUsers
+ *
+ * Adds new users to a chat.
+ */
+
+export interface MessagesAddChatUsersParams {
+  chat_id?: number;
+  visible_messages_count?: number;
+}
+
+// messages.addChatUsers_response
+export interface MessagesAddChatUsersResponse {
+  failed_peer_ids?: number[];
+  failed_phone_numbers?: string[];
+  invitees?: number[];
+}
 
 /**
  * messages.allowMessagesFromGroup
@@ -80,7 +103,16 @@ export interface MessagesCreateChatParams {
 }
 
 // messages.createChat_response
-export type MessagesCreateChatResponse = number;
+export interface MessagesCreateChatResponse {
+  /**
+   * Chat ID
+   */
+  chat_id?: number;
+  /**
+   * List of successfully added peer ids
+   */
+  peer_ids?: number[];
+}
 
 /**
  * messages.delete
@@ -94,15 +126,19 @@ export interface MessagesDeleteParams {
    */
   message_ids?: string;
   /**
-   * '1' — to mark message as spam.
+   * '1' - to mark message as spam.
    */
   spam?: 0 | 1;
+  /**
+   * Reason for spam
+   */
+  reason?: number;
   /**
    * Group ID (for group messages with user access token)
    */
   group_id?: number;
   /**
-   * '1' — delete message for for all.
+   * '1' - delete message for for all.
    */
   delete_for_all?: 0 | 1;
   /**
@@ -112,13 +148,11 @@ export interface MessagesDeleteParams {
   /**
    * Conversation message IDs.
    */
-  conversation_message_ids?: string;
+  cmids?: string;
 }
 
 // messages.delete_response
-export interface MessagesDeleteResponse {
-  [key: number]: 0 | 1;
-}
+export type MessagesDeleteResponse = MessagesDeleteFullResponseItem[];
 
 /**
  * messages.deleteChatPhoto
@@ -169,8 +203,22 @@ export interface MessagesDeleteConversationResponse {
   /**
    * Id of the last message, that was deleted
    */
-  last_deleted_id: number;
+  last_deleted_id?: number;
 }
+
+/**
+ * messages.deleteReaction
+ *
+ * Delete message reaction
+ */
+
+export interface MessagesDeleteReactionParams {
+  peer_id: number;
+  cmid: number;
+}
+
+// messages.deleteReaction_response
+export type MessagesDeleteReactionResponse = 0 | 1;
 
 /**
  * messages.denyMessagesFromGroup
@@ -212,15 +260,15 @@ export interface MessagesEditParams {
    */
   long?: number;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
+   * (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'wall' - wall post, '<owner_id>' - ID of the media attachment owner. '<media_id>' - media attachment ID. Example: "photo100172_166443618"
    */
   attachment?: string;
   /**
-   * '1' — to keep forwarded, messages.
+   * '1' - to keep forwarded, messages.
    */
   keep_forward_messages?: 0 | 1;
   /**
-   * '1' — to keep attached snippets.
+   * '1' - to keep attached snippets.
    */
   keep_snippets?: 0 | 1;
   /**
@@ -228,13 +276,17 @@ export interface MessagesEditParams {
    */
   group_id?: number;
   dont_parse_links?: 0 | 1;
+  disable_mentions?: 0 | 1;
   message_id?: number;
-  conversation_message_id?: number;
+  cmid?: number;
   template?: string;
   keyboard?: string;
 }
 
 // messages.edit_response
+/**
+ * Result
+ */
 export type MessagesEditResponse = 0 | 1;
 
 /**
@@ -293,8 +345,19 @@ export interface MessagesGetByConversationMessageIdResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
+}
+
+// messages.getByConversationMessageId_extendedResponse
+export interface MessagesGetByConversationMessageIdExtendedResponse {
+  /**
+   * Total number
+   */
+  count?: number;
+  items?: MessagesMessage[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -307,7 +370,7 @@ export interface MessagesGetByIdParams {
   /**
    * Message IDs.
    */
-  message_ids: string;
+  message_ids?: string;
   /**
    * Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
    */
@@ -326,6 +389,8 @@ export interface MessagesGetByIdParams {
    * Group ID (for group messages with group access token)
    */
   group_id?: number;
+  cmids?: string;
+  peer_id?: number;
 }
 
 // messages.getById_response
@@ -333,8 +398,8 @@ export interface MessagesGetByIdResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
 }
 
 // messages.getById_extendedResponse
@@ -342,11 +407,50 @@ export interface MessagesGetByIdExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
-  profiles: UsersUserFull[];
+  count?: number;
+  items?: MessagesMessage[];
+  profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
 }
+
+/**
+ * messages.getChat
+ *
+ * Returns information about a chat.
+ */
+
+export interface MessagesGetChatParams {
+  /**
+   * Chat ID.
+   */
+  chat_id?: number;
+  /**
+   * Chat IDs.
+   */
+  chat_ids?: string;
+  /**
+   * Profile fields to return.
+   *
+   * objects.json#/definitions/users_fields
+   */
+  fields?: string;
+  /**
+   * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
+   */
+  name_case?: string;
+}
+
+// messages.getChat_response
+export type MessagesGetChatResponse = MessagesChat;
+
+// messages.getChat_fieldsResponse
+export type MessagesGetChatFieldsResponse = MessagesChatFull;
+
+// messages.getChat_chatIdsResponse
+export type MessagesGetChatChatIdsResponse = MessagesChat[];
+
+// messages.getChat_chatIds_Fields_Response
+export type MessagesGetChatChatIdsFieldsResponse = MessagesChatFull[];
 
 /**
  * messages.getChatPreview
@@ -370,6 +474,7 @@ export interface MessagesGetChatPreviewParams {
 export interface MessagesGetChatPreviewResponse {
   preview?: MessagesChatPreview;
   profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -383,6 +488,12 @@ export interface MessagesGetConversationMembersParams {
    * Peer ID.
    */
   peer_id: number;
+  offset?: number;
+  count?: number;
+  /**
+   * Extended flag
+   */
+  extended?: 0 | 1;
   /**
    * Profile fields to return.
    *
@@ -393,19 +504,11 @@ export interface MessagesGetConversationMembersParams {
    * Group ID (for group messages with group access token)
    */
   group_id?: number;
+  member_ids?: string;
 }
 
 // messages.getConversationMembers_response
-export interface MessagesGetConversationMembersResponse {
-  /**
-   * Chat members count
-   */
-  count: number;
-  items: MessagesConversationMember[];
-  chat_restrictions?: MessagesChatRestrictions;
-  profiles?: UsersUserFull[];
-  groups?: GroupsGroupFull[];
-}
+export type MessagesGetConversationMembersResponse = MessagesGetConversationMembers;
 
 /**
  * messages.getConversations
@@ -423,11 +526,11 @@ export interface MessagesGetConversationsParams {
    */
   count?: number;
   /**
-   * Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
+   * Filter to apply: 'all' - all conversations, 'unread' - conversations with unread messages, 'important' - conversations, marked as important (only for community messages), 'unanswered' - conversations, marked as unanswered (only for community messages)
    */
-  filter?: 'all' | 'archive' | 'important' | 'unanswered' | 'unread';
+  filter?: 'all' | 'archive' | 'important' | 'sorted_chats' | 'unanswered' | 'unread';
   /**
-   * '1' — return extra information about users and communities
+   * '1' - return extra information about users and communities
    */
   extended?: 0 | 1;
   /**
@@ -451,12 +554,12 @@ export interface MessagesGetConversationsResponse {
   /**
    * Total number
    */
-  count: number;
+  count?: number;
   /**
    * Unread dialogs number
    */
   unread_count?: number;
-  items: MessagesConversationWithMessage[];
+  items?: MessagesConversationWithMessage[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
 }
@@ -519,7 +622,7 @@ export interface MessagesGetHistoryParams {
    */
   start_message_id?: number;
   /**
-   * Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
+   * Sort order: '1' - return messages in chronological order. '0' - return messages in reverse chronological order.
    */
   rev?: 1 | 0;
   /**
@@ -543,8 +646,8 @@ export interface MessagesGetHistoryResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
 }
 
 // messages.getHistory_extendedResponse
@@ -552,8 +655,8 @@ export interface MessagesGetHistoryExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
   conversations?: MessagesConversation[];
@@ -566,38 +669,56 @@ export interface MessagesGetHistoryExtendedResponse {
  */
 
 export interface MessagesGetHistoryAttachmentsParams {
+  attachment_types?: string;
+  /**
+   * Group ID (for group messages with group access token)
+   */
+  group_id?: number;
   /**
    * Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
    */
-  peer_id: number;
-  /**
-   * Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
-   */
-  media_type?: 'audio' | 'audio_message' | 'doc' | 'graffiti' | 'link' | 'market' | 'photo' | 'share' | 'video' | 'wall';
-  /**
-   * Message ID to start return results from.
-   */
-  start_from?: string;
+  peer_id?: number;
+  cmid?: number;
+  attachment_position?: number;
+  offset?: number;
   /**
    * Number of objects to return.
    */
   count?: number;
-  /**
-   * '1' — to return photo sizes in a
-   */
-  photo_sizes?: 0 | 1;
+  extended?: 0 | 1;
   /**
    * Additional profile [vk.com/dev/fields|fields] to return.
    *
    * objects.json#/definitions/users_fields
    */
   fields?: string;
-  /**
-   * Group ID (for group messages with group access token)
-   */
-  group_id?: number;
-  preserve_order?: 0 | 1;
   max_forwards_level?: number;
+  message_video?: 0 | 1;
+  /**
+   * Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
+   */
+  media_type?: 'app_action_games' |
+  'app_action_mini_apps' |
+  'audio' |
+  'audio_message' |
+  'clip' |
+  'doc' |
+  'graffiti' |
+  'link' |
+  'market' |
+  'photo' |
+  'share' |
+  'video' |
+  'wall';
+  /**
+   * Message ID to start return results from.
+   */
+  start_from?: string;
+  preserve_order?: 0 | 1;
+  /**
+   * '1' - to return photo sizes in a
+   */
+  photo_sizes?: 0 | 1;
 }
 
 // messages.getHistoryAttachments_response
@@ -607,6 +728,8 @@ export interface MessagesGetHistoryAttachmentsResponse {
    * Value for pagination
    */
   next_from?: string;
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
 }
 
 /**
@@ -644,17 +767,17 @@ export interface MessagesGetImportantMessagesParams {
 
 // messages.getImportantMessages_response
 export interface MessagesGetImportantMessagesResponse {
-  messages: MessagesMessagesArray;
+  messages?: MessagesMessagesArray;
   profiles?: UsersUser[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
   conversations?: MessagesConversation[];
 }
 
 // messages.getImportantMessages_extendedResponse
 export interface MessagesGetImportantMessagesExtendedResponse {
-  messages: MessagesMessagesArray;
-  profiles?: UsersUser[];
-  groups?: GroupsGroup[];
+  messages?: MessagesMessagesArray;
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
   conversations?: MessagesConversation[];
 }
 
@@ -674,8 +797,8 @@ export interface MessagesGetIntentUsersParams {
 
 // messages.getIntentUsers_response
 export interface MessagesGetIntentUsersResponse {
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
   profiles?: UsersUserFull[];
 }
 
@@ -689,7 +812,7 @@ export interface MessagesGetInviteLinkParams {
    */
   peer_id: number;
   /**
-   * 1 — to generate new link (revoke previous), 0 — to return previous link.
+   * 1 - to generate new link (revoke previous), 0 - to return previous link.
    */
   reset?: 0 | 1;
   /**
@@ -701,6 +824,11 @@ export interface MessagesGetInviteLinkParams {
 // messages.getInviteLink_response
 export interface MessagesGetInviteLinkResponse {
   link?: string;
+}
+
+// messages.getInviteLink_responseByOwner
+export interface MessagesGetInviteLinkResponseByOwner {
+  items?: MessagesGetInviteLinkByOwnerResponseItem[];
 }
 
 /**
@@ -731,7 +859,7 @@ export interface MessagesGetLongPollHistoryParams {
    */
   ts?: number;
   /**
-   * Lsat value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
+   * Last value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
    */
   pts?: number;
   /**
@@ -739,7 +867,7 @@ export interface MessagesGetLongPollHistoryParams {
    */
   preview_length?: number;
   /**
-   * '1' — to return history with online users only.
+   * '1' - to return history with online users only.
    */
   onlines?: 0 | 1;
   /**
@@ -767,15 +895,16 @@ export interface MessagesGetLongPollHistoryParams {
   lp_version?: number;
   last_n?: number;
   credentials?: 0 | 1;
+  extended?: 0 | 1;
 }
 
 // messages.getLongPollHistory_response
 export interface MessagesGetLongPollHistoryResponse {
-  history?: number[][];
+  history?: Array<string | number>[];
   messages?: MessagesLongpollMessages;
   credentials?: MessagesLongpollParams;
   profiles?: UsersUserFull[];
-  groups?: GroupsGroup[];
+  groups?: GroupsGroupFull[];
   chats?: MessagesChat[];
   /**
    * Persistence timestamp
@@ -797,7 +926,7 @@ export interface MessagesGetLongPollHistoryResponse {
 
 export interface MessagesGetLongPollServerParams {
   /**
-   * '1' — to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
+   * '1' - to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
    */
   need_pts?: 0 | 1;
   /**
@@ -812,6 +941,78 @@ export interface MessagesGetLongPollServerParams {
 
 // messages.getLongPollServer_response
 export type MessagesGetLongPollServerResponse = MessagesLongpollParams;
+
+/**
+ * messages.getMessagesReactions
+ *
+ * Get reaction counters for message
+ */
+
+export interface MessagesGetMessagesReactionsParams {
+  peer_id: number;
+  cmids: string;
+}
+
+// messages.getMessagesReactions_response
+export interface MessagesGetMessagesReactionsResponse {
+  items?: MessagesReactionCountersResponseItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+}
+
+/**
+ * messages.getReactedPeers
+ *
+ * Get reacted users and counters for message
+ */
+
+export interface MessagesGetReactedPeersParams {
+  peer_id: number;
+  cmid: number;
+  reaction_id?: number;
+}
+
+// messages.getReactedPeers_response
+export interface MessagesGetReactedPeersResponse {
+  /**
+   * Total number
+   */
+  count?: number;
+  reactions?: MessagesReactionResponseItem[];
+  counters?: MessagesReactionCounterResponseItem[];
+  profiles?: UsersUserFull[];
+  groups?: GroupsGroupFull[];
+}
+
+/**
+ * messages.getReactionsAssets
+ *
+ * Get assets to display message reactions
+ */
+
+export interface MessagesGetReactionsAssetsParams {
+  client_version?: number;
+}
+
+// messages.getReactionsAssets_response
+export interface MessagesGetReactionsAssetsResponse {
+  /**
+   * Current reactions assets version
+   */
+  version?: number;
+  /**
+   * Base reactions assets to display by default
+   */
+  assets?: MessagesReactionAssetItem[];
+  /**
+   * Extended reactions assets for special occasions, user allowed to switch to the base version
+   */
+  override_assets?: MessagesReactionAssetItem[];
+  /**
+   * Enabled reactions for current account. You can use reactions only from this array or already present on target message
+   */
+  reaction_ids?: number[];
+}
 
 /**
  * messages.isMessagesFromGroupAllowed
@@ -863,7 +1064,7 @@ export interface MessagesMarkAsAnsweredConversationParams {
    */
   peer_id: number;
   /**
-   * '1' — to mark as answered, '0' — to remove the mark
+   * '1' - to mark as answered, '0' - to remove the mark
    */
   answered?: 0 | 1;
   /**
@@ -887,7 +1088,7 @@ export interface MessagesMarkAsImportantParams {
    */
   message_ids?: string;
   /**
-   * '1' — to add a star (mark as important), '0' — to remove the star
+   * '1' - to add a star (mark as important), '0' - to remove the star
    */
   important?: number;
 }
@@ -907,7 +1108,7 @@ export interface MessagesMarkAsImportantConversationParams {
    */
   peer_id: number;
   /**
-   * '1' — to add a star (mark as important), '0' — to remove the star
+   * '1' - to add a star (mark as important), '0' - to remove the star
    */
   important?: 0 | 1;
   /**
@@ -943,10 +1144,40 @@ export interface MessagesMarkAsReadParams {
    */
   group_id?: number;
   mark_conversation_as_read?: 0 | 1;
+  up_to_cmid?: number;
 }
 
 // messages.markAsRead_response
 export type MessagesMarkAsReadResponse = 1;
+
+/**
+ * messages.markReactionsAsRead
+ *
+ * Mark messages reactions as read
+ */
+
+export interface MessagesMarkReactionsAsReadParams {
+  peer_id: number;
+  cmids?: string;
+}
+
+// messages.markReactionsAsRead_response
+export type MessagesMarkReactionsAsReadResponse = 0 | 1;
+
+/**
+ * messages.muteChatMentions
+ */
+
+export interface MessagesMuteChatMentionsParams {
+  /**
+   * Chat id
+   */
+  peer_id: number;
+  mention_status: 'all' | 'allOnline' | 'none';
+}
+
+// messages.muteChatMentions_response
+export type MessagesMuteChatMentionsResponse = 1;
 
 /**
  * messages.pin
@@ -966,7 +1197,7 @@ export interface MessagesPinParams {
   /**
    * Conversation message ID
    */
-  conversation_message_id?: number;
+  cmid?: number;
 }
 
 // messages.pin_response
@@ -1003,11 +1234,16 @@ export interface MessagesRestoreParams {
   /**
    * ID of a previously-deleted message to restore.
    */
-  message_id: number;
+  message_id?: number;
   /**
    * Group ID (for group messages with user access token)
    */
   group_id?: number;
+  cmid?: number;
+  /**
+   * Destination ID.
+   */
+  peer_id?: number;
 }
 
 // messages.restore_response
@@ -1057,8 +1293,8 @@ export interface MessagesSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
 }
 
 // messages.search_extendedResponse
@@ -1066,8 +1302,8 @@ export interface MessagesSearchExtendedResponse {
   /**
    * Total number
    */
-  count: number;
-  items: MessagesMessage[];
+  count?: number;
+  items?: MessagesMessage[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
   conversations?: MessagesConversation[];
@@ -1089,7 +1325,7 @@ export interface MessagesSearchConversationsParams {
    */
   count?: number;
   /**
-   * '1' — return extra information about users and communities
+   * '1' - return extra information about users and communities
    */
   extended?: 0 | 1;
   /**
@@ -1109,8 +1345,8 @@ export interface MessagesSearchConversationsResponse {
   /**
    * Total results number
    */
-  count: number;
-  items: MessagesConversation[];
+  count?: number;
+  items?: MessagesConversation[];
 }
 
 // messages.searchConversations_extendedResponse
@@ -1118,8 +1354,8 @@ export interface MessagesSearchConversationsExtendedResponse {
   /**
    * Total results number
    */
-  count: number;
-  items: MessagesConversation[];
+  count?: number;
+  items?: MessagesConversation[];
   profiles?: UsersUserFull[];
   groups?: GroupsGroupFull[];
 }
@@ -1132,7 +1368,7 @@ export interface MessagesSearchConversationsExtendedResponse {
 
 export interface MessagesSendParams {
   /**
-   * User ID (by default — current user).
+   * User ID (by default - current user).
    */
   user_id?: number;
   /**
@@ -1156,10 +1392,6 @@ export interface MessagesSendParams {
    */
   chat_id?: number;
   /**
-   * IDs of message recipients (if new conversation shall be started).
-   */
-  user_ids?: string;
-  /**
    * (Required if 'attachments' is not set.) Text of the message.
    */
   message?: string;
@@ -1172,7 +1404,7 @@ export interface MessagesSendParams {
    */
   long?: number;
   /**
-   * (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
+   * (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'wall' - wall post, '<owner_id>' - ID of the media attachment owner. '<media_id>' - media attachment ID. Example: "photo100172_166443618"
    */
   attachment?: string;
   reply_to?: number;
@@ -1207,6 +1439,7 @@ export interface MessagesSendParams {
   'confirmed_notification' |
   'customer_support' |
   'default' |
+  'finance_notification' |
   'game_notification' |
   'moderated_newsletter' |
   'non_promo_newsletter' |
@@ -1215,8 +1448,8 @@ export interface MessagesSendParams {
   subscribe_id?: number;
 }
 
-// messages.send_response
-export type MessagesSendResponse = number;
+// messages.send_deprecatedResponse
+export type MessagesSendDeprecatedResponse = number;
 
 // messages.send_userIdsResponse
 export type MessagesSendUserIdsResponse = MessagesSendUserIdsResponseItem[];
@@ -1236,6 +1469,21 @@ export interface MessagesSendMessageEventAnswerParams {
 export type MessagesSendMessageEventAnswerResponse = 1;
 
 /**
+ * messages.sendReaction
+ *
+ * Send message reaction
+ */
+
+export interface MessagesSendReactionParams {
+  peer_id: number;
+  cmid: number;
+  reaction_id: number;
+}
+
+// messages.sendReaction_response
+export type MessagesSendReactionResponse = 0 | 1;
+
+/**
  * messages.setActivity
  *
  * Changes the status of a user as typing in a conversation.
@@ -1247,7 +1495,7 @@ export interface MessagesSetActivityParams {
    */
   user_id?: number;
   /**
-   * 'typing' — user has started to type.
+   * 'typing' - user has started to type.
    */
   type?: 'audiomessage' | 'file' | 'photo' | 'typing' | 'video';
   /**

@@ -6,4 +6,4 @@
 /**
  * Photo's type.
  */
-export type PhotosImageType = 's' | 'm' | 'x' | 'l' | 'o' | 'p' | 'q' | 'r' | 'y' | 'z' | 'w';
+export type PhotosImageType = 's' | 'm' | 'x' | 'l' | 'o' | 'p' | 'q' | 'r' | 'y' | 'z' | 'w' | 'base';

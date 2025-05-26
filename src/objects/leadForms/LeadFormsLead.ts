@@ -6,9 +6,9 @@ import { LeadFormsAnswer } from './LeadFormsAnswer';
 
 // leadForms_lead
 export interface LeadFormsLead {
-  lead_id: number;
-  user_id: number;
-  date: number;
-  answers: LeadFormsAnswer[];
+  lead_id?: number;
+  user_id?: number;
+  date?: number;
+  answers?: LeadFormsAnswer[];
   ad_id?: number;
 }

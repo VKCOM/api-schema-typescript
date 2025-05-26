@@ -14,7 +14,7 @@ export interface AdsCampaign {
   /**
    * Campaign's total limit, rubles
    */
-  all_limit: string;
+  all_limit?: string;
   /**
    * Campaign create time, as Unixtime
    */
@@ -34,25 +34,25 @@ export interface AdsCampaign {
   /**
    * Campaign's day limit, rubles
    */
-  day_limit: string;
+  day_limit?: string;
   /**
    * Campaign ID
    */
-  id: number;
+  id?: number;
   /**
    * Campaign title
    */
-  name: string;
+  name?: string;
   /**
    * Campaign start time, as Unixtime
    */
-  start_time: number;
-  status: AdsCampaignStatus;
+  start_time?: number;
+  status?: AdsCampaignStatus;
   /**
    * Campaign stop time, as Unixtime
    */
-  stop_time: number;
-  type: AdsCampaignType;
+  stop_time?: number;
+  type?: AdsCampaignType;
   /**
    * Campaign update time, as Unixtime
    */

@@ -170,8 +170,8 @@ export interface NotesGetResponse {
   /**
    * Total number
    */
-  count: number;
-  items: NotesNote[];
+  count?: number;
+  items?: NotesNote[];
 }
 
 /**
@@ -223,8 +223,8 @@ export interface NotesGetCommentsResponse {
   /**
    * Total number
    */
-  count: number;
-  items: NotesNoteComment[];
+  count?: number;
+  items?: NotesNoteComment[];
 }
 
 /**

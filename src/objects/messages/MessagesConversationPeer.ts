@@ -6,7 +6,7 @@ import { MessagesConversationPeerType } from './MessagesConversationPeerType';
 
 // messages_conversation_peer
 export interface MessagesConversationPeer {
-  id: number;
+  id?: number;
   local_id?: number;
-  type: MessagesConversationPeerType;
+  type?: MessagesConversationPeerType;
 }

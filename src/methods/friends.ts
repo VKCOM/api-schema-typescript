@@ -6,9 +6,10 @@ import { FriendsFriendExtendedStatus } from '../objects/friends/FriendsFriendExt
 import { FriendsFriendsList } from '../objects/friends/FriendsFriendsList';
 import { FriendsFriendStatus } from '../objects/friends/FriendsFriendStatus';
 import { FriendsMutualFriend } from '../objects/friends/FriendsMutualFriend';
-import { FriendsRequests } from '../objects/friends/FriendsRequests';
+import { FriendsOnlineUsers } from '../objects/friends/FriendsOnlineUsers';
+import { FriendsOnlineUsersWithMobile } from '../objects/friends/FriendsOnlineUsersWithMobile';
 import { FriendsRequestsXtrMessage } from '../objects/friends/FriendsRequestsXtrMessage';
-import { FriendsUserXtrPhone } from '../objects/friends/FriendsUserXtrPhone';
+import { FriendsRequestsXtrMutual } from '../objects/friends/FriendsRequestsXtrMutual';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 
 /**
@@ -69,7 +70,7 @@ export interface FriendsAddListResponse {
   /**
    * List ID
    */
-  list_id: number;
+  list_id?: number;
 }
 
 /**
@@ -84,7 +85,7 @@ export interface FriendsAreFriendsParams {
    */
   user_ids: string;
   /**
-   * '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
+   * '1' - to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
    */
   need_sign?: 0 | 1;
   /**
@@ -134,7 +135,7 @@ export const FriendsDeleteResponseSuggestionDeletedEnumNames = {
 
 // friends.delete_response
 export interface FriendsDeleteResponse {
-  success: number;
+  success?: number;
   /**
    * Returns 1 if friend has been deleted
    *
@@ -252,9 +253,9 @@ export interface FriendsGetParams {
    */
   user_id?: number;
   /**
-   * Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
+   * Sort order: , 'name' - by name (enabled only if the 'fields' parameter is used), 'hints' - by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
    */
-  order?: 'hints' | 'random' | 'mobile' | 'name' | 'smart';
+  order?: 'hints' | 'mobile' | 'name' | 'random' | 'smart';
   /**
    * ID of the friend list returned by the [vk.com/dev/friends.getLists|friends.getLists] method to be used as the source. This parameter is taken into account only when the uid parameter is set to the current user ID. This parameter is available only for [vk.com/dev/standalone|desktop applications].
    */
@@ -273,10 +274,6 @@ export interface FriendsGetParams {
    * objects.json#/definitions/users_fields
    */
   fields?: string;
-  /**
-   * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-   */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
   ref?: string;
 }
 
@@ -285,8 +282,8 @@ export interface FriendsGetResponse {
   /**
    * Total friends number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }
 
 // friends.get_fieldsResponse
@@ -294,8 +291,9 @@ export interface FriendsGetFieldsResponse {
   /**
    * Total friends number
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  items?: UsersUserFull[];
+  profiles?: UsersUserFull[];
 }
 
 /**
@@ -310,28 +308,6 @@ export interface FriendsGetAppUsersParams {}
 export type FriendsGetAppUsersResponse = number[];
 
 /**
- * friends.getByPhones
- *
- * Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
- */
-
-export interface FriendsGetByPhonesParams {
-  /**
-   * List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
-   */
-  phones?: string;
-  /**
-   * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
-   *
-   * objects.json#/definitions/users_fields
-   */
-  fields?: string;
-}
-
-// friends.getByPhones_response
-export type FriendsGetByPhonesResponse = FriendsUserXtrPhone[];
-
-/**
  * friends.getLists
  *
  * Returns a list of the user's friend lists.
@@ -343,7 +319,7 @@ export interface FriendsGetListsParams {
    */
   user_id?: number;
   /**
-   * '1' — to return system friend lists. By default: '0'.
+   * '1' - to return system friend lists. By default: '0'.
    */
   return_system?: 0 | 1;
 }
@@ -353,8 +329,8 @@ export interface FriendsGetListsResponse {
   /**
    * Total number of friends lists
    */
-  count: number;
-  items: FriendsFriendsList[];
+  count?: number;
+  items?: FriendsFriendsList[];
 }
 
 /**
@@ -377,7 +353,7 @@ export interface FriendsGetMutualParams {
    */
   target_uids?: string;
   /**
-   * Sort order: 'random' — random order
+   * Sort order: 'random' - random order
    */
   order?: string;
   /**
@@ -388,6 +364,10 @@ export interface FriendsGetMutualParams {
    * Offset needed to return a specific subset of mutual friends.
    */
   offset?: number;
+  /**
+   * Return mutual friends total count
+   */
+  need_common_count?: 0 | 1;
 }
 
 // friends.getMutual_response
@@ -395,6 +375,9 @@ export type FriendsGetMutualResponse = number[];
 
 // friends.getMutual_targetUidsResponse
 export type FriendsGetMutualTargetUidsResponse = FriendsMutualFriend[];
+
+// friends.getMutual_totalCountResponse
+export type FriendsGetMutualTotalCountResponse = FriendsMutualFriend;
 
 /**
  * friends.getOnline
@@ -412,11 +395,11 @@ export interface FriendsGetOnlineParams {
    */
   list_id?: number;
   /**
-   * '1' — to return an additional 'online_mobile' field, '0' — (default),
+   * '1' - to return an additional 'online_mobile' field, '0' - (default),
    */
   online_mobile?: 0 | 1;
   /**
-   * Sort order: 'random' — random order
+   * Sort order: 'random' - random order
    */
   order?: string;
   /**
@@ -437,6 +420,12 @@ export interface FriendsGetOnlineOnlineMobileResponse {
   online?: number[];
   online_mobile?: number[];
 }
+
+// friends.getOnline_extendedResponse
+export type FriendsGetOnlineExtendedResponse = FriendsOnlineUsers;
+
+// friends.getOnline_onlineMobileExtendedResponse
+export type FriendsGetOnlineOnlineMobileExtendedResponse = FriendsOnlineUsersWithMobile;
 
 /**
  * friends.getRecent
@@ -470,24 +459,24 @@ export interface FriendsGetRequestsParams {
    */
   count?: number;
   /**
-   * '1' — to return response messages from users who have sent a friend request or, if 'suggested' is set to '1', to return a list of suggested friends
+   * '1' - to return response messages from users who have sent a friend request or, if 'suggested' is set to '1', to return a list of suggested friends
    */
   extended?: 0 | 1;
   /**
-   * '1' — to return a list of mutual friends (up to 20), if any
+   * '1' - to return a list of mutual friends (up to 20), if any
    */
   need_mutual?: 0 | 1;
   /**
-   * '1' — to return outgoing requests, '0' — to return incoming requests (default)
+   * '1' - to return outgoing requests, '0' - to return incoming requests (default)
    */
   out?: 0 | 1;
   /**
-   * Sort order: '1' — by number of mutual friends, '0' — by date
+   * Sort order: '1' - by number of mutual friends, '0' - by date
    */
   sort?: 0 | 1 | 2;
   need_viewed?: 0 | 1;
   /**
-   * '1' — to return a list of suggested friends, '0' — to return friend requests (default)
+   * '1' - to return a list of suggested friends, '0' - to return friend requests (default)
    */
   suggested?: 0 | 1;
   ref?: string;
@@ -508,6 +497,10 @@ export interface FriendsGetRequestsResponse {
    * Total unread requests number
    */
   count_unread?: number;
+  /**
+   * Friend requests last viewed timestamp
+   */
+  last_viewed?: number;
 }
 
 // friends.getRequests_needMutualResponse
@@ -516,7 +509,15 @@ export interface FriendsGetRequestsNeedMutualResponse {
    * Total requests number
    */
   count?: number;
-  items?: FriendsRequests[];
+  items?: FriendsRequestsXtrMutual[];
+  /**
+   * Total unread requests number
+   */
+  count_unread?: number;
+  /**
+   * Friend requests last viewed timestamp
+   */
+  last_viewed?: number;
 }
 
 // friends.getRequests_extendedResponse
@@ -526,6 +527,14 @@ export interface FriendsGetRequestsExtendedResponse {
    */
   count?: number;
   items?: FriendsRequestsXtrMessage[];
+  /**
+   * Total unread requests number
+   */
+  count_unread?: number;
+  /**
+   * Friend requests last viewed timestamp
+   */
+  last_viewed?: number;
 }
 
 /**
@@ -536,7 +545,7 @@ export interface FriendsGetRequestsExtendedResponse {
 
 export interface FriendsGetSuggestionsParams {
   /**
-   * Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
+   * Types of potential friends to return: 'mutual' - users with many mutual friends , 'contacts' - users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' - users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
    */
   filter?: string;
   /**
@@ -554,9 +563,9 @@ export interface FriendsGetSuggestionsParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: , 'nom' - nominative (default) , 'gen' - genitive , 'dat' - dative , 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
 }
 
 // friends.getSuggestions_response
@@ -564,8 +573,8 @@ export interface FriendsGetSuggestionsResponse {
   /**
    * Total results number
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  items?: UsersUserFull[];
 }
 
 /**
@@ -578,7 +587,7 @@ export interface FriendsSearchParams {
   /**
    * User ID.
    */
-  user_id: number;
+  user_id?: number;
   /**
    * Search query string (e.g., 'Vasya Babich').
    */
@@ -590,9 +599,9 @@ export interface FriendsSearchParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'Nom' | 'Gen' | 'Dat' | 'Acc' | 'Ins' | 'Abl';
+  name_case?: string;
   /**
    * Offset needed to return a specific subset of friends.
    */
@@ -608,6 +617,6 @@ export interface FriendsSearchResponse {
   /**
    * Total number
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  items?: UsersUserFull[];
 }

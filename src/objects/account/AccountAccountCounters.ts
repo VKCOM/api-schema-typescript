@@ -21,10 +21,6 @@ export interface AccountAccountCounters {
    */
   friends?: number;
   /**
-   * New friends suggestions number
-   */
-  friends_suggestions?: number;
-  /**
    * New friends recommendations number
    */
   friends_recommendations?: number;
@@ -36,10 +32,8 @@ export interface AccountAccountCounters {
    * New groups number
    */
   groups?: number;
-  menu_discover_badge?: number;
-  menu_clips_badge?: number;
   /**
-   * New messages number
+   * New messages number. Will be removed when messages.getCounters is released.
    */
   messages?: number;
   /**
@@ -58,8 +52,4 @@ export interface AccountAccountCounters {
    * New photo tags number
    */
   photos?: number;
-  /**
-   * New sdk number
-   */
-  sdk?: number;
 }

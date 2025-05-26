@@ -10,5 +10,5 @@ export interface StoriesStoryStatsStat {
    * Stat value
    */
   count?: number;
-  state: StoriesStoryStatsState;
+  state?: StoriesStoryStatsState;
 }

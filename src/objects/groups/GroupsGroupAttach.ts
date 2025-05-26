@@ -7,21 +7,21 @@ export interface GroupsGroupAttach {
   /**
    * group ID
    */
-  id: number;
+  id?: number;
   /**
    * text of attach
    */
-  text: string;
+  text?: string;
   /**
    * activity or category of group
    */
-  status: string;
+  status?: string;
   /**
    * size of group
    */
-  size: number;
+  size?: number;
   /**
    * is favorite
    */
-  is_favorite: boolean;
+  is_favorite?: boolean;
 }

@@ -4,9 +4,9 @@
 
 // groups_group_tag
 export interface GroupsGroupTag {
-  id: number;
-  name: string;
-  color: '454647' |
+  id?: number;
+  name?: string;
+  color?: '454647' |
   '45678f' |
   '4bb34b' |
   '5181b8' |

@@ -6,7 +6,6 @@ import { GroupsGroupsArray } from '../objects/groups/GroupsGroupsArray';
 import { UsersSubscriptionsItem } from '../objects/users/UsersSubscriptionsItem';
 import { UsersUserFull } from '../objects/users/UsersUserFull';
 import { UsersUsersArray } from '../objects/users/UsersUsersArray';
-import { UsersUserXtrCounters } from '../objects/users/UsersUserXtrCounters';
 
 /**
  * users.get
@@ -26,13 +25,14 @@ export interface UsersGetParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
+  from_group_id?: number;
 }
 
 // users.get_response
-export type UsersGetResponse = UsersUserXtrCounters[];
+export type UsersGetResponse = UsersUserFull[];
 
 /**
  * users.getFollowers
@@ -60,9 +60,9 @@ export interface UsersGetFollowersParams {
    */
   fields?: string;
   /**
-   * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+   * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
    */
-  name_case?: 'nom' | 'gen' | 'dat' | 'acc' | 'ins' | 'abl';
+  name_case?: string;
 }
 
 // users.getFollowers_response
@@ -70,8 +70,8 @@ export interface UsersGetFollowersResponse {
   /**
    * Total friends number
    */
-  count: number;
-  items: number[];
+  count?: number;
+  items?: number[];
 }
 
 // users.getFollowers_fieldsResponse
@@ -79,8 +79,9 @@ export interface UsersGetFollowersFieldsResponse {
   /**
    * Total number of available results
    */
-  count: number;
-  items: UsersUserFull[];
+  count?: number;
+  friends_count?: number;
+  items?: UsersUserFull[];
 }
 
 /**
@@ -95,7 +96,7 @@ export interface UsersGetSubscriptionsParams {
    */
   user_id?: number;
   /**
-   * '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
+   * '1' - to return a combined list of users and communities, '0' - to return separate lists of users and communities (default)
    */
   extended?: 0 | 1;
   /**
@@ -114,8 +115,8 @@ export interface UsersGetSubscriptionsParams {
 
 // users.getSubscriptions_response
 export interface UsersGetSubscriptionsResponse {
-  users: UsersUsersArray;
-  groups: GroupsGroupsArray;
+  users?: UsersUsersArray;
+  groups?: GroupsGroupsArray;
 }
 
 // users.getSubscriptions_extendedResponse
@@ -123,8 +124,8 @@ export interface UsersGetSubscriptionsExtendedResponse {
   /**
    * Total number of available results
    */
-  count: number;
-  items: UsersSubscriptionsItem[];
+  count?: number;
+  items?: UsersSubscriptionsItem[];
 }
 
 /**
@@ -141,7 +142,7 @@ export interface UsersReportParams {
   /**
    * Type of complaint: 'porn' - pornography, 'spam' - spamming, 'insult' - abusive behavior, 'advertisement' - disruptive advertisements
    */
-  type: 'porn' | 'spam' | 'insult' | 'advertisement';
+  type: 'advertisement' | 'advertisment' | 'fraud' | 'insult' | 'porn' | 'spam';
   /**
    * Comment describing the complaint.
    */
@@ -163,7 +164,7 @@ export interface UsersSearchParams {
    */
   q?: string;
   /**
-   * Sort order: '1' — by date registered, '0' — by rating
+   * Sort order: '1' - by date registered, '0' - by rating
    */
   sort?: 0 | 1;
   /**
@@ -185,9 +186,17 @@ export interface UsersSearchParams {
    */
   city?: number;
   /**
+   * City ID. Use parameter city instead
+   */
+  city_id?: number;
+  /**
    * Country ID.
    */
   country?: number;
+  /**
+   * Country ID. Use parameter country instead
+   */
+  country_id?: number;
   /**
    * City name in a string.
    */
@@ -213,13 +222,13 @@ export interface UsersSearchParams {
    */
   university_chair?: number;
   /**
-   * '1' — female, '2' — male, '0' — any (default)
+   * '1' - female, '2' - male, '0' - any (default)
    */
   sex?: 0 | 1 | 2;
   /**
-   * Relationship status: '1' — Not married, '2' — In a relationship, '3' — Engaged, '4' — Married, '5' — It's complicated, '6' — Actively searching, '7' — In love
+   * Relationship status: '0' - Not specified, '1' - Not married, '2' - In a relationship, '3' - Engaged, '4' - Married, '5' - It's complicated, '6' - Actively searching, '7' - In love, '8' - In a civil union
    */
-  status?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  status?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   /**
    * Minimum age.
    */
@@ -241,11 +250,11 @@ export interface UsersSearchParams {
    */
   birth_year?: number;
   /**
-   * '1' — online only, '0' — all users
+   * '1' - online only, '0' - all users
    */
   online?: 0 | 1;
   /**
-   * '1' — with photo only, '0' — all users
+   * '1' - with photo only, '0' - all users
    */
   has_photo?: 0 | 1;
   /**
@@ -282,6 +291,8 @@ export interface UsersSearchParams {
    */
   group_id?: number;
   from_list?: string;
+  screen_ref?: string;
+  from_group_id?: number;
 }
 
 // users.search_response
